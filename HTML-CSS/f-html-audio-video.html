@@ -1,0 +1,923 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GLOBAL-ATTRIBUTES</title>
+<style>
+body { 
+	font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; 
+	background-color: #FFD988;
+}
+table { 
+	background-color: hsl(200, 25%, 25%); 
+	border: 1px solid hsl(200, 25%, 25%);
+	width: 100%; 
+	margin: auto; 
+	padding: 5px; 
+}
+td, th { 
+	width: auto; 
+	padding: 1px 10px; 
+	border: 1px solid hsl(200, 22%, 40%); 
+	color: #FFF;
+}
+th { 
+	background-color: #BBB;
+	border: 1px solid hsl(00, 25%, 85%); 
+	color: #000; 
+}
+</style>
+</head>
+
+<body>
+<table>
+  <tbody>
+    <tr>
+      <th width="90" nowrap>SLNO</th>
+      <th width="90" nowrap>AUDIO/VIDEO - PROPERTIES</th>
+      <th width="180" nowrap>VALUE</th>
+      <th width="72" nowrap>BROWSER</th>
+      <th width="180" nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>audioTracks</td>
+      <td nowrap><p># AudioTrackList (return object)</p>
+      <p># AudioTrack (return object)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (audioTracks) property returns a (AudioTrackList) object</p>
+      <p># the (audoTrackList) object represents the available audio tracks for the audio/video</p>
+      <p># each available audio track is represented by an (AudioTrack) object </p>
+      <p># syntax (audio|video.audioTracks)</p>
+      <p># return value - (AudioTrackList) object </p>
+      <p>- represents the available audio tracks for the audio/video</p>
+      <p>- (AudioTrackList) object </p>
+      <p>-- (audioTracks.length) - get the number of audio tracks available </p>
+      <p>-- (audioTracks.getTrackById(id) - get (audioTrack) object by (id) </p>
+      <p>-- (audioTracks[index]) - get (AudioTrack) object by index</p>
+      <p>- the first available (AudioTrack) object in index 0</p>
+      <p># return value - (AudioTrack) object </p>
+      <p>- represent an audio track </p>
+      <p>- (AudioTrack) object properties </p>
+      <p>-- (id) - get the (id) of the audio track </p>
+      <p>-- (kind) - get the type of the audio track (can be: &quot;alternative&quot;, &quot;description&quot;, &quot;main&quot;, &quot;translation&quot;, &quot;commentary&quot;, or &quot;&quot; (empty string))</p>
+      <p>-- (label) - get the language of the audio track </p>
+      <p>-- (enabled) - get or set if the track is active (true|false)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>audoplay</td>
+      <td nowrap><p># true/false (property value)</p>
+      <p># true/false (return value)</p>
+      <p># false (default value)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (audoplay) property sets or returns whether the audio/video should start playing as soon as it is loaded</p>
+      <p># syntax (return the autoplay property) - (audio|video.autiplay)</p>
+      <p># syntax (set the autoplay property - (audio|video.autoplay=true|false)</p>
+      <p># property values - true (indicates that the audio/video should start playing as soon as it is loaded) </p>
+      <p># proeprty values - false (default, indeicates that the audio/video should NOT start playing as soon as it is loaded)</p>
+      <p># technical details (return value) - a boolean (true/false)</p>
+      <p># technical details (default value) - false</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>buffered</td>
+      <td nowrap><p># TimeRanges (return object) </p>
+      <p># length/start(index)/end(index) </p>
+      <p>(TimeRanges properties)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (buffered) property returns a (TimeRanges) object </p>
+      <p># the (TimeRanges) object represents the user's buffered ranges of the audio/video</p>
+      <p># a buffered range is a time-range of buffered audio/video. the user gets several buffered ranges if he/she skips in the audio/video</p>
+      <p># this property is (read-only)</p>
+      <p># syntax (audio|video.buffered)</p>
+      <p># return value - (TimeRanges) object </p>
+      <p>- represents the buffered parts of the audio/video</p>
+      <p>- (TimeRanges) object properties </p>
+      <p>-- (length) - get the number of buffered ranges in the audio/vido</p>
+      <p>-- (start(index)) - get hte start position of a buffered range </p>
+      <p>-- (end(index)) - get the end position of a buffered range </p>
+      <p>- the first buffered range is index 0</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>controller</td>
+      <td nowrap><p># MediaController (return object)</p>
+      <p># buffered/seekable/duration </p>
+      <p>(MediaController properties)</p>
+      <p># currentTime/paused/played/volume/muted</p>
+      <p>(MediaController properties)</p>
+      <p># defaultPlaybackRate</p>
+      <p>(MediaController properties)</p>
+      <p># play()/pause()</p>
+      <p>(MediaController methods)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (controller) property returns the current media controller of the audio/video</p>
+      <p># by default the audio/video element does not have a media controller. if a media controller is specified, the </p>
+      <p>controller property will return it as (MediaController) object </p>
+      <p># use the (controls) property to set or return whether a video should display standard video controls </p>
+      <p># syntax (audio|video.controller)</p>
+      <p># return value - (MediaController) object </p>
+      <p>- represents the media controller of the audio/video </p>
+      <p>- (MediaController) object properties/methods - </p>
+      <p>-- (buffered) - get the buffered ranges of the audio/video </p>
+      <p>-- (seekable) - get the seekable ranges of the audio/video </p>
+      <p>-- (duration) - get the duration of the audio/video </p>
+      <p>-- (currentTime) - get or set the current playbck position fo the audio/video</p>
+      <p>-- (paused) - check if the audio/video is paused </p>
+      <p>-- play() - play the audio/video </p>
+      <p>-- pause() - pause the audio/video</p>
+      <p>-- played - check if the audio/video has been played </p>
+      <p>-- defaultPlaybackRate - get or set the default playback rate of the audio/video </p>
+      <p>-- volume - get or set the voume of the audio/video </p>
+      <p>-- muted - get or set if the audio/video is muted</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>controls</td>
+      <td nowrap><p># ture/false (property value)</p>
+      <p># true/false (return value)</p>
+      <p># false (default value)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (controls) property sets or returns whether the browser should display standard audio/video controls</p>
+      <p># standard audio/video controls should include (play/pause/seeking/volume)</p>
+      <p># standard audio.video controls should include (fullscreen tobble(for video)/captions or subtibles (where available)/track (when available))</p>
+      <p># syntax (return the controls property) - (audio|video.controls)</p>
+      <p># syntax (set the controls property) - (audio | video.controls=true|false)</p>
+      <p># property values - true (indicates that controls are displayed)</p>
+      <p># property values - fales (indicates that controls are NOT displaye)</p>
+      <p># technical details (return value) - a boolean, returns (true) if the controls are displayed, otherwise (false)</p>
+      <p># techincal details (defaluet value) -  false</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>crossOrigin</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap># set or returns the CORS settings of the audio/video</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>currentSrc</td>
+      <td nowrap># string (URL) (return value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (currentSrc) property returns the URL of the current audio/video</p>
+      <p># if no audio/video is set, an empty string is returned </p>
+      <p># this property is (read-only)</p>
+      <p># use the (src) proerty to set the URL of a video file </p>
+      <p># syntax (audio|vido.currentSrc)</p>
+      <p># technical details (return value) - a string representing the URL of the current audio/video. </p>
+      <p>returns the entire URL, including the protocol (like http://), if no audio/video is set, an empty stirng is returned</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>currentTime</td>
+      <td nowrap><p># second (property value)</p>
+      <p># number (return value)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (currentTime) property sets or returns the current position (in second) of the audio/video playback</p>
+      <p># when setting this property, the playback will jump to the specified position </p>
+      <p># syntax (return the currentTime property) - (audio|video.currentTime)</p>
+      <p># syntax (set currentTime property) - (audio|video.currentTime=&quot;second&quot;)</p>
+      <p># property value - seconds (indicates the position for the playback of the audio/video, in seconds </p>
+      <p># technical details (return value) - a number, representing the current playback time in seconds </p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>defaultMuted</td>
+      <td nowrap><p># true/false (property value) </p>
+      <p># true/false (return value) </p>
+      <p># false (default value) </p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (defaultMuted) property sets or returns whether the audio/video should be muted by default</p>
+      <p># setting this property will only change the default muted state, not the current. to change the current umted state, use the (muted) property</p>
+      <p># syntax (return the defaultMuted property) - (audio|video.defaultMuted)</p>
+      <p># syntax (set the defaultMuted property) - (audio|video.defaultMuted=true|false)</p>
+      <p># property value - true (indicates that the audio/video is muted by default)</p>
+      <p># property value - false (default, indicates that the audio/video is NOT muted by default) </p>
+      <p># technical details (return value) - a boolean, returns true if the audio/video is muted by default, otherwise (false)</p>
+      <p># techincal details (defalut value) - false</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>defaultPlaybackRate</td>
+      <td nowrap><p># playbackspeed (property value)</p>
+      <p># number (return value)</p>
+      <p># 1.0 (default value)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (defaultPlaybackRate) property sets or returs the default playback speed of the audio/video</p>
+      <p># setting this property will b=only change the default playback speed, not the current</p>
+      <p># to change the current playback speed, use the (playbackRate) property </p>
+      <p># syntax (return the defaultPlaybackRate property) - (audio|video.defaultPlaybackRate)</p>
+      <p># syntax (set the defaultPlaybackRate property) - (audio|video.defaultPlaybackRate=playbackspeed)</p>
+      <p># property value - (playbackspeed) </p>
+      <p>- indicates the default playbac speed of the audio/video </p>
+      <p>(like 1.0 is normal speed/0.5 is half speed(slower)/2.0 is double speed (faster)/-1.0 is backwords (normal)/-0.5 is backwords (half))</p>
+      <p># techincal details (return value) - number, the default playback speed </p>
+      <p># techincal details (default value) - 1.0</p></td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>duration </td>
+      <td nowrap># number (return value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (duration) property returns the lenght of the current audio/video, in seconds </p>
+      <p># if no audio/video is set, NaN (not-a-number) is returned </p>
+      <p># this property is (read-only) </p>
+      <p># syntax (audio|video.duration)</p>
+      <p># technical details (return value) - a number, representing the length of the video, in seconds, if no video is set, </p>
+      <p>&quot;NaN&quot; (not-a-number) is returned. if the video is streamed and has no predefined length, &quot;Inf&quot; (infinity) is required</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>ended</td>
+      <td nowrap># true/false (return value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (ended) property returns whether the playback of the audio/video has ended </p>
+      <p># an audio/video has ended when the playback position is at the end of the audio/video</p>
+      <p># this property is read-only </p>
+      <p># syntax (audio|video.ended) </p>
+      <p># technical details (return value) - a boolean, returns (true) if th eplayback has ended, otherwise (false)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>error</td>
+      <td nowrap># number (return value) </td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (error) property returns a (MediaError) object </p>
+      <p># the (MediaError) object has a code property containing the error state of the audio/video</p>
+      <p># syntax (audio|video.error.code)</p>
+      <p># return value - number</p>
+      <p>- the code property of the (MediaError) object returns a number representing the error state of the audio/video</p>
+      <p>-- 1 = MEDIA_ERR_ABORTED - fetching process abored by user </p>
+      <p>-- 2 = MEDIA_ERR_NETWORK - error occurred when downloading </p>
+      <p>-- 3 = MEDIA_ERR_DECODE - error occurred when decoding </p>
+      <p>-- 4 = MEDIA_ERR_SRC_NOT_SUPPORTED - audio/video not supported</p></td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>loop</td>
+      <td nowrap><p># true/false (property value)</p>
+      <p># true/false (return value)</p>
+      <p># false (default value) </p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (loop) property sets or returns whether the audio/video should start playing over again when it si finished</p>
+      <p># syntax (return the loop property) - (audio|video.loop)</p>
+      <p># syntax (set the loop property) - (audio|video.loop=true|false)</p>
+      <p># property value - true (indicates that th eaudio/video should start playing again when it is finisthed) </p>
+      <p># property value - false (default, indicates that the audio/video should NOT start playing again when it is finished)</p>
+      <p># technical details (return value) - a boolean, returns (true) if the audio/video starts playing over again, verty time it si finished. otherwise (false)</p>
+      <p># technical details (default value) - false</p></td>
+    </tr>
+    <tr>
+      <td nowrap>15</td>
+      <td nowrap>mediaGroup</td>
+      <td nowrap><p># group (property value)</p>
+      <p># string (return value)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (mediaGroup) property sets or returns the name of the media group the audio/video is a part of </p>
+      <p># a media group allow 2 or more audio/video element to be kept synchronized </p>
+      <p># syntax (return the mediaGroup property) - (audio|video.mediaGroup)</p>
+      <p># syntax (set the mediaGroup property) - (audio|video.mediaGroup=&quot;group&quot;)</p>
+      <p># property values - group (specifies the media group of the audio/video)</p>
+      <p># technical details (return value) - a string. incidateing the media group of the audio/video</p></td>
+    </tr>
+    <tr>
+      <td nowrap>16</td>
+      <td nowrap>muted</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap><p># the (muted) property sets or returns whether the audio/video should be muted (sound turned off)</p>
+      <p># syntax (return the muted property) - (audio|video.muted)</p>
+      <p># syntax (set the muted property) - (audio|video.muted=true|false)</p>
+      <p># property value - true (indicates that the sound should be turned OFF for the audio/video)</p>
+      <p># property value - flase (default, indicates that the soud should be turned ON for the audio/video)</p>
+      <p># technical details (return value) - a boolean, returns (true) if the sound is turned OFF, otherwise (false)</p>
+      <p># technical details (default value) - false </p></td>
+    </tr>
+    <tr>
+      <td nowrap>17</td>
+      <td nowrap>networkState</td>
+      <td nowrap># number (return value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (networkState) property returns the current network state (activity) of the audio/video</p>
+      <p># syntax (audio|video.networkState) </p>
+      <p># return value - number </p>
+      <p>- represents the current network state of the audio/video element </p>
+      <p>-- 0 = NETWORK_EMPTY - audio/video has not yet been initialized </p>
+      <p>-- 1 = NETWORK_IDLE - audio/video is active and has selected a resource, but is not using the network </p>
+      <p>-- 2 = NETWORK_LOADING - browser is downloading dat a</p>
+      <p>-- 3 = NETWORK_NO_SOURCE - no audio/video source found </p></td>
+    </tr>
+    <tr>
+      <td nowrap>18</td>
+      <td nowrap>paused</td>
+      <td nowrap># true/false (return value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (paused) property returns whether the audio/video is pused</p>
+      <p># this property is (read-only)</p>
+      <p># syntax (audio|video.pused)</p>
+      <p># technical details (return value) - a boolean, returns (true) if the audio/video is paused. otherwise (false)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>19</td>
+      <td nowrap>playbackRage</td>
+      <td nowrap><p># plabackspeed (property value)</p>
+      <p># number (return value)</p>
+      <p># 1.0 (default value)</p></td>
+      <td nowrap><p># all</p>
+      <p># vertion (Ed)</p></td>
+      <td nowrap><p># the (playbackRate) property sets or returns the current playback speed of the audio/video</p>
+      <p># syntax (return the playbackRate property) - (audio|video.playbackRate)</p>
+      <p># syntax (set the playbackRate property) - (audio|video.playbackRate=playbackspeed)</p>
+      <p># property value - playbackspeed</p>
+      <p>- indicates the current playback speed of the audio/video</p>
+      <p>(like - 1.0 is normal speed/0.5 is half speed (slower)/2.0 is double speed (faster)/-1.0 is backwards, normal speed/-0.5 is backwards, half speed)</p>
+      <p># technical details (return value) - number, the current playback speed </p>
+      <p># technical details (default value) - 1.0</p></td>
+    </tr>
+    <tr>
+      <td nowrap>20</td>
+      <td nowrap>played</td>
+      <td nowrap><p># TimeRanges (return value)</p>
+      <p># length/start(index)/end(index) </p>
+      <p>(TimeRanges properties)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (played) property returns a (TimeRanges) object</p>
+      <p># the (TimeRanges) object represents ranges of the audio/video that has already been played (seen) by the user</p>
+      <p># a played range is a time-range of played audio/video. the user gets several played ranges if he/she skips in the audio/video</p>
+      <p># this property is (read-only)</p>
+      <p># syntax (audio|video.played)</p>
+      <p># return value - TimeRanges Object</p>
+      <p>- represents the played parts of the audio/video</p>
+      <p>- TimeRanges object properties </p>
+      <p>-- length (get the number of played ranges in the audio/video)</p>
+      <p>-- start(index) (get the start position of a played range)</p>
+      <p>-- end(index) (get the end position of a played range) </p>
+      <p>- teh first played range is index 0</p></td>
+    </tr>
+    <tr>
+      <td nowrap>21</td>
+      <td nowrap>preload</td>
+      <td nowrap><p># auto/metadata/none (property value)</p>
+      <p># string (return value)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (preload) property sets or returns whether the audio/video shoud start loading as soon as the page loads</p>
+      <p># the (preload) property allows the author to provide a hint to the browser about what he/she thinks will lead to the best user exprience</p>
+      <p>this attribute may be ignored in some instances</p>
+      <p># syntax (return the preload property) - (audio|video.preload)</p>
+      <p># syntax (set the preload property) - (audio|video.preload=&quot;auto|metadata|none&quot;)</p>
+      <p># property value - auto (indicates that the audio/video should start loading as soon as the page loads</p>
+      <p># property value - metadata (indicates that only the metadata for the audio/video should be loaded when the page loads)</p>
+      <p># property value - none (indicates that the audio/video should NOT start loading as soon as the page loads)</p>
+      <p># technical details (return value) - a string, representing what data should be preloaded (if any)</p>
+      <p>possible return values are (auto/metadata/none) </p></td>
+    </tr>
+    <tr>
+      <td nowrap>22</td>
+      <td nowrap>readyState</td>
+      <td nowrap># number (return value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (readyState) property returns the current ready state of the audio/video</p>
+      <p># the ready state indicates if the audio/video is ready to play or not </p>
+      <p># this property is (read-only)</p>
+      <p># syntax (audio|video.readyState)</p>
+      <p># return value - number (represents athe ready state of the audio/video element - </p>
+      <p>-- 0 = HAVE_NOTHING (no information whether or not the audio/video is ready </p>
+      <p>-- 1 = HAVE_METADATA (metadata for the audio/video is ready </p>
+      <p>-- 2 = HAVE_CURRENT_DATA (data for the current playback position is available, but not enough data to play next frame/millisecond</p>
+      <p>-- 3 = HAVE_FUTURE_DATA (data for the current and at least the next frame is available)</p>
+      <p>-- 4 = HAVE_ENOUGH_DATA (enough data available to start playing)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>23</td>
+      <td nowrap>seekable</td>
+      <td nowrap><p># TimeRanges (return object)</p>
+      <p># lenght/start(index)/end(index)</p>
+      <p>(TimeRanges properties)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (seekable) property returns a (TimeRanges) object </p>
+      <p># the (TimeRanges) object represents ranges of the audio/video that are available for seeking for user </p>
+      <p># a seekable range is a time-range of audio/video where the user can seek (move playback position) to </p>
+      <p># for non-streaming videos it is often possible to seek anywhere in the video even befor it has been buffered</p>
+      <p># this property is (read-only)<br>
+      </p>
+      <p># syntax (audio|video.seekable)</p>
+      <p># return value - TimeRanges object (represents the seekable parts of the audio/video</p>
+      <p>- (TimeRanges) object properties - </p>
+      <p>-- length (get the number of seekable ranges in the audio/video)</p>
+      <p>-- start(index) (get the start position of a seekable range) </p>
+      <p>-- end(index) (get the end position of a seekable range) </p></td>
+    </tr>
+    <tr>
+      <td nowrap>24</td>
+      <td nowrap>seeking </td>
+      <td nowrap># true/false (return value) </td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (seeking) property returns whetehr the user is currently seeking in the audio/video</p>
+      <p># seeking is when you move/skip to a new position in the audio/video</p>
+      <p># this property is (read-only)</p>
+      <p># syntax (audio|vido.seeking)</p>
+      <p># return value - boolean (a boolean, returns (true) if the user is currently seeking, otherwise (false))</p></td>
+    </tr>
+    <tr>
+      <td nowrap>25</td>
+      <td nowrap>src</td>
+      <td nowrap># URL (property value)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (src) property sets or returns the current source of the audio/video</p>
+      <p># the source is the actual location URL of the audio/video file </p>
+      <p># syntax (return the src property) - (audio|video.src)</p>
+      <p># syntax (set the src property) - (audio|video.src=URL)</p>
+      <p># property value - URL (specifies the URL of the audio/video source)</p>
+      <p>- posible values </p>
+      <p>-- an absolute URL (points to another web site)</p>
+      <p>-- a relative URL (points to a file withing a web site)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>26</td>
+      <td nowrap>startDate</td>
+      <td nowrap># Date (return object)</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (startDate) property returns a date object representing the current timeline offset of the audio/video</p>
+      <p># the (startData) property is used to enable accurate synchronization of audio/video streamed live over the internet </p>
+      <p># syntax (audio|video.startDate)</p>
+      <p># technical details (return value) - a Date object, representing current timeline offset</p></td>
+    </tr>
+    <tr>
+      <td nowrap>27</td>
+      <td nowrap>textTracks</td>
+      <td nowrap><p># TextTrackList (return object)</p>
+      <p># length/index (TextTrackList properties)</p>
+      <p># TextTrack (return object)</p>
+      <p># kind/label/language/mode/cues</p>
+      <p>(TextTrack properties)</p>
+      <p># activeCues/addCue/removeCue</p>
+      <p>(TextTrack properties)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (textTracks) property returns a (TextTrackList) object </p>
+        <p># the (TextTrackList) object represents the available text tracks for the audio/video</p>
+      <p># each available text track is represented by an (TextTrack) object</p>
+      <p># syntax (audio|video.textTracks)</p>
+      <p># return value - (TextTrackList) object (represents the available text tracks for the audio/video</p>
+      <p>- (textioTrackList) object </p>
+      <p>-- length (get the number of text tracks available in the audio/video)</p>
+      <p>-- [index] (get TextTrack object by index)</p>
+      <p>- the first available (textTrack) object is index 0</p>
+      <p># return value - (TextTrack) object (represents an text track)</p>
+      <p>- (TextTrack) object properties </p>
+      <p>-- kind (get the type of the text track (can be: &quot;subtitles&quot;, &quot;caption&quot;, &quot;descriptions&quot;, &quot;chapters&quot;, or &quot;metadata&quot;)</p>
+      <p>-- label (get the label of the text track)</p>
+      <p>-- language (get the language of the text track)</p>
+      <p>-- mode (get or set if the track is active (&quot;disabled&quot;|&quot;hidden&quot;|&quot;showing&quot;)</p>
+      <p>-- cues (get a list of cues as a (TextTrackCueList) object)</p>
+      <p>-- activeCures (get the currently active text track cures as a (TextTrackCueList) object) </p>
+      <p>-- addCue(cue) (add acue to the list of cues) </p>
+      <p>-- removeCue(cue) (remove a cue from the list of cues)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>28</td>
+      <td nowrap>videoTracks</td>
+      <td nowrap><p># VideoTrackList (return object)</p>
+      <p># length/getTrackById(id)</p>
+      <p>(VideoTrackList properties)</p>
+      <p>#index/selectedIndex</p>
+      <p>(VideoTrackList properties)</p>
+      <p># VideoTrack (return object)</p>
+      <p># id/kind/label/language/selected</p>
+      <p>(VideoTrack properties)</p></td>
+      <td nowrap><p># all </p>
+      <p># vertion (Ed)</p></td>
+      <td nowrap><p># the (videoTracks) property returns a (VideoTrackList) object </p>
+      <p># the (VideoTrackList) object represents the available video tracks for the video </p>
+      <p># each available video track is represented by an (VideoTrack) object </p>
+      <p># syntax (video.videoTracks)</p>
+      <p># return value - VideoTrackList object (represents the available video tracks for the video </p>
+      <p>- (VideoTrackList) object </p>
+      <p>-- (videoTracks.length) - get the number of video tracks available in the video </p>
+      <p>-- (videoTracks.getTrackById(id) - get (VideoTrack) object by id</p>
+      <p>-- (videoTrack[index]) - get (VideoTrack) object by index </p>
+      <p>-- (videoTracks.selectedIndex) - get the index of the current (VideoTrack) object </p>
+      <p>- the first available (VideoTrack) object is index 0</p>
+      <p># return value - VideoTrack object (represents a video track)</p>
+      <p>- (VideoTrack) object properties </p>
+      <p>-- id (get the id of the video track)</p>
+      <p>-- kind (get the type of the video track (can be: &quot;alternative&quot;, &quot;captions&quot;, &quot;main&quot;, &quot;sing&quot;, &quot;subtitles&quot;, &quot;commentrary&quot;, or &quot;&quot; (empty string))</p>
+      <p>-- label (get the label of the video track)</p>
+      <p>-- language (get the language of the video track)</p>
+      <p>-- selected (get or set if the track is active (true|flase))</p></td>
+    </tr>
+    <tr>
+      <td nowrap>29</td>
+      <td nowrap>volume</td>
+      <td nowrap><p># value (property value) </p>
+      <p># number (return value)</p>
+      <p># 1.0 (default value)</p></td>
+      <td nowrap><p># all </p>
+      <p># verion (Ed)</p></td>
+      <td nowrap><p># teh (volume) property sets or returns the current volume of the audio/video</p>
+      <p># syntax (return the volume property) - (audio|video.volume)</p>
+      <p># syntax (set the volume property) - (audio|video.volume=number)</p>
+      <p># property value - value (specifies the current volume of the audio/video. must be a number between 0.0 and 1.0</p>
+      <p>(like - 1.0 is highest volume (100% default)/0.5 is half volume (50%)/0.0 is silent (same as mute)</p>
+      <p># technical details (return value) - a number, indicating the current volume </p>
+      <p># technical details (default value) - 1.0</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>AUDIO/VIDEO - METHODS</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>addTextTrack()</td>
+      <td nowrap>(kind, label, language)</td>
+      <td nowrap>none</td>
+      <td nowrap><p># the (addTextTrack()) method creates and returns a new Texttrack object</p>
+      <p># the new TextTrack object is added to the list of text tracks for the audio/video element</p>
+      <p># syntax (audio|video.addTextTrack(kind,label,language)</p>
+      <p># parameter value - <br>
+      </p>
+      <p>&gt; kind : specifes the kind of text track (possible values - subtitles/caption/descriptions/chapters/metadata)</p>
+      <p>&gt; label : a string specifying the label for the text track, is used to identify the text track for the users</p>
+      <p>&gt; language : a two-letter language code that specifies the language of the text track </p>
+      <p>to view all available language codes, go to - language code reference</p>
+      <p># return value - a TextTrack object, which represents the new text track</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>canPlayType()</td>
+      <td nowrap><p># video/ogg</p>
+        <p># video/mp4</p>
+        <p># video/webm</p>
+        <p># audio/mpeg</p>
+        <p># audio/ogg</p>
+        <p># audio/mp4</p>
+        <p># video/ogg; codecs=&quot;theora, vorbis&quot;</p>
+        <p># video/mp4; codecs=&quot;avc1.4D401E, mp4a.40.2&quot;</p>
+        <p># video/webm; codecs=&quot;vp8.0, vorbis&quot;</p>
+        <p># audio/ogg; codecs=&quot;vorbis&quot;</p>
+      <p># audio/mp4; codecs=&quot;mp4a.40.5&quot;</p>
+      <p>(type)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (canPlayType()) method checks if the browser can play the specified audio/video type</p>
+      <p># the (canPlayType()) method can return one of the following value - </p>
+      <p>&gt; probably : the browser most likely supports this audio/video type </p>
+      <p>&gt; maybe : the browser might support this audio/video type </p>
+      <p>&gt; &quot;&quot; - (empty string) the browser does not support this audio/video type </p>
+      <p># syntax (audio|video.canPlayType(type))</p>
+      <p># parameter value - type : specifies the audio/video type (and optional codes) to test support for </p>
+      <p>&gt; common values - video/ogg, video/mp4, video/webm, audio/mpeg, audio/ogg, audio/mp4</p>
+      <p>&gt; common value, including codecs - </p>
+      <p>video/ogg; codecs=&quot;theora, vorbis&quot;</p>
+      <p>video/mp4; codecs=&quot;avc1.4D401E, mp4a.40.2&quot;</p>
+      <p>video/webm; codecs=&quot;vp8.0, vorbis&quot;</p>
+      <p>audio/ogg; codecs=&quot;vorbis&quot;</p>
+      <p>audio/mp4; codecs=&quot;mp4a.40.5&quot;</p>
+      <p># this method can only return (probably) fi codecs are included</p>
+      <p># technical details - return value (a string, representing the level of support)</p>
+      <p>&gt; possible return values - &quot;probably&quot; (most likely support), &quot;maybe&quot; (might support), &quot;&quot; (empty string - no support)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>load()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (load()) method re-loads the audio/video element</p>
+      <p># the (load()) method is used to updata the audio/video element after changing the source or other settings</p>
+      <p># syntax : (audio|video.load())</p>
+      <p># parameters - none</p>
+      <p># return value - none</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>play()</td>
+      <td nowrap>none </td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (play()) method starts playing the current audio or video</p>
+      <p># use the (pause()) method to pause the current audio/video</p>
+      <p># syntax (audio|video.play())</p>
+      <p># parameters - none </p>
+      <p># return value - none </p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>pause()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (pasuse()) method halts (pauses) the currently playing audio/video</p>
+      <p># use the (play()) method to start playing the current audio/video</p>
+      <p># syntax (audio|video.pause())</p>
+      <p># parameter - none </p>
+      <p># return value - none</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>AUDIO/VIDEO - EVENTS</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>abort</td>
+      <td nowrap><p>none</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (abort) event occurs when the loading of an audio/video is aborted </p>
+      <p># this event occurs when the media data download has been aborted, and not because of an error</p>
+      <p># related events that occurs when there is some kind of distrubance to the media loading process, are </p>
+      <p>(emptied/error/stalled/suspend) </p>
+      <p># syntax (element onabort=&quot;myScript&quot;)</p>
+      <p># in JavaScript (object.onabort=function() { .. })</p>
+      <p># in Javascript, using the addEventListener() method (object.addEventListener(&quot;abort&quot;, myScript);</p>
+      <p># technical details (supported HTML tags) - audio and video</p>
+      <p># technical details (supported Javascript objects) - audio, video</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>canplay</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (canplay) event occurs when the browser can start playing the specified audio/video (when it has buffered enough to begin)</p>
+      <p># during the loading process of an audio/video, the following events occur, in this order - </p>
+      <p>(loadstart &gt; durationchange &gt; loadedmetadata &gt; loadeddata &gt; progress &gt; canplay &gt; canplaythrough)</p>
+      <p># in HTML (audio|video oncanplay=&quot;script&quot;)</p>
+      <p># in JavaScript (audio|video.oncanplay=function() { script })</p>
+      <p># in javascript, using the addEventListener() methiod (audio|video.addEventListener(&quot;canplay&quot;, script))</p>
+      <p># technical details (supported HTML tags) - audio and video</p>
+      <p># technical details (supported javascript object - audio, video</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>canplaythrough</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (canplaythrough) event occurs when the browser estimates it can play trhough the specified audio/video without having to stop for buffering </p>
+      <p># during the loading process of an audio/video, the following events occur, in this order - </p>
+      <p>(loadstart &gt; durationchange &gt; loadedmetadata &gt; loadeddata &gt; progress &gt; canplay &gt; canplaythrough)</p>
+      <p># in html (audio|video oncanplaythrough=&quot;script&quot;)</p>
+      <p># in javascript ( audio|video.oncanplaythrough=function())</p>
+      <p># in javascript, using th eaddEventListener() method (audio|video.addEventListener(&quot;canplaythrough&quot;, script))</p>
+      <p># technical details (supported HTML tags) - audio and video</p>
+      <p># technical details (supported javascript object - audio, video</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>durationchange</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (durationchange) event occurs when the duration data of the specified audio/video is changed </p>
+      <p># when an audio/video is loaded, the duration will change from &quot;NaN&quot; to the actual duration of the audio/video</p>
+      <p># during the loading process of an audio/video, the follwing events occur, in this order - same as above related</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>emptied</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p>unknown</p></td>
+      <td nowrap><p># fires when the current playlist is empty</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>ended</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># teh (ended) event occurs when the audio/video has reached the end </p>
+        <p># this event is useful for messages like (thanks for listening), (thanks for watching), etc</p>
+        <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>error</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (error) occurs when an error occurred during the loading of an audio/video</p>
+      <p># related events that occurs when there is some kind of distrubance to the media loading process, are - </p>
+      <p>(abort/emptied/stalled/suspend)</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>loadeddata</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (loadeddata) event occurs when data for the current frame is loaded, but not enough data to play next frame of the specified audio/video
+      </p>
+        <p># during the loading process of an audio/video, the following events occur, in this order - same as above related</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>loadedmetadata</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (loadedmetadata) event occurs when metadata for the specified audio/video has been loaded</p>
+      <p># metadata for audio/video consists of - duration, dimensions (video only) and text tracks </p>
+      <p># during the loading process of an audio/video, the following events occur, in this order - same as above related</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>loadstart</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (loadstart) event occurs when the browser starts looking for the specified audio/video. this is when the loading process starts</p>
+      <p># during the loading process of an audio/video, the follwing events occur, in this order - same as above related</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>pause</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (pause) event occurs when the audio/video is paused either by the user or programmatically </p>
+      <p># the (play) event occurs when the audio/video has been startd or is no longer paused </p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>play</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (play) event occurs when the audio/video has been started or is no longer paused </p>
+      <p># the (pause) event occurs when the audio/video has been paused </p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>playing</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (playing) event occurs when the audio/video si playing after having been paused or stopped for buffering </p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>progress</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (progress) event occurs when the browser is downloading the psecified audio/video</p>
+      <p># during the loading process of an audio/video, the following events occur, in this order - same as above related</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>15</td>
+      <td nowrap>ratechange</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (ratechange) event occurs when the playing speed of the audio/video is changed </p>
+      <p>(like when a user switches to a slow motion or fast forward mode) </p>
+      <p># this event is invoked by the (playbackRate) property of the Audio/video object, </p>
+      <p>which sets or returns the current playback speed of an audio/video</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>16</td>
+      <td nowrap>seeked</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (seeked) event occurs when the user is finished moving/skipping to a new position in the audio/video</p>
+      <p># the (seeked) event is the opposite of the (seeking) event </p>
+      <p># use the (currentTime) property of the audio/video object to get the current playback position</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>17</td>
+      <td nowrap>seeking</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (seeking) event occurs when the user starts moving/skipping to a new position in the audio/video</p>
+      <p># the (seeking) event is the opposite of the (seeked) event </p>
+      <p># use the (currentTime) property of the audio/video object to get the current playback position </p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>18</td>
+      <td nowrap>stalled</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (stalled) event occurs when the browser is trying to get media data, but is nto abailable </p>
+      <p># related events that occurs when there is some kind of distrubance to the media loading process, are </p>
+      <p>(abort/emptied/error/suspend)</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>19</td>
+      <td nowrap>suspend</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (suspend) event occurs when the browser is intentionally not getting media data</p>
+      <p># this event occurs when the loading of th emedia is suspended (prevented from continuing) </p>
+      <p>this can happen when the download has completed, or because it has been paused for some reason</p>
+      <p># related events that occurs when there is some kind of distrubance to the media loading process, are </p>
+      <p>(abort/emptied/erro/stalled)</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>20</td>
+      <td nowrap>timeupdate</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (timeupdate) event occurs when the playing position of an audio/video has changed</p>
+      <p># this event is invoked by - </p>
+      <p>&gt; playing the audio/video</p>
+      <p>&gt; moving the playback position (like when the user fast forwards to a different point in the audio/vidoe)</p>
+      <p># this timeupdata event is often used together with the (currentTime) property of the audio/video object, </p>
+      <p>which returns the current position of the audio/video playback, in seconds </p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>21</td>
+      <td nowrap>volumechange</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (volumechange) event occurs each time the volume of a video/audio has been changed </p>
+      <p># this event is invoked by - </p>
+      <p>&gt; increasing or decreasing the volume</p>
+      <p>&gt; muting or unmuting the media player </p>
+      <p># use the (volume) property of the audio/video object to set or return the audio volume of an audio/video</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+    <tr>
+      <td nowrap>22</td>
+      <td nowrap>waiting</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (waiting) event occurs when the video stops because it needs to buffer the next frame</p>
+      <p># this event can also be used on (audio) elements, but it is mostly used for (videos)</p>
+      <p># syntax - similar as above related</p>
+      <p># technical details - same as above related</p></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

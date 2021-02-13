@@ -1,0 +1,1003 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GLOBAL-ATTRIBUTES</title>
+<style>
+body { 
+	font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; 
+	background-color: #FFD988;
+}
+table { 
+	background-color: hsl(200, 25%, 25%); 
+	border: 1px solid hsl(200, 25%, 25%);
+	width: 100%; 
+	margin: auto; 
+	padding: 5px; 
+}
+td, th { 
+	width: auto; 
+	padding: 1px 10px; 
+	border: 1px solid hsl(200, 22%, 40%); 
+	color: #FFF;
+}
+th { 
+	background-color: #BBB;
+	border: 1px solid hsl(00, 25%, 85%); 
+	color: #000; 
+}
+</style>
+</head>
+
+<body>
+<table>
+  <tbody>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>COLOR-STYLE - PROPERTIES</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td width="90" nowrap>01</td>
+      <td width="90" nowrap>fillStyle</td>
+      <td width="180" nowrap><p># css-color</p>
+      <p># gradient-object</p>
+      <p># pattern-object</p>
+      <p># default (#000)</p></td>
+      <td width="72" nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td width="180" nowrap><p># the (fillStyle) property sets or returns the color/gradient/pattern used to fill the drawing</p>
+      <p># javascript syntax (context.fillStyle=color|gradient|pattern)</p>
+      <p># property values - </p>
+      <p>&gt; color : a (css color value) that indicates the fill color of the drawing. default value is (#000)</p>
+      <p>&gt; gradient : a gradient object (linear/radial) used to fill the drawing</p>
+      <p>&gt; pattern : a (pattern) object to use to fill the drawing</p>
+      <p>&gt; use image to fill drawing</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>strokeStyle</td>
+      <td nowrap><p># css-color</p>
+        <p># gradient-object</p>
+        <p># pattern-object</p>
+        <p># default (#000)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (strokeStyle) property sets or returns the color/gradient/pattern used for stokes</p>
+      <p># javascript syntax (context.strokeStyle=color|gradient|pattern)</p>
+      <p># property values - </p>
+      <p>&gt; color : a (css color value) that indicates the fill color of the drawing. default value is (#000)</p>
+      <p>&gt; gradient : a gradient object (linear/radial) used to fill the drawing</p>
+      <p>&gt; pattern : a (pattern) object to use to fill the drawing</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>shadowColor</td>
+      <td nowrap><p># css-color</p>
+      <p># default (#000)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (shadowColor) property sets or returns the color to use for shadows</p>
+      <p># use the shadowColor property together with the (shadowBlur) property to create a shadow</p>
+      <p># adjust the shadow by using the (shadowOffsetX) and (shadowOffsetY) properties</p>
+      <p># javascript syntax (context.shadowColor=color)<br>
+      </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>shadowBlur</td>
+      <td nowrap><p># number</p>
+      <p># default (0)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (shadowBlur) property sets or returns the blur level for shadows</p>
+      <p># javascript syntax (context.shadowBlur=number)</p>
+      <p># property values - number : the blur level for the shadow</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>shadowOffsetX</td>
+      <td nowrap><p># number</p>
+      <p># default (0)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (shadowOffsetX) property sets or returns the horizontal distance of the shadow from the shape</p>
+      <p># shadowOffsetX=0 indicates that the shadow is right behind the shape </p>
+      <p># shadowOffsetX=20 indicates that the shadow starts 20 pixels to the right (from the shape's left position)</p>
+      <p># shadowOffsetX=-20 indicates that the shadow starts 20 pixels to the left (from the shape's left position)</p>
+      <p># to adjust the vertical distance of the shadow from the shape, use the (shadowOffsetY) property</p>
+      <p># javascript syntax (context.shadowOffsetX=number)</p>
+      <p># property values - number : a positive or negative number that defines the horizontal distance of the shadow from the shape</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>shadowOffsetY</td>
+      <td nowrap><p># number</p>
+      <p># default (0)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (shadowOffsetY) property sets or returns the vertical distance of the shadow from the shape</p>
+      <p># shadowOffsetY=0 indicates that the shadow is right behind the shape</p>
+      <p># shadowOffsetY=20 indicates that the shadow starts 20 pixels below the shape's top position</p>
+      <p># shadowOffsetY=-20 indicates that the shadow starts 20 pixels above the shape's top position </p>
+      <p># to adjust the horizontal distance of the shadow from the shape, use the (shadowOffsetX) propery </p>
+      <p># javascript syntax (context.shadowOffsetY=number)</p>
+      <p># property value - number : a positive or negative number that defines the vertical distance of the shadow from the shape</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>COLOR-STYLE - METHODS</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>createLinearGradient()</td>
+      <td nowrap><p># number</p>
+      <p>(x0,y0,x1,y1)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (createLinearGradient()) method creates a linear gradient object </p>
+      <p># the gradient can be used to fill rectangles/circles/lines/text/etc</p>
+      <p># use this object as the value ot the (strokeStyle/fillStyle) properties</p>
+      <p># use the (addColorStop()) method to specify different colors, and where to position the colors in the gradient object</p>
+      <p># javascript syntax (context.createLinearGradient(x0,y0,x1,y1))</p>
+      <p># parameter value - x0 : the x-cordinate of the start point of the gradient (as like y0, x1, and y1)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>createPttern()</td>
+      <td nowrap><p># url, keyword</p>
+      <p>(image, repeat)</p></td>
+      <td nowrap><p># all </p>
+      <p># verion (Ed)</p></td>
+      <td nowrap><p># the (createPattern()) method repeats the specified element in the specified direction </p>
+      <p># the element can be an image, video, or another (canvas) element </p>
+      <p># the repeated element can be used to draw/fill, rectangles/circle/lines etc</p>
+      <p># javascript syntax (context.createPattern(image,&quot;repeat|repeat-x|repeat-y|no-repeat&quot;)</p>
+      <p># parameter values - </p>
+      <p>&gt; image : specifies the image, canvas, or video elemtn of the pattern to use </p>
+      <p>&gt; repeat : default. the pattern repeats both horizontally and vertically</p>
+      <p>&gt; repeat-x : the pattern repeats only horizontally </p>
+      <p>&gt; repeat-y : the pattern repeats only vertically </p>
+      <p>&gt; no-repeat : the pattern will be displayed only once (no-repeat)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>createRadialGradient()</td>
+      <td nowrap><p># number </p>
+      <p>(x0,y0,r0,x1,y1,r1)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (createRadialGradient()) method creates a radial/circular gradient object</p>
+      <p># the gradient can be used to fill rectangles/circles/lines/text/etc</p>
+      <p># use the object as the value to the (strokeStyle/fillStyle) properties </p>
+      <p># use the (addColorStop()) method to specify different colors, and where to posotion the colors in the gradient object</p>
+      <p># javascript syntax (context.createRadialGradient(x0,y0,r0,x1,y1,r1))</p>
+      <p># parameter values - </p>
+      <p>&gt; x0 : the x-cordinate of the starting circle of the gradient (as like y0, x1, y1)</p>
+      <p>&gt; r0 : the radius of the strating circle (as like r1)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>addColorStop()</td>
+      <td nowrap><p># number, css-color</p>
+      <p>(stop, color)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (addColorStop()) method specifies the colors and position in a gradient object </p>
+      <p># the (addColorStop()) method is used together with (createLinearGradient()/createRadialGradient())</p>
+      <p># you can call the (addColorStop()) method multiple times to change a gradient. if you omit this method for gradient object,</p>
+      <p>the gradient will not be visible. you need to create at least one color stop to have a visible gradient </p>
+      <p># javascript syntax (gradient.addColorStop(stop,color))</p>
+      <p># parameter values - </p>
+      <p>&gt; stop : a value between 0.0 and 1.0 that represents the position between start and end in a gradient </p>
+      <p>&gt; color : a (css color value) to display at the stop position</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>LINE-STYLES - PROPERTIES</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>lineCap</td>
+      <td nowrap><p># butt, round, square</p>
+      <p># default: butt</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (lineCap) property sets or returns the style of the end caps for a line </p>
+      <p># the value (round and square) make the lines slightly longer </p>
+      <p># javascript syntax (context.lineCap=&quot;butt|round|square&quot;)</p>
+      <p># property value - </p>
+      <p>&gt; butt : default, a flat edge is added to each end or the line</p>
+      <p>&gt; round : a rounded end cap is added to each end of the line </p>
+      <p>&gt; square : a square end cap is added to each end of the line </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>lineJoin</td>
+      <td nowrap><p># bevel, round, miter</p>
+      <p># default: miter</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (lineJoin) property sets or returns the type of corner created, when two lines meet </p>
+      <p># the (miter) value is affected by the (miterLimit) property </p>
+      <p># javascript syntax (context.lineJoin=&quot;bevel|round|miter&quot;)</p>
+      <p># property value - </p>
+      <p>&gt; bevel : creates a beveled corner </p>
+      <p>&gt; round : creates a rounded corner </p>
+      <p>&gt; miter : default, creates a sharp corner </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>lineWidth</td>
+      <td nowrap><p># number</p>
+      <p># defulat: 1</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (lineWidth) property sets or returns the current line width, in pixels</p>
+      <p># javascript syntax (context.lineWidth=number)</p>
+      <p># property value - number : the current line widht, in pixels </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>miterLimit</td>
+      <td nowrap><p># number</p>
+      <p># default: 10</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (miterLimit) property sets or returns the maximum miter length</p>
+      <p># the miter length is the distance the inner corner and the outer corner where two line meet</p>
+      <p># the (miterLimit) property works only fi the (lineJoin) attribute is (miter)</p>
+      <p># the miter length grows bigger as the angle of the corner gets smaller </p>
+      <p># to prevent the miter length from being too long, we can use the (miterLimit) property </p>
+      <p># if the miter length exceeds the (miterLimit) value, the corner will be displayed as (lineJoin) type (bevel)</p>
+      <p># javascript syntax (context.miterLimit=number) </p>
+      <p># property value - number : a positive number that sepcifies the maximum miter lenght. if the current miter </p>
+      <p>length exceeds the (miterLImit), the corner will dispaly as (lineJoin) (bevel)</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>RECTANGLES - METHODS</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>rect()</td>
+      <td nowrap><p># number, pixels</p>
+      <p>(x, y, width, height)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (rect()) method creates a rectangle</p>
+      <p># use the (stroke()) or the (fill) method to actually draw the rectangle on the canvas</p>
+      <p># javascript syntax (context.rect(x, y, width, height)</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the x-coordiante of the upper-letf corner of the rectangle </p>
+      <p>&gt; y : the y-coordinate of the upper-left corner of the rectangle </p>
+      <p>&gt; width : the width of the rectangle, in pixels </p>
+      <p>&gt; height : the height of the rectangle, in pixels </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>fillRect()</td>
+      <td nowrap><p># number, pixels</p>
+      <p>(x, y, widht, height)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (fillRect()) method draws a (filled) rectangle. the default color of the fill is black</p>
+      <p># use the (fillStyle) property to set a color/gradient/pattern used to fill the drawing</p>
+      <p># javascript syntax (context.fillRect(x,y,width,height))</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the x-coordinate of the upper-left corner of the rectangle</p>
+      <p>&gt; y : the y-coordinate of the upper-left corner of the rectangle</p>
+      <p>&gt; widht : the width fo the rectangle, in pixels </p>
+      <p>&gt; height : the height of the rectangle, in pixels </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>strokeRect()</td>
+      <td nowrap><p># number, pixels</p>
+      <p>(x, y, width, height)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (strokeRect()) method draws a rectangle (no fill), the default color of the stroke is black</p>
+      <p># use the (strokeStyle) property to set a color, gradient, or pattern to style the stroke </p>
+      <p># javascript syntax (context.strokeRect(x,y,width,height))</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the x-coordinate of the upper-left corner of the rectangle </p>
+      <p>&gt; y : the y-coordiante of the upper-left corner of the rectangle </p>
+      <p>&gt; width : the width of the rectangle, in pixels </p>
+      <p>&gt; height : the height of the rectangle, in pixels </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>clearRect()</td>
+      <td nowrap><p># number, pixels</p>
+      <p>(x, y, width, height)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (clearRect()) method clears the specified pixels within a given rectangle</p>
+      <p># javascript syntax (context.clearRect(x, y, width, height)</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the x-coordinate of the upper-left corner of the rectangle </p>
+      <p>&gt; y : the y-coordiante of the upper-left corner of the rectangle </p>
+      <p>&gt; width : the width of the rectangle, in pixels </p>
+      <p>&gt; height : the height of the rectangle, in pixels </p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>PATHS - METHODS</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>fill()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (fill()) method fills the current drawing (path). the default color is black</p>
+      <p># use the (fillStyle) property to fill with another color/gradient</p>
+      <p># if the path is not closed, the (fill()) method will add a line from the last point to the </p>
+      <p>startpoint of the path to close the path (like closePath()), and then fill the path</p>
+      <p># javascript syntax (context.fill())</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>stroke()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (stroke()) method actually draws the path you have defined with all those (moveTo() and lineTo()) methods</p>
+      <p># the default color is black</p>
+      <p># use the (strokeStyle) property to draw with another color/gradient</p>
+      <p># javascript syntax (context.stroke())</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>beginPath()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (beginPath()) method begins a path, or resets the current path</p>
+      <p># use (moveTo(), lineTo(), quadricCurveTo(), bezierCurveTo(), arcTo(), and arc()) to create paths</p>
+      <p># use the (stroke()) method to actually draw the path on the canvas</p>
+      <p># javascript syntax (context.beginPath())</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>moveTo()</td>
+      <td nowrap><p># number</p>
+      <p>(x, y)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (moveTo()) method moves the path to the specified point in the canvas, without creating a line </p>
+      <p># use th (stroke()) method to actually draw the path on the canvas </p>
+      <p># javascript syntax (context.moveTo(x,y))</p>
+      <p># parameter value - </p>
+      <p>&gt; x : the x-coordinate of where to move the path to </p>
+      <p>&gt; y : the y-coordinate of where to move the path to </p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>closePath()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (closePath()) method creates a path from the current point black to the starting point </p>
+      <p># use the (stroke()) method to actually draw the path on th ecanvas </p>
+      <p># use the (fill()) method to fill the drawing (black is default), use the (fillStyle) property to fill with another color/gradient</p>
+      <p># javascript syntax (context.closePath())</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>lineTo()</td>
+      <td nowrap><p># number </p>
+      <p>(x, y)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (lineTo()) method adds a new point and creates a line TO that point FROM the last specified point in the canvas </p>
+      <p>(thsi method does not draw the line)</p>
+      <p># use the (stroke()) method to actually drawo the path on the canvas </p>
+      <p># javascript syntax (context.lineTo(x,y))</p>
+      <p># parameter value - </p>
+      <p>&gt; x : the x-coordinate of where to create the line to </p>
+      <p>&gt; y : the y-coordinate of where to create the line to</p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>clip()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (clip()) method clips a region of any shape and size from the original canvas </p>
+      <p># once a region is clipped, all future drawing will be limited to the clipped region (no access to other regions on the canvas)</p>
+      <p>you can however save the current canvas region using the (save()) method before using the (clip()) method, and restore it </p>
+      <p>(with the (restore()) method) any time in the future</p>
+      <p># javascript syntax (contex.clip())</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>quadraticCurveTo()</td>
+      <td nowrap><p># number</p>
+      <p>(cpx, cpy, x, y)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (quadraticCurveTo()) method adds a point to the current path by using the specified control points that represent a quadratic Bezier curve</p>
+      <p># a quadratic Bezier curve requires two points. the first point is a control point that is used int the quadratic Bezier calculation and </p>
+      <p>second point is the ending point for the curve. the starting point for the curve is the last point in the current path. if a path does not exist, </p>
+      <p>use the (beginPath() and moveTo()) method to define a starting point </p>
+      <p># start ppoint: moveto(x,y)</p>
+      <p># control: quadraticCurveTo()</p>
+      <p># point: end-point: quadraticCurveTo()</p>
+      <p># check out th e(bezierCurveTo()) method, it has two control-points instead of one </p>
+      <p># javascript syntax (context.quadraticCurveTo(cpx,cpy,x,y)</p>
+      <p># parameter value - </p>
+      <p>&gt; cpx : the x-coordinate of the Bezier control point </p>
+      <p>&gt; cpy : the y-coordinate of the Bezier control point </p>
+      <p>&gt; x : the x-coordinate of the ending point </p>
+      <p>&gt; y : the y-coordinate of the ending point </p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>bezierCurveTo()</td>
+      <td nowrap><p># number </p>
+      <p>(cp1x, cp1y, cp2x, cp2y, x, y)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (bezierCurveTo()) method adds a point to the current path by using the specified control points that present a cubic Bezier curve</p>
+      <p># a cubi bezier curve requires three points. the first two points are control points that are used in the cubic bezier calculation and </p>
+      <p>the last point is the ending point fot the curve. the starting point for the curve is the last point in the current path. if a path does not exist,</p>
+      <p>use the (beginPath() and moveTo()) method to define a starating point </p>
+      <p># start point moveTo(x,y)</p>
+      <p># control point bezierCurveTo()</p>
+      <p># control point bezierCurveTo()</p>
+      <p># end point bezierCurveTo()</p>
+      <p># check out the (quardraticCurveTo()) method, it has one control point instead of tw</p>
+      <p># javascript syntax (context.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</p>
+      <p># parameter values - </p>
+      <p>&gt; cp1x : the x-coordinate of the first bezier control point </p>
+      <p>&gt; cp1y : the y-coordinate of the first beziercontrol point </p>
+      <p>&gt; cp2x : the x-coordinate of the second bezier control point </p>
+      <p>&gt; cp2y : the y-coordinate of the second bezier control point </p>
+      <p>&gt; x : the x-coordinate fo the ending point</p>
+      <p>&gt; y : the x-coordinate fo the ending point</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>arc()</td>
+      <td nowrap><p># number</p>
+        <p>(x,y,r,sAngle,eAngle,</p>
+      <p>counterclockwise)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (arc()) method creates an arc/curve (used to create circles, or parts of circles)</p>
+      <p># to create a circle with (arc()) - set start angle to 0 and end angle to 2*Math.PI</p>
+      <p># use the (stroke() or the fill()) method to actually draw th e(arc) on the carvas</p>
+      <p># center: arc()</p>
+      <p># start-angle: arc()</p>
+      <p># end-angle: arc()</p>
+      <p># javascript syntax(context.arc(x,y,r,sAngle,eAngle,counterclockwise))</p>
+      <p>parameter values - </p>
+      <p>&gt; x : the x-coordinate of the center of the circle </p>
+      <p>&gt; y : the y-coordinate of the center of the circle </p>
+      <p>&gt; r : the radius of the circle </p>
+      <p>&gt; sAngle : the starting angle, in radians (0 is at the 3 o'clock position of th earc's circle)</p>
+      <p>&gt; eAngle : the ending angle, in radians </p>
+      <p>&gt; counterclockwise : optional. specifies whether the drawing should be counterclockwise or clockwise</p>
+      <p>false is default, and indicates clockwise, while (true) indicates counter-clockwise</p></td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>arcTo()</td>
+      <td nowrap><p># number </p>
+      <p>(x1,y1,x2,y2)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (arcTo()) method creates an arc/curve between two tangents on the carvas </p>
+      <p># use the (stroke()) method to actually draw the (arc) on the carvas </p>
+      <p># javascript syntax (context.arcTo(x1,y1,x2,y2,r);</p>
+      <p># parameter values - </p>
+      <p>&gt; x1 : the x-coordinate of the first tangent </p>
+      <p>&gt; y1 : the y-coordiante of the first tangent </p>
+      <p>&gt; x2 : the x-coordinate of the second tangent </p>
+      <p>&gt; y2 : the y-coordinate of the second tangent</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>isPointInPath()</td>
+      <td nowrap><p># number </p>
+      <p>(x,y)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (isPointInPath()) method returns true if the specified point is in the current path, otherwise false </p>
+      <p># javascript syntax (context.isPointInPath(x,y))</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the x-coordiante to test </p>
+      <p>&gt; y : the y-coordinate to test</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>TRANSFORMATIONS - METHODS</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>scale()</td>
+      <td nowrap><p># number</p>
+      <p>(widht, height)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (scale()) method scales the current drawing, bigger or maller </p>
+      <p># if you scale a drawing, all future drawings will also be scaled </p>
+      <p>the positioning will also be scaled. if you scale(2,2); drawings will be positioned twice as far from the left</p>
+      <p>and top of th ecanvas as you specify </p>
+      <p># javascript syntax (context.scale(scalewidth,scaleheight))</p>
+      <p># parameter values - </p>
+      <p>&gt; scalewidth : scales the width of the current drawing (1=100%, 0.5=50%, 2=200%, etc)</p>
+      <p>&gt; scaleheight : scales the height of the current drawing (1=100%, 0.5=50%, 2=200%, etc)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>rotate()</td>
+      <td nowrap><p># number</p>
+      <p>(angle)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (rotate()) method rotates the current drawing</p>
+      <p># the rotation will only affect drawings made AFTER the rotation is done</p>
+      <p># javascript (context.rotate(angle))</p>
+      <p># parameter values - </p>
+      <p>&gt; angle : the rotation angle, in radians </p>
+      <p>to calculate from degrees to radians (degrees*Math.IP/180)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>translate()</td>
+      <td nowrap><p># number </p>
+      <p>(x, y)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (translate()) method remaps the (0,0) position on the canvas</p>
+      <p># when you call a method such as (fillRect()) after (translate()), the value is added to the </p>
+      <p>x and y coordinate values </p>
+      <p># javascript syntax (context.translate(x,y))</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the value to add to horizontal (x) coordinates </p>
+      <p>&gt; y : the value to add to verticla (y) coordinates</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>transform()</td>
+      <td nowrap><p># number </p>
+      <p>(a, b, c, d, e, f)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># each object on the canvas has a current transform matrix</p>
+      <p># the (transform()) method replaces the current transformation matrix. </p>
+      <p>it multiplies the current transformation matrix with the matrix described by - </p>
+      <p>a c e</p>
+      <p>b d f</p>
+      <p>0 0 1</p>
+      <p># in other words, the (transform()) method lets you scale/rotate/move/skew the current context </p>
+      <p># the transformation will only affect drawings made after the (transform()) method is called </p>
+      <p># the (transform()) method behaves relatively to other transformations made by (rotate(), scale(), translate(), or transform())</p>
+      <p># click out the (setTransform()) method, which does not behave relatively to other transformations </p>
+      <p># javascript syntax (context.transform(a,b,c,d,e,f))</p>
+      <p># parameter values - </p>
+      <p>&gt; a : horizontal scaling </p>
+      <p>&gt; b : horizontal skewing </p>
+      <p>&gt; c : vertical skewing </p>
+      <p>&gt; d : vertical scaling </p>
+      <p>&gt; e : horizontal moving </p>
+      <p>&gt; f : vertical moving </p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>setTransform()</td>
+      <td nowrap><p># number</p>
+      <p>(a,b,c,d,e,f)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># each object on the canvas has a current transformation matrix</p>
+      <p># the (setTransform()) method resets the current transform to the identity matrix, and then runs (transform()) with th esame arguments </p>
+      <p># in other words, the (setTransform()) method lets you scale/rotate/move/skew the current context </p>
+      <p># the transformation will only affect drawings made after the (setTransform) method is called </p>
+      <p># javascript syntax (context.setTransform(a,b,c,d,e,f))</p>
+      <p># parameter values - &gt; same as above (transform) method</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>TEXT - PROPERTY</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>font</td>
+      <td nowrap><p># font-style, font-variant,</p>
+      <p># font-weight, caption,</p>
+      <p># font-size/line-height,</p>
+      <p># icon, menu, message-box,</p>
+      <p># small-caption, status-bar</p>
+      <p># default: 10px sans-serif</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (font) property sets or returns the current font properties for text content on the canvas</p>
+      <p># the (font) property uses the same syntax as the (css font property)</p>
+      <p># javascript syntax (context.font=&quot;italic small-caps bold 12xp arial&quot;)</p>
+      <p># value - </p>
+      <p>&gt; font-style : specifies the font style (possible values - normal/italic/oblique)</p>
+      <p>&gt; font-variant : specifies the font variant (possible values - normal/small-caps)</p>
+      <p>&gt; font-weithg : specifies the font weight (possible values - normal/bold/bolder/lighter/100-900)</p>
+      <p>&gt; font-size/line-height : specifies the font size and the line-height, in pixels </p>
+      <p>&gt; font-family : specify the font family</p>
+      <p>&gt; caption : use the font captioned controls (like buttons/drop-downs, etc)</p>
+      <p>&gt; icon : use the font used to label icons </p>
+      <p>&gt; menu : use the font used in menus (drop-down menus and menu lists) \</p>
+      <p>&gt; message-box : use the font used in dialog boxes </p>
+      <p>&gt; small-caption : use the font used for labeling small controls </p>
+      <p>&gt; status-bar : use the fonts used in window status bar </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>textAlign</td>
+      <td nowrap><p># start, end, center, </p>
+      <p># left, right</p>
+      <p># default: start</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (textAlign) property sets or returns the current alignment for ttext content, according to the anchor point </p>
+      <p># normally, the text will START in the position specified, however, if you set (textAlign=&quot;right&quot;) and place the </p>
+      <p>text in position 150, it means that the text should END in position 150</p>
+      <p># use the (fillText()) or the (strokeText()) method to actually draw and position the text on the canvas </p>
+      <p># javascript syntax (context.textAlign=&quot;center|end|left|right|start&quot;)</p>
+      <p># property values -</p>
+      <p>&gt; start : default, the text starts at the specified position </p>
+      <p>&gt; end : the text dents at the specified position </p>
+      <p>&gt; center : the center fot he text is placed at the specified position </p>
+      <p>&gt; left : the text starts at the specified position </p>
+      <p>&gt; right : the text ends at the specified position </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>textBaseline</td>
+      <td nowrap><p># alphabetic, top, hanging,</p>
+      <p># middle, ideographic, bottom</p>
+      <p># default: alphabetic</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (textBaseline) property sets or returns the current text baseline used when drawing text </p>
+      <p># the illustration below demonstrates the various baselines supported by the (textBaseline) attribute</p>
+      <p># the (fillText() and strokeText()) methods will use the specified textBaseline value when positioning the text on canvas</p>
+      <p># the (textBaseline) property works differently in different browsers, especially when using (hanging) or (ideographic)</p>
+      <p># javascript syntax (context.textBaseline=&quot;alphabetic|top|hanging|middle|ideographic|buttom&quot;)</p>
+      <p># property values - </p>
+      <p>&gt; alphabetic : default, the text baseline is the normal alphabetic baseline</p>
+      <p>&gt; top : the text baseline is the top of the em square </p>
+      <p>&gt; hanging : the text baseline is the hanging baseline</p>
+      <p>&gt; middle : the text baseline is the middle of the em square </p>
+      <p>&gt; ideographic : the text baseline is the ideographic baseline </p>
+      <p>&gt; bottom : the text baseline is the bottom of the bounding box </p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>TEXT - METHOD</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>fillText()</td>
+      <td nowrap><p># text, number, pixel</p>
+      <p>(text,x,y,maxWidth)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (fillText()) method draws filled text on the canvas. the default color of the text is black</p>
+      <p># use the (font) property to specify font and font size, and use the (fillStyle) property to render the text in another color/gradient</p>
+      <p># javascript syntax (context.fillText(text,x,y,maxWidth)</p>
+      <p># parameter values - </p>
+      <p>&gt; text : specifies the text that will be written on the canvas </p>
+      <p>&gt; x : the x-coordinate where to start painting the text (relative to the canvas) </p>
+      <p>&gt; y : the y-coordinate where to start painting the text (relative to the canvas) </p>
+      <p>&gt; maxWidth : optional, the maximum allowed width of the text, in pixels </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>strokeText()</td>
+      <td nowrap><p># text, number, pixel</p>
+      <p>(text,x,y,maxWidth)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (strokeText()) methdo draws text (with no fill) on the canvas. the default color of the text is black</p>
+      <p># use the (font) property to specify font and font-size, and use the (strokeStyle) property to render the text in another color/gradient</p>
+      <p># javascript syntax (context.strokeText(text,x,y,maxWidth))</p>
+      <p># parameter values - </p>
+      <p>&gt; text : specifes the text that will be written on the canvas </p>
+      <p>&gt; x : the x-coordinate where to start painting the text (relative to the canvas) </p>
+      <p>&gt; y : the y-coordiante where to start painting the text (relative to the canvas) </p>
+      <p>&gt; maxWidth : optional, the maximum allowed width of the text, in pixels </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>measureText()</td>
+      <td nowrap><p># text</p>
+      <p>(text)</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (measureText()) method returns an object that contains the width of the specified text, in pixels </p>
+      <p># use this method if you need to know the width of a text, before writing it on the canvas </p>
+      <p># javascript syntax (context.measureText(text).width)</p>
+      <p># parameter values - text : the text to be measured </p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>IMAGE DRAWING - METHOD</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>drawImage()</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap><p># the (drawImage()) method draws an image, canvas, or video onto the canvas </p>
+      <p># the (drawImage()) method can also draw parts of an image, and/or increase/reduce the image size</p>
+      <p># you cannot call the (drawImage()) method before the image has loaded. to ensure that the image has been loaded,</p>
+      <p>you can call (drawImage()) from (window.onload()) or from (document.getElementById(&quot;imageId&quot;).onload</p>
+      <p># javascript syntax - </p>
+      <p>&gt; position the image on the canvas (context.drawImage(img,x,y))</p>
+      <p>&gt; position the image on the canvas, and specify width and height of the image (context.drawImage(img,x,y,widht,height))</p>
+      <p>&gt; clip the image and position the clipped part on the canvas (context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height))</p>
+      <p>parameter values - </p>
+      <p>&gt; img : specifies the image, canvas, or video element to use </p>
+      <p>&gt; sx : optional, the x-coordinate where to start clipping </p>
+      <p>&gt; sy : optional, the y-coordinate where to start clipping </p>
+      <p>&gt; swidth : optional, the width of the clipped image </p>
+      <p>&gt; sheight : optional, the height of the clipped image </p>
+      <p>&gt; x : the x-coordinate where to place the image on the canvas</p>
+      <p>&gt; y : the y-coordinate where to place the image on the canvas </p>
+      <p>&gt; width : optional. the width of the image to use (stretch or reduce the image) </p>
+      <p>&gt; height : optional, the height of the image touse (stretch or reduce the image) </p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>PIXEL - PROPERTY</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>width</td>
+      <td nowrap># number</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the property returns the width of an ImageData object, in pixels</p>
+      <p># look at (createImageData()/getImgeData()/putImageData()) to learn more about the ImageData object</p>
+      <p># javascript syntax (imgData.width)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>height</td>
+      <td nowrap># number</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the property returns the height of an ImageData object, in pixels</p>
+      <p># look at (creteImageData()/getImageData()/putImageData()) to learn more about the ImageData object</p>
+      <p># javascript syntax (imageData.height)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>data</td>
+      <td nowrap># color_code</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (data) property returns an object that contains image data of the specified ImageData object</p>
+      <p># for every pixel in an ImageData object there are four pieces of information, the RGBA values - </p>
+      <p>&gt; R - the color red (from 0-255)</p>
+      <p>&gt; G - the color green (from 0-255)</p>
+      <p>&gt; B - the color blue (from 0-255)</p>
+      <p>&gt; A - the alpha channel (from 0-255, 0 is transparent and 255 is fully visible) </p>
+      <p># the color/alpha information is held in an array, and is stored in the data property of the ImageData object</p>
+      <p># javascript syntax (imageData.data)</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>PIXEL - METHOD</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>createImageData()</td>
+      <td nowrap><p># number </p>
+      <p>(width, height)</p>
+      <p>(imageData)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (createImageData()) method creates a new, blank ImageData object</p>
+      <p># the new object's pixel values are transparent black by default </p>
+      <p># for every pixel in an ImageData object thre are four pieces of information, the RGBA values </p>
+      <p>&gt; R - the color red (from 0-255)</p>
+      <p>&gt; G - the color green (from 0-255)</p>
+      <p>&gt; B - the color blue (from 0-255) </p>
+      <p>&gt; A - the alpha channel (from 0-255; 0 is transparent and 255 is full visible) </p>
+      <p># so, transparent black indicates (0,0,0,0)</p>
+      <p># the color/alpha information is held in an array, and since the array contains 4 pieces of information for every pixel, </p>
+      <p>the array's size is 4 times the size of the ImageData object (width*height*4)</p>
+      <p># an easier way to find te size of the array, is to use (ImageDataObject.data.length)</p>
+      <p># the array containing the color/alpha information is stored in the (data) property of the ImageData object </p>
+      <p># after you have manipulated the color/alpha information in the array, you can copy the image data back onto </p>
+      <p>the canvas with the (putImageData()) method </p>
+      <p># javascript syntax - there are two versions of the (createImageData()) method </p>
+      <p>&gt; this creates a new ImageData object with the specified dimensions (in pixels) - (var imgData = context.createImageData(width,height))</p>
+      <p>&gt; this creates a new ImageData object with the same dimensions as the object specified by anotherImageData (this does not copy the image data)</p>
+      <p>(var imgData=context.createImageData(imageData)</p>
+      <p># parameter values - </p>
+      <p>&gt; widht : the width of the new ImageData object, in pixels </p>
+      <p>&gt; height : the height of the new ImageData object, in pixels </p>
+      <p>&gt; imageData : anotherImageData object</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>getImageData()</td>
+      <td nowrap><p># number, pixels</p>
+      <p>(x, y, widht, height)</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (getImageData()) method returns an ImageData object that copies the pixel data for the specified rectangel on a canvas</p>
+      <p># the ImageData object is not a picture, it specifies a part (rectangle) on the canvas, and holds information of every pixel inside that rectangle </p>
+      <p># for every pixel in an ImageData object there are four pieces of information, the RGBA values - </p>
+      <p>&gt; R - the color red (from 0-255)</p>
+      <p>&gt; G - the color red (from 0-255)</p>
+      <p>&gt; B - the color blue (from 0-255)</p>
+      <p>&gt; A - the alpha channel (from 0-255, 0 is transparent and 255 is fully visible)</p>
+      <p># the color/alpha information is held in an array, and is stored in the (data) property of the ImageData object</p>
+      <p># after you have manipulated the color/alpha information in the array, you can copy the image data back onto the canvas with the (putImageData()) method</p>
+      <p># javascript syntax (context.getImageData(x,y,width,height))</p>
+      <p># parameter values - </p>
+      <p>&gt; x : the x-coordiante (in pixels) of the upper-left corner to start copy from </p>
+      <p>&gt; y : the y-coordiante (in pixels) of the upper-left corner to start copy from </p>
+      <p>&gt; width : the width of the rectangular area you will copy </p>
+      <p>&gt; height : the height of the rectangular area you will copy</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>putImageData()</td>
+      <td nowrap><p># pixels</p>
+      <p>(imgData,x,y,dirtyX,dirtyY,</p>
+      <p>dirtyWidth,dirtyHeight)</p></td>
+      <td nowrap><p># all </p>
+      <p># vertion (Ed)</p></td>
+      <td nowrap><p># the (putImageData()) method puts the image data (from a specified ImageData object) back onto the canvas</p>
+      <p># read about the (getImageData()) method that copies the pixel data for a specified rectangle on a canvas </p>
+      <p># read about the (createImageData()) method that creates a new, blank ImageData object </p>
+      <p># javascript syntax (context.putImageData(imgData,x,y,dirtyX,dirtyY,dirtyWidth,dirtyHeight)</p>
+      <p># parameter values - </p>
+      <p>&gt; imgData : specifies the ImageData object to put back onto the canvas </p>
+      <p>&gt; x : the x-coordinate, in pixels, of the upper-left corner of the ImageData object </p>
+      <p>&gt; y : the y-coordinate, in pixels, of the upper-left corner of the ImageData object </p>
+      <p>&gt; dirtyX : optional, the horizontal (x) value, in pixels, where to place the image on the canvas </p>
+      <p>&gt; dirtyY : optional, the vertical (y) value, in pixels, where to place the image on the canvas </p>
+      <p>&gt; dirtyWidht : optional, the width to use to draw the image on the canvas </p>
+      <p>&gt; dirtyHeight : optional, the height to use to draw the image ton the canvas</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>COMPOSITING - PROPERTY</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>globalAlpha</td>
+      <td nowrap><p># number </p>
+      <p># default: 1.0</p></td>
+      <td nowrap><p># all </p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (globalAlpha) property sets or returns the current alpha or transparency value of the drawing </p>
+      <p># the (globalAlpha) property value must be a number between 0.0 (full transpatent) and 1.0 (no transparancy)</p>
+      <p># javascript syntax (context.globalAlpha=number)</p>
+      <p># property values - number : the transparency value. must be a number between 0.0 (fully transparent) and 1.0 (no transparancy)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>globalCompositeOperation</td>
+      <td nowrap><p># source-over</p>
+      <p># source-atop</p>
+      <p># source-in</p>
+      <p># source-out </p>
+      <p># destination-over </p>
+      <p># destination-atop</p>
+      <p># destination-in</p>
+      <p># destination-out</p>
+      <p># lighter </p>
+      <p># copy</p>
+      <p># xor</p></td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap><p># the (globalCompositeOperation) property sets or returns how a source (new) image are drawn onto a destination (existing) image</p>
+      <p># source image = drawings you are about to place onto the canvas </p>
+      <p># destination image = drawings that are already placed onto the canvas </p>
+      <p># javascript syntax (context.globalCompositeOperation=&quot;source-in&quot;)</p>
+      <p># property values - </p>
+      <p>&gt; source-over : default, displays the source image over the destination image </p>
+      <p>&gt; source-atop : displays the source image on top of the destination image. the part of the source image that is outside the destination image is not shown</p>
+      <p>&gt; source-in : displays the source image in to the destination image. only the part of the source image that is INSIDE the destination image is shown, and the destination image is transparent</p>
+      <p>&gt; source-out : dispalys the source image out of the destination image. only the part of the source image that is OUTSIDE the destination image is shown, and the desitination image is transparent</p>
+      <p>&gt; destination-over : displays the destination image over the source image </p>
+      <p>&gt; destination-atop : displays the destination image on top of the source image. the part of the destination image that is outside the source image is not shown</p>
+      <p>&gt; destination-in : displays the destination image in to the source image. only the part of the destination image that is INSIDE the source image is shown, and the source image is transparent </p>
+      <p>&gt; destination-out : displays the destination image out of the source image. only the part of the destination image that is OUTSIDE the source image is shown, and the source image is transparent </p>
+      <p>&gt; ligher : displays the source image + the destination image </p>
+      <p>&gt; copy : displays the source image. the destination image is ignored </p>
+      <p>&gt; xor : the source image is combined by using an exclusive OR with the destination image</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>OTHER - METHOD</th>
+      <th nowrap>PARAMETER</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>save()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap># save the state of the current context </td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>restore()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap># returns previously saved path state and attributes</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>createEvent()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>getContext()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>toDataURL()</td>
+      <td nowrap>none</td>
+      <td nowrap><p># all</p>
+      <p># version (Ed)</p></td>
+      <td nowrap>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

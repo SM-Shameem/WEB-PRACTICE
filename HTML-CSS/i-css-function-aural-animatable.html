@@ -1,0 +1,419 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GLOBAL-ATTRIBUTES</title>
+<style>
+body { 
+	font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; 
+	background-color: #FFD988;
+}
+table { 
+	background-color: hsl(200, 25%, 25%); 
+	border: 1px solid hsl(200, 25%, 25%);
+	width: 100%; 
+	margin: auto; 
+	padding: 5px; 
+}
+td, th { 
+	width: auto; 
+	padding: 1px 10px; 
+	border: 1px solid hsl(200, 22%, 40%);
+	color: #FFF;
+}
+th { 
+	background-color: #BBB;
+	border: 1px solid hsl(00, 25%, 85%); 
+	color: #000; 
+}
+</style>
+</head>
+
+<body>
+<table>
+  <tbody>
+    <tr>
+      <th width="90" nowrap>SLNO</th>
+      <th width="90" nowrap>CSS (FUNCTIONS)</th>
+      <th width="180" nowrap>PARAMETER</th>
+      <th width="72" nowrap>BROWSER</th>
+      <th width="72" nowrap>VERSION</th>
+      <th width="180" nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>attr()</td>
+      <td nowrap>attribute-name</td>
+      <td nowrap>version</td>
+      <td nowrap>CSS2</td>
+      <td nowrap><p># the (attr()) function returns the value of an attribute of the selected elements</p>
+      <p># value (required, the name of the attribute of the HTML element(s))</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>calc()</td>
+      <td nowrap>expression</td>
+      <td nowrap> version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (calc()) function performs a calculation to be used as the property value </p>
+      <p># support (19.0 -webkit-|ff 4.0 -moz-|6.0 -webkit-)</p>
+      <p># support (numbers followed by (-webkit-|-moz-|-o-) specify the first version that worked with a prefix)</p>
+      <p># value (required, a mathematical expression, the result will be used as the value, the following operators can be used (+ - * /)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>cubic-bezier()</td>
+      <td nowrap>x1, y1, x2, y2</td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (cubic-bezier()) function defines a cubic bezier curve </p>
+      <p># a cubic bezier curve is defined by four points (P0, P1, P2, P3) </p>
+      <p>- P0 and P3 are the start and the end of the curve and, in css these points are fixed as the coordinates are ratios</p>
+      <p>- P0 is (0, 0) and represents the initial time and the initial state, P3 is (1, 1) are represents the final and the final state</p>
+      <p># the (cubic-bezier()) function can be used with the (animation-timinig-function) property and the (transition-timing-function) property</p>
+      <p># value (required, numeric values, x1 and x2 must be a number from 0 to 1)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>hsl()</td>
+      <td nowrap><p># hue</p>
+      <p># saturation</p>
+      <p># lightness</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (hsl()) function define colors using the (Hue-Saturation-Lightness) model HSL</p>
+      <p># HSL stands for (hue, saturation, lightness) and represents a cylindrical-coordinate representation of colors</p>
+      <p># value </p>
+      <p>&gt; hue (defines a degree of the color wheel (from 0 to 360) - 0 (or 36)0 is red, 120 is green, 240 is blue)</p>
+      <p>&gt; saturation (defines the saturation, 0% is a shade of gray and 100% is the full color (full saturation) </p>
+      <p>&gt; lightness (defines the lightness, 0% is black, 50% is normal, and 100% is white) </p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>hsla()</td>
+      <td nowrap><p># hue</p>
+      <p># saturation</p>
+      <p># lightness</p>
+      <p># alpha</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (hsla()) function define colors using the (Hue-Saturation-Lightness-alpha) model HSLA</p>
+      <p># HSLA color values are an extension of HSL color values with an alpha channel - which specifies the opacity of the color</p>
+      <p># color </p>
+      <p>&gt; hue|saturation|lightness (same as HSL)</p>
+      <p>&gt; alpha (defines the opacity as a number between 0.0 (full transparent) and 1.0 (fully opaque) </p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>linear-gradient()</td>
+      <td nowrap><p># direction</p>
+      <p># color-stop1,</p>
+      <p>color-stop2,..</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (linear-gradient()) function sets a linear gradient as the background image</p>
+      <p># to create a linear gradient you must define at least two color stops, color stops are the colors you want to render smooth transitions among</p>
+      <p>you can also set a starting point and a direction (or an angle) along with the gradient effect</p>
+      <p># support (gc 10.0 -webkit-|ff 3.6 -moz-|sa -webkit-|11.1 -o-)</p>
+      <p># support (numbers followed by (-webkit-|-moz-|-o-) specify the first version that worked with a prefix)</p>
+      <p># value </p>
+      <p>&gt;  direction (defines a starting point and a direction (or an angle) along with th egradient effect) </p>
+      <p>&gt; color-stop1, color-stop2, .. (color stops are the colors you want to render smooth transitions among)</p>
+      <p>- this value consists of a color value, followed by an optional stop position </p>
+      <p>- (a percentage between 0% and 100% or a length along th egradient axis)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>radial-gradient()</td>
+      <td nowrap><p># shape</p>
+      <p># size</p>
+      <p># position</p>
+      <p># start-color,</p>
+      <p>.., last-color</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (radial-gradient()) function sets a radial gradient as the background image</p>
+      <p># a radia gradient is defined by its center </p>
+      <p># to create a radial gradient you must define at least two color stops </p>
+      <p># support (gc 10.0 -webkit-|ff 3.6 -moz-|sa 5.1 -webkit-|op 11.6 -o-)</p>
+      <p># support (numbers followed by (-webkit-|-moz-|-o-) specify the first version that worked with a prefix)</p>
+      <p># value </p>
+      <p>&gt; shape (defines the shape of the gradient, possible value (ellipse, default|circle)</p>
+      <p>&gt; size (defines the size of the gradient, possible value (farthest-corner, default|closest-side|closest-corner|farthest-side)</p>
+      <p>&gt; position (defines the position of the gradient, default is (center))</p>
+      <p>&gt; start-color, ...., last-color (color stops are the colors you want to render smooth transitions among) </p>
+      <p>- this value consists of a color value, followed by an optional stop position (a percentage between 0% and 100% or a length along the gradient axis)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>repeating-linear-gradient()</td>
+      <td nowrap><p># angle</p>
+      <p># side-or-corner</p>
+      <p># color-stop1,</p>
+      <p>color-stop2, ..</p></td>
+      <td nowrap> version</td>
+      <td nowrap><p>CSS3</p></td>
+      <td nowrap><p># the (repeating-linear-gradient()) function is used to repeat linear gradients</p>
+      <p># support (gc 10.0 -webkit-|ff 3.6 -moz-|sa 5.1 -webkit-|op 11.1 -o-)</p>
+      <p># support (numbers followed by (-webkit-|-moz-|-o-) specify the first version that worked with a prefix) </p>
+      <p># value </p>
+      <p>&gt; side-or-corner </p>
+      <p>- defines the position of the starting-point of the gradient line, it consists of two keywords:</p>
+      <p>- the first one indicates teh horizontal side, (left/right) and the second one the vertical side, (top/bottom)</p>
+      <p>- the order is not relevant and each of the keyword is optional</p>
+      <p>&gt; color-stop1, color-stop2, ...</p>
+      <p>- color stops are the colors you want to render smooth transitions among</p>
+      <p>- this value consists of a color value, followed by an optional stop position </p>
+      <p>- (a percentage between 0% and 100% or a lenght along the gradient axis)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>repeating-radial-gradient()</td>
+      <td nowrap><p># shape</p>
+      <p># size</p>
+      <p># position</p>
+      <p># start-color, </p>
+      <p>.., last-color</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (repeating-redial-gradient()) function is used to repeat radial gradients</p>
+      <p># support (gc 10.0 -webkit-|ff 3.6 -moz-|sa 5.1 -webkit-|op 11.1 -o-)</p>
+      <p># support (numbers followed by (-webkit-|-moz-|-o-) specify the first version that worked with a prefix)</p>
+      <p># value </p>
+      <p>&gt; shape (defines the shape of the gradient, possible values (ellise, default|circle))</p>
+      <p>&gt; size (defines the size of the gradient, possible values (farthest-corner, default|closest-side|closest-corner|farthest-side))</p>
+      <p>&gt; position (defines the position of the gradient, default is (center))</p>
+      <p>&gt; start-color, ..., last-color (color stops are the colors you want to render smooth transitions among) </p>
+      <p>- this value consists of a color value, followed by an optional stop position </p>
+      <p>- (a percentage between 0% and 100% or a lenght along the gradient axis)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>rgb()</td>
+      <td nowrap><p># red</p>
+      <p># green</p>
+      <p># blue</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS2</td>
+      <td nowrap><p># the (rgb()) function define colors using the (Red-Green-Blue) RGB model</p>
+      <p># an RGB color value is specified with: rgb (red, green, blue), each parameter defines the intensity of that color and </p>
+      <p>can be an integer between 0 and 255 or a percentage value (from 0% to 100%)</p>
+      <p># value - </p>
+      <p>&gt; red (defines the intensity of red as an integer between (0 to 255), or as a percentage value between (0% to 100%)</p>
+      <p>&gt; green (defines the intensity of green as an integer between (0 to 255), or as a percentage value between (0% to 100%)</p>
+      <p>&gt; blue (defines the intensity of blue as an integer between (0 to 255), or as a percentage value between (0% to 100%)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>rgba()</td>
+      <td nowrap><p># red</p>
+      <p># green</p>
+      <p># blue</p>
+      <p># alpha</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (rgba()) functio ndefine colors using the (Red-Green-Blue-Alpha) RGBA model</p>
+      <p># RGBA color values are an extension of RGB color values with an alpha channel - which specifies the opacity of the color</p>
+      <p># value </p>
+      <p>&gt; red|green|blue (same as RGB)</p>
+      <p>&gt; alpha (defines the opacity as a number between 0.0 (fully transparent) and 1.0 (fully opaque)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>var()</td>
+      <td nowrap><p># name</p>
+      <p># value</p></td>
+      <td nowrap>version</td>
+      <td nowrap>CSS3</td>
+      <td nowrap><p># the (var()) function is used to insert the value of a css variable</p>
+      <p># value </p>
+      <p>&gt; name (required, the variable name (must start with tow dashes))</p>
+      <p>&gt; value (optional, the fallback value (used if the variable is not found))</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>AURAL (PROPERTY)</th>
+      <th nowrap>VALUE</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>&nbsp;</td>
+      <td colspan="5" nowrap><p>AURAL STYLE SHEETS</p>
+      <p># anral style sheets use a combination of speech synthesis and sound effects to make the user listen to information, instead of reading information</p>
+      <p># aural presentation can be use (by blind people, to help users learning to read, to heop users who have reading problems, for home entertainment, in the car, by print-impaired communities)</p>
+      <p># the aural presentation coverts the document to plain text and feed this to a screen reader (a program that reads all the characters on the screen) </p>
+      <p># example: h1, h2, h3, h4 { voice-family: male; richness: 80; cue-before: url(&quot;beep.au&quot;) } </p>
+      <p>- the example above will make the speech synthesizer play a sound, the speak the headers in a very rich male voice</p>
+      <p># the CSS column indicates in which CSS version the property is defined (CSS1 or CSS2)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>azimuth</td>
+      <td nowrap><p># angle|left-side</p>
+      <p># far-left|left</p>
+      <p># center-left|center</p></td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># sets where the sound should come from</td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>cue </td>
+      <td nowrap># cue-before|cue-after</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># sets the cue properties in one declaration</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>cue-after</td>
+      <td nowrap>none|ulr</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># sepcifies a sound to be played after speaking an element's content</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>cue-before</td>
+      <td nowrap>none|url</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies a sound to be played before speaking an element's content</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>elevation</td>
+      <td nowrap>angle|below</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># sets where the sound should come from</td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>pause</td>
+      <td nowrap>pause-before|pause-after</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># sets the pause properties in one declaration</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>pause-after</td>
+      <td nowrap>time|%</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># sepcifies a pause after speaking an element's content </td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>pause-before </td>
+      <td nowrap>time|%</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies a pause before speaking an element's content</td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>pitch </td>
+      <td nowrap><p>frequency|x-low|low</p>
+      <p>medium|high|x-high</p></td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the speaking voice</td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>pitch-range</td>
+      <td nowrap>number</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the variation in the speaking voice (monotone voice or animated voice?)</td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>play-during</td>
+      <td nowrap>auto|none|url|mix|repeat</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies a sound to be played while speading an element's content</td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>richness</td>
+      <td nowrap>number</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the richness of the speaking voice (rich voice or thin voice?)</td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>speak</td>
+      <td nowrap>normal|none|spell-out</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies whether content will render aurally</td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>speak-header</td>
+      <td nowrap>always|once</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap><p># specifies how to handle table headers, should the headers be spoken before every cell, \</p>
+      <p>or only before a cell with different header than the previous cell</p></td>
+    </tr>
+    <tr>
+      <td nowrap>15</td>
+      <td nowrap>speak-numeral</td>
+      <td nowrap>digits|continuous</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies how to speak numbers</td>
+    </tr>
+    <tr>
+      <td nowrap>16</td>
+      <td nowrap>speak-punctuation</td>
+      <td nowrap>none|code</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies how to speak punctuation characters</td>
+    </tr>
+    <tr>
+      <td nowrap>17</td>
+      <td nowrap>speech-rate</td>
+      <td nowrap>number|x-slow</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the speed of the speaking</td>
+    </tr>
+    <tr>
+      <td nowrap>18</td>
+      <td nowrap>stress</td>
+      <td nowrap>number</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the (stress) in the speaking voice</td>
+    </tr>
+    <tr>
+      <td nowrap>19</td>
+      <td nowrap>voice-family</td>
+      <td nowrap>specific-voice|generic-voice</td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the voice family of the speaking</td>
+    </tr>
+    <tr>
+      <td nowrap>20</td>
+      <td nowrap>volume</td>
+      <td nowrap><p>number|%|silent|x-soft|soft</p>
+      <p>medium|lout|x-loud</p></td>
+      <td nowrap>version</td>
+      <td nowrap>2</td>
+      <td nowrap># specifies the volume of the speaking</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

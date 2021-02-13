@@ -1,0 +1,1931 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ELEMENTS</title>
+<style>
+body { 
+	font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; 
+	background-color: #FFD988;
+}
+table { 
+	background-color: hsl(200, 25%, 25%); 
+	border: 1px solid hsl(200, 25%, 25%);
+	width: 100%; 
+	margin: auto; 
+	padding: 5px; 
+}
+td, th { 
+	width: auto; 
+	padding: 1px 10px; 
+	border: 1px solid hsl(200, 22%, 40%); 
+	color: #FFF;
+}
+th { 
+	background-color: #BBB;
+	border: 1px solid hsl(00, 25%, 85%); 
+	color: #000; 
+}
+</style>
+</head>
+
+<body>
+<table>
+  <tbody>
+    <tr>
+      <th width="90" nowrap>SLNO</th>
+      <th width="90" nowrap>BASIC HTML</th>
+      <th width="72" nowrap>ATTRIBUTES</th>
+      <th width="260" nowrap>DEFAULT CSS</th>
+      <th width="180" nowrap>BROWSER</th>
+      <th width="180" nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>!DOCTYPE</td>
+      <td nowrap>none</td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># all html documents must start with a (doctype) declaration</p>
+        <p># the declaration is not an html-tag, it is an information to the browser about what document type to expect</p>
+        <p># DOCTYPE declaration is NOT case-sensitive</p>
+        <p># HTML5 : &lt; !DOCTYPE html &gt;</p>
+        <p># in older documents (HTML4 / XHMTL), the declaration is more complicated because the declaration must refere to a DTD</p>
+        <p># HTML4.01: &lt; !DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html14/loose.dtd&quot; &gt;</p>
+      <p># XHTML1.1: &lt; !DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot; &quot;http://www.w3.org/TR/xhtml111/DTD/xhtml11.dtd&quot; &gt; </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>html</td>
+      <td nowrap><p># xmlns</p>
+      <p># global</p></td>
+      <td nowrap><p># display: block</p>
+        <p> html:focus - </p>
+      <p># outline: none</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># represents the root of an HTML document </p>
+        <p># is the container for all other HTML element, except DOCTYPE</p>
+        <p># you should always include the (lang) inside the (html), to declare the language of the web page </p>
+      <p>this is meant to assist search engines and browsers </p>
+      <p>&gt; xmlns value (http://www.w3.org/1999/xhtml)</p>
+      <p>&gt; xmlns specifies the xml namespace attribute (if you need your content to conform to XHTML)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>head</td>
+      <td nowrap># global</td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is a container for metadata (data about data) and is placed between html and body</p>
+      <p># metadata is data about the HTML document, and is not displayed </p>
+      <p># metadata typically define the document title/character-set/style/scripts/other-meta-information)</p>
+      <p># following elements can go inside the (head) - (title/style/base/link/meta/script/noscript)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>title</td>
+      <td nowrap># global</td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines the title of the document, the title must be text-only, and it is shown in the browser's title bar</p>
+        <p># is required in html documents </p>
+        <p># the content of a page title is very important for search engine optimization (SEO) </p>
+        <p># the page title is used by search engine algorithms to decide the order when listing pages in search results </p>
+        <p># you can not have more than one (title) in an HTML document </p>
+        <p># the title - </p>
+        <p>&gt; defines a title in the browser toolbar </p>
+        <p>&gt; provides a title for the page when it is added to favorites </p>
+        <p>&gt; displays a title for the page in search-engine result </p>
+        <p># here are some tips for creating good titles - </p>
+        <p>&gt; go for a longer, descriptive title (avoid one or two word titles) </p>
+        <p>&gt; search engines will display about 50-60 character of the title, so try not to have tiltes longer than that </p>
+        <p>&gt; don not use just a list of words as the title </p>
+        <p>&gt; try to make the title as accurate and meaningful as possible </p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>body</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p># display: block</p>
+      <p># margin: 8px</p>
+      <p>body:focus<strong> -</strong></p>
+      <p># outline: none</p>
+      <p>&nbsp;</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines the document's body</p>
+      <p># contains all the contents of an HTML documents, such as (headings/paragraphs/images/hyperlinks/tables/lists/etc)</p>
+      <p># there can only be one (body) in an HTML document </p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>h1 - h6</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: bolck</p>
+        <p>font-weight: bold</p>
+        <p>h1 - </p>
+      <p>font-size: 2em      </p>
+      <p>margin: .67em 0em</p>
+      <p>h2 - </p>
+      <p>font-size: 1.5em</p>
+      <p>margin: .83em 0em</p>
+      <p>h3 - </p>
+      <p>font-size: 1.17em</p>
+      <p>margin: 1em 0em</p>
+      <p>h4 - </p>
+      <p>font-size: 1em </p>
+      <p>margin: 1.33em 0em</p>
+      <p>h5 - </p>
+      <p>font-size: .83em</p>
+      <p>margin: 1.67em 0em</p>
+      <p>h6 - </p>
+      <p>font-size: 67em</p>
+      <p>margin: 2.33em 0em</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># are used to define HTML headings </p>
+      <p># (h1) defines the most important and (h6) defines the least important headings</p>
+      <p># only use one (h1) per page - this should represent the main heading/subject for the whole page </p>
+      <p># also, do not skip heading levels - start with (h1), then use (h2) and so on </p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>p</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>margin: 1em 0em</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a paragraph </p>
+      <p># browsers automatically add a single blank line before and after each (p) element</p>
+      <p># use css to style paragraphs </p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>br</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># inserts a single line break </p>
+      <p># is useful for writing addresses or poems </p>
+      <p># is an empty tag which means that it has not end tag </p>
+      <p># use the (br) tag to enter line breaks, not to add space between paragraphs</p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>hr</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>margin: .5em auto</p>
+      <p>border: 1px inset</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a thematic break in an html page </p>
+      <p># is most often displayed as a horizontal rule that is used to separate content (or define a change) in an HTML page</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>&lt; !-- -- &gt;</td>
+      <td nowrap>none</td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to insert comments in the source code, comments are not dispalyed in the browsers </p>
+      <p># you cna use comments to explain your code, which can help you when you edit the source code at a later date </p>
+      <p># this is espacially useful if you have a lot of code </p>
+      <p># you can use the comment tag to HIDE scripts form browsers without support for scripts (so they don't show them as plain text)</p>
+      <p># the two forward slashes at the end of comment line (//) is the javascript comment symbol</p>
+      <p># this prevents javascript from executing the (--&gt;) tag</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>FORMATTING</th>
+      <th nowrap>ATTRIBUTES</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>acronym</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (acronym) tag was used in HTML4 to define an acronym but not supported in HTML5 </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>abbr</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: inline</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines an abbreviation or an acronym (like &quot;HTML&quot;, &quot;CSS&quot;, &quot;DR&quot;, &quot;ATM&quot;)</p>
+      <p># use the global (title) attribute to show the description for the abbreviation/acronym when you mouse over the elemtn </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>address</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>font-style: italic</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines the contact information for the author/owner of a document or an article </p>
+      <p># the contact information can be an (email/url/address/phone/social--media-handle/etc)</p>
+      <p># the text in the (address) usually renders in ITALIC, and browsers will always add a line break before and after the (address)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>b</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-weight: bold</td>
+      <td nowrap>all</td>
+      <td nowrap><p># specifies bold text without any extra importance </p>
+      <p># according to the HTML5 specification, the (b) should be used as a LAST resort when no other tag is more appropriate</p>
+      <p># the specification states that headings should be denoted with the (h1 - h6), emphasized text should be denoted with the (em)</p>
+      <p># important text should be denoted with the (strong) and marked/highlighted text should be denoted with the (mark) </p>
+      <p># you can also use the following css to set bold text (font-weight: bold)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>bdi</td>
+      <td nowrap><p>global</p>
+      <p>event </p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># BDI stands for Bi-Directional Isolation </p>
+      <p># isolates a part of text that might be formatted in a different direction from other text outside it </p>
+      <p># this element is useful when embedding user-generated content with an unknown text direction </p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>bdo</td>
+      <td nowrap><p>dir (ltr/rtl)</p>
+      <p>global</p>
+      <p>evnet</p></td>
+      <td nowrap><p>unicode-bidi: </p>
+      <p>bidi-override</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># BDO stands for Bi-Directional override </p>
+      <p># is used to override the current text direction </p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>big</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (big) tag was used in HTML4 to define bigger text but not supported in HTML5</p>
+      <p># use css instead</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>blockquote</td>
+      <td nowrap><p>city (url)</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>margin: 1em 40px</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># specifies a section that is quoted from another source</p>
+      <p># browsers usually indent (blockquote) elements (look at example below to see how to remove the indentation)</p>
+      <p># use (q) for inline (short) quotations </p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>center</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (center) tag was used in HTML4 to center-align text but not supported in HTML5</p>
+      <p># use instead css</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>cite</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-style: italic</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines the title of a creative work (book/poem/sont/movie/painting/etc)</p>
+      <p># a person's name is not the tilte of a work </p>
+      <p># the text in the (cite) usually renders in italic </p></td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>code</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>font-family:</p>
+      <p> monospace</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to define a piece of computer code</p>
+      <p># the content inside is displayed in the browser's default monospace font</p>
+      <p># this tag is not deprecated, however, it is possible to achieve richer effect by using css </p>
+      <p># related tags are (samp/var/pre)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>del</td>
+      <td nowrap><p>cite</p>
+      <p>datetime</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>text-decoration: </p>
+      <p>line-through</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines text that has been deleted from a document. browsers will usually strike a line through deleted text </p>
+      <p># also look at the (ins) tag to markup inserted text </p></td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>dfn</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap>font-style: italic</td>
+      <td nowrap>all</td>
+      <td nowrap><p># stands for the (definition element), and it specifies a term that is going to be defined within the content </p>
+      <p># the nearest parent of the (dfn) tag must also contain the definition/explanation for the term </p>
+      <p># the term inside the (dfn) tag can be any of the following - </p>
+      <p>&gt; just as the content of the (dfn) element </p>
+      <p>&gt; or, with the title attribute added </p>
+      <p>&gt; or, with an (abbr) tag inside the (dfn) element </p>
+      <p>&gt; or, with the id attribute added, then, whenever a term is used, it can refer back to the definition with an (a) tag</p></td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>em</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-style: italic</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to define emphasized text, the content inside is typically displayed in italic </p>
+      <p># a screen reader will pronounce the words in (em) with an emphasis, using verbal stress </p></td>
+    </tr>
+    <tr>
+      <td nowrap>15</td>
+      <td nowrap>font</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (font) tag was used in HTML4 to specify the font face, font size, and color of text, but not supported in HTML5</p></td>
+    </tr>
+    <tr>
+      <td nowrap>16</td>
+      <td nowrap>i</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-style: italic</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a part of text in an alternate voice or mood, the content inside is typically displayed in italic </p>
+      <p># is often used to indicate a technical term, a phrase from another language, a thought, a ship name, etc </p>
+      <p># use only when there is not a more appropriate semantic element, such as (em, strong, mark, cite, dfn)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>17</td>
+      <td nowrap>ins</td>
+      <td nowrap><p>cite</p>
+      <p>datetime</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>text-decoration:</p>
+      <p>underline</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a text that has been inserted into a document. browsers will usually underline inserted text </p>
+      <p># also look at the (del) tag to markup deleted text </p></td>
+    </tr>
+    <tr>
+      <td nowrap>18</td>
+      <td nowrap>kbd</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>font-family: </p>
+      <p>monospace</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to define keyboard input, the content inside is displayed in the browser's default monospace font</p>
+      <p># this tag is not deprecated, however, it is possible to achieve richer effect by using css </p>
+      <p># related tags are (code, samp, var, pre)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>19</td>
+      <td nowrap>mark</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>background-color:</p>
+      <p>yellow</p>
+      <p>color: black</p></td>
+      <td nowrap>version</td>
+      <td nowrap># defines text that should be marked or highlighted </td>
+    </tr>
+    <tr>
+      <td nowrap>20</td>
+      <td nowrap>meter</td>
+      <td nowrap><p>form</p>
+      <p>high</p>
+      <p>low</p>
+      <p>max</p>
+      <p>min</p>
+      <p>optimum</p>
+      <p>value</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># defines a scalar measurement within a known range, or a factional value, this is also known as a gauge</p>
+      <p># should not be used to indicate progress (as in a progress bar), for progress bars, use the (progress) tag</p>
+      <p># always add the (label) tag for best accessibility practices </p></td>
+    </tr>
+    <tr>
+      <td nowrap>21</td>
+      <td nowrap>pre</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>font-family: monospace</p>
+      <p>white-pace: pre</p>
+      <p>margin: 1em 0</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines preformatted text </p>
+      <p># text in a (pre) element is displayed in a fixed-width font, and the text preserves both spaces and line breaks </p>
+      <p># the text will be displayed exactly as written in the HTML source code </p>
+      <p># related tags are (code/ samp/ kbd/ var)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>22</td>
+      <td nowrap>progress</td>
+      <td nowrap><p>max</p>
+      <p>value</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># represents the completion progress of a task </p>
+      <p># always add the (label) tag for best accessibility practices </p>
+      <p># use the (progress) tag in conjunction with javascript to display the progress of a task </p>
+      <p># the (progress) tag is not suitable for representing a gauge. to represent a gauge, use the (meter) tag instead </p></td>
+    </tr>
+    <tr>
+      <td nowrap>23</td>
+      <td nowrap>q</td>
+      <td nowrap><p>cite</p>
+      <p>global</p>
+      <p>evnet</p></td>
+      <td nowrap><p>display: inline</p>
+      <p>q:before - </p>
+      <p>content: open-quote</p>
+      <p>q:after - </p>
+      <p>content: close-quote</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a short quotation </p>
+      <p># browsers normally insert quotation marks around the quotation </p>
+      <p># use (blockquote) for long quotations </p></td>
+    </tr>
+    <tr>
+      <td nowrap>24</td>
+      <td nowrap>rp</td>
+      <td nowrap><p>global</p>
+      <p>evnet</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># can be used to provide parentheses around a ruby text, to be shown by browsers that do not support ruby annotations</p>
+      <p># use together with (ruby) and (rt) - the (ruby) consists of one or more characters that needs an explanation/pronunciation, </p>
+      <p>and an (rt) that gives that information, and an optional (rp) that defines what to show for browsers that not support ruby annotations</p></td>
+    </tr>
+    <tr>
+      <td nowrap>25</td>
+      <td nowrap>rt</td>
+      <td nowrap><p>global</p>
+      <p>evnet</p></td>
+      <td nowrap>line-height: normal</td>
+      <td nowrap>version</td>
+      <td nowrap><p># defines an explanation or pronunciation of characters (for East Asian typography) in a ruby </p>
+      <p># use (rt) together with (ruby) and (rp)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>26</td>
+      <td nowrap>ruby</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># specifies a ruby annotation </p>
+      <p># a ruby annotation is a small extra text, attached to the main text to indicate the pronunciation or meaning of the corresponding characters</p>
+      <p># this kind of annotation is often used in Javanese publications </p>
+      <p># use (ruby) togetehr with (rt) and (rp) </p></td>
+    </tr>
+    <tr>
+      <td nowrap>27</td>
+      <td nowrap>s</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>text-decoration:</p>
+      <p>line-through</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># specifies text that is no longer currect, accurate or relevant. the text will be displayed with a line through it </p>
+      <p># should not be used to define deleted text in a document, use the (del) tag for that </p></td>
+    </tr>
+    <tr>
+      <td nowrap>28</td>
+      <td nowrap>samp</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-family: monospace</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to define sample output from a computer program. the content inside is displayed in the browser's default monospace font</p>
+      <p># this tag is not deprecated. however, it is possible to achieve richer effect by using css </p>
+      <p># related tags - code / kbd/ var/ pre</p></td>
+    </tr>
+    <tr>
+      <td nowrap>29</td>
+      <td nowrap>small</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-size: smaller</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines smaller text (like copyright and other side-comments)</p>
+      <p># this tag is not deprecated, but it si possible to achieve richer (or the same) effect with css</p></td>
+    </tr>
+    <tr>
+      <td nowrap>30</td>
+      <td nowrap>strike</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap># the (strike) tag was used in HTML4 to define strikethrought text, but not supported in HTML5</td>
+    </tr>
+    <tr>
+      <td nowrap>31</td>
+      <td nowrap>strong</td>
+      <td nowrap><p>global</p>
+      <p>event </p></td>
+      <td nowrap>font-weight: bold</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to define text with strong importance. the content inside is typically displayed in bold</p>
+      <p># use the (b) tag to specify bold text without any extra imporance </p></td>
+    </tr>
+    <tr>
+      <td nowrap>32</td>
+      <td nowrap>sub</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>vertical-align: sub</p>
+      <p>font-size: smaller</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines subscript text. subscript text appears half a character below the normal line, and is sometimes rendered in a smaller font</p>
+      <p># subscript text can be used for chemical formulas</p>
+      <p># use the (sup) tag to define superscripted text </p></td>
+    </tr>
+    <tr>
+      <td nowrap>33</td>
+      <td nowrap>sup</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>vertical-align: super</p>
+      <p>font-size: smaller</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines superscript text. superscript text appears half a character above the normal line, and is sometimes rendered in a smaller font</p>
+      <p># superscript text can be used for footnotes</p>
+      <p># use the (sub) tag to define subscript text </p></td>
+    </tr>
+    <tr>
+      <td nowrap>34</td>
+      <td nowrap>template</td>
+      <td nowrap>global</td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># is used as a container to hold some HTML content hidden from the user when the page loads </p>
+      <p># the content inside (template) can be rendered later with a javascript </p>
+      <p># you can use the (template) tag if you have some HTML code you want to use over and over again, but not until you ask for it</p>
+      <p># to do thei without the (template) tag, you have to create the HTML code with javascript to prevent the browser form rendering the code </p></td>
+    </tr>
+    <tr>
+      <td nowrap>35</td>
+      <td nowrap>time</td>
+      <td nowrap><p>datetime</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># defines a specific time or datetime </p>
+      <p># the (datetime) attribute of this element is used translate the time into a machine-readable formate so that browsers</p>
+      <p> can offer to add date reminders throught the user's calendar, and search engines can produce smarter search results</p></td>
+    </tr>
+    <tr>
+      <td nowrap>36</td>
+      <td nowrap>tt</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (tt) tag was used in HTML4 to define teletype text, and not supported in HTML5</p>
+      <p># use instead - consider the (kbd) for keyboard input, the (var) for variables, the (code) for computer code, the (samp) for computer output</p>
+      <p># or use css instead </p></td>
+    </tr>
+    <tr>
+      <td nowrap>37</td>
+      <td nowrap>u</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>text-decoration:</p>
+      <p>underline</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># represents some text that is unarticulated and styled differently from normal text, such as misspelled words or proper names in chinese text </p>
+      <p>the content inside the typically displayed with an underline. you cna change this with css </p>
+      <p># avoid using the (u) element where it could be confused for a hyperlink</p></td>
+    </tr>
+    <tr>
+      <td nowrap>38</td>
+      <td nowrap>var</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>font-style: italic</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to defines a variable in programming or in a mathematical expression</p>
+        <p># the content inside is typically displayed in italic </p>
+        <p># this tag is not deprecated. however, it is possible to achieve richer effect by using css </p>
+        <p># related tags are - code/ camp/ kbd/ pre</p></td>
+    </tr>
+    <tr>
+      <td nowrap>39</td>
+      <td nowrap>wbr</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (wbr - word break opportunity) tag specifies where in a text it would be ok to add a line-break</p>
+      <p># when a word is too long, the browser might break it at the wrong place. ou can use the (wbr) to add word break opportunities </p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>FORMS/INPUT</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>form</td>
+      <td nowrap><p>accept-charset</p>
+      <p>action</p>
+      <p>autocomplete</p>
+      <p>enctype</p>
+      <p>method</p>
+      <p>name</p>
+      <p>novalidate</p>
+      <p>rel</p>
+      <p>target</p></td>
+      <td nowrap><p>display: block</p>
+      <p>margin-top: 0em</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (form) tag is used to create an HTML form for user input </p>
+      <p># the (form) element can contain one or more of the following form elements - </p>
+      <p>input/ textarea/ button/ select/ option/ optgroup/ fieldset/ label/ output </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>input</td>
+      <td nowrap><p>accept</p>
+      <p>alt</p>
+      <p>autocomplete</p>
+      <p>autofocus</p>
+      <p>checked</p>
+      <p>dirname</p>
+      <p>disabled</p>
+      <p>form</p>
+      <p>formaction</p>
+      <p>formnctype</p>
+      <p>formmethod</p>
+      <p>formnovalidate</p>
+      <p>formtarget</p>
+      <p>height</p>
+      <p>list</p>
+      <p>max</p>
+      <p>maxlenght</p>
+      <p>min</p>
+      <p>minlenght</p>
+      <p>multiple</p>
+      <p>name</p>
+      <p>pattern</p>
+      <p>placeholder</p>
+      <p>readonly</p>
+      <p>required</p>
+      <p>size</p>
+      <p>src</p>
+      <p>step</p>
+      <p>type</p>
+      <p>value</p>
+      <p>width</p>
+      <p>&nbsp;</p>
+      <p>global </p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (input) tag specifies an input field where the user can enter data </p>
+      <p># the (input) element is the most important form element </p>
+      <p># the (input) element can be displayed in several ways, depending on the type attribute</p>
+      <p># the different input types are as follows - </p>
+      <p>button/ checkbox/ color/ date/ datetime-local/ email/ file/ hidden/ image/ month/ </p>
+      <p>number/ password/ radio/ range/ reset/ search/ submit/ tel/ text/ time/ url/ week/</p>
+      <p># always use the (label) tag to define labels for (type) - text/ checkbox/ radio/ file/ password</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>textarea</td>
+      <td nowrap><p>autofocus</p>
+      <p>cols</p>
+      <p>dirname</p>
+      <p>disabled</p>
+      <p>form</p>
+      <p>maxlength</p>
+      <p>name</p>
+      <p>placeholder</p>
+      <p>readonly</p>
+      <p>required</p>
+      <p>rows</p>
+      <p>wrap</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a multi-line text input control </p>
+      <p># is often used in a form, to collect user inputs like comments or reviews </p>
+      <p># a text area can hold an unlimited number of characters, and the text renders in a fixed-width font (usually courier)</p>
+      <p># the size of a text area is pecified by the (cols) and (rows) attributes (or with css) </p>
+      <p># the (name) attribute is needed to reference the form data after the form is submitted</p>
+      <p> (if you omit the (name) attribute, no data from the text area will be submitted)</p>
+      <p># the (id) attribute is needed to associate the text area with a label </p>
+      <p># always add the (label) tag for best accessibility practices </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>button</td>
+      <td nowrap><p>autofocus</p>
+      <p>disabled</p>
+      <p>form</p>
+      <p>formaction </p>
+      <p>formenctypoe</p>
+      <p>formmethod</p>
+      <p>formnovalidate</p>
+      <p>formtarget </p>
+      <p>name</p>
+      <p>type </p>
+      <p>value</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a clickable button</p>
+      <p># inside a (button) you can put text (and tags like i/strong/br/img/etc)</p>
+      <p># this is not possible with a button created with the (input) element </p>
+      <p># always specify the (type) for a (button) element, to tell browsers what type of button it is </p>
+      <p># you can easily style buttons with css</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>section</td>
+      <td nowrap><p>autofocus</p>
+      <p>disabled</p>
+      <p>form</p>
+      <p>multiple</p>
+      <p>name</p>
+      <p>required</p>
+      <p>size</p>
+      <p>&nbsp;</p>
+      <p>global </p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (select) element is used to create a drop-down list </p>
+      <p># the (select) element is most often used in a form, to collect user input </p>
+      <p># the (name) is needed to reference the form data after the form is submitted </p>
+      <p>(if you omit the (name), no data from the drop-down list will be submitted)</p>
+      <p># the (id) is needed to associate the drop-down list with a label </p>
+      <p># the (option) tags inside the (select) define the available options in the drop-down list </p>
+      <p># always add the (label) tag for best accessibility practices </p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>optgroup</td>
+      <td nowrap><p>disabled</p>
+      <p>label</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to group related options in a (select) element (drop-down list)</p>
+      <p># if you have a logn list of options, groups of related options are easier to handle for a user </p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>option</td>
+      <td nowrap><p>disabled</p>
+      <p>label</p>
+      <p>selected</p>
+      <p>value</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines an option in a select list </p>
+      <p># (option) go inside a (select/optgroup/datalist) elements</p>
+      <p># the (option) tag can be used without any attributes, but you usually need the (value), </p>
+      <p>which indicates what is sent to the server on form submission</p>
+      <p># if you have a long list of options, you can group related options within the (optgroup) tag</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>label</td>
+      <td nowrap><p>for</p>
+      <p>form</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>cursor: default</td>
+      <td nowrap>all</td>
+      <td nowrap><p># defines a label for several elements - (input/meter/progress/select/textarea)</p>
+      <p>(input types) are (checkbox/color/date/datetime-local/email/file/month/number/password)</p>
+      <p>(input types) are (radio/range/search/tel/text/time/url/week)</p>
+      <p># proper use of (labels) with the elements above will benefit - </p>
+      <p>&gt; screen reader users (will read out loud the label, when the user is focused on the element) </p>
+      <p>&gt; users who have difficulty clicking on very small regions (such as checkboxes) - </p>
+      <p>becuase when a user clicks the text within the (label), it toggles the input (this increases the hit area) </p>
+      <p># the (for) attribute of (label) must be equal to the (id) of the related element to bind them together </p>
+      <p># a label can also be bound to an element by placing the element inside the (label) element </p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>fieldset</td>
+      <td nowrap><p>disabled</p>
+      <p>form</p>
+      <p>name</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>&nbsp;</p>
+        <p>display: block</p>
+        <p>margin: 2px .36em</p>
+        <p>padding-left: .75em</p>
+        <p>padding-right: .75em</p>
+        <p>border: 2px groove </p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to group related elements in a form </p>
+      <p># the (fieldset) tag draws a box around the related elements </p>
+      <p># the (legend) tag is used to define a cpation for the (fieldset) element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>legend</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>padding-left: 2px</p>
+      <p>padding-right: 2px</p>
+      <p>border: none</p></td>
+      <td nowrap>all</td>
+      <td nowrap># defines a cpation for the (fieldset) element</td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>datalist</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># specifies a list of pre-defined options for an (input) element </p>
+      <p># is used to provide an (autocomplete) feature for (input) element </p>
+      <p># users will see a drop-down list of pre-defined options as they input data </p>
+      <p># (id) attribute must be equal to the (input's) (list) attribute (this binds them together)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>output</td>
+      <td nowrap><p>for</p>
+      <p>form</p>
+      <p>name</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: inline</td>
+      <td nowrap>version</td>
+      <td nowrap><p># is used to represent the resutl of a calculation (like one performed by a script)</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>FRAMES</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>frame</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (frame) tag was used in HTML4 to define one particular window (frame) within a (frameset)</p>
+      <p># not supported in HTML5</p>
+      <p># use the (iframe) to embed another document within the current HTML document instead</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>frameset</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (frameset) tag was used in HTML4 to define a (frameset) </p>
+      <p># not supported in HTML5</p>
+      <p># use the (iframe) tag to embed another document within the current HTML document instead</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>noframes</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (noframes) was used in HTML4 to act as a fallback tag for browsers that did not support frames</p>
+      <p># not supported in HTML5</p>
+      <p># use the (iframe) tag to embed another document within the current HTML document, instead</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>iframe</td>
+      <td nowrap><p>allow</p>
+        <p>allowfullscreen</p>
+        <p>allowpaymentrequest </p>
+        <p>height</p>
+        <p>loading </p>
+        <p>name</p>
+        <p>referrerpolicy </p>
+        <p>sandbox</p>
+        <p>src</p>
+        <p>srcdoc</p>
+        <p>width</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>iframe:focus - </p>
+      <p>outline: none</p>
+      <p>frame[seamless] - </p>
+      <p>display: block</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (iframe) specifies an inline frame </p>
+      <p># an inline frame is used to embed another document within the current HTML document </p>
+      <p># use css to style the (iframe) </p>
+      <p># it is a good practice to always include a (title) for the (iframe), this is used by </p>
+      <p>screen readers to read out what the content of the (iframe) is</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>IMAGES</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>img</td>
+      <td nowrap><p>alt</p>
+        <p>crossorigin</p>
+        <p>height</p>
+        <p>ismap</p>
+        <p>loading</p>
+        <p>longdesc</p>
+        <p>referrerpolicy</p>
+        <p>sizes</p>
+        <p>src</p>
+        <p>srcset</p>
+        <p>usemap</p>
+        <p>width</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: inline-block</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to embed an image in an HTML page </p>
+      <p># images are not technically inserted into a web page, images are linked to web page</p>
+      <p># it creates a holding space for the referenced image</p>
+      <p># it has two required attributes (src and alt) </p>
+      <p># also, always specify the width and height of an image. if width and height are nto specified, </p>
+      <p>the page might flicker while the image loads </p>
+      <p># to link an image to another document, simply nest the (img) inside an (a) tag</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>map</td>
+      <td nowrap><p>name</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: inline</td>
+      <td nowrap>all</td>
+      <td nowrap><p># is used to define an image map. an image map is an image with clickable areas</p>
+      <p># the required (name) attribute of the (map) is associated with the (img)'s (usemap) and create a </p>
+      <p>relationship between the image and the (map)</p>
+      <p># the (map) element contains a number of (area), that defines the clickable areas in the image map</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>area</td>
+      <td nowrap><p>alt</p>
+        <p>coords</p>
+        <p>download</p>
+        <p>href</p>
+        <p>hreflang</p>
+        <p>media</p>
+        <p>rel</p>
+        <p>shape</p>
+        <p>target</p>
+        <p>type</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (area) tag defines an area inside an image map </p>
+      <p># the (area) are always nested inside a (map) tag </p>
+      <p># the (usemap in (img) is associated with the (map)'s (name) attribute, and creates a relationship</p>
+      <p>between the image and the map</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>canvas</td>
+      <td nowrap><p>height</p>
+      <p>width</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>height: 150px</p>
+      <p>width: 300px</p></td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (canvas) tag is used to draw graphics, on the fly, via scripting (usually javascript)</p>
+      <p># the (canvas) tag is transparent, and is only a container for graphics, you must use a script to actually draw the graphics</p>
+      <p># any text inside the (canvas) will be displayed in browser with javascript disabled and in browsers that do not support (canvas)</p>
+      <p># there is a complete reference for all the properties and methods for canvas</p></td>
+    </tr>
+    <tr>
+      <td nowrap>050</td>
+      <td nowrap>figcaption</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># defines a caption for a (figure) element </p>
+      <p># the (figcaption) can be placed as the first or last child of the (figure) element </p></td>
+    </tr>
+    <tr>
+      <td nowrap>60</td>
+      <td nowrap>figure</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: bolck</p>
+      <p>margin: 1em 40px</p></td>
+      <td nowrap>version</td>
+      <td nowrap><p># specifies self-contained content, like illustrations/diagrams/photos/code-listings/etc</p>
+      <p># while the content of the (figure) is related to the main flow, its position is independent of the main flow,</p>
+      <p>and if removed it should not affect the flow of the document </p>
+      <p># the (figcaption) is used to add a caption for the (figure) element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>picture</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (picture) tag gives web developers more flexibility in specifying image resources </p>
+      <p># the most common use of the (picture) will be for art direction in responsive designs</p>
+      <p>instead of having one image that is scaled up or down based on the viewport width, multiple images can be designed to more nicely fill viewport</p>
+      <p># the (picture) contains two tags - one or more (source) and one (img) </p>
+      <p># the browser will look for the first (source) where the media query matches the current viewport width, and then it will display the proper image</p>
+      <p>through (srcset) attribute. </p>
+      <p># the (img) is required as the last child of the (picture), as a fallback option if none of the source tags matches</p>
+      <p># the (picture) works similar to (video) and (audio). you set up different sources, and the first source that fits preferences is one being used</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>svg</td>
+      <td nowrap>none</td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (svg) defines a container for SVG graphics </p>
+      <p># SVG has several methods for drawing paths/boxes/circles/text/graphics images</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>LINKS</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>a</td>
+      <td nowrap><p>download</p>
+        <p>href</p>
+        <p>hreflang</p>
+        <p>media</p>
+        <p>ping</p>
+        <p>referrerpolicy</p>
+        <p>rel</p>
+        <p>target</p>
+        <p>type</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>a:link, a:visited - </p>
+      <p>color: internal_value</p>
+      <p>text-decoration: </p>
+      <p>underline</p>
+      <p>cursor: auto</p>
+      <p>a:link:active - </p>
+      <p>a:visited:active - </p>
+      <p>color: internal_value</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (a) tag defines a hyperlink, which is used to link from one page to another </p>
+      <p># the most important attribute of the (a) element is the (href) arrtibute, which indicates the link's destination</p>
+      <p># by default, links will appear as follows in all browsers - </p>
+      <p>&gt; an unvisited link is underlined and blue </p>
+      <p>&gt; a visited link is underlined and purple </p>
+      <p>&gt; an active link is underlined and red </p>
+      <p># if the (a) tag has no (href) attribute, it is only a placeholder for a hyperlink </p>
+      <p># a linked page is normally displayed in the current browser widnow, unless you specify another target </p>
+      <p># use css to style links </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>link</td>
+      <td nowrap><p>crossorigin</p>
+        <p>href</p>
+        <p>hreflang</p>
+        <p>media</p>
+        <p>referrerpolicy</p>
+        <p>rel</p>
+        <p>sizes</p>
+        <p>title</p>
+        <p>type</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (link) tag defines the relationship between the current document and an external resource</p>
+      <p># the (link) tag is most often used to link to external style sheets</p>
+      <p># teh (link) element is an empty element, it contains attributes only</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>nav</td>
+      <td nowrap><p>global</p>
+      <p>evnet</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (nav) tag defines a set of navigation links </p>
+      <p># notice that NOT all links of a document should be inside a (nav) element</p>
+      <p># the (nav) element is intended only for major block of navigation links </p>
+      <p># browsers, such as screen readers for disabled users, cna use this element to determine whether to omit the initial rendering of this content</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>LISTS</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>ul</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>list-style-type: disc</p>
+      <p>margin: 1em 0</p>
+      <p>padding-left: 40px</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (ul) tag defines an unordered (bulleted) list</p>
+      <p># use the (ul) tag together with the (li) tag to create unordered list </p>
+      <p># use css to style lists </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>ol</td>
+      <td nowrap><p>reversed</p>
+        <p>start</p>
+        <p>type</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>list-style-type: decimal</p>
+      <p>margin: 1em 0</p>
+      <p>padding-left: 40px</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (ol) tag defines an ordered list. an ordered list can be numerical or alphabetical</p>
+      <p># the (li) tag is used to define each list item </p>
+      <p># use css to style lists </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>li</td>
+      <td nowrap><p>value</p>
+      <p>global </p>
+      <p>event </p></td>
+      <td nowrap>display: list-item</td>
+      <td nowrap>all </td>
+      <td nowrap><p># the (li) tag defines a list itme </p>
+      <p># the (li) tag is used inside oredered lists (ol) , unordered list (ul) and in menu lists (menu)</p>
+      <p># in (ul) and (menu), the list items will usually be displayed with bullet points </p>
+      <p># in (ol) the list items will usually be displayed with number or letters </p>
+      <p># use css to style lists </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>dir</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (dir) tag was used in HTML4 to list director titles</p>
+      <p># not supported in HTML5</p>
+      <p># use (ul) to create a directory, instead</p>
+      <p># reduce line-height in a list with css</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>dl</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>margin 1em 0</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (dl) tag defines a description list </p>
+      <p># the (dl) tag is used in conjunction with (dt) defines-terms/names and (dd) describes each term/name</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>dt</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (dt) tag defines a term/name in a description list </p>
+      <p># the (dt) tag is used in conjunction with (dl) defines a description list and (dd) describes each term/name</p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>dd</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: block</p>
+      <p>margin-left: 40px</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (dd) tag is used to describe a term/name in a description list </p>
+      <p># teh (dd) tag is used in conjunction with (dl) defines a description list and (dt) defines terms/names</p>
+      <p># inside a (dd) tag you can put paragraphs, line-breaks, images, links, lists. etc</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>TABLES</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>table</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap><p>display: table</p>
+      <p>border-collaps: separate</p>
+      <p>border-spacing: 2px</p>
+      <p>border-color: gray</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (table) tag defines an HTML table </p>
+      <p># an HTML table consists of one (table) element and one or more (tr/th/td) elements</p>
+      <p># the (tr) element defines a table row, the (th) element defines a table header, and the (td) element defines a table cell</p>
+      <p># an HTML table may also include (caption/colgroup/thead/tfoot/tbody) elements</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>caption</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: table-caption</p>
+      <p>text-align: center</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (caption) tag defines a table caption </p>
+      <p># the (caption) tag must be inserted immediately after the (table) tag</p>
+      <p># by default, a table caption will be center-aligned above a table</p>
+      <p># however, the css properties (text-align and caption-side) can be used to align and place the cpation</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>th</td>
+      <td nowrap><p>abbr</p>
+      <p>colspan</p>
+      <p>headers</p>
+      <p>rowspan</p>
+      <p>scope</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: table-cell</p>
+      <p>vertical-align: inherit</p>
+      <p>font-weight: bold</p>
+      <p>text-align: center</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (th) tag defines a header cell in an HTML table </p>
+      <p># an HTMl table has two kinds of cells - </p>
+      <p>&gt; header cells - contains header information (created with the (th) element)</p>
+      <p>&gt; data cells - contains data (created with the (td) element) </p>
+      <p># the text in (th) elements are bold and centered by default </p>
+      <p># the text in (td) elements are regular and left-aligned by default</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>tr</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: table-row</p>
+      <p>verticla-align: inherit</p>
+      <p>border-color: inherit</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (tr) tag defines a row in an HTML table </p>
+      <p># a (tr) element contains one or more (th) or (td) elements</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>td</td>
+      <td nowrap><p>colspan</p>
+      <p>headers</p>
+      <p>rowspan</p>
+      <p>&nbsp;</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: table-cell</p>
+      <p>vertical-align: inherit</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (td) tag defines a standard data cell in an HTML table </p>
+      <p># an HTML table has two kinds of cells - </p>
+      <p>&gt; header cells - contains header information (created with the (th) element)</p>
+      <p>&gt; data cells - contains data (created with the (td) element)</p>
+      <p># the text in (td) elements are regular and left-aligned by default </p>
+      <p># the text in (th) elements are bold and centered by default</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>thead</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: </p>
+      <p>table-header-group</p>
+      <p>vertical-align: middle</p>
+      <p>border-color: inherit</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (thead) tag is used to group header content in an HTML table </p>
+      <p># the (thead) element is used in conjunction with the (tbody) and (tfoot) element to specify each part of a table (header/body/footer)</p>
+      <p># browsers can use these elements to enable scrolling of the table body independently of the header and footer </p>
+      <p># also, when printing a large table that spans multiple pages, these elements can enable the table header and footer to be printed at the top and bottom of each page</p>
+      <p># the (thead) lement must have one or more (tr) tags inside </p>
+      <p># the (thead) tag must be used in the following context - as a child of a (table) element, after any (caption) and (colgroup) elements,</p>
+      <p>and before any (tbody/tfoot/tr) elements </p>
+      <p># the (thead/tbody/tfoot) elements will not affect the layout of the table by default </p>
+      <p># however, you can use css to style these elements </p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>tbody</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: </p>
+      <p>table-row-group</p>
+      <p>vertical-align: middle</p>
+      <p>border-color: inherit</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (tbody) tag is use to group the body eontent in an HTML table </p>
+      <p># the (tbody) tag must be used in the following context; as a child of a (table) element, after any (caption/colgroup/thead) elements</p></td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>tfood</td>
+      <td nowrap><p>global</p>
+      <p>evnet</p></td>
+      <td nowrap><p>display:</p>
+      <p>table-footer-group</p>
+      <p>vertical-align: middle</p>
+      <p>border-color: inherit</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (tfoot) tag is used to group footer content in an HTML table </p>
+      <p># the (tfoot) tag must be used in the following context - as a child of a (table) elements, after any (caption/colgroup/thead/tbody) elements</p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>col</td>
+      <td nowrap><p>span</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: table-column</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (col) tag specifies column properites for each column within a (colgroup) element</p>
+      <p># the (col) tag is useful for applying styles to entire columns, instead of repeadint the styles for each cell, for each row</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>colgroup</td>
+      <td nowrap><p>span</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>display: </p>
+      <p>table-column-group</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (colgroup) tag specifies a group of one or more columns in a table for formatting </p>
+      <p># the (colgroup) tag is useful for applying styles to entire columns, instead of repeating the styles for each cell, for each row</p>
+      <p># the (colgroup) tag must be a child of a (table) element, after any (caption) elements and before any (thead/tbody/tfoot/tr) elements</p>
+      <p># to define different properties to a column within a (colgroup), use the (col) tag witin the (colgroup) tag</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>STYLE/SEMANTIC</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>style</td>
+      <td nowrap><p>media</p>
+        <p>type</p>
+        <p>&nbsp;</p>
+        <p>global </p>
+      <p>event</p></td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (style) tag is used to define information (css) for a document</p>
+      <p># inside the (style) element you specify hwo HTML elements should render in a browser </p>
+      <p># tipes and notes - </p>
+      <p>&gt; when a browser reads a style sheet, it will format the HTML document according to the information in the style sheet</p>
+      <p>&gt; if some properties have been defined for the same selector (element) in different style sheets, </p>
+      <p>the value from the last read style sheet will be use </p>
+      <p>&gt; to link to an external style sheet, use the (link) tag </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>div</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (div) tag defines a division or a section in an HTML document </p>
+      <p># the (div) tag is used as a container for HTML elements - which is then styled with css or manipulated with javascript</p>
+      <p># the (div) tag is easily styled by using the (class/id) attribute </p>
+      <p># any sort of content can be put inside the (div) tag </p>
+      <p># by default, browsers always place a line break before and after the (div) element </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>span</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (span) tag is an inline container used to mark up a part of a text, or a part of a document </p>
+      <p># the (span) tag is easily styled by css or manipulated with javascript using the (class/id) attribute</p>
+      <p># the (span) tag is much like the (div) element, but (div) is a block-level element and (span) is an inline element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>header</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (header) element represents a container for introductory content or a set of navigational links </p>
+      <p># a (header) element typically contains</p>
+      <p>&gt; one or more heading lements (h1 - h6) </p>
+      <p>&gt; logo or icon</p>
+      <p>&gt; authorship information </p>
+      <p># you can have several (header) elements in one HTML document, however (header) cannot be placed within a (footer/address) or another (header) element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>footer</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (footer) tag defines a footer for a document or section </p>
+      <p># a (footer) element typically contains - </p>
+      <p>&gt; authorship information </p>
+      <p>&gt; copyright information </p>
+      <p>&gt; contact information </p>
+      <p>&gt; sitemap </p>
+      <p>&gt; back to top links </p>
+      <p>&gt; related documents </p>
+      <p># you can have several (footer) elements in one document </p>
+      <p># contact information inside a (footer) element should go inside an (address) tag</p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>main</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (main) tag specifies the main content of a document </p>
+      <p># the content inside the (main) element should be unique to the document. it shoudl not contain any content </p>
+      <p>that is repreated across documents such as sidebars, navigation-links, copyright-information, site-logos and search-forms</p>
+      <p># there must not be more than one (main) element in a document. the (main) element must NOT be a descendant of an (article/aside/footer/header/nav)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>select</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap># the (section) tag defines a section in a document </td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>article</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (article) tag specifies independent, self-contained content </p>
+      <p># an article should make sense on its own and it should be possible to distribute it independently </p>
+      <p>from the rest of the site </p>
+      <p># potential sources for the (article) element - (forum-post/blog-post/news-story)</p>
+      <p># the (article) element does not render as anything special in a browser. however you can use css to style the (article) element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>aside</td>
+      <td nowrap><p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (aside) tag defines some content aside from the content it is placed in </p>
+      <p># the aside content should be indirectly related to the surrounding content </p>
+      <p># the (aside) content is often placed as a sidebar in a document </p>
+      <p># the (aside) element does not render as anything special in a browser, however, you can use css to style the (aside) element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>details</td>
+      <td nowrap><p>open</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (details) tag specifies additional details that the user can open and close on demand </p>
+      <p># the (details) tag is often used to create an interactive widget that the user can open and close. by default, the widget is closed</p>
+      <p># when open, it expands, and displays the content within </p>
+      <p># any sort of content can be put inside the (details) tag </p>
+      <p># the (summary) tag is used in conjuction with (details) to specify a visible heading for the details </p></td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>dialog</td>
+      <td nowrap><p>open</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (dialog0 tag defines a dialog box or subwindow </p>
+      <p># the (dialog) element makes it easy to create popup dialogs an dmodals on a web page</p></td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>summary</td>
+      <td nowrap><p>global </p>
+      <p>event</p></td>
+      <td nowrap>display: block</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (summary) tag defines a visible heading for the (details) element</p>
+        <p># the heading can be clicked to view/hide the details </p>
+        <p># the (summary) element should be the first child element of the (details) element </p></td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>data</td>
+      <td nowrap><p>value</p>
+      <p>global</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># teh (data) tag is used to add a machine-readable translation fo a given content, </p>
+      <p># this element provides both a machine-readable value for data processors, and a human-readable value for rendering in a browser</p>
+      <p># if the content is time or date related, use the (time) element instead </p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>META-INFO</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>head</td>
+      <td nowrap>global</td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (head) element is a container for metadata (data baout data) and is placed between the (html) tag and the (body) tag</p>
+      <p># metadata is data about the HTML document, metadata is not displayed </p>
+      <p># metadata typically define the document title, character-set, styles, scripts, and other-meta information </p>
+      <p># the following elements can go inside the (head) element - (title/style/base/link/meta/script/noscript)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>meta</td>
+      <td nowrap><p>charset</p>
+      <p>content </p>
+      <p>http-equiv</p>
+      <p>name</p>
+      <p>&nbsp;</p>
+      <p>global</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (meta) tag defines metadata bout an HTML document. metadata is data (information) about data</p>
+      <p># (meta) tags always go inside the (head) element, and are typically used to specify character set, page-description, keywords, </p>
+      <p>author of the document, and viewport settings </p>
+      <p># metadata will not be displayed on the page, but is machine parsable </p>
+      <p># metadata is used by browsers (how to display content or reload page), search engines (keywords), and other web services </p>
+      <p># there is a method to let web designers take control over the viewport (the user's visible area of a web page), </p>
+      <p>through the (meta) tag</p>
+      <p># some examples of meta information - </p>
+      <p>&gt; defining keywords for search engines </p>
+      <p>&gt; define a descriptions of your web page </p>
+      <p>&gt; define the author of a page </p>
+      <p>&gt; refresh document every 30 seconds </p>
+      <p>&gt; setting the viewport to make your website look good on all devices </p>
+      <p># setting the viewport - </p>
+      <p>&gt; the viewport is the user's visible area of a web page. it varies with the device - it will be smaller on a mobile phone than on a computer screen</p>
+      <p>&gt; you should include the following (meta) element in all your web pages - </p>
+      <p>(meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;)</p>
+      <p>&gt; this gives the browser instructions on how to control the page's dimensions and scaling </p>
+      <p>&gt; the (width=device-width) part sets the width of the page to follow the screen-width of the device (which will vary depending on the device)</p>
+      <p>&gt; the (initial-scale=1.0) part sets the initial zoom level when the page is first loaded by the browser </p>
+      <p>&gt; here is an example of a web page without the viewport meta tag, and the same web page with the viewport meta tag </p>
+      <p>&gt; if you are browsing this page with a phone or a tablet, you can click on th etwo links below to see the difference </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>base</td>
+      <td nowrap><p>href</p>
+      <p>target</p>
+      <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap> <p># the (base) tag specifies the base URL and/or target for all relative URLs in a document </p>
+      <p># the (base) tag must have either an (href) or a (target) attribute present, or both</p>
+      <p># there can only be one single (base) element in a document, and it must be inside the (head) element </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>basefont</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (basefont) tag was used in HTML4 to specify a default text-color, font-size or font-family for all the text in an HTML document </p>
+      <p># not supported in HTML5</p>
+      <p># use css instead</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>PROGRAMMING</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>script /</td>
+      <td nowrap><p>async</p>
+        <p>charset</p>
+        <p>defer</p>
+        <p>src</p>
+        <p>type</p>
+      <p>&nbsp;</p>
+      <p>global</p></td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (script) tag is used to embed a client-side script (javascript)</p>
+      <p># the (script) element either contains scripting statements, or it points to an external script file through the (src) attribute</p>
+      <p># common uses for javascript are image-manipulation, form-validation, and dynamic-changes of content </p>
+      <p># there are several ways an external script can be executed - </p>
+      <p>&gt; if (async=&quot;async&quot;) - the script is executed asynchronously with the page (executed while page parsing)</p>
+      <p>&gt; if async is not present and (defer=&quot;defer&quot;) - the script is executed when the page has finished parsing </p>
+      <p>&gt; if either (async or defer) is present - the script is fetched and executed immediately, (executed before page parging)</p>
+      <p># also look at the (noscript) element for users that have disabled scripts in their browser, </p>
+      <p>or have a browser that doesn't support client-side scripting</p>
+      <p># difference between HTML and XHTML</p>
+      <p>&gt; in XHTML, the content inside scripts is declared as (#PCDATA instead of CDATA), which means that entities will be parsed</p>
+      <p>&gt; this means that in XHTML, all special characters should be encoded, or all content should be warpped inside a CDATA section- </p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>noscript</td>
+      <td nowrap>global</td>
+      <td nowrap>none</td>
+      <td nowrap>all</td>
+      <td nowrap> <p># the (noscript) tag defines an alternate content to be displayed to users that have disabled scripts in their browser </p>
+      <p>or have a browser that doesn't support script </p>
+      <p># the (noscript) element can be used in both (head and body) </p>
+      <p># when used inside (head), the (noscript) element could only contain (link, style, and meta) element</p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>applet</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap>unknown</td>
+      <td nowrap><p># the (applet) tag was used in HTML4 to define an embedded applet (plug-in) </p>
+      <p># not suppored in HTML5</p>
+      <p># if you want to embed a video, use the (video) tag instead</p>
+      <p># if you want to embed audio, use the (audio) tag instead</p>
+      <p># to embed objects, you can use both the (embed) and (object) tags instead</p>
+      <p># to embed a picture, it is better to use the (img) tag. to embed a document, it is better to use the (iframe) tag</p>
+      <p># plug-ins are a computer programs that extend the standard functionality of the browser</p>
+      <p># plug-ins have been used for many different purposes - </p>
+      <p>&gt; run java applets</p>
+      <p>&gt; run activex controls </p>
+      <p>&gt; display flash movies </p>
+      <p>&gt; display maps </p>
+      <p>&gt; scan for viruses </p>
+      <p>&gt; verify a bank id</p>
+      <p># most browsers no longer support java applets and plug-ins </p>
+      <p># activex controls are no longer supported in any brosers </p>
+      <p># the support for shockware flash has also been turned off in modern browsers </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>embed</td>
+      <td nowrap><p>height</p>
+        <p>src</p>
+        <p>type</p>
+        <p>width</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>embed:focus - </p>
+      <p>outline: none</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (embed) tag defines a container for an external resource, such as a web page/a picute/a media player/a plug-in application</p>
+      <p># most browsers no longer support java-applets and plug-ins </p>
+      <p># activex controls are no longer suppoted in any browsers </p>
+      <p># the support for shockwave flash has also been turned off in modern browsers </p>
+      <p># suggestion </p>
+      <p>&gt; to dispaly a picture, it si better to use the (img) tag</p>
+      <p>&gt; to display HTML, it is better to use the (iframe) tag</p>
+      <p>&gt; to display video/audio, it si better to use the (video) and (audio) tags</p></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>object</td>
+      <td nowrap><p>data</p>
+        <p>form</p>
+        <p>heigh</p>
+        <p>name</p>
+        <p>type</p>
+        <p>typemustmatch</p>
+        <p>usemap</p>
+        <p>width</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>object:focus - </p>
+      <p>outline: none</p></td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (object) tag defines a container for an external resource </p>
+      <p># the external resource can be a web page, a picture, a media player, or a plug-in application</p>
+      <p># to embed a picture, it is better to use the (img) tag</p>
+      <p># to embed HTML, it is better to use the (iframe) tag </p>
+      <p># te embed video or audio, it is better to use the (video) and (audio) tags </p>
+      <p># plug-ins - </p>
+      <p>&gt; the (object) tag was originally designed to embed browser plug-ins </p>
+      <p>&gt; plug-ins are computer programs that extend the standerd functionality fo the browser </p>
+      <p>&gt; plug-ins have been used for many different puposes - </p>
+      <p>&gt; run java-applets/ run activcx-controls/ display flash-movies/ display maps/ scan for viruses/ verify a bank id</p>
+      <p># warning - </p>
+      <p>&gt; most browsers no longer support java-applets and plug-ins</p>
+      <p>&gt; active x controls are no longer supported in any browser</p>
+      <p>&gt; the support for shockwave-flash has also been turned off in modern browsers </p></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>param</td>
+      <td nowrap><p>name</p>
+        <p>value</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>evnet</p></td>
+      <td nowrap>display: none</td>
+      <td nowrap>all</td>
+      <td nowrap><p># the (param) tag is used to define parameters for an (object) element </p>
+      <p># the (param) tag is supported in all major browsers, however, te file format defined in (object) may not be suppoted in all browsers</p></td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>AUDIO/VIDEO</th>
+      <th nowrap>VERSION</th>
+      <th nowrap>DEFAULT CSS</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>audio</td>
+      <td nowrap><p>autoplay</p>
+        <p>controls</p>
+        <p>loop</p>
+        <p>muted</p>
+        <p>preload</p>
+        <p>src</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>level</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (audio) tag is used to embed sound content in a document, such as music or other audio streams </p>
+      <p># the (audio) tag contains one or more (source) tags with different audio sources. the browser will choose the first source it supports</p>
+      <p># the text between the (audio) and (/audio) tags will only be displayed in browsers that do not support the (audio) element </p>
+      <p># there are three supported audio formats in HTML (MP3/WAV/OGG)</p>
+      <p># Edge/IE does not support (WAV/OGG) but support (MP3)</p>
+      <p># Safari does not support (OGG) but support (MP3/WAV)</p></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>source</td>
+      <td nowrap><p>media</p>
+        <p>sizes</p>
+        <p>src</p>
+        <p>srcset</p>
+        <p>type</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (source) tag is used to specify multiple media resources for media elements, such as (video, audio and picture)</p>
+      <p># teh (source) tag allows you to specify alternative video/audio/image files which the browser may choose from, </p>
+      <p>based on browser support or viewport width. the browser will choose the first (source) it supports </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>track</td>
+      <td nowrap><p>default</p>
+        <p>kind</p>
+        <p>label</p>
+        <p>src</p>
+        <p>srclang</p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap><p>none</p></td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (track) tag specifies text tracks for (audio, video) elements</p>
+      <p># this element is used to specify subtitles, caption files or other files containning text, that should be visible </p>
+      <p>when the media is playing </p>
+      <p># tracks are formatted in WebVTT format (.vtt files) </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>video</td>
+      <td nowrap><p>autoplay</p>
+        <p>controls</p>
+        <p>height</p>
+        <p>loop</p>
+        <p>muted</p>
+        <p>poster</p>
+        <p>src</p>
+        <p>width </p>
+        <p>&nbsp;</p>
+        <p>global</p>
+      <p>event</p></td>
+      <td nowrap>none</td>
+      <td nowrap>version</td>
+      <td nowrap><p># the (video) tag is used to embed video content is a document, such as a movie clip or other video streams </p>
+      <p># the (video) tag contains one or more (source) tags with different video sources</p>
+      <p># the browser will choose the first source it supports </p>
+      <p># the text between the (video) and (/video) tag will only be displayed in browsers that do nto support the (video) element </p>
+      <p># there are three supported video formats in HTML (MP4, WebM, and OGG)</p>
+      <p># only safari does not support (OGG)</p></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

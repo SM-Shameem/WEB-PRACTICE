@@ -1,0 +1,712 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>EVENT-ATTRIBUTES</title>
+<style>
+body { 
+	font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; 
+	background-color: #FFD988;
+}
+table { 
+	background-color: hsl(200, 25%, 25%); 
+	border: 1px solid hsl(200, 25%, 25%);
+	width: 100%; 
+	margin: auto; 
+	padding: 5px; 
+}
+td, th { 
+	width: auto; 
+	padding: 1px 10px; 
+	border: 1px solid hsl(200, 22%, 40%); 
+	color: #FFF;
+}
+th { 
+	background-color: #BBB;
+	border: 1px solid hsl(00, 25%, 85%); 
+	color: #000; 
+}
+</style>
+</head>
+
+<body>
+<table>
+    <tr>
+      <th width="90" nowrap>SLNO</th>
+      <th width="90" nowrap>WINDOW-EVENTS</th>
+      <th width="180" nowrap>BELONGS-TO</th>
+      <th width="180" nowrap>BROWSER</th>
+      <th width="180" nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>onafterprint</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap title=""># script runs after document is printed or print dialogue box has been closed.<br />
+      # IE-Edge run berofe print Dialog box, instead of after.<br />
+      # used together onbeforepr</td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>onbeforeprint </td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs before document is printed or before print dialogue box appears<br />
+      # used together onbeforepr</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>onbeforeunload</td>
+      <td nowrap>body</td>
+      <td nowrap>opera version</td>
+      <td nowrap># script runs when document is about to be unloaded<br />
+      # display a message in a dialog box to stay or leave the current page<br />
+      # the default message cannot remove but is differe in browsers<br />
+      # you can write a custom message but (Firefox) only show the default message</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>onerror</td>
+      <td nowrap>body</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when an error occurs, while loading an external file<br />
+      # support, (img/object/script/link) elements also (audio/embed) elements<br />
+      # support, (input type) value (image)</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>onhashchange</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when there has been changes to the anchor part of the url,<br />
+      begins with a (#) symbol<br />
+      # what an anchor part is: the current URL is (www.example.com/test.htm#part2)<br />
+      # The anchor part of this URL would be (#part2)<br /># To invoke this event, you can - <br />
+      1. Change anchor part by (location.hash/location.href) property of Location Object<br />
+      2. Navigate to current page with a different bookmark (Use "back" or "forward")<br />
+      3. Click on a link to a bookmark anchor</td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>onload</td>
+      <td nowrap>body</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when page/object is finished loading (image, script, css, etc)<br />        
+      # is most often used within (body) element<br />
+      # however, it can be used on other elements as well<br />
+      # used to check visitor's browser and version, and web page version based on info<br />
+      # support, (body/frame/frameset/iframe/img/link/script/style)<br />
+      # support, (input type) value (image)</td>
+    </tr>    
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>onmessage</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the message is triggered</td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>onoffline</td>
+      <td nowrap>body</td>
+      <td nowrap>except Firefox</td>
+      <td nowrap># script runs when the browser starts to work offline<br /># onoffline is opposite of ononline</td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>ononline </td>
+      <td nowrap>body</td>
+      <td nowrap>except Firefox</td>
+      <td nowrap># script runs when the browser starts to work online<br /># ononline is opposite of onoffline</td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>onpagehide</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when a user navigates away from a page </td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>onpageshow</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when a user navigates to a page<br />
+      # onpageshow is similar to onload, except, it occurs after onload when first loads<br />
+      # it occurs every time of page loading, whereas onload not occur (load from cache)</td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>onpopstate</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the window's history changes </td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>onresize </td>
+      <td nowrap>body</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the browser window is being resized </td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>onstorage</td>
+      <td nowrap>body</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when a web storage area is updated</td>
+    </tr>
+    <tr>
+      <td height="45" nowrap>15</td>
+      <td nowrap>onunload</td>
+      <td nowrap>body</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a page has unloaded or browser closed<br />
+      # occurs when user navigates away from page (by clicking link, submit form, etc)<br />
+      # on reload a page, onunload is triggered also with onload<br /># due to different browser settings, event may not always work as expected</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>FORM-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>&nbsp;</td>
+      <td colspan="4" nowrap>events triggered by actions inside a HTML-Form (applies to almost all HTML elmenets also)</td>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>onblur</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the element loses focus<br />
+        # Onblur is most often used with form validation (user leaves a form field)<br />
+        # onblur attribute is the opposite of the (onfocus)<br />
+        # support, all HTML elements,<br />
+      except (base/bdo/br/head/html/iframe/meta/param/script/style/title)<br /></td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>onchange</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap><p># script runs when the value to the element is changed<br />
+        # onchange is similar to (oninput), difference, it occurs immediately after the value<br />
+          changed, while (onchanges) occurs after loseing focus<br />
+          # support, (input type) value (checkbox/file/password/radio/range/search/text)<br />
+          # support, (select and textarea) element<br />
+      </p></td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>oncontextmenu</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap><p># script runs when a context menu is triggered </p></td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>onfocus</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the element gets focus<br />
+        # onfocus is most often used with (input/select/a)<br />
+        # onfocus is oposite of (onblur)<br />
+        # support all HTML-elements,<br />
+        except (base/bdo/br/head/html/iframe/meta/param/script/style/title)<br /></td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>oninput</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the element gets user input<br />
+      # script runs when the value of an (input/textarea) is changed<br />
+      # oninput is similar to (onchange), difference, it occurs immediately after the value <br />
+	  changed, while (onchanges) occurs after loseing focus<br />
+      # support, (input type) value (password/search/text)<br />
+      # support, (textarea) also<br /></td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>oninvalid</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the element is invalid (input element)<br />
+      # the input field is invalid if the required attribute is set and the field is empty<br />
+      # support, (input) element</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>onreset</td>
+      <td nowrap>form</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a reset button in a form is clicked</td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>onsearch </td>
+      <td nowrap>input</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the user writes something in a search field<br />
+      # support, (input type) value (search)</td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>onselect</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the element gets selected<br />
+      # support, (input type) value (file, password, text)<br /?>
+      # support, (textarea) element also</td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>onsubmit</td>
+      <td nowrap>form</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a form is submitted</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>KEYBOARD-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>onkeydown</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a user is pressing a key (on the keyboard)<br />
+      # the order of events related to the (onkeydown) event - onkeypress/onkeyup<br />
+      # support, all elements<br />
+      # except, (base/bdo/br/head/html/iframe/meta/param/script/style/title)</td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>onkeypress</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a user presses a key (on the keyboard)<br />
+      # the order of events related to the (onkeypress) event - onkeydown/onkeyup<br />
+      # (onkeypress) is not fired for all keys (e.g. alt, ctrl, shift, esc) in all browsers<br />
+      # to detect only whether user has pressed key, use (onkeydown), it works for all keys<br />
+      # support, all elements<br />
+      # except, (base/bdo/br/head/html/iframe/meta/param/script/style/title)</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>onkeyup</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a user releases a key (on the keyboard)<br />
+      # the order of events related to the (onkeyup) event - onkeydown/onkeypress<br />
+      # support, all elements<br />
+      # except, (base/bdo/br/head/html/iframe/meta/param/script/style/title)</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>MOUSE-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>onclick</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the element is being clicked<br />
+      # support, all elements<br />
+      # except (base/bdo/br/head/html/iframe/meta/param/script/style/title)</td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>ondblclick</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the element is being double-clicked<br />
+      # support, as same as (onclick) element</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>onmousedown</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a mouse button is pressed down on an element<br />
+      # the order of events related to onmousedown  (left/middle button) - onmouseup/onclick<br />
+      # the order of events related to onmousedown (right button) - onmouseup/oncontextmenu<br />
+      # support, as same as (onclick) element</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>onmousemove</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs as long as the mouse pointer is moving over an element<br />
+      # support, as same as (onclick) element</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>onmouseout</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a mouse pointer moves out of an element<br />
+      # the onmouseout is often used together with (onmouseover)<br />
+      # support, as same as (onclick) element</td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>onmouseover</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when a mouse pointer mouse over an element<br />
+      # the onmouseover is often used together with (onmouseout)<br />
+      # support, as same as (onclick) element</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>onmouseup</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all </td>
+      <td nowrap># script runs when a mouse button is released over an element<br />
+      #  order of events related to onmouseup (left/middle button) - onmousedown/onclick<br />
+      # order of events related to onmouseup (right button) - onmousedown/oncontextmenu<br />
+      # support, as same as (onclick) element</td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>onmousewheel</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when a mouse wheel is being scrolled over an element </td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>onwheel</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the mouse wheel rolls up or down over an element<br />
+      # the onwheel also fires when user scrolls or zooms on element (by touchpad)</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>DRAG-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>ondrag</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when the element or text selection is being dragged<br />
+      # while dragging an element, the ondrag event fires evry 350 milliseconds<br />
+      # drag and drop is common feature in HTML5 - <br />
+      &gt; when garb an object and drags it different location<br />
+      &gt; (link/image) default, to make an element draggable, use global (draggable)<br />
+      &gt;  many (events) are used/can occure, in different stages of (drag/drop) operation<br />
+      1. events fired on the draggable target (the source element) - ondragstart/ondragend<br />
+      2. events fired on the drop target - ondragenter/ondragover/ondragleave/ondrop<br />
+      </td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>ondragend</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs at the end of a drag operation (element/text)<br />
+      # drag and drop is common feature in HTML5 - rest of, as same as (ondrag)</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>ondragenter</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when an element has been dragged to a vaild drop target (element/text)<br />
+      # (ondragenter/ondragleave) help to understand, draggable element (leave drop-target)<br />
+      # drag and drop is common feature in HTML5 - rest of, as same as (ondrag)</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>ondragleave</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when an element leaves a valid drop target (element/text-section)<br />
+      # (ondragenter/ondragleave) help to understand, draggable element (enter drop-target)<br />
+      # drag and drop is common feature in HTML5 - rest of, as same as (ondrag)</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>ondragover</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when an element is being dragged over a valid drop target (element/text)<br />
+      # by default, data/elements cannot be dropped in other elements. to allow a drop, must <br />
+      prevent the default handling of the element boy calling the (event.preventDefault()) <br />
+      method for the (ondragover) attribute<br />
+      # drag and drop is common feature in HTML5 - rest of, as same as (ondrag)</td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>ondragstart</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs at the start of a drag operation (element/text)<br />
+      # drag and drop is common feature in HTML5 - rest of, as same as (ondrag)</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>ondrop</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when dragged element/text is being dropped on a valid drop target<br />
+      # drag and drop is common feature in HTML5 - rest of, as same as (ondrag)</td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>onscroll</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when an element's scrollbar is being scrolled<br />
+      # use the (css - overflow) style property to create a scrollbar for an element<br />
+      # supported, (address/blockquote/body/caption/center/dd/dir/div/dl/dt/fieldset/form)<br />
+      # supported, (h1-h6/html/li/menu/object/ol/p/pre/select/tbody/textarea/tfoot/thead/ul)</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>CLIPBOARD-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>oncopy</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the content of the element is being copied<br />
+      # oncopy also fires when user copies an element (an image - of img element)<br />
+      # oncopy is mostly used on (input) element with (type=&quot;text&quot;)<br />
+      # there are three ways to copy an element/the content of an element<br />
+      &gt; press - ctrl+c<br />
+      &gt; select (copy) from the edit menu in your browser<br />
+      &gt; right click to display the content menu and select the (copy) command</td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>oncut</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the content of the element is being cut<br />
+      # although (oncut) is supported by all HTML elements, it is not possible to cut the <br />
+      content of, like a (p) element, UNLESS the element has set contenteditable to (true)<br />
+      # cut-copy-past commands are same as like above</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>onpaste</td>
+      <td nowrap>visible elements</td>
+      <td nowrap>all</td>
+      <td nowrap># script runs when the user pastes some comtent in an element<br />
+      # cut-copy-past commands are same as like above</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>MEDIA-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>&nbsp;</td>
+      <td colspan="4" nowrap>events triggered by medias like - video, images, and audio <br />
+      applies to all elements, but is common in media elements like - audio/embed/img/object/video</td>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>onabort</td>
+      <td nowrap>audio/embed/img<br />
+      object/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script to be run on abort </td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>oncanplay</td>
+      <td nowrap>audio/embed<br />
+      object/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script to be run when a file is ready to start playing (when buffered enough)</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>oncanplaythrough</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when a file can be played all the way to end without buffering</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>oncuechange</td>
+      <td nowrap>track</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the cue changes in a (track) element</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>ondurationchange</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the length of the media change </td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>onemptied</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when something bad happens and the file is suddenly unavailable</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>onended</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the media has rech the end (useful event for message)</td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>onerror</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when an error occurs when the file is being loaded</td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>onloadeddata</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when media data is loaded</td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>onloadedmetadata</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when meta data (like dimensions and duration) are loaded</td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>onloadstart</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs  just as the file beings to load befor anyting is actually loaded</td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>onpause</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the media is paused either by the user or programmatically</td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>onpaly </td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the media has started playing </td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>onplaying</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the media has started playing</td>
+    </tr>
+    <tr>
+      <td nowrap>15</td>
+      <td nowrap>onprogress</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when the browser is in the process of gettng the media data</td>
+    </tr>
+    <tr>
+      <td nowrap>16</td>
+      <td nowrap>onratechange</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs each time the playback rate changes (in slow-motion/fast-forward)</td>
+    </tr>
+    <tr>
+      <td nowrap>17</td>
+      <td nowrap>onseeked</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when seeking attribute is set to false indicating that seeking has ended</td>
+    </tr>
+    <tr>
+      <td nowrap>18</td>
+      <td nowrap>onseeking</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when seeking attribute is set to true indicating that seeking is active</td>
+    </tr>
+    <tr>
+      <td nowrap>19</td>
+      <td nowrap>onstalled</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when browser is unable to fetch the media data for whatever reason</td>
+    </tr>
+    <tr>
+      <td nowrap>20</td>
+      <td nowrap>onsuspend</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when fetching media data is stopped before completely loaded for reason</td>
+    </tr>
+    <tr>
+      <td nowrap>21</td>
+      <td nowrap>ontimeupdate</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when playing position has changed (fast-forwards to different point)</td>
+    </tr>
+    <tr>
+      <td nowrap>22</td>
+      <td nowrap>onvolumechange</td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs each time the volume of a video/audio has been changed</td>
+    </tr>
+    <tr>
+      <td nowrap>23</td>
+      <td nowrap>onwaiting </td>
+      <td nowrap>audio/video</td>
+      <td nowrap>&nbsp;</td>
+      <td nowrap># script runs when media has paused but is expected to resume (to buffer more data)</td>
+    </tr>
+    <tr>
+      <th nowrap>SLNO</th>
+      <th nowrap>MISC-EVENTS</th>
+      <th nowrap>BELONGS-TO</th>
+      <th nowrap>BROWSER</th>
+      <th nowrap>DEFINES/SPECIFIES</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>ontoggle</td>
+      <td nowrap>details</td>
+      <td nowrap>version</td>
+      <td nowrap># script runs when user opens or closes the (details) element<br />
+      # (details) element specifies additional details that user can view or hide on demand</td>
+    </tr>    
+</table>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GLOBAL-ATTRIBUTES</title>
+<style>
+body { 
+	font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; 
+	background-color: #FFD988;
+}
+table { 
+	background-color: hsl(200, 25%, 25%); 
+	border: 1px solid hsl(200, 25%, 25%);
+	width: 100%; 
+	margin: auto; 
+	padding: 5px; 
+}
+td, th { 
+	width: auto; 
+	padding: 1px 10px; 
+	border: 1px solid hsl(200, 22%, 40%);
+	color: #FFF;
+}
+th { 
+	background-color: #BBB;
+	border: 1px solid hsl(00, 25%, 85%); 
+	color: #000; 
+}
+</style>
+</head>
+
+<body>
+<table>
+  <tbody>
+    <tr>
+      <th width="90" nowrap>SLNO</th>
+      <th width="90" nowrap>GLOBAL-ATTRIBUTES</th>
+      <th width="180" nowrap>VALUE</th>
+      <th width="72" nowrap>BROWSER</th>
+      <th width="180" nowrap>USAGE/EXCEPTION</th>
+    </tr>
+    <tr>
+      <td nowrap>01</td>
+      <td nowrap>accesskey</td>
+      <td nowrap>letter/digit<br />
+      (singel)</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies a shortcut key to activate/focus an element<br />
+      # the access attribute value must be a single character (letter/digit)<br />
+      # way of accessign shortcut key element is varying in different browsers and system<br />
+      # alt+accesskey (windows/linux-chrome), control+alt+accesskey (mac-chrome)</td>
+    </tr>
+    <tr>
+      <td nowrap>02</td>
+      <td nowrap>class</td>
+      <td nowrap>className<br />
+      (one/more)</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies one or more classnames for an elements<br />
+      # class attribute used to point to (class) in css/used by JavaScript via DOM<br />
+      # specifies one or more class names for an element<br />
+      # multiple class names are seperated with space, to combine several css for element<br />
+      # naming rules - must begin with a leter, then (leter/digits/hypens/underscore)</td>
+    </tr>
+    <tr>
+      <td nowrap>03</td>
+      <td nowrap>contenteditable</td>
+      <td nowrap>true/false</td>
+      <td nowrap>version</td>
+      <td nowrap># specifies whether the content of an element is editable or not<br />
+      # if attribute is not set on element then  inherit from its parent</td>
+    </tr>
+    <tr>
+      <td nowrap>04</td>
+      <td nowrap>data-*</td>
+      <td nowrap>somevalue<br />
+      (as a string)</td>
+      <td nowrap>version</td>
+      <td nowrap># used to store custom data private to the page or application.<br />        
+      # the (data-*) attributes gives us the ability to embed custom data on elements<br />
+      # the stored data can then be used in the page's JavaScript<br />(without any Ajax calls or Server-side database queries)<br />
+      # custom attributes prefixed with &quot;data-&quot; will be completely ignored by user agent<br />
+      # att-name must lowercase and at-least one char long string with prefix &quot;data-&quot;</td>
+    </tr>
+    <tr>
+      <td nowrap>05</td>
+      <td nowrap>dir</td>
+      <td nowrap>ltr/rtl/auto</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies the text direction for the content in an element<br />
+      # in-case of (auto) browser figure out the direction, based on content (unknow)</td>
+    </tr>
+    <tr>
+      <td nowrap>06</td>
+      <td nowrap>draggable</td>
+      <td nowrap>true/false/auto</td>
+      <td nowrap>version</td>
+      <td nowrap># specifies whether an element is draggable or not<br />
+      # the draggable attribute is often used in drag and drop operation<br />
+      # auto - is browser default / links and images are draggable by defautl</td>
+    </tr>
+    <tr>
+      <td nowrap>07</td>
+      <td nowrap>hidden</td>
+      <td nowrap>only attribute</td>
+      <td nowrap>version</td>
+      <td nowrap># specifies that an element is not yet, or is no longer, relevant.<br />
+      # browser should not display elements that have the hidden attribute<br />
+      # the (hidden) attribute is a boolean attribute<br />
+      # it can also be used to keep a user from seeing an element until some other <br />
+      condition has been met. then javascript could remove (hidden) attribute</td>
+    </tr>
+    <tr>
+      <td nowrap>08</td>
+      <td nowrap>id</td>
+      <td nowrap>idName</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies a unique id for an element (value must be unique within the document)<br />
+      # is most used to point to style in css/used by JavaScript via DOM<br />
+      # naming rules - must contain at least one character (space not allowed)</td>
+    </tr>
+    <tr>
+      <td nowrap>09</td>
+      <td nowrap>lang </td>
+      <td nowrap>language_code</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies the language of the element's content<br />
+      # common examples are (en) for English, (es) for Spanish, and so on</td>
+    </tr>
+    <tr>
+      <td nowrap>10</td>
+      <td nowrap>spellcheck</td>
+      <td nowrap>true/false</td>
+      <td nowrap>version</td>
+      <td nowrap># whether element is to have its spelling and grammar checked or not<br />
+      # can be checked (text-value in (input)/in (textarea)/text in editable element)</td>
+    </tr>
+    <tr>
+      <td nowrap>11</td>
+      <td nowrap>style</td>
+      <td nowrap>style_definitions</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies an inline css style for an element.<br />
+      # it override any style set globally (internal or external).<br />
+      # can be used on any element but it is not necessarily useful<br />
+      # one or more (css) properties and values separated by semicolones</td>
+    </tr>
+    <tr>
+      <td nowrap>12</td>
+      <td nowrap>tabindex</td>
+      <td nowrap>number</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies the tabbing order of an element.<br />
+      # can be used on any element but it is not necessarily useful<br />
+      # specifies the tabbing order of the element (1 is first)</td>
+    </tr>
+    <tr>
+      <td nowrap>13</td>
+      <td nowrap>title</td>
+      <td nowrap>text</td>
+      <td nowrap>all</td>
+      <td nowrap># specifies extra information about an element.<br />
+      # can be used on any element but it is nto necessarily useful<br />
+      # a tooltip text for an element (when mouse over the element)</td>
+    </tr>
+    <tr>
+      <td nowrap>14</td>
+      <td nowrap>translate </td>
+      <td nowrap>yes/no</td>
+      <td nowrap>no</td>
+      <td nowrap># whether the content of an element should be translated or not s<br />
+      # Test- Click on the google translate image to change to another language</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
