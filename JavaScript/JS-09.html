@@ -1,0 +1,170 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > conditional statements : part-two</h1>
+<a href="JS-10.html">Next</a><a href="JS-08.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+error-handle statements
+--------------------------------------------------------------------------------
+# the (try) statement lets you test a block of code for errors 
+# the (catch) statement lets you handle the error 
+# the (throw) statement lets you create custom errors 
+# the (finally) statement lets you execute code, after (try) and (catch), regardless of the result 
+
+# errors will happen 
+- when eecuting javascript code, different errors can occur 
+- errors can be coding errors made by the programmer, errors due to wrong input, and other unforeseeable things
+# in this example we have written alert as adddlert to deliberately produce an error - 
+
+  < script > 
+    try { adddlert("welcome guest"); } 
+    catch(err) { document.getElementById("demo").innerHTML = err.message; } 
+  < script /> 
+	
+- javascript catches (adddlert) as an error, and executes the catch code to handle it  
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+the (try) and (catch) statements 
+--------------------------------------------------------------------------------
+# the (try) statemetn allows you to define a block of code to be tested for errors while it is being executed 
+# the (catch) statemetn allows you to define a block of code to be executed, if an error occurs in the (try) block
+# the javascript statements (try) and (catch) come in pairs - 
+
+  try { block of code to try ... } 
+  catch(err) { block of code to handle errors ... } 
+	
+--------------------------------------------------------------------------------
+the (throws) statement 
+--------------------------------------------------------------------------------
+# throws errors 
+- when an error occurs, javascript will normally stom and generate an error message 
+- the technical term for this is : javascript will (throw an exception - throw an error) 
+- javascript will actually create an (error object) with two properites (name) and (message) 
+
+# the (throw) statement 
+- the (throw) statemetn allows you to create a custom error 
+- technically you can (throw an exception or throw an error) 
+- the exception can be a javascript (string, number, boolean, or object), like > (throw "too-big"), (throw 500)
+- if use (throw) with (try) and (catch) you can control program flow and generate custom error messages 
+
+  try { 
+    try-statemetnOne; throw relavent-error-message;
+    try-statemetnTwo; throw relavent-error-message;
+    ....
+    try-statemetnN; throw relavent-error-message;
+  }
+  catch(err) { block of code to handle errors ... } 
+
+--------------------------------------------------------------------------------
+the (finally) statement 
+--------------------------------------------------------------------------------
+# the (finally) statement lets you execute code, after (try) and (catch), regardless of the result - 
+
+  try { block of code to (try) ... } 
+  catch (err) { block of code to handle errors ... } 
+  finally { block of code to be executed regardless of the (try/catch) result ... } 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+the error object 
+--------------------------------------------------------------------------------
+# javascript has a built in error object that provides error information when an error occurs 
+- the error object provides two useful properties - (name) and (message) 
+- error object properties - 
+  1. name  (sets or returns an error name) 
+  2. message (sets or returns an error message as string) 
+	
+# error (name) values - 
+- six different values can be returned by the error name property - 
+  1. EvalError (an error has occurred in the eval() function) 
+  2. RangeError (a number out of range has occured) 
+  3. referenceError (an illegal reference has occurred) 
+  4. syntaxError (a syntax error has occurred) 
+  5. TypeError (a type error has occurred) 
+  6. URLError (an error in encodeURI() has occurred) 
+	
+# the EvalError 
+- an (EvalError) indicates an error in the eval() function 
+- newer versions of javascript do not throw (EvalError). use (SyntaxError) instead 
+
+# the RangeError 
+- a (RangeError) is thrown if you use a number that is outside the range of legal values 
+- for example, you cannot set the number of significant digits of a number to 500 
+
+  var num = 1; 
+  try ( num.toPrecision(500); } 
+  catch (err) { document.getElementById("demo").innerHTML = err.name; } 
+	
+# the ReferenceError 
+- a (ReferenceError) is thrown if you use (reference) a variable that has not been declared - 
+- example 
+
+  var x; 
+  try { x = y + 1 		// y cannot be referenced (used) } 
+  catch (err) { document.getElementById("demo").innerHTML = err.name; } 
+	
+# the SyntaxError 
+- a (SyntaxError) is thrown if you try to evaluate code with a syntax error 
+- example 
+
+  try { eval("alert('Hello)"); 			// missing ' will produce an error } 
+  catch(err) { document.getElementById("demo").innerHTML = err.name; } 
+	
+# the TypeError 
+- a (TypeError) is thrown if you use a value that is outside the range of expected types - 
+- example 
+
+  var num = 1; 
+  try { num.toUpperCase(); 					// you cannot convert a number upper case } 
+  catch (err) { document.getElementById("demo").innerHTML = err.name; } 
+	
+# the URIError (Uniform Resource Identifier) 
+- a (URIError) is thrown if you use illegal characters in a URI function 
+- example 
+
+  try { decodeURI("%%%"); 					// you cannot URI decode percent strings } 
+  catch(err) { document.getElementById("demo").innerHTML = erro.name; 
+	
+--------------------------------------------------------------------------------
+non-standard error object properties 
+--------------------------------------------------------------------------------
+# mozilla and microsoft defines some non-standard error object properites - 
+  1. fileName (Mozilla) 
+  2. lineNumber (Mozilla) 
+  3. columnNumber (Mozilla) 
+  4. stack (Mozilla) 
+  5. description (Microsoft) 
+  6. number (Microsoft) 
+- do not use thes properties in public web sites.
+  they will not work in all browsers 
+# complet error reference of the error-object, got to error-reference 
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

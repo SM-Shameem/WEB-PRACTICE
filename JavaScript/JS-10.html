@@ -1,0 +1,491 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > function : part-one</h1>
+<a href="JS-11.html">Next</a><a href="JS-09.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+function fundamental
+--------------------------------------------------------------------------------
+# a javascript function is a block of code designed to perform a particular task 
+# a javascript function is executed when something invokes it (calls it) 
+  like > function funcOne(P1, P2) { return P1 * P2; // the function returns (P1 x P2) } 
+  document.getElementById("demo").innerHTML = funcOne(2, 4);
+	
+# function syntax 
+- a javascript function is defined with the (function) keyword, followed by a (functionName), 
+  followed by parentheses() 
+- function (names) can contain (letters, digits, underscores, and dollar signs (same rules as variables) 
+- the (parentheses) may or may not include (parameters) separated by commas, like (paraOne, paraTwo, ... paraN);
+- the code to be executed, by the function, is placed inside curly brackets { .. }, just after the (parenthese) 
+  like > function funcName(paraOne, paraTwo, paraN) { // code to be executed } 
+	
+- function (parameters) are listed inside the (parentheses) in the function definition 
+- function (arguments) are the (values) received by the function when it is invoked 
+- inside the function, the arguments (the parameters) behave as local variables 
+- note > a function is much the same as a procedure or a subroutine, in other programming languages 
+
+# function invocation 
+- the code inside the function will execute when someting invodes (calls) the function 
+  > when an event occurs (when a user clicks a button) 
+  > when it is invoked (called) from javascript code 
+  > automatically (self invoked) 
+	
+# function return 
+- when javascript reaches a (return) statement, the function will stop executing 
+- if the function was invoked from a statemetn, javascript will return to execute the code after the invoking 
+- functions often compute a (return value). the (return value) is returned back to the caller 
+- example, calculate the product of two numbers, and return the result 
+  var x = funcOne(2,4); // function is called, return value will end up in (x) 
+  function funcOne(a, b) { return a*b; // function returns the product of (a) and (b) } 
+	
+# why function 
+- you can resue code: define the code once, and use it many times 
+- you can use the same code many times with different arguments, to produce different results 
+- convert fahrenheit to celsius 
+  function toCelsius(fahrenheit) { return (5/9) * (fahrenheit-32); } 
+  document.getElementById("demo").innerHTML = toCelsius(77);
+	
+# the () operator invokes the function 
+- example above, (toCelsius) referes to the funciton object, and (teCelsius()) referes to the function result 
+- accessing a function without () will return the function object instead of the function result 
+- example above 
+  
+# function used as variable values 
+- functions can be used the same way as you use variables, in all types of formulas, assignments, and calculations
+- example, instead of using a variable to store the return value of a function 
+  var x = toCelsius(77);
+  var text = "the temperature is " + x + " celsius";
+- example, you can use the function directly, as a variable value 
+  var text = "the temerature is " + teCelsius(77) + " celsius";
+	
+# local variables 
+- variables declared within a javascript function, become (local) to the function 
+- local variable can only be accessed from within the function 
+- example 
+  // code here can not use (carName) 
+  function funcOne() { var carName = "volvo"; // code here can use (carName) } 
+	// code here can not use (carName) 
+- since (local) variables are only recognized inside there functions, variables with the same name can be used in 
+  different function 
+- local variables are create when a function starts, and deleted when the function is completed 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+function definitions 
+--------------------------------------------------------------------------------
+# javascript functions are (defined) with the (function) keyword 
+# you can use a function (declaration) or a function (expression) 
+# function declarations 
+- earlier in this tutorial, you learned that functions are (declared) with the following syntax 
+  like > function functionName(parameters) { // code to be executed }
+- declared function are not executed immediately. they are (saved for later use), and will be executed later,
+  when they are invoked (called upon) 
+  like > function funcOne(a, b) { return a * b; } 
+- note > semicolons are used to separate executable javascript statements. 
+  since a function (declaration) is not an executable statement, it is not common to end it with a semicolons
+  
+# function expressions 
+- a javascript function can also be defined using an (expression) 
+- a function expression can be stored in a variable 
+  like > var x = function (a, b) { return a * b }; 
+- after a function expression has been stored in a variable, the variable can be used as a function 
+  like > var x = function (a, b) { return a * b }; 
+  var z = x(4, 3); 
+- the function above is actually an (anonymous function), a function without a name 
+- functions stored in variables do not need function names. they are always invoked (called) using the 
+  variable name 
+- node > the function above ends with a semicolon because it is a part of an executable statement 
+
+# the Function() (constructor) 
+- as you have seen in the previous examples, javascript functions are defined with the (function) keyword 
+- functions can also be defined with a built-in javascript function constructor called (Function())
+  like > var funcOne = new Function("a", "b", "return a * b");
+  var x = funcOne(4, 5);
+- you actually don't have to use the function constructor. the example above is the same as writing - 
+  like > var funcOne = function(a, b) { return a * b };
+  var x = funcOne(3, 4);
+- note > most of the time, you can avoid using the (new) keyword in javascript
+
+# function hoisting 
+- earlier in this tutorial, you learned about (hoisting), javascript hoisting 
+- hoisting is javascript's default behavior of moving (declarations) to the top of the current scope 
+- hoisting applies to variable declarations and to function declarations 
+- because of this, javascript functions can be called before they are declared 
+  like > funcOne(5); function funcOne(y) { return y * y; }
+- functions defined using an expression are not hoisted 
+
+# self-invoking function 
+- function expressions can be made (self-invoking)
+- a (self-invoking) expression is invoked (started) automatically, without being called
+- function expressions will execute automatically if the expression is followed by ()
+- you cannot (self-invoke) a function declaration 
+- you have to add parentheses around the function to indicate that it is a function expression 
+  like > (function () { var x = "hello!!"; // i will invoke myself }) ();
+- the function above is actually an (anonymous self-invoking function), function without name 
+
+# functions can be used as values 
+- javascript functions can be used as values 
+  like > function funcOne(a, b) { return a * b; }
+  var x = funcOne(3, 4); 
+- javascript functions can be used in expressions 
+  like > function funcOne(a, b) { return a * b; } 
+  var x = funcOne(3, 4) * 2; 
+  
+# functions are objects 
+- the (typeof) operator in javascript returns (function) for functions 
+- but, javascript functions can best be described as objects 
+- javascript functions have both (properties and methods) 
+- the (arguments.length) property returns the number of arguments received when the function was invoked 
+  like > function funcOne(a, b) { return arguments.length; } 
+- the (toString()) method returns the function as a string 
+  like > function funcOne(a, b) { return a * b; }
+  var text = funcOne.toString(); 
+- note > a function defined as the property of an object, is called a method to the object 
+- note > a function designed to create new objects, is called an object constructor 
+
+# arrow function 
+- arrow functions allows a short syntax for writing function expressions 
+- you don't need the (function) keyword, the (return) keyword, and the (curly brackets)
+  like > // ES5
+  var x = function(x, y) { return x * y; }
+  // ES6
+  const x = (x, y) => x * y;
+- arrow functions do not have their own (this). they are not well suited for defining (object methods) 
+- arrow functions are not hoisted. they must be defined before they are used 
+- using (const) is safer than using (var), because a function expression is always constant value 
+- you can only omit the (return) keyword and the curly brackets if the function is a single statement. 
+  because of this, it might be a good habit to always keep them 
+  like > const x = (x, y) => { return x * y };
+- note > arrow function are not supported in IE11 or earlier 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+function parameters 
+--------------------------------------------------------------------------------
+# function parameters and arguments 
+- a javascript (function) does not perform any checking on parameter values (arguments) 
+- earlier in this tutorial, you learned that functions can have (parameters) 
+  like > function funcName(parameter1, parameter2, parameter3) { // code to be executed }
+- function (parameters) are the (names) listed in the function definition 
+- function (arguments) are the real (values) passed to and received by the function 
+
+# parameter rules 
+- javascript function definitions do not specify data types for parameters 
+- javascript functions do not perform type checking on the passed arguments 
+- javascript functions do not check the number of arguments received 
+
+# default parameters 
+- if a function is called with (missing arguments), less than declared, the missing values are set to (undefined)
+- sometimes this is acceptable, but sometimes it is better to assign a default value to the parameter 
+  like > function funcOne(x, y) { if (y === undefined) { y = 2; }} 
+- ECMAScript 2015 allows default parameter values in the function declaration 
+  like > function (x, y = 2) { // function code }
+  
+# the arguments object 
+- javascript functions have a built-in object called the arguments object 
+- the argument object contains an array of the arguments used when the function was called (invoked) 
+- this way you can simply use a function to find (for instance) the highest value in a list of numbers 
+  like > x = funcOne(1, 123, 500, 115, 33, 88);
+  function funcOne() { 
+    var i; var max = -Infinity;
+    for(i=0; i<arguments.length; i++) if(arguments[i]>max) max = arguments[i];
+    return max;
+  }
+- or create a function to sum all input values 
+  like > x funcOne(1, 123, 500, 115, 44, 88);
+  function funcOne() { 
+    var i, sum = 0; 
+    for (i=0; i<arguments.longht; i++) sum += arguments[i]; 
+    return sum;
+  }
+- note > if a function is called with (too many arguments) more than declared, these arguments can be reached     
+  using the (arguments object)
+  
+# arguments are passed by value 
+- the parameters, in a function call, are the function's arguments 
+- arguments are passed by (value) - the function only gets to know the values, not the argument's location
+- if a function changes an argument's value, it does not change the parameter's original value 
+- changes to arguments are not visible (reflected) outside the function 
+
+# objects are passed by reference 
+- in javascript, object references are values 
+- because of this, objects will behave like they are passed by (reference) 
+- if a function changes an object property, it changes the original value 
+- changes to object properties are visible (reflected) outside the function 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+function invocation
+--------------------------------------------------------------------------------
+# invoking a javascript function 
+- the code inside a javascript (function) will execute when something invokes it 
+- the code inside a function is not executed when the function is (defined) 
+- the code inside a function is executed when the function is (invoked) 
+- it is common to use the term (call a function) instead of (invoke a function) 
+- it is also common to say (call upon a function), (start a function), or (execute a function) 
+- in this tutorial, we will use (invoke), because a javascript function can be invoked without being called 
+
+# invoking a function as a function 
+  like > function funcOne(a, b) { return a * b; } 
+  funcOne(10, 2); // will return 20 
+- the function above does not belong to any object. but in javascript there is always a default global object 
+- in HTML the default global object is the HTML page itself, so the function above (belongs) to the HTML page 
+- in a browser the page object is the browser window. the function above automatically becomes a window function 
+- above > funcOne() and window.funcOne() is the same function 
+  like > function funcOne(a, b) { return a * b; }
+  window.funcOne(10, 2); // will also return 20 
+- note > this is a common way to invoke a javascript function, but not a very good practice 
+  global variables, methods, or functions can easily create name conflicts and bugs in the global object 
+  
+# the (this) keyword 
+- in javascript, the thing called (this), is the object that (owns) the current code 
+- the value of (this), when used in a function, is the object that (owns) the function 
+- note > note that (this) is not a variable. it is a keyword. you cannot change the value of (this) 
+
+# the global object 
+- when a function is called without an owner object, the value of (this) becomes the global object 
+- in a web browser the global object is the browser window 
+- this example returns the window object as the value of (this) 
+  like > var x = funcOne();  // x will be th window object 
+  function funcOne() { return this; }
+- note > invoking a function as a global function, causes the value of (this) to be the global object 
+  using the (window) object as a variable can easily crash your program 
+  
+# invoking a function as a method 
+- in javascript you can define functions as object methods 
+- the following example creates an object (myObject), with tow properties (firstName and lastName),
+  and a method (fullName)
+  like > var myObject = { 
+    firstName: "john",
+    lastName: "doe",
+    fullName: function() { return this.firstName + " " + this.lastName; }
+  }
+  myObject.fullName();  // will return "john doe"
+- the (fullName) method is a function. the function belongs to the object. (myObject) is the owner of the function 
+- the thing called (this), is the object that (owns) the javascript code. 
+  in this case the value of (this) is (myObject) 
+- test it! change the (fullName) method to return the value of (this)
+  like > var myObject = { 
+    firstName: "john",
+    lastName: "doe", 
+    fullName: function () { return this; }
+  }
+  myObject.fullName();  // will return [object Object] (the owner object) 
+- note > invoking a function as an object method, causes the value of (this) to be the object itself 
+
+# invoking a function with a function constructor 
+- if a function invocation is preceded with the (new) keyword, it is a constructor invocation
+- it looks like you create a new function, but since functions are objects you actually create a new object 
+  like > // this is a function constructor 
+  function myFunction(arg1, arg2) { this.firstName = arg1; this.lastName = arg2; }
+  // this creates a new object 
+  var x = new myFunction("john", "doe"); x.firstName; // will return "john"
+- a constructor invocation creates a new object. the new object inherits the properties and methods 
+  form its constructor 
+- note > the (this) keyword in the constructor does not have a value 
+  the value of (this) will be the new object created when the function is invoked 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+function call
+--------------------------------------------------------------------------------
+# method reuse 
+- with the (call()) method, you can write a method that can be used on different objects 
+
+# all functions are methods 
+- in javascript all functions are object methods 
+- if a function is not a method of a javascript object, it is a function of the global object 
+- the example below creates an object with 3 properties, firstName, lastName, fullName 
+  like > var person = { firstName: "john", lastName: "deo", 
+    fullName: function () { return this.firstName + " " + this.lastName; }
+  }  
+  person.fullName(); // will return "john doe"
+  
+# the (this) keyword 
+- in a function definition, (this) refers to the owner of the function 
+- in the example above, (this) is the (person object) that owns the (fullName) function 
+- in other words, (this.fullName) means the (firstName) property of (this object) 
+
+# the (call()) method 
+- the (call()) method is a predefined javascript method 
+- it can be used to invoke (call) a method with an owner object as an argument (parameter) 
+- note > with (call()) an object can use a method belonging to another object 
+- this example calls the (fullName) method of person, using it on (person1)
+  like > var person = { fullName: function() { return this.firstName + " " + this.lastName; } }
+  var person1 = { firstName: "john", lastName: "doe" }
+  var person2 = { firstName: "mary", lastName: "doe" }
+  person.fullName.call(person1); // will return "john doe"
+  person.fullName.call(person2); // will return "mary doe"
+  
+# the (call()) method with arguments 
+- the (call()) method can accept argument 
+  like > var person = { 
+    fullName: function(city, country) { return this.firstName + " " + this.lastName + "," + city + "," + country; }
+  }
+  var person1 = { firstName: "john", lastName: "doe" }
+  person.fullName.call(person1, "oslo", "norway");
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+function apply 
+--------------------------------------------------------------------------------
+# method reuse 
+- with the (apply()) method, you can write a method that can be used on different objects 
+
+# the (apply()) method 
+- the (apply()) method is similar to the (call()) method 
+- in this example the (fullName) method of (person) is (applied) on (person1) 
+  like > var person = { fullName: function() { return this.firstName + " " + this.lastName; } }
+  var person1 = { firstName: "mary", lastName: "doe" }
+  person.fullName.apply(person1); // will return "mary doe"
+  
+# the difference between (call()) and (apply())
+- the difference is - 
+  > the (call()) method takes arguments (separately)
+  > the (apply()) method takes arguments as an array 
+- note > the (apply()) method is very handy if you want to use an array instead of an argument list 
+
+# the (apply()) method with arguments 
+- the (apply()) method accepts arguments in an array 
+  like > var person = { fullName: function(city, country) 
+    { return this.firstName + " " + this.lastName + "," + city + "," = country; }
+  }
+  var person1 = { firstName: "john", lastName: "doe" }
+  person.fullName.apply(person1, ["oslo", "norway"])
+- compared with the (call()) method 
+  like > var person = { 
+    fullName: function(city, country)
+    { return this.firstName + " " + this.lastName + "," + city + "," + country; }  
+  }
+  var person1 = { firstName: "john", lastName: "doe" }
+  person.fullName.call(person1, "oslo", "norway");
+  
+# simulate a (max) method on (arrays) 
+- you can find the largest number (in a list of numbers) using the (Math.max()) methods
+  like > Math.max(1,2,3); // will return 3
+- since javascript arrays do not have a (max()) method, you can apply the (Math.max()) method instead 
+  like > Math.max.apply(null, [1,2,3]); // will also return 3 
+- the first argument (null) does not matter. it is not used in this example 
+- these examples will given the same result below - 
+  like > Math.max.apply(Math, [1,2,3]); // will also return 3 
+  like > Math.max.apply(" ", [1,2,3]); // will also return 3 
+  like > Math.max.apply(0, [1,2,3]); // will also return 3 
+  
+# the (strict) mode
+- in javascript (strict) mode, if the first argument of the (apply()) method is not an object, it becomes the 
+  owner (object) of the invoked function. in (non-strict) mode, it becomes the (global) object 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+function closures
+--------------------------------------------------------------------------------
+# javascript variables can belong to the (local or global) scope 
+# global variables can be made local (private) with closures 
+
+# global variables 
+- a (function) can access all variables defined (inside) the function
+  like > function funcOne() { var a = 4; return a * a; }
+- but a (function) can also access variables defined (outside) the function 
+  like > var a = 4; function funcOne() { return a * a; }
+- in the last example, (a) is a (global) variable 
+- in a web page, (global) variables belong to the (window) object 
+- (Global) variables can be used (and changed) by all scripts in the page (and in the window) 
+- in the first example, (a) is a (local) variable 
+- a (local) variable can only be used inside the function where it is defined. it is hidden from other functions 
+  and other scripting code 
+- (global) and (local) variables with the same name are different variables. modifying one, 
+  does not modify the other
+- note > variable created (without) a declaration keyword (var, let, or const) are always (global), 
+  even if they are created inside a function 
+  
+# variable lifetime 
+- (Global) variables live until the page is discarded, like when you navigate to another page or close the window
+- (local) variables have short lives. they are created when the function is invoked, and deleted when the function 
+  is finished 
+  
+# a counter dilemma
+- if you want to use a variable for counting something, and you want this counter to be available to all functions
+- you could use a (global) variable, and a (function) to increase the counter 
+  like > // initiate counter 
+  var counter = 0; 
+  // function to increment counter 
+  function add() { counter += 1; }
+  // call add() 3 times 
+  add(); add(); add(); 
+  // the counter should now be 3 
+- there is a problem with the solution above: any code on the page can change the counter, without calling add()
+- the counter should be (local) to the (add()) function, to prevent other code from changing it 
+  like > // initiate counter 
+  var counter = 0; 
+  // function to increment counter 
+  function add() { var counter = 0; counter += 1; }
+  // call add() 3 times 
+  add(); add(); add(); 
+  // the counter should now be 3 but it is 0 
+- it did not work because we display the global counter instead of the (local) counter 
+- we can remove the (global) counter and access the (local) counter by letting the function return it 
+  like > // function to increment counter 
+  function add() { var counter = 0; counter += 1; return counter; }
+  // call add() 3 times 
+  add(); add(); add(); 
+  // the counter should now be 3 but it is 1 
+- it did not work because we reset the (local) counter every time we call the function 
+- a javascript inner function can solve this 
+
+# nested functions 
+- all functions have access to the (global) scope 
+- in fact, in javascript, all functions have access to the scope above them 
+- javascript supports nested functions. nested functions have access to the scope above them 
+- in this example, the inner function (plus()) has access to the (counter) variable in the parent function 
+  like > function add() { var counter = 0; function plus() { counter += 1; } plus(); return counter; }
+- this could have solved the counter dilemma, if we could reach the (plus()) function from the outside 
+- we also need to find a way to execute (counter = 0) only once. we need a (closure)
+
+# closures 
+- remember self-invoking functions? what does this function do? 
+  like > var add = (function () { var counter = 0; return function() { counter += 1; return counter; } } ) ();
+  add(); add(); add(); // the counter is now 3 
+- example explained 
+- the variable (add) is assigned to the return value of a (self-invoking) function 
+- the (self-invoking) function only runs once. it sets the counter to zero (0), and returns a function expression 
+- this way add becomes a function. the wonderful part is that it can access the counter in the parent scope 
+- this is called a javascript (closure). it makes it possible for a function to have (private) variable 
+- the counter is protected by the scope of the anonymous function, and can only be changed using the add function 
+- note > a (closure) is a function having access to the parent scope, even after the parent function has closed
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

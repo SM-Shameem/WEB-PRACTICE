@@ -1,0 +1,449 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > data-types : primitive</h1>
+<a href="JS-13.html">Next</a><a href="JS-11.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+primitive type (boolean) 
+--------------------------------------------------------------------------------
+# a javascript boolean represents one of two value (true or false) 
+# boolean values 
+- very often, in programming, you will need a data-type that can only have one of two value, like 
+  > YES / NO
+  > ON / OFF
+  > TRUE / FALSE 
+- for this, javascript has a (boolean) data-type. it can only take the values (true or false) 
+
+# the (boolean()) function 
+- you can use the (Boolean()) function to find out if an expression (or a variable) is true 
+  like > Boolean(10 > 9) // returns true 
+- or even easier 
+  like > (10 > 9) // also returns true 
+	like > 10 > 9 // also returns true 
+	
+# comparisons and conditions 
+- the chapter JS comparisons gives a full overview of comparison operators 
+- the chapter JS conditions gives a full overview of conditional statements 
+- here are some examples 
+  like > equal-to (==) > if (day == "Monday") 
+  like > greater-than (>) > if (salary > 9000)
+  like > less-than (<) > if (age < 18) 
+- note > the boolean value of an expression is the basis for all javascript comparisons and conditions 
+
+# everything with a (value) is true 
+  like > Boolean(100) > true 
+  Boolean(3.14) > true 
+  Boolean(-15) > true 
+  Boolean("Hello") > true (any string, not empty) 
+  Boolean('true') > true (even th estring 'false') 
+  Boolean(1 + 7 + 3.14) > true (any expression, except zero)
+	
+# everything withotu a (value) is false 
+  like > var x = 0; Boolean(x); // return false 
+  var x = -0; Boolean(x); // returns false 
+  var x = ""; Boolean(x); // returns false 
+  var x; Boolean(x); // return false (undefined) 
+  var x = null; Boolean(x); // return false (null) 
+  var x = false; Boolean(x); // returns false 
+  var x = 10/"H"; Boolean(x); // returns false 
+	
+# booleans can be objects 
+- normally javascript booleans are primitive values created from literals 
+  like > var x = false;
+- but booleans can also be defined as objects with the keyword (new) 
+  like > var y = new Boolean(false); 
+- example 
+  var x = false; // typeof (x) returns boolean 
+  var y = new Boolean(false); // typeof (y) returns object 
+- note > do not create boolean objects. it slows down execution speed 
+  the (new) keyword complicates the code. this can produce some unexpected results 
+	
+- when using the (==) operator, equal booleans are equal 
+  like > var x = false; var y = new Boolean(false); // (x == y) is true because (x) and (y) have equal values 
+- when using the (===) operator, equal booleans are not equal, because the (===) operator expects equality in
+  both type and value 
+  like > var x = false;
+  var y = new Boolean(false); // (x === y) is false because (x) and (y) have different types 
+- or even worse. objects cannot be compared 
+  like > var x = new Boolean(false);
+  var y = new Boolean(false); // (x == y) is false because objects cannot be compared 
+- note > note the difference between (x==y) and (x===y). comparing two javascript objects will always return false 
+
+# complete boolean reference, contains descriptions and examples of all boolean properties and methods 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+primitive type (number)
+--------------------------------------------------------------------------------
+# javascript has only one type of number, numbers can be written with or without decimals 
+  like > var x = 3.14; // with decimals 
+  var y = 3; // without decimals 
+- extra large or extra small numbers can be written with scientific (exponent) notation 
+  like > var x = 123e5; // 12300000
+  var y = 123e-5; // 0.00123
+	
+# javascript numbers are always 64-bit floating point 
+- unlike many other programmin languages, javascript does not define different types of numbers, 
+  like (integers, sort, long, floating-point) etc 
+- javascript numbers are always stored as double precision floating-point numbers, following the international 
+  IEEE 754 standard 
+- this format stores numbers in 64-bits, where the number (the fraction) is stored in bits (0 to 51), 
+  the exponent in bits (52 to 62), and the sign in bit 63 - 
+  > value (aka fraction/mantissa) > 52-bits (0-51) 
+  > exponent 11-bits (52-62) 
+  > sign 1-bit (63) 
+	
+# precision 
+- integers (numbers without a period or exponent notation) are accurate up to 15 digits 
+  like > var x = 999999999999999;   // x will be 999999999999999
+  like > var y = 9999999999999999;  // y will be 10000000000000000
+- the maximum number of decimals is 17, but floating-point arithmetic is not always 100% accurate 
+  like > var x = 0.2 + 0.1;         // x will be 0.30000000000000004
+- to solve the problem above, it helps to multiply and divide 
+  like > var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
+	
+# adding numbers and strings 
+- worning > javascript uses the (+) operator for both addition and concatenation 
+  numbers are added. strings are concatenated 
+- if you add two numbers, the result will be a number 
+  like > var x = 10; var y = 20; var z = x + y; // (z) will be 30 (a number) 
+- if you add two strings, the result will be a string concatenation 
+  like > var x = "10"; var y = "20"; var z = x + y // (z) will be 1020 (a string) 
+- if you add a number and a string, the resutl will be a string concatenation 
+  like > var x = 10; var y = "20"; var z = x + y; // (z) will be 1020 (a string) 
+- if you add a string and a number, the resutl will be a stirng concatenation 
+  like > var x = "10"; var y = 20; var z = x + y; // (z) will be 1020 (a string) 
+- a common mistake is to expect this result to be 30 
+  like > var x = 10; var y = 20; var z = "result : " + x + y; 
+- a common mistake is to expect this result to be 102030
+  like > var x = 10; var y = 20; var z = "30"; var result = x + y + z; 
+  - the javascript interpreter works from left to right. 
+  - first (10 + 20) is added because (x) and (y) are both numbers 
+  - then (30 + "30") is concatenated because (z) is a string 
+	
+# numeric strings 
+- javascript strings can have numeric content 
+  like > var x = 100; // (x) is a number 
+  var y = "100" // (y) is a string 
+- javascript will try to convert strings to numbers in all numeric operations - 
+  like > var x = "100"; var y = "10"; var z = x/y; // (z) will be 10
+  like > var x = "100"; var y = "10"; var z = x*y; // (z) will be 1000
+  like > var x = "100"; var y = "10"; var z = x-y; // (z) will be 90 
+  like > var x = "100"; var y = "10"; var z = x+y; // (z) will not be 110 (it will be 10010)
+- in the last example javascript uses the (+) operator to concatenate the strings 
+
+# NaN - not a number 
+- (NaN) is a javascript reserved word indicating that a number is not a legal number 
+- trying to do arithmetic with a (non-numeric) string will result in (NaN) not a number 
+  like > var x = 100 / "Apple"; // (x) will be (NaN) not a number 
+- however, if the string contains a numeric value, the resutl will be a number 
+  like > var x = 100 / "10"; // (x) will be 10 
+- you can use the global javascript function (inNaN()) to find out if a value is a number 
+  like > var x = 100 / "Apple"; isNaN(x); // returns (true) because (x) is not a number 
+- watch out for (NaN). if you use (NaN) in a mathematical operation, the result will also be (NaN) 
+  like > var x = NaN; var y = 5; var z = x + y; // (z) will be NaN
+- or the result might be a concatenation 
+  like > var x = NaN; var y = "5"; var z = x + y; // (z) will be NaN5
+- (NaN) is a number: (typeof NaN) returns (number) 
+  like > typeof NaN; // returns number
+	
+# infinity 
+- (infinity or -infinity) is the value javascript will return if you calculate a number outside 
+  the largest possible number 
+  like > var num = 2; while (num != Infinity) { num = num * num); }
+- division by 0 (zero) also generates (Infinity) 
+  like > var x = 2 / 0; // (x) will be infinity 
+  var y = -2 / 0; // (y) will be -Infinity
+- (Infinity) is a number: (typeof Infinity) returns (number) 
+  like > typeof Infinity; // return number 
+	
+# hexadecimal 
+- javascript interprets numberic constants as hexadecimal if they are preceded by (0x) 
+  like > var x = 0xFF; // (x) will be 255
+- note > never write a number with a leading zero (like 07) 
+  some javascript varsions interpret numbers as (octal) if they are written with a leading zero 
+- by default, javascript displays numbers as (base 10) decimals 
+- but you can use the (toString()) method to output numbers from (base 2) to (base 36) 
+- hexadecimal is (base 16). decimal is (base 10). octal is (base 8). binary is (base 2) 
+  like > var num = 32; 
+  num.toString(10); // returns 32
+  num.toString(32); // returns 10
+  num.toString(16); // returns 20
+  num.toString(8);  // returns 40
+  num.toString(2);  // returns 100000
+	
+# numbers can be objects 
+- normally javascript numbers are (primitive) values created from literals. like > var x = 123; 
+- but numbers can also be defined as objects with the keyword (new). like > var y = new Number(123); 
+  like > var x = 123; // typeof x returns number 
+  like > var y = new Number(123); // typeof y returns object 
+- note > do not create number objects. it slows down execution speed 
+  the (new) keyword complicates the code. this can produce some unexpected results 
+- when using the (==) operator, equal number asr equal 
+  like > var x = 500; var y = new Number(500); // (x == y) is true because (x) and (y) have equal values 
+- when using the (===) operator, equal numbers are not equal, because the (===) opearator expects equality 
+  in both (type and value) 
+  like > var x = 500; var y = new Number(500); // (x === y) is false because (x and y) have different types 
+- or even worse. objects cannot be compared 
+  like > var x = new Number(500); var y = new Number(500); 
+  // (x == y) is fase because objects cannot be compared 
+- note > the difference between (x == y) and (x === y). comparing two javascript objects will always return (false)
+
+--------------------------------------------------------------------------------
+javascript (number) methods 
+--------------------------------------------------------------------------------
+# number methods help you work with numbers 
+# number methods and properties 
+- primitive values (like 3.14 or 2014), cannot have properties and methods (because they are not objects)
+- but with javascript, methods and properties also available to primitive values, because javascript treats 
+  primitive values as objects when executing methods and properties 
+  
+# some number methods (toString, toExponential, toFixed, toPrecision, valueOf)
+# converting variables to numbers 
+- thre are 3 javascript methods that can be used to convert variables to numbers (Number, parseInt, parseFloat)
+
+# global javascript methods
+- javascript global methods can be used on all javascript data-types 
+- these are most relevant methods, when working with numbers (Number, parseFloat, paresInt)
+- the (Number) method used on dates
+
+# number properties 
+  1. MAX_VALUE (returns the largest number possible in javascript)
+  2. MIN_VALUE (returns the smalles number possible in javascript)
+  3. POSITIVE_INFINITY (represents infinity - returned on overflow)
+  4. NEGATIVE_INFINITY (represents negative infinity - returned on overflow)
+  5. NaN (represents a "Not-a-Number" value)
+  
+# number properties cannot be use on variables 
+- number properties belongs to the javascript's number object wrapper caled (Number)
+- these properties can only be accessed as (Number.MAX_VALUE)
+- using (myNumber.MAX_VALUE), when (myNumber) is a variable, expression, or value, will return (undefined)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+primitive type (string) 
+--------------------------------------------------------------------------------
+# javascript strings are used for storing and manipulating text 
+# a javascript string is zeor or more characters written inside (quotes) 
+  like > var x = "john doe";
+- you can use (single) or (double) quotes 
+  like > var carNameOne = "volvo XC60"; // double quotes 
+  var charNameTwo = 'volvo XC60'; // single quotes 
+- you can use qutes inside a string, as long as they don't match the quotes surrounding the string 
+  like > var strOne = "it's alright"; 
+  var strTwo = "he is called 'johnny'";
+  var strThree = 'he is called "johnny"';
+
+# escape character 
+- because strings must be written within quotes, javascript will misunderstand this string - 
+  like > var x = "we are the so-called "vikings" from the north"; 
+- the string will be chopped to (we are teh so-called"
+- the solution to avoid this problem, is to use the (backslash escape character) 
+- the backslash (\) escape character turns special characters into string characters 
+  > single-quote (\') > '
+  > double-quote (\") > "
+  > backslash (\\) > \
+- the sequence (\") inserts a double-quote in a string, like > var x = "we are the so-called \"vikings\"";
+- the sequence (\') inserts a single-quote in a string, like > var x = 'it\'s alright';
+- the sequence (\\) inserts a backslash in a string, like > var x = "the character \\ is called backslash";
+- six other escape sequences are valid in javascript 
+  > backspace (\b) 
+  > form-feed (\f) 
+  > new-line (\n) 
+  > carriage-return (\r) 
+  > horizontal-tabulator (\t)
+  > vertical-tabulator (\v) 
+- the six escape characters above were originally designed to control (typewriters, teletypes, ad fax machines)
+  they do not make any sense in HTML 
+	
+# breaking long code lines 
+- for best readability, programmers often like to avoid code lines longer than 80 characters 
+- if a javascript statemetn does not fit one line, the best place to break it is after an operator 
+  like > document.getElementById("demo").innerHTML = "hello dolly!"; 
+	
+- you can also break up a code line (within a text string) with a single backslash 
+  like > doucment.getElementById("demo").innerHTML = "hello \
+  Dolly!";
+- note > the (\) method is not the preferred method. it might not have universal support 
+  some browsers do not allow spaces behind the (\) character 
+	
+- a safe way to break up a string, is to use string addition 
+  like > document.getElementById("demo").innerHTML = "hello" + 
+  " dolly!"; 
+- you cannot break up a code line with a backslash 
+  like > document.getElementById("demo").innerHTML = \
+  "hello dolly!";
+	
+# string can be objects 
+- normally, javascript strings are (primitive) values, created from literals. like > var firstName = "john";
+- but strings can also be defined as objects with the keyword (new). like > var firstName = new String("john");
+- example 
+  var x = 'john"; // typeof (x) will return string 
+  var y = new String("john"); // typeof (y) will return object 
+- note > don't create strings as objects. it slows down execution speed 
+  the (new) keyword complicates the code. this can produce some unexpected results 
+- when using the (==) operator, equal strings are equal 
+  like > var x = "john"; var y = new String("john"); // (x == y) is true because (x) and (y) have equal values 
+- when using the (===) operator, equal strings are not equal, because the (===) operator expects equality in 
+  both type and value 
+  like > var x = "john"; var y = new String("john"); // (x === y) is false becasue (x) and (y) have different types 
+- or even worse. objects cannot be compared 
+  like > var x = new String("john"); var y = new String("john"); 
+  // (x == y) is false because (x) and (y) are different objects 
+  like > var x = new String("john"); var y = new String("john"); 
+  // (x === y) is false because (x) and (y) are different objects 
+- note > the difference between (x==y) and (x===y) comparing two javascript objects will (always) return (false)
+
+--------------------------------------------------------------------------------
+string methods 
+--------------------------------------------------------------------------------
+# string methods help you to work with strings 
+# string methods and properties 
+- primitive values, cannot have (properties or methods) because they are not (objects) 
+- but with javascript, (methods and properties) are also available to (primitive) values, because javascript treats 
+  (primitive) values as (objects) when executing (methods and properties) 
+	
+# string length 
+- to find the lenght of a string, use the built-in (length) property 
+- the (length) property returns the lenght of a string 
+  like > var tet = "abcdefghijk";
+  var sln = txt.lenght; 
+	
+# some string operation methods 
+- finding a string in a string 
+- searching for a string in a string 
+- extracting string parts 
+- replacing string content 
+- converting to upper and lower case 
+- string padding 
+- extracting string charactes 
+- property access 
+- converting a string to an array 
+# complete string reference, contains descriptions and examples of all string (properties and methods) 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+RegExp
+--------------------------------------------------------------------------------
+# a regular expression is a sequence of characters that forms a search pattern 
+# the search pattern can be used for (text search) and (text replace) operations 
+# what is a regular expression 
+- a regular expression is a sequence of characters that forms a (serch pattern) 
+- when you search for data in a text, you can use this search pattern to describe what you are searching for 
+- a regular expression can be a single characters, or a more complicated pattern 
+- regular expressions can be used to perform all types of (text search) and (text replace) operations 
+  syntax > /pattern/modifiers;
+  example > var patt = /w3schools/i; 
+	
+- example explained 
+- (/w3schools/i) is a regular expression 
+- (w3schools) is a pattern (to be used in a search) 
+- (i) is a modifier (modifies th esearch to be case-insensitive) 
+
+- regular expression arguments (instead of string arguments) can be used in the methods above 
+- regular expressions can make your search much more powerful (case-insensitive for example) 
+
+# regular expression (modifiers)
+- (modifiers) can be used to perform case-insensitive more global searches 
+  1. (i) - perform case-insensitive matching 
+  2. (g) - perform a global match (find all matches rather than stopping after the first match)
+  3. (m) - perform multiline matching
+	
+# regular expression (patterns)
+- (brackets) are used to find a range of characters 
+  1. [abc] - find any of the characters between the brackets 
+  2. [0-9] - find any of the digits between the brackets 
+  3. (x|y) - find any of the alternatives separated with (|)
+- (metacharacters) are characters with a special meaning 
+  1. (\d) - find a digit 
+  2. (\s) - find a whitespace character 
+  3. (\d) - find a match at the beginning of a word like: (\bWORD), or at the end of a word like: (WORD\b)
+  4. (\uxxx) - find the (unicode) character specified by the (hexadecimal) number (xxx) 
+- (quantifiers) define quantities 
+  1. (n+) - matches any string that contains (at least one n) 
+  2. (n*) - matches any string that contains (zero or more) occurrences of (n) 
+  3. (n?) - matches any string that contains (zero or one) occurrences of (n) 
+
+# using string methods 
+- in javascript, regular expressions are often used with the two (string methods - search() and replace()) 
+- the (search()) method uses an expression to search for a match, and returns the position of th ematch
+- the (replace()) method returns a modified string where the pattern is replaced 
+
+# using string (search()) with a string 
+- the (search()) method searches a string for a specified value and returns the position of the match 
+  like > var str = "visit W3Schools";
+  var n = str.search("W3Schools"); 
+	document.getElementById("demo").innerHTML = n;
+	
+# using string (search()) with a regular expression 
+- use a regular expression to do a case-insensitive search for (w3schools) in a string 
+  like > var str = "visit w3schools";
+  var n = str.search(/w3schools/i);
+  document.getElementById("demo").innerHTML = n;
+	
+# using string (replace() with a string 
+- the (replace()) method replaces a specified value with another value in a string 
+  like > var str = "visit microsoft!";
+  var res = str.replace("microsoft", "w3schools"); 
+  document.getElementById("demo").innerHTML = res; 
+	
+# using string (replace()) with a regular expression 
+- use a case insensitive regular expression to replace microsoft with w3schools in a string - 
+  like > var str = "visit microsoft!";
+  var res = str.replace(/microsoft/i, "w3schools");
+	document.getElementById("demo").innerHTML = res;
+	
+# using the RegExp object 
+- in javascript, the RegExp object is a regular expression object with (predefined properties and methods)
+
+- the (text()) method is a RegExp expression method 
+- it searches a string for a pattern, and returns (true ro false), depending on the result 
+- the following example searches a string for the character ("e") 
+  like > var patt = /e/;
+  patt.text("the best thisgs in life are free!");
+- you don't have to put the regular expression in a variable first. the two lines above can be shortened to one 
+  like > /e/.text("the best things in like are free!");
+
+- the (exec()) method is a RegExp expression method 
+- it searches a string fro a specified patter, and returns the found text as an object 
+- if no match is found, it returns an empty (null) object 
+- the following example searches a string for the character ("e")
+  like > /e/.exec("the best things in life are free!"); 
+	
+- RegExp reference - teh reference contains descriptions and examples of all RegExp (properties and methods) 
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

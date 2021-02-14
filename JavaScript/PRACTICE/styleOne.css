@@ -1,0 +1,10 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+div { 
+	background-color: #CCC;
+	border: groove 1px #888;
+	padding: 15px;
+}

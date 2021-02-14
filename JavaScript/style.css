@@ -1,0 +1,31 @@
+body { background-color: #48A; }
+pre { 
+	margin: 20px; padding: 30px; 
+	border: solid 1px #D28;
+	background: #EEE; color: #444;
+	font-family: Consolas; font-size: 110%; 
+}
+div { 
+	margin: 20px; padding: 20px; 
+	height: 30px;
+	border: solid 1px #D28;
+	background: #EEE; color: #444;
+}
+div a { 
+	float: right; 
+	background-color: #DDD; border: 2px groove #FFF;
+	margin: 0px 5px; padding: 5px 25px;
+	text-decoration: none; font-family: Consolas; font-size: 90%; color: #444;
+}
+div a:hover {
+	background-color: #888;
+	border: 2px groove #999;
+	color: #EEE;
+}
+div h1 {
+	width: 40%;
+	margin: 2px 0px;
+	padding: 0px;
+	float: left;
+	font-family: Consolas; font-size: 130%; color: #888;
+}

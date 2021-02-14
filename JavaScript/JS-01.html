@@ -1,0 +1,164 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > introduction</h1>
+<a href="JS-02.html">Next</a><a href="#">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+introduction
+--------------------------------------------------------------------------------
+# javascript is the world's most popular programming language 
+- javascript is the programming language of the web 
+- javascript is easy to learn 
+- this tutorial will teach you javascript from basic to advanced 
+
+# why study javascript - 
+- javascript is one of the 3 languages all web developers must learn - 
+- HTML to define the content of web pages 
+- css to specify the layout of web pages 
+- javascript to program the behavior of web pages 
+
+# commonly asked questions - 
+- how do i get javascript 
+- where can i download javascript 
+- is javascritp free 
+-- you don't have to get or download javascript 
+-- javascript is already running in your browser on your computer, on your tablet, and on your smart-phone 
+-- javascript is free to use for everyone 
+
+# we recommend reading this tutorial, in the sequence listed in the menu 
+# examples are better than 1000 words. 
+  examples are often easier to understand than text explanations 
+- if you try all the examples, you will learn a lot about javascript, in a very short time 
+# in this tutorial, learning speed is your choice 
+  everything is up to you 
+	if you are struggling, take a break, or re-read the material 
+- always make sure you understand all the examples 
+- the only way to become a clever programmer is to - practice and code more and more 
+# W3Schools maintains a complete javascript reference, including all (HTML and Browser) objects 
+- the reference contains examples for all (properties, methods, and events) 
+- the reference is continuously updated according to the latest web standards 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+what javascript can do 
+--------------------------------------------------------------------------------
+# javascript can change html content 
+- one of many javascript html methods is (getElementById())
+- we can finds an html element with (id) attribute value as the parameter of (getElementById()) method 
+- then can changes the element contnet by (innerHTML) property 
+- javascript accepts both double and singel quotes 
+- example > document.getElementById('demo').innerHTML = 'Hello JavaScript';
+
+# javascript can change html attribute values 
+- like, the (src) attribute value of (img) tags 
+- example > document.getElementById("demo").src="image.gif"
+
+# javascript can change html styles or css 
+- changing the style of an HTML element, is a variant of changing an HTML attribute 
+- example > document.getElementById("demo").style.fontSize = "35px";
+
+# javascript can hide/show html element 
+- showing/hiding HTML elements can be done by changing the (display) property value of css 
+= example > document.getElementById('demo').style.display = "block|none"
+--------------------------------------------------------------------------------
+about javascript 
+--------------------------------------------------------------------------------
+# javascript and java are completely different lnaguages, both in concept and design 
+# javascript was invented by brendan eich in 1995, and become an ECMA standard in 1997
+# ECMA-262 is the official name of ht estandard, ECMAScript is the official name of the lnaguage 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+the (script) tag 	
+--------------------------------------------------------------------------------
+# in HTML, JavaScript code is inserted between (script) and (/script) tags 
+- older javascript examples may use a type attribute (script type="text/javascript")
+- the (type) attribute is not required, javascript is the default scripting language in HTML 
+# example - 
+  < script > 
+	document.getElementById("demo").innerHTML = "javascript output" 
+	< / script > 
+	
+--------------------------------------------------------------------------------
+javascript functions and events 
+--------------------------------------------------------------------------------
+# a javascript (function) is a block of javascript code, that can be executed when called for 
+- a javascript function can be called when an event occurs, like when the user clicks a button 
+
+--------------------------------------------------------------------------------
+javascript in (head/body) 
+--------------------------------------------------------------------------------
+# you can place any number of scripts in an HTML document 
+# scripts can be placed in the (body) or in the (head) section of an HTML page, or in both 
+# placing scripts at the bottom of the (body) element improves the display speed, because script 
+  interpretation slows down the display
+	
+--------------------------------------------------------------------------------
+external javascript 
+--------------------------------------------------------------------------------
+# scripts can also be placed in external files 
+- external scripts are practical when the same code is used in many different web pages 
+- javascript files have the file extension (.js) 
+- to use an external script, put the name of the script file in the (src) attribute of a (script) tag
+# you can place an external script reference in (head) or (body) as you like 
+- the script will behave as if it was located exactly where the (script) tag is located 
+# externla scripts cannot contain (script) tags 
+
+# externla javascript advantages - 
+# placing scripts in externla files has some advantages 
+- it separates HTML and code 
+- it makes HTML and JavaScript easier to read and maintain 
+- cached JavaScript files can speed up page loads 
+# to add several script files to one page - use several (script) tags 
+
+# external references - 
+- external scripts can be referenced with a full URL or with a path relative to the current web page 
+- external script (url) reference (script src="url")
+- external script (located in a specified folder on the current web site) reference (script src="/js/script.js")
+- external script (located in the same folder as the current page) reference (script src="script.js")
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+javascript output 
+--------------------------------------------------------------------------------
+# javascript can display data in different ways - 
+- writing into an HTML element, using (innerHTML) 
+- writing into the HTML ouput using (document.write())
+- writing into an alert box, using (window.alert())
+- writing into the browser console, using (console.log())
+
+# javascript does not have any print object or print methods 
+- you cannot access output devices from javascript 
+- the only exception is that you can call the (window.print()) method in the browser to print the content 
+  of the current window 
+- like : < button onclick="window.print()">print this page</ button >
+
+# using innerHTML 
+- to access an HTML element, javascript can use the (document.getElementById(id)) method 
+- to (id) attribute defines the HTML element, the (innerHTML) property defines the HTML content 
+- note - changing the (innerHTML) property of an HTML element is a common way to display data in HTML 
+
+# using document.write() 
+- for testing purposes, it is convenient to use (document.write())
+- like : < script > document.write(5 + 6); </ script >
+- using (document.write()) after an HTML document is loaded, will delete all existing HTML 
+
+# using window.alert() 
+- you can use an (alert box) to display data 
+- like : < script > window.alert(5 + 6); </ script >
+
+- you can skip the (window) keyword
+- in javascript, the (window) object is the global scope object, that means that variables, properties, and 
+  methods by default belong to window object. this also means that specifying (window) keyword is optional
+- like : < script > alert(5 + 6); </ script >
+
+# using console.log() 
+- for debugging purposes, you can call the (console.log()) method in the browser to display data 
+- like : < script > console.log(5 + 6); </ script >
+</pre>

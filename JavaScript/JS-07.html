@@ -1,0 +1,221 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > variables and scope : part-two</h1>
+<a href="JS-08.html">Next</a><a href="JS-06.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+javascript scope 
+--------------------------------------------------------------------------------
+# scope determines the accessibility (visibility) of variables 
+- in javascript there are two types of scope - local scope and global scope 
+- scope determines the accessibility (visibility) of these variables 
+
+# javascript (function) scope 
+- javascript thas function scope - each function creates a new scope 
+- variables defined inside a function are not accessible (visible) from outside the function 
+
+# local javascript variables 
+- variables declared within a javascript function, become (LOCAL) the the function 
+- local variables have (function scope) - they can only be accessed from within the function 
+  like > function funcOne() { var carName = "Volvo"; } 
+- since local variables are only recognized inside their functions, variables with the same name can be used in 
+  different functions 
+- local variables are created when a function starts, and deleted when the function is completed 
+
+# global javascript variables 
+- a variable declared outside a function, becomes (global) 
+- a global variable has (global scope) - all scripts and functions on a web page can access it 
+  var carName = "Volvo";	// code here can use carName 
+	function funcOne() {		// code here can also use carName } 
+	
+# javascript variables 
+- in javascript, objects and functions are also variables 
+- scope determines the accessibility of variables, objects, and functions from different parts of the code 
+
+# automatically global 
+- if you assign a value to a variable that has not been declared, it will automatically become a (global) variable 
+- this code example will declare a global variable (carName), even if th evalue is assigned inside a function 
+- this code example will declare a global variable (carName), even if th evalue is assigned inside a function 
+  funcOne();
+	// code here can use carName 
+	function funcOne() { carName = "Volvo"; } 
+	
+# strict mode 
+- all modern browsers support running javascript in (strict mode) 
+- in (strict mode), undeclared variables are not automatically global 
+
+# global variables in HTML 
+- with javascript, the global scope is the complete javascript environment 
+- in HTML, the (global scope) is the window object. all (global) variables belong to the window object 
+  var carName = "Volvo";
+	// code here can use window.carName
+	
+# warning 
+- do not create (global) variables unless you intend to 
+- your (global) variables (or functions) can overwrite window variables (or functions) 
+- any function, including th ewindow object, can overwrite your (global) variables and functions 
+
+# lifetive of javascript variables 
+- the lifetime of a javascript variable starts when it is declared 
+- local variables are declared when the function is completed 
+- in a web browser, (global) variables are deleted when you close the browser window (or tab) 
+
+# function arguments 
+- function arguments (parameters) work as local variables inside functions 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+hoisting 
+--------------------------------------------------------------------------------
+# hoisting is javascript's default behavior of moving declarations to the top 
+# javascript declarations are hoisted 
+- in javascript, a variable can be declared after it has been used 
+- in other words, a variable can be used before it has been declared 
+- example 1 gives the same result as example 2
+
+  x = 5; 		// assign 5 yo (x) 
+  elem = document.getElementById("demo"); 	// find an element 
+  elem.innerHTML = x; 		// display x in the element 
+  var x; 		// declare (x) 
+	
+  var x; 		// declare (x) 
+	x = 5; 		// assign 5 yo (x) 
+  elem = document.getElementById("demo"); 	// find an element 
+  elem.innerHTML = x; 		// display x in the element 
+  
+- to understand this, you have to understand the term (hoisting) 
+- hoisting is javascript's default behavior of moving all declarations to th etop of the current scope 
+  (to the top of the current script of the current function) 
+	
+# the (let) and (const) keywords 
+- variables defined with (let) and (const) are hoisted to the top of the block, but nto initialized 
+- meaning - the block of code is aware of the variable, but it cannot be used until it has been declared 
+- using a (let) variable before it is declared will result in a (ReferenceError) 
+- the varaible is in a (temporal dead zone) from the start of the block until it is declared 
+  like > carName = "volvo"; let carName;
+- using a (const) variable before it is declared, is a syntax error, so the code will simply not run 
+  like > carName = "volvo"; const carName; 
+	
+# javascript initializations are not hoisted 
+- javascript only hoists declarations, not initializations 
+- example  does not give the same result as example 2 
+
+  var x = 5; // initialize x 
+  var y = 7; // initialize y 
+  elem = document.getElementById("demo"); // find an element 
+  elem.innerHTML = x + " " + y; // display x and y 
+	
+  var x = 5; // initialize x 
+  elem = document.getElementById("demo"); // find an element 
+  elem.innerHTML = x + " " + y;  // display x and y 
+  var y = 7; // initialize y 
+	
+- does it make sense that (y) is undefined in the last example? 
+- this is because only the declaration (var y), not ht einitialization (=7) is hoisted to the top 
+- because of hoisting, (y) has been declared before it is used, but because initializations are not hoisted, 
+  the value of (y) is undefined 
+- example 2 is the same as writing - 
+  
+  var x = 5; // initialize x 
+  var y; // declare y 
+  elem = document.getElementById("demo"); // find an element 
+  elem.innerHTML = x + " " + y; // display x and y 
+  y = 7; // assign 7 to y
+	
+# declare you variables at the top 
+- hoisting is (to many developers) an unknown or overlooked behavior of javascript
+- if a developer doesn't understand hoisting, programs may contain bugs (errors) 
+- to avoid bugs, always declare all variables at the beginning of every scope 
+- since this is how javascript interprets the code, it is always a good rule 
+- note > javascript in (strict) mode doest not allow variables to be used if they are not declared 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+javascript (strict) mode 
+--------------------------------------------------------------------------------
+# ("use strict";) defines that javascript code should be executed in (strict) mode 
+# the ("use strict") directive 
+- the ("use strict") directive was new in ECMAScript version 5 
+- it is not a statement, but a literal expression, ignored by earlier versions of javascript
+- the purpose of ("use strict"0 is to indicate that the code should be executed in (strict) mode 
+- with (strict) mode, you can not, for example, use undeclared variables 
+- all modern browsers support ("use strict") except IE9 and lower - 
+  chrome 13 | IE10 | mozilla 4 | safari 6 | opera 12.1 
+	the numbers in the table specify the first browser version that fully supports the ("use strict") directive 
+- note > you can use (strict) mode in all you programs. it helps you to write cleaner code, 
+  like preventing you from using undeclared variables 
+- note > ("use strict") is just a string, so IE9 will not throw an error even if it does not understand it 
+
+# declaring (strict) mode 
+- (strict) mode is declared by adding ("use strict";) to the beginning of a script or a function 
+- declared at the beginning of a script, it has global scope (all code in the script will execute in (strict) mode)
+  like > "use strict"; x = 3.14; // this will cause an error because (x) is not declared 
+  like > "use strict"; funcOne(); 
+	       function funcOne() { y = 3.14; // this will also cause an error because (y) is not declared } 
+  like > x = 3.14; // this will not cause an error 
+	       funcOne();
+         function funcOne() { "use strict"; y = 3.14; // this will cause an error }
+				 
+# the ("use strict";) syntax 
+- the syntax, for declaring (strict) mode, was designed to be compatible with older versions of javascript
+- compiling a numeric literal (4 + 5;) or a string literal ("John Deo";) in a javascript program has no 
+  side effects. it simply compiles to a non existing variable and dies 
+- so ("use strict";) only matters to new compilers that understand the meaning of it 
+
+# why (strict) mode 
+- (strict) mode makes it easier to write (secure) javascript
+- (strict) mode changes previously accepted (bad syntax) into real errors 
+- as an example, in normal javascript, mistyping a variable name creates a new global variable. 
+  in (strict) mode, this will throw an error, making it impossible to accidentally create a global variable 
+- in normal javascript, developer will not receive any error feedback assigning values to non-writable properites
+- in (strict) mode, any assignment to a non-writable property, a getter-only property, a non-existing property, 
+  a non-existing variable, or a non-existing object, will throw an error 
+	
+# not allowed in (strict) mode 
+- using a variable, without declaring it, is not allowed - 
+  like > "use strict"; x = 3.15; // this will cause an error 
+- object are variables too. using an object, without declaring it, is not allowed - 
+  like > "use strict"; x = {P1:10, P2:20}; // this will cause an error 
+- deleting a variable (or object) is not allowed 
+  like > "use strict"; var x = 3.15; delete x; // this will cause an error 
+- deleting a function is not allowed 
+  like > "use strict"; function x(P1, P2) { ... }; delete x; // this will cause an error 
+- duplicating a parameter name is not allowed - 
+  like > "use strict"; function x(P1, P2) { ... }; // this will casue an error 
+- octal numeric literals are not allowed 
+  like > "use strict"; var x = 010; // this will cause an error 
+- octal escape characters are not allowed 
+  like > "use strict"; var x = "\010"; // this will cause an error 
+- writing to a read-only property is not allowed 
+  like > "use strict" var obj = {}; Object.defineProperty(obj, "x", {value:0, writable:false});
+	       obj.x = 3.4; // this will cause an error 
+- writing to a get-only property is not allowed 
+  like > "uise strict"; var obj = {get x() { return 0} };
+	       obj.x = 3.15; // this will cause an error 
+- deleting an undeletable property is not allowed 
+  like > "use strict"; delete Object.prototype; // this will cause an error 
+- the word (eval) cannot be used as a variable 
+  like > "use strict"; var eval = 3.15; // this will cause an error 
+- the word (arguments) cannot be used as a variable 
+  like > "use strict"; var arguments = 3.15; // this will cause an error  
+- the (with) statement is not allowed 
+  like > "use strict"; with (Math){x = cos(2)}; // this will cause an error 
+- for security reasons, (eval()) is not allowed to create variables in the scope from which it was called 
+  like > "use strict"; eval("var x = 2"); alert (x); // this will cause an error 
+- the (this) keyword in functions behaves differently in (strict) mode 
+  the (this) keyword referes to the object that called the function 
+  if the object is not specified, functions in (strict) mode will return (undefined) and functions in normal mode 
+  will return the (global) object (window) 
+  like > "use strict"; function funcOne() { alert(this); // will alert "undefined" } funcOne();
+	
+# future proof 
+- keywords reserved for future javascript versions can NOT be used as variable names in (strict) mode 
+  these are - (implements | interface | let | package | private | protected | public | static | yield) 
+  like > "use strict"; var pblic = 1500; // this will cause an error 
+- watch out > the ("use strict") directive is only recognized at the (beginning) of a script or a function 
+</pre>

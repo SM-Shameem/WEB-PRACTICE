@@ -1,0 +1,148 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > syntax</h1>
+<a href="JS-03.html">Next</a><a href="JS-01.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+syntax
+--------------------------------------------------------------------------------
+# javascript syntax is the rules, how javascript programs are constructed 
+
+# javascript values - 
+- the javascript soyntax defines two types of values : fixed-values and variable-values 
+- fixed-values are called literals 
+- variable-values are called variables 
+
+# javascript literals - 
+- the two most important syntax rules for fixed values are : numbers and strings
+- numbers are written with or without decimals 
+- strings are text, written within double or single quotes 
+
+# javascript variables - 
+- in a programming language, variables are used to store data values 
+- javascript uses the (var) keyword to declare variables 
+- an equal sign is used to assign values to variables 
+
+# javascript operators - 
+- javascript uses arithmetic operators to compute values, like (+, -, *, /)
+- javascript uses an assignment operator to assign values to variables, like (=)
+
+# javascript expressions - 
+- an expression is a combination of values, variables, and operators, which computes to a value 
+- the computation is called an evaluation 
+- expressions can also contain variable values 
+- the values can be of various types, such as numbers and strings 
+
+# javascript keywords - 
+- javascript keywords are used to identify actions to be performed
+  like, the (var) keyword tells the browser to create variables 
+  
+# javascript comment - 
+- not all javascript statements are executed 
+- code after double slashes (//) or between (/* and */) is treated as a comment 
+- comments are ignored, and will not be executed 
+
+# javascript identifiers 
+- identifiers are names 
+- in javascript, identifiers are used to name variables (and keywords, and functions, and labels) 
+- the rules for legal names are much the same in most programming languages 
+- in javascript, the first character must be a letter, or an underscore(_), or a dollar sign ($)
+- subsequent characters may be letters, digits, underscores, or dollar signs 
+- number are not allowed as the first character. 
+  this way javascript can easily distinguish identifiers from numbers 
+  
+# javascript is case-sensitive 
+- all javascript identifiers are case-sensitive 
+- javascript does not interpret (VAR or Var) as the keyword (var) 
+
+# javascript anc camel case 
+- historically, programmers have used different ways of joining multiple words into one variable name 
+- hyphens are not allowed in javascript, they are reserved for subtractions 
+- using (underscore), like, (firs_name, last_name) 
+- using (upper camel case/pascal case), like, (FirstName, LastName)
+- using (loser camel case), like, (firstName, lastName)
+  javascript programmers tend to use camel case that starts with a lowercase letter 
+  
+# javascript character set 
+- javascript uses the (unicode) character set 
+- unicode covers (almost) all the characters, punctuations, and symbols in the world
+
+--------------------------------------------------------------------------------
+statements
+--------------------------------------------------------------------------------
+# javascript programs 
+- a computer program is a list of instructions to be executed by a computer 
+- in a programming language, these programming instructions are called statements 
+- a javascript program is a list of programming statemetns 
+- note : in HTML, javascript programs are executed by the web browser 
+
+# javascript statements 
+- javascript statements are composed of (values, operators, expressions, keywords, and comments)
+- most javascript programs contain many javascript statements 
+- the statements are executed, one by one, in the same order as they are written 
+- javascript programs and javascript statements are often called javascript code 
+
+# semicolons 
+- semicolons separate javascript statements 
+- add a semicolon at the end of each executable statement 
+- when separated by semicolons, multiple statements on one line are allowed 
+- note on the web, you might see examples without semicolons, 
+  ending statements with semicolon is not required, but highly recommended
+  
+# javascript white space 
+- javascript ignores multiple spaces, you can add white space to your script to make it more readable 
+- a good practice is to put spaces around operators 
+
+# javascript line length and line breaks 
+- for best readability, programmers often like to avoid code lines longer than 80 characters 
+- if a javascript statement does not fit on one line, the best place to break it is after an operator - 
+
+# javascript code blocks ]
+- javascript statements can be grouped together in code blocks, inside curly brackets { ... }
+- the purpose of code blocks is to define statements to be executed together 
+  one place yo will find statement grouped together in blocks, is in javascript functions - 
+- note : in this tutorial we use 2 spaces of indentation for code blocks 
+
+# javascript keywords - 
+- javascript statements often start with a (keyword) to identify the javascript action to be performed 
+- javascript keywords are reserved words, and reserved words cannot be used as names for identifiers 
+- here is a list of some of te keywords you will learn about - 
+  01. break (terminates a switch or a loop) 
+  02. continue (jumps out of a loop and starts at the top)
+  03. debugger (stops the execution of javascript, and calls - if available - the debugging function)
+  04. do-while (executes a block of statements, and repeats the block, while a condition is true)
+  05. for (marks a block of statements to be executed, as long as a condition is true)
+  06. function (declares a function)
+  07. if-else (marks a block of statements to be executed, depending on a condition)
+  08. return (exits a function) 
+  09. switch (marks a block of statements to be executed, depending on different cases)
+  10. try-catch (implements error handling to a block of statements)
+  11. var (declares a variable) 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+comments
+--------------------------------------------------------------------------------
+# javascript comments can be used to explain javascript code, and to make it more readable 
+# javascript comments can also be used to prevent execution, when testing alternative code 
+
+# single-line comment - 
+- single line comments start with (//) 
+- any text between (//) and the end of the line will be ignored by javascript (will not be executed) 
+- single-line comment can be use before or at the end of each statement to explain the code 
+
+# multi-line comment - 
+- multi-line comments start with (/*) and end with (*/) 
+- any text between (/* and */) will be ignored by javascript
+- multi-line comment (a comment block) to explain the code 
+- it is most common to use single line comments, block comments are often used for formal documentation 
+
+# using comments to prevent execution 
+- using comments to prevent execution of code is suitable for code testing 
+- adding (//) in front of a code line changes the code lines from an executable line to a comment 
+- multi-line comment block can use to prevent execution of multiple code lines 
+</pre>

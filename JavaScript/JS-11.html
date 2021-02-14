@@ -1,0 +1,448 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > function : part-two</h1>
+<a href="JS-12.html">Next</a><a href="JS-10.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+javascript (arrow) function 
+--------------------------------------------------------------------------------
+# arrow functions were introduced in ES6 
+# arrow function allows us to write shorter function syntax - 
+  like > hello = function() { return "hello world!"; } 
+- with arrow function 
+  like > hello = () => { return "hello world"; } 
+- it gets shorter! if the function has only one statement, and the statement returns a value, 
+  you can remove the brackets and the (return) keyword 
+  like > hello = () => "hello world!"; 
+- note > this works only if the function has only one statemetn 
+- if you have parameters, you pass them inside the parentheses - 
+  like > hello = (val) => "hello " + val; 
+- in fact, if you have only one parameter, you can skip the parentheses as well 
+- arrow function without parentheses 
+  like > hello = val => "hello " + val; 
+	
+# what about (this) 
+- the handling of (this) is also different in arrow functions compared to regular functions 
+- in short, with arrow functions there are no binding of (this) 
+- in regular functions the (this) keyword represented the object that called the function, 
+  which could be the window, the document, a button or whatever 
+- with arrow functions the (this) keyword always represents the object that defined the arrow function 
+- let us take a look at two examples to understand the difference 
+- both examples call a method twice, first when the page loads, and once again when the user clicks a button 
+- the first example uses a regular function, and the second example uses an arrow function 
+- the result shows that the first example returns two different objects (window and button), 
+  and the second example returns the window object twice, because the window object is the owner of the function 
+	
+- with a (regular) function (this) represents the object that calls the function 
+  like > // regular function 
+  hello = function() { document.getElementById("demo").innerHTML += this; } 
+  // the window object calls the function 
+  window.addEventListener("load", hello); 
+  // a button object calls the function 
+  document.getElementById("but").addEventListener("click", hellow);
+	
+- with an (arrow) function (this) represents the owner of the function 
+  like > // arrow function 
+  hello = () => { doucment.getElementById("demo").innerHTML += this; } 
+  // the window object calls the function 
+  window.addEventListener("load", hello); 
+  // a button object calls the function 
+  document.getElementById("but").addEventListener("click", hello);
+	
+- remember these differences when you are working with functions. 
+  sometimes the behaior of regular functions is what you want, if not, use arrow functions 
+	
+# browser support 
+- the following table defines the first browser versions with full support for (arrow) functions in javascript
+  chrome 45 | opera 32 | edge 12 (2015), safari 10 (2016), firefox 22 (2013)   
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+javascript event
+--------------------------------------------------------------------------------
+# HTML events are things that happen to HTML elements 
+# when javascript is used in HTML pages, javascript can react on these events 
+# HTML events 
+- an HTML event can be something the browser does, or something a user does 
+- here are some examples of HTML events - 
+  > an HTML web page has finished loading 
+  > an HTML input field was changed 
+  > an HTML button was clicked 
+- often, when events happen, you may want to do someting 
+- javascript lets you execute code when events are detected 
+- HTML allows event handler attributes, (with javascript code), to be added to HTML elements 
+- with single quotes, like < element event='some javascript' > 
+- with double quotes, like < element event="some javascript" > 
+- in the following example an (onclick) attribute (with code), is added to a < button > element 
+  like > < button onclick="document.getElementById('demo').innerHTML = Date()" > time </ button > 
+- in the example above, the javascript code changes the content of the element with (id="demo")
+- in the next example, the code changes the content of its own element (using this.innerHTML) 
+  like > < button onclick="this.innerHTML = Date()" > time </ button > 
+- note > javascript code is often several lines long. it is more common to see event attributes calling functions 
+  like > < button onclick="displayDate()"> time </ button >
+	
+# common HTML events 
+- here is a list of some common HTML events - 
+  1. onchange (an HTML element has been changed) 
+  2. onclick (the user clicks an HTML element) 
+  3. onmouseover (the user moves the mouse over an HTML element) 
+  4. onmouseout (the user moves the mouse away from an HTML element) 
+  5. onkeydown (the user pushes a keyw=board key) 
+  6. onload (the browser has finished loading the page) 
+- follow javascript reference HTML-DOM events 
+
+# what can javascript do 
+- event handlers can be used to handle and verify user input, user actions, and browser actions - 
+  > things that should be done every timne page loads 
+  > things that should be done when the page is closed 
+  > action that should be performed when a user clicks a button 
+  > content that should be verified when a user inputs data 
+  > and more -- 
+- many, different methods can be used to let javascript work with events - 
+  > HTML event attributes can execute javascript code directly 
+  > HTML event attributes can call javascript functions 
+  > you can assign your own event handler functions to HTML elements 
+  > you can prevent events from beign sent or being handled 
+  > and more .. 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+Async - JS Callbacks
+--------------------------------------------------------------------------------
+# javascript callbacks 
+- a callback is a function passed as an argument to another function 
+- this technique allows a function to call another function 
+- a callback function can run after another function has finished 
+
+# function sequence 
+- javascript functions are executed in the sequence they are called. not in the sequence they are defined 
+- this example will end up displaying "goodbye"
+  like > function funcOne() { myDisplayer("hello"); }
+  function funcTwo() { myDisplayer("goodbye"); }
+  funcOne(); funcTwo(); 
+- this example will end up displaying "hello"
+  like > function funcOne() { myDisplayer("hello"); }
+  function funcTwo() { myDisplayer("goodbye"); }
+  funcOne(); funcTwo(); 
+  
+# sequence control 
+- sometimes you would like to have better control over when to execute a function 
+- suppose you want to do a calculation, and then display the result 
+- you could call a calculator function (myCalculator), save the result, and then call another function 
+  (myDisplayer) to display the result 
+  like > function myDisplayer(some) { document.getElementById("demo").innerHTML = some; }
+  function myCalculator(num1, num2) { let sum = num1 + numb2; return sum; }
+  let result = myCalculator(5, 5); 
+  myDisplayer(result);
+- or, you could call a calculator function (myCalculator), and let the calculator function call the display
+  function (myDisplayer) 
+  like > function myDisplayer(some) { document.getElementById("demo").innerHTML = some; }
+  function myCalculator(num1, num2) { let sum = num1 + num2; myDisplayer(sum); }
+  myCalculator(5, 5); 
+- the problem with the first example above, is that you have to call two functions to display the result 
+- the problem with the second example, is that you cannot prevent the calculator function from displaying 
+  the result 
+- now it is time to bring in a callback 
+
+# javascript callbacks 
+- note > a callback is a function passed as an argument to another function 
+- using a callback, you could call the calculator function (myCalculator) with a callback, and let the 
+  calculator function run the callback after the calculation is finished 
+  like > function myDisplayer(some) { document.getElementById("demo").innerHTML = some; }
+  function myCalculator(num1, num2, myCallback) { let sum = num1 + num2; myCallback(sum); }
+  myCalculator(5, 5, myDisplayer);
+- in the example above, (myDisplayer) is the name of a function 
+- it is passed to (myCalculator()) as an argument 
+- note > when you pass a function as an argument, remember not to use parenthesis 
+  right: myCalculator(5, 5, myDisplayer); 
+  wrong: myCalculator(5, 5, myDisplayer());
+  
+# when to use a callback 
+- the examples above are not very exciting 
+- they are simplified to teach you the callback syntax 
+- where callbacks really shine are in asynchronous functions, where one function has to wait for another function 
+  (like waiting for a file to load)
+- asynchronous functions are covered in the next chapter 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+Async - JS Asynchronous
+--------------------------------------------------------------------------------
+# asynchronous javascript
+- functions running in parallel with other functions are called asynchronous 
+- a good example is javascript setTimeout() 
+
+# asynchronous javascript
+- the examples used in the previous chapter, was very simplified 
+- the purpose of the examples was to demonstrate the syntax of callback functions 
+  like > function myDisplayer(some) { document.getElementById("demo").innerHTML = some; }
+  function myCalculator(num1, num2, myCallback) { let sum = num1 + num2; myCallback(sum); }
+  myCalculator(5, 5, myDisplayer); 
+- in the example above, (myDisplayer) is the name of a function 
+- it is passed to (myCalculator()) as an argument 
+- note > in the real world, callbacks are most often used wiht asynchronous functions 
+  a typical example is javascript (setTimeout())
+  
+# waiting for a timeout 
+- when using the javascript function (setTimeout()), you can specify a callback function to be executed on time-out
+  like > setTimeout(myFunction, 3000); 
+  function myFunction() { document.getElementById("demo").innerHTML = "love you"; }
+- in the example above, (myFunction) is used as a callback 
+- the function (the function name) is passed to (setTimeout()) as an argument 
+- 3000 is the number of milliseconds before time-out, so (myFunction()) will be called after 3 seconds 
+- note > when you pass a function as an argument, remember not to use parenthesis 
+  right: setTimeout(myFunction, 3000);
+  wrong: setTimeout(myFunction(), 3000);
+- instead of passing the name of a function as an argument to another function, you can always pass a 
+  whole function instead 
+  like > setTimeout(function() { myFunction("love you"); }, 3000);
+  function myFunction(value) { document.getElementById("demo").innerHTML = value; }
+- in the example above, (function() { myFunction("love you"); } ) is used as a callback. it is a complete function
+  the complete function is passed to (setTimeout()) as an argument 
+- 3000 is the number of milliseconds before time-out, so (myFunction()) will be called after 3 seconds 
+
+# waiting for intervals 
+- when using the javascript function (setInterval()), you can specify a callback function to be executed 
+  for each interval 
+  like > setInterval(myFunctio, 1000);
+  function myFunction() { 
+    let d = new Date(); 
+    document.getElementById("demo").innerHTML = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+  }
+- in the example above, (myFunction) is used as a callback 
+- the function (the function name) is passed to (setInterval()) as an argument 
+- 1000 is the number of milliseconds between intervals, so (myFunction()) will be called every second 
+
+# waiting for files 
+- if you create a function to load an external resource (like a script or a file), you cannot use the content
+  before it is fully loaded 
+- this is the perfect time to use a callback 
+- this example loads a HTML file (mycar.html) and displays the HTML file in a web page, 
+  after the file is fully loaded 
+  like > function myDisplayer(some) { document.getElementById("demo").innerHTML = some; }
+  function getFile(myCallback) { 
+    let req = new XMLHttpRequest(); 
+    req.open('GET', "mycar.html");
+    req.onload = function() { 
+      if (req.status == 200) { myCallback(this.responseText);}
+      else { myCallback("error: " + req.status); }
+    }
+    req.send(); 
+  }
+  getFile(myDisplayer); 
+- in the example above, (myDisplayer) is used as a callback 
+- the function (the function name) is passed to (getFile()) as an argument 
+- below is a copy of (mycar.html) 
+  like > < img src="img_car.jpg" alt="nice car" style="width:100%" >
+  < p >paragraph< / p > 
+  < p >(wikipedia)< / p >
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+Async - JS Pomises
+--------------------------------------------------------------------------------
+# javascript promises 
+- (producing code) is code that can take some time 
+- (consuming code) is code that must wait for the result 
+- a promise is a javascript object that links producing code and consuming code 
+
+# javascript promise object 
+- a javascript promise object contains both the producing code and calls to the consuming code 
+  like > let myPromise = new promise(function(myResolve, myReject) {
+    // "producing code" (may take some time)"
+    myResolve(); // when successful 
+    myReject(); // when error 
+  });
+  // "consuming code" (must wait for a fulfilled promise) 
+  myPromise.then(
+    function(value) { // code if successful }, 
+    function(error) { // code if soem error }    
+  );
+- when the executing code obtains the result, it should call one of the two callbacks 
+  > call : myResolve(result value) > result : success
+  > call : myReject(error object)  > result : error 
+  
+# promise object properties 
+- a javascript promise object can be (pending | fulfilled | rejected) 
+- the promise object supports two properties (state and result) 
+- while a promise object is pending (working), the resutl is undefined 
+- when a promise object is fulfilled, ther resutl is a value 
+- when a promise object is (rejected) the result is an error object 
+  > state : pending   > result : undefined 
+  > state : fulfilled > result : a result value 
+  > state : rejected  > result : an error object 
+- note > you cannot access the promise properties (state and result) 
+  you must use a promise method to handle promises 
+  
+# promise how to 
+- here is how to use a promise 
+  like > myPromise.then(
+    function(value) { // code if successful },
+    function(error) { // code if some error }
+  );
+- note > promise.then() takes two arguments, a callback for success and another for failure 
+  both are optional, so you can add a callback for success or failure only 
+  like > function myDisplayer(some) { document.getElementById("demo").innerHTML = some; }
+  let myPromise = new Promise(
+    function(myResolve, myReject) { 
+      let x = 0; 
+      // the producing code (this may take some time) 
+      if(x == 0) { myResolve("ok"); }
+      else { myReject("Error"); }    
+  });
+  myPromise.then(
+    function(value) { myDisplayer(value); },
+    function(error) { myDisplayer(error); }
+  );
+  
+# promise examples 
+- to demonstrate the use of promises, we will use the callback examples from the previous chapter 
+  > waiting for a timeout 
+  > waiting for a file 
+  
+- waiting for a timeout (example using callback)
+  like > setTimeout(function() { myFunction("love you"); }, 3000);
+  function myFunction(value) { document.getElementById("demo").innerHTML = value; }
+- waiting for a timeout (example using promise)
+  like > let myPromise = new Promise(function(myResolve, myReject) { 
+    setTimeout(function() { myResolve("love you"); }, 3000);
+  });
+  myPromise.then(function(value) {
+    document.getElementById("demo").innerHTML = value; 
+  });
+  
+- waiting for a file (example using callback) 
+  like > function getFile(myCallback) { 
+    let req = new XMLHttpRequest(); 
+    req.open('GET', "mycar.html");
+    req.onload = function() { 
+      if(req.status == 200) myCallback(req.responseText); 
+      else myCallback("error: " + rq.status);
+    }
+    req.send();
+  }
+  getFile(myDisplayer); 
+- waiting for a file (example using promise) 
+  like > let myPromise = new Promise(function(myResolve, myReject) {
+    let req = new XMLHttpRequest(); 
+    req.open('GET', "mycar.htm");
+    req.onload = function() {
+      if(req.status = 200) myResolve(req.response);
+      else myReject("File not Found");
+    };
+    req.send();
+  });
+  myPromise.then(
+    function(value) { myDisplayer(value); },
+    function(error) { myDisplayer(error); }
+  );
+  
+# browser support 
+- ECMAScript 2015, also known as ES6, introduced the javascript promise object 
+- the following table defines the first browser version with full support for promise objects 
+  chrome 33 | firefox 29 | safari 7.1 | opera 20 (2014), edge 12 (2015)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+Async - JS Async/Await
+--------------------------------------------------------------------------------
+# javascript Async 
+- (async and await) make (promises) easier to write 
+- (async) makes a function return a (promise) 
+- (await) makes a function wait for a (promise) 
+
+# async syntax 
+- the keyword (async) before a function makes the function return a (promise) 
+  like > async function myFunction() { return "hello"; }
+  is the same as > 
+  async function myFunction() { return Promise.resolve("hello"); }
+- here is how to use the (promise) 
+  like > myFunction().then( 
+    function(value) { // code if successful },
+    function(error) { // code if some error }
+  );
+- example 
+  async function myFunction() { return "hello"; }
+  myFunction().then(
+    function(value) { myDisplayer(value); }, 
+    function(error) { myEisplayer(error); } 
+  );
+- example, or simpler, since you expect a normal value (a normal response, not an error) 
+  async function myFunction() { return "hello"; }
+  myFunction().then(function(vale) {myDisplayer(value); }, );
+  
+# await syntax 
+- the keyword (await) before a function makes the function wait for a promise 
+  like > let value = await promise; 
+- the (await) keyword can only be used inside an (async) function 
+- example, let's go slowly and learn how to use it, 
+- basic syntax > 
+  async function myDisplay() { 
+    let myPromise = new Promise(function(myResolve, myReject) { 
+      myResolve("love you");
+    });
+    document.getElementById("demo").innerHTML = await myPromise; 
+  }
+  myDisplay(); 
+- waiting for a timeout > 
+  async function myDisplay() {
+    let myPromise = new Promise(function(myResolve, myReject) {
+      setTimeout(function() { myResolve("love you"); }, 3000);
+    });
+    document.getElementById("demo").innerHTML = await myPromise;
+  }
+  myDisplay(); 
+- waing for a file > 
+  async function getFile() {
+    let myPromise = new Promise(function(myResolve, myReject) { 
+      let req = new XMLHttpRequest(); 
+      req.open('GET', "mycar.html");
+      req.onload = function() { 
+        if(req.status == 200) myResolve(req.response); 
+        else myResolve("file ont found");
+      };
+      req.send();
+    });
+    document.getElementById("demo").innerHTML = await myPromise; 
+  }
+  getFile();
+  
+# browser support 
+- ECMAScript 2017 introduced the javascript keywords (async) and (await) 
+- the following table defines the first browser version with full support for both 
+  chrome 55 | opera 42 (2016), edge 15 | firefox 52 | safari 11 (2017)
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

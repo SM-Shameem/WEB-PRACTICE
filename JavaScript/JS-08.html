@@ -1,0 +1,269 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > conditional statements : part-one</h1>
+<a href="JS-09.html">Next</a><a href="JS-07.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+conditional statements
+--------------------------------------------------------------------------------
+# if-else and else-if 
+- conditional statement are use to perform different actions based on different conditions 
+- very often when you write code, you want to perform different actions for different decisions 
+- you can use conditional statements in your code to do this 
+- in javascript we have two types of conditional statement (if and switch) - 
+  1. use (if) to specify a block of code to be executed, if a specified condition is true 
+  2. use (else) to specify a bolck of code to be executed, if the same condition is false 
+  3. use (else if) to specify a new condition to test, if the first condition is false 
+  4. use (switch) to specify many alternative blocks of code to be executed 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+the (if) statement
+--------------------------------------------------------------------------------
+# use the (if) statement to specify a block of javascript code to be executed if a condition is true 
+- note > note that (if) is in losercase leters. uppercase letters (If or IF) will generate a javascript error 
+  if (condition) { block of statement(s) .. ; } 
+	
+# use the (else) statement to specify a block of code ot be executed if the condition is false 
+
+  if (condition) { block of statement(s); .... } 
+  else { block of statement(s); .... } 
+	
+# use the (else if) statement to specify a new condition if the first condition is false 
+
+  if (conditionOne) { block of statement(s); ... } 
+  else if (conditionsTwo) { block of statement(s); ... } 
+  else { block of statement(s); ... } 
+	
+--------------------------------------------------------------------------------
+the (switch) statements 
+--------------------------------------------------------------------------------
+# the (switch) statement is used to perform different actions based on different conditions 
+- use the (switch) statement to select one of many code blocks to be executed 
+
+  switch(expression) { 
+  case 1: block of code(s); ... break;
+  case 2: block of code(s); ... break; 
+  ....
+  default: block of code(s); .. break; 
+  }
+	
+- the switch expression is evaluated once 
+- the value of the expression is compared with th ebalues of each case 
+- if there is a match, the associated block of code is executed 
+- if there is no match, the default code block is executed 
+
+# the (break) keyword 
+- when javascript reaches a (break) keyword, it breaks out of the switch block 
+- this will stop the execution of inside the block 
+- it is not necessary to break the last case in a switch block, the block breaks (ends) there anyway 
+- note > if you omit the (break) statement, the next case will be exeuted even if the evaluation does nto match 
+  the case 
+	
+# the (default) keyword 
+- the (default) keyword specifies the code to run if there is no case match 
+- the (default) case does not have to be the last case in a switch block 
+
+  switch(expression) { 
+  default: block of code(s); ... break;
+  case 1: block of code(s); .... break;
+  ....
+  }
+
+- if (default) is not the last case in the switch block, remember to end the default case with a break 
+
+--------------------------------------------------------------------------------
+some more about (switch) 
+--------------------------------------------------------------------------------
+# common code blocks (switch) 
+- sometimes you will want different switch cases to use the same code 
+
+  switch(new Date().getDay()) {
+  case 1:
+  case 2: 
+  block of code(s); ........
+  break;
+  case 3:
+  case 4: 
+  block of code(s); ........
+  break; 
+  default: block of code(s); ..
+  }
+	
+# switching details 
+- if multiple cases matches a case value, the (first) case is selected 
+- if no matching cases are found, the program continues to the (default) label 
+- if no default label is found, the program continues to the statement(s) (after the switch) 
+
+# strict comparison 
+- by default, switch cases use (strict) comparison (===) 
+- the values must be of the same type of match 
+- a strict comparison can only be true if the operands are of the same type 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+iteration statement
+--------------------------------------------------------------------------------
+# loops can execute a block of code a number of times 
+- loops are handy, if you want to run the same code over and over again, each time with a different value 
+# javascript supports different kinds of loops - 
+- for (loops through a block of code a number of times) 
+- for/in (loops through the properties of an object) 
+- for/of (loops through the values of an iterable object) 
+- while (loops through a block of code while a specified condition is true) 
+- do/while (also loops through a block of code while a specified condition is true) 
+
+--------------------------------------------------------------------------------
+comparing (for) and (while) 
+--------------------------------------------------------------------------------
+# a (while) loop is much the same as a (for) loop, with statement 1 and statemetn 3 omitted 
+- the loop in this example uses a (for) loop to collect the car names from the cars array 
+
+  var cars = [ "BMW", "Volvo", "Saab", "Ford"];
+  var i =0; var text = ""; 
+  for (; chars[i];) { text += cars[i] + "< br / >"; i++; } 
+
+- the loop in this example wuse a (while) loop to collect the car names from the cars array 
+  
+  var cars = [ "BMW", "Volvo", "Saab", "Ford" ]; 
+  var i=0; 
+  var text = "";
+  while (cars[i]) { text += cars[i] + "< br />"; i++; } 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+the (for) loop
+--------------------------------------------------------------------------------
+# the (for) loop has the following syntax 
+  for (statementOne; statementTwo; statementThree) { block of code(s); .... }
+- statement 1 is executed (one time) before the execution of the code block 
+- statement 2 defines the condition for executing the code block 
+- statement 3 is executed (every time) after the code block has been executed 
+- like > for (i=0; i<5; i++) { block of statement(s); .... } 
+
+# statement 1 
+- normally you will use statement 1 to initialize the variable used in the loop, like (i = 0)
+- this is not always the case, javascript doesn't care. statement 1 is optional 
+- you can initiate many values in statement 1 (separated by comma) 
+  like > for (i=0, len=cars.length, text=""; i<len; i++) 
+- and you can omit statemetn 1 (like when your values are set before the loop starts) 
+  like > var i = 2; var len = char.length; var text = ""; for (; i<len; i++)
+	
+# statement 2 
+- often statement 2 is used to evaluate the condition of the initial variable 
+- this is not always the case, javascript doesn't care. statemetn 2 is also optional 
+- if statemetn 2 returns true, the loop will start over again, if it returns false, the loop will end 
+- note > if you omit statemetn 2, you must provide a (break) inside the loop. 
+  otherwise the loop will never end. this will crash your browser. 
+	
+# statement 3 
+- often statemetn 3 increments the value of the initial variable 
+- this is not always the case, javascript doesn't care, and statemetn 3 is optional 
+- statemetn 3 can do anything like negative increment (i--), positive increment (i=i+15), or anything else 
+- statemetn 3 can also be omitted (like when you increment your values inside the loop) 
+
+--------------------------------------------------------------------------------
+the (for/in) loop 
+--------------------------------------------------------------------------------
+# the javascript (for/in) statement loops through the properties of an object - 
+  
+  var person = { fName: "John", lName: "Doe", age: 25 };
+  var text = "", x; 
+  for (x in person) text += person[x];
+	
+--------------------------------------------------------------------------------
+the (for/of) loop
+--------------------------------------------------------------------------------
+# the javascript (for/of) statement loops throught the values of an iterable objects 
+- (for/of) lets you loop over data structures that are iterable such as (Arrays, Maps, NodeLists, and more) 
+- the (for/of) loop has the following syntax - 
+  for (variable of iterable) 
+- variable - for every iteration the value of the next property is assigned to the variable 
+  variable can be declared with (const, let, or var) 
+- iterable - an object that has iterable properties 
+  
+  var chars ] [ "BMW", "Volvo", "Mini" ]
+  var x; 
+  for (x of cars) doucment.write(x + "< br / >");
+
+- looping over a string 
+
+  var txt = "javascript" 
+  var x; 
+  for (x of txt) document.write(x + "< br / >"); 
+
+--------------------------------------------------------------------------------
+the (while) loop 
+--------------------------------------------------------------------------------
+# loops can execute a block of code as long as a specified condition is true 
+- the (while) loop loops throught a block of code as long as a specified condition is true 
+  while (condition) code of block(s); .... 
+- like > var i = 0; while (i < 10) { statement(s); .. i++; }
+- if you forget to increase variable used in the condition, the loop will never end. this will crash your browser
+
+--------------------------------------------------------------------------------
+the (do/while) loop 
+--------------------------------------------------------------------------------
+# the (do/while) loop is a variant of the while loop.
+  this loop will execute the code block once, before checking if the condition is true, 
+  then it will repeat the loop as long as the condition is true 
+	do { statement(s); .. } while (condition);
+- like > do { statement(s); ... i++; } while (i < 10);
+- do not forget to increase the variable used in the condition, otherwise th eloop will never end 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+the (break) and (continue) statemetns
+--------------------------------------------------------------------------------
+# the (break) statement jumps-out of a loop 
+# the (continue statement jumps-over one iteration in the loop 
+
+# the (break) statement 
+- you have already seen the (break) statement used in an earlier chapter
+  it was used to jump-out of a (switch()) statement 
+- the (break) statement can also be used to jump out of a loop 
+- the (break) statement breaks the loop and continues executing the code after the loop (if any) 
+
+  for (i=0; i<10; i++) {
+    if (i===3) break; 
+    text += "the member is " + i + " < br />";
+  }
+	
+# the (continue) statement breaks one iteration (in the loop), if a specified condition occurs, 
+  and continues with the next iteration in the loop 
+	
+  for (i=0; i<10; i++) {
+    if (i===3) continue;
+    text += "the number is " + i + "< br />";
+  }
+	
+--------------------------------------------------------------------------------
+javascript (labels) 
+--------------------------------------------------------------------------------
+# to label javascript statements you precede the statements with a (label) name and a colon (:)
+  label: statement(s);
+- the (break) and the (continue) statemetns are the only javascript statements that can jump-out-of a code block 
+  break labelName;
+	continue labelname; 
+- the (continue) statement (with or without a label reference) can only be use to (skip one loop iteration) 
+- the (break) statement, without a label reference, can only be used to (jump out of a loop or a swithc) 
+- with a label reference, the (break) statement can be used to (jump out of any code block) 
+ 
+  var cars = ["BMW", "Volvo", "Saab", "Ford"];
+  list: { 
+    text += cars[0] + "< br />";
+    text += cars[1] + "< br />";
+    break list;
+    text += cars[2] + "< br />";
+    text += cars[3] + "< br />"; 
+  }
+	
+- a code block is a block of code between { and } 
+</pre>

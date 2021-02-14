@@ -1,0 +1,276 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > operators : part-one</h1>
+<a href="JS-05.html">Next</a><a href="JS-03.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+operators
+--------------------------------------------------------------------------------
+# the (assignment) operator (=) assigns a value to a variable 
+# the (addition) operator (+) adds numbers is an (arithmetic) operator
+# the (multiplicaation) operator (*) multiplies numbers is an (arithmetic) operator 
+
+# arithmetic operators 
+- addition (+)
+- subtraction (-) 
+- multiplication (*)
+- division (/)
+- modulus or division remainder (%) 
+- increment (++)
+- decrement (--)
+- exponentiation (**) ES2016
+
+# assignment operators 
+- equal-to (=), like > x = y (direct assign a value to a variable)
+- add-equal-to (+=), like > x += y | x = x + y (adds a value to a variable)
+- sub-equal-to (-=), like > x -= y | x = x - y (substract a value to a variable) 
+- mul-equal-to (*=), like > x *= y | x = x * y (multiply a value to a variable)
+- div-equal-to (/=), like > x /= y | x = x / y (devide a value to a variable) 
+- mud-equal-to (%=), like > x %= y | x = x % y 
+- exp-equal-to (**=),like > x **=y | x = x **y
+
+# comparison operators 
+- equal-to (==) 
+- equal value and equal type (===) 
+- not equal (!=) 
+- not equal value or not equal type (!==) 
+- greater-than (>) 
+- less-than (<)
+- greater-than or equal-to (>=)
+- less-than or equal-to (<=) 
+- ternary operator (?) 
+
+# logical operators 
+- logical and (&&)
+- logical or (||) 
+- logical not (!) 
+
+# (type) operators
+- returns the type of a variable (typeof) 
+- returns true if an object is an instance of an object type (instanceof)
+
+# string operator 
+- the (+) operator can also be used to add (concatenate) strings 
+  like, var textOne = "John"; var textTwo = "Deo"; var textThree = textOne + " " + textTwo;
+- the (+=) assignment operator can also be used to add (concatenate) string 
+  like, var textOne = "John "; textOne += "Deo";
+- when used on strings, the (+) operator is called the concatenation operator 
+
+# adding strings and numbers 
+- adding two numbers, will return the sum, but adding a number and a string will retur a string 
+  like > var w = 2 + 4 + 8 + 10 > 24 
+  like > var x = "2" + 4 + 8 + 10 > 24810
+  like > var y = 2 + 4 + 8 + "10" > 1410
+  like > var z = 2 + 4 + "8" + 10 > 6810
+- if you add a number and a string, the result will be a string 
+
+--------------------------------------------------------------------------------
+bitwise operators 
+--------------------------------------------------------------------------------
+
+- bit operators work on 32-bit numbers 
+- any numeric operand in the operation is converted into a 32-bit number 
+  the result is converted back to a javascript number 
+- AND (&) > 5 & 1 (0101 & 0001) > 0001 or 1 
+- OR  (|) > 5 | 1 (0101 | 0001) > 0101 or 5 
+- NOT (~) > ~5    (~0101)       > 1010 or 10 
+- XOR (^) > 5 ^ 1 (0101 ^ 0001) > 0100 or 4 
+
+- Zero fill left shift  (<<)  5 << 1 (0101 << 1) > 1010 or 10 
+- signed right shift    (>>)  5 >> 1 (0101 >> 1) > 0010 or 2
+- zero fill right shift (>>>) 5 >>>1 (0101 >>>1) > 0010 or 2 
+
+- the examples above uses 4-bit unsigned examples. but javascript uses 32-bit signed numbers 
+  because of this, in javascript, (~5) will not return 10, it will return -6 
+- 00000000000000000000000000000101 will return 11111111111111111111111111111010
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+arithemtic operators 
+--------------------------------------------------------------------------------
+# arithmetic operators perform arithmetic on numbers (literals or variables) 
+- a typical arithmetic operation operates on two number or variables or expressions
+  the two numbers can be literals 
+	
+# operators and operands 
+- the numbers (in an arithmetic operation) are called operands 
+- the operation (to be performed between the two operands) is defined by an operator 
+
+# the addition operator (+) adds  numbers 
+# the subtraction operator (-) subtracts numbers 
+# the multiplication operator (*) multiplies numbers 
+# the division operator (/) devides numbers 
+# the modulus operator (%) returns the division remainder 
+- in arithmetic, the division of two integers produces a (quotient) and a (remainder) 
+- in mathematics, the result of a (modulo) operator is the (remainder) of an arithmetic division
+# the increment operator (++) increment numbers 
+# the decrement operator (--) decrements numbers 
+# the exponentiation operator (**) raises the first operand to the power of the second operand 
+  like > var x = 5; var y = x ** 2; > 25
+- the (Math.pow()) produce the same result as (**)
+  like > var x = 5; var y = Math.pow(x,2) > 25
+	
+# operator precedence 
+- operator precedence describes the order in which operations are performed in an arithmetic expression 
+  like > var x = 100 + 50 * 3; 
+- is the result of example above th esame as 150 * 3, or is it the same as 100 + 150
+- is the addition or the multiplication done first ? 
+- as in traditional school mathematics, the multiplication is done first 
+- multiplication (*) and division (/) have higher precedence than adition (+) and subtraction (-) 
+- and (as in school mathematics) the precedence can be changed by using parentheses 
+  like > var x = (100 + 50) * 3; 
+- when using parentheses, the operations inside the parentheses are computed first 
+- when many operations have same precedence (addition and subtraction), they are computed from left to right
+
+# operator precedence values 
+- pale red entries indicates ECMAScript 2015 (ES6) or higher 
+- 20 > ()     > expression grouping (3 + 4)
+
+- 19 > .      > member (person.name)  
+- 19 > []     > member (person["name"]) 
+- 19 > ()     > function-call (myFunction()) 
+- 19 > new    > create (new Date()) 
+
+- 17 > ++     > postfix increment (!++) 
+- 17 > --     > postfix decrement (!--) 
+
+- 16 > ++     > prefix increment (++!) 
+- 16 > --     > prefix decrement (--!) 
+- 16 > !      > logical not (!(x==y))
+- 16 > typeof > type (typeof x) 
+
+- 15 > **     > exponentiation (ES2016) (10 ** 2) 
+
+- 14 > *      > multiplication (10 * 5) 
+- 14 > /      > division (10 / 5) 
+- 14 > %      > division remainder (10 % 5) 
+
+- 13 > +      > addition (10 + 5) 
+- 13 > -      > subtraction (10 - 5) 
+
+- 12 > <<     > shift-left (x << 2) 
+- 12 > >>     > shift-right (x >> 2) 
+- 12 > >>>    > shift-right (unsigned) (x >>> 2) 
+
+- 11 > <      > less-than (x < y) 
+- 11 > <=     > less-than or equal (x <= y) 
+- 11 > >      > greather-than (x > y) 
+- 11 > >=     > greater-than or equal (x >= y) 
+- 11 > in     > property in object ("PI" in Math) 
+- 11 > instanceof > instance of object (instanceof Array)
+
+- 10 > ==     > equal (x == y) 
+- 10 > ===    > strict-equal (x === y) 
+- 10 > !=     > unequal (x != y) 
+- 10 > !==    > strict-unequal (x !== y) 
+
+- 09 > &      > bitwise AND (x & y) 
+- 08 > ^      > bitwise XOR (x ^ y) 
+- 07 > |      > bitwise OR (x | y) 
+- 06 > &&     > logical AND (x && y) 
+- 05 > ||     > logical OR (x || y) 
+- 04 > ?:     > condition (? "Yes" : "No") 
+
+- 03 > +=     > assignment (x += y) 
+- 03 > /=     > assignment (x /= y) 
+- 03 > -=     > assignment (x -= y) 
+- 03 > *=     > assignment (x *= y) 
+- 03 > %=     > assignment (x %= y) 
+- 03 > <<=    > assignment (x <<= y) 
+- 03 > >>=    > assignment (x >>= y) 
+- 03 > >>>=   > assignment (x >>>= y) 
+- 03 > &=     > assignment (x &= y) 
+- 03 > ^=     > assignment (x ^= y) 
+- 03 > |=     > assignment (x |= y) 
+
+- 02 > yield  > pause function (yield x) 
+- 01 > ,      > comma (5, 6) 
+
+- expressions in parentheses are fully computed before the value is used in the rest of the expression 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+assignment operators 
+--------------------------------------------------------------------------------
+# assignment operators assign values to javascript variables 
+- equal-to (=) > x = y (assign value to a variable) 
+- add-equal-to (+=) > x += y | x = x + y (add then assign value to a variable) 
+- sub-equal-to (-=) > x -= y | x = x - y (sub then assign value to a variable) 
+- mul-equal-to (*=) > x *= y | x = x * y (mul then assign value to a variable) 
+- div-equal-to (/=) > x /= y | x = x / y (div then assign value to a variable) 
+- mod-equal-to (%=) > x %= y | x = x % y (mod then assign value to a variable) 
+-             (<<=) > x <<=y | x = x <<y 
+-             (>>=) > x >>=y | x = x >>y 
+-             (>>>=)> x >>>=y| x = x >>>y 
+-             (&=)  > x &= y | x = x & y 
+-             (^=)  > x ^= y | x = x ^ y 
+-             (|=)  > x |= y | x = x | y
+-             (**=) > x **=y | x = x **y
+
+- the (**=) operator is a part of ECMAScript 2016
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+comparison operator 
+--------------------------------------------------------------------------------
+# comparison and logical operators are used to test for (true or false) 
+- comparison operators are used in logical statements to determine equality or difference between 
+  variables or values
+- given that (x = 5), the table below explains the comparison operators 
+- equal-to (==) > x == 8 > false 
+- equal value and type (===) > x === 5 > true | x === "5" > false 
+- not-equal (!=) > x != 8 > true 
+- not equal value and type (!==) > x !== 5 > false | x !== "5" > true 
+- greater-than (>) > x > 8 > false 
+- less-than (<) > x < 8 > true 
+- greater-than or equal-to (>=) > x >= 8 > false 
+- less-than or equal-to (<=) > x <= 8 > true 
+
+# comparison operators can be used in conditional statements to compare values and take action depending on result
+  like > if (age < 18) text = "too young to buy alcohol";	
+	
+--------------------------------------------------------------------------------
+comparing different types 
+--------------------------------------------------------------------------------
+# comparing data of different types may give unexpected results 
+- when comparing a string with a number, javascript will convert the string to a number when doing the comparison
+  an empty string converts to 0. a non-numeric string converts to (NaN) which is always (false) 
+- examples and results 
+- 2 < 12      > true 
+- 2 < "12"    > ture
+- "2" < "12"  > false 
+- "2" > "12"  > true 
+- "2" == "12" > false
+# when comparing two string, "2" will be greater than "12", because (alphabetically) 1 is less than 2 
+# to secure a proper result, variables should be converted to the propert type before comparison 
+
+age = Number(age);
+if (isNan(age)) voteable = "input is not a number";
+else voteable = (age < 18) ? "too young" : "old enough"; 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+logical operators 
+--------------------------------------------------------------------------------
+# logical operators are used to determine the logic between variables or values 
+- given that (x = 6) and (y = 3), the table below explains the logical operators 
+- and (&&) > (x < 10 && y > 1) > is true 
+- or  (||) > (x ==5 || y == 5) > is false 
+- not (!)  > !(x == y) > is true 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+conditional (ternary) operator
+--------------------------------------------------------------------------------
+# javascript also contains a conditional operator that assigns a value to a variable based on some condition 
+  like > variableName = (condition) ? valueOne : valueTwo
+- if the condition is true then valueOne else valueTwo 
+</pre>

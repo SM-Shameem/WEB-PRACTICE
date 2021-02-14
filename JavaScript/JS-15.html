@@ -1,0 +1,106 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > data-types : complex (class)</h1>
+<a href="JS-16.html">Next</a><a href="JS-14.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+javascript (class) fundamental
+--------------------------------------------------------------------------------
+# ECMAScript 2015, also known as ES6, introduced javascript classes 
+# javascript classes are templates for javascript object 
+# class syntax 
+- use the keyword (class) to create a class 
+- always add a method named (constructor()) - 
+  like > class className { constructor() { .... } }
+	like > class car { constructor(name, year) { this.name = name; this.year = year; } } 
+- the example above creates a class named (car) 
+- the class has two initial properties: (name) and (year) 
+- note > a javascript class is not an (object), it is a (template) for javascript (object)
+
+# using a class 
+- when you have a class, you can use the class to crate objects 
+  like > let myCarOne = new car("ford", 2014); 
+  let myCarTwo = new car("audi", 2019); 
+- the example above uses the (car class) to create two (car objects) 
+- note > the (constructor) method is called automatically when a new object is created 
+
+# the (constructor) method 
+- the (constructor) method is a special method - 
+  > it has to have the exact name (constructor) 
+  > it is executed automatically when a new object is created 
+  > it is used to initialize object properties 
+- if you do not define a constructor method, javascript will add an empty constructor method 
+
+# class methods 
+- class methods are created with athe same syntax as object methods 
+- use the keyword (class) to create a class 
+- always add a (constructor()) method 
+- then add any number of methods 
+  like > 
+  class className { 
+  construction() { ... } 
+  methodOne() { ... } 
+  methodTwo() { ... } 
+  ... 
+  methodN() { ... } 
+  }
+	
+- create a class method named (age), that returns the care age - 
+  like > 
+  class car { 
+  constructor(name,year) { this.name = name; this.year = year; } 
+  age() { let date = new Date(); return date.getFullYear() - this.year; } 
+  } 
+	
+	let myCar = new car("ford", 2014);
+  document.getElementById("demo").innerHTML = "my car is " + myCar.age() + " years old."; 
+	
+- can send parameters to class methods 
+like > 
+  class car { 
+  constructor(name,year) { this.name = name; this.year = year; } 
+  age(x) { return x - this.year; } 
+  } 
+	
+  let date = new Date();
+  let year = date.getFullYear(); 
+	
+	let myCar = new car("ford", 2014);
+  document.getElementById("demo").innerHTML = "my car is " + myCar.age(year) + " years old."; 
+
+# browser support 
+- the following table defines the first browser version with full support for classes in javascript
+  chorme 49 | opear 36 | firefox 45 (2016), edge 12 | safari 9 (2015)
+- you will learn a lot more about javascript classes later in this tutorial 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+javascript class
+--------------------------------------------------------------------------------
+
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

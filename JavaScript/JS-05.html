@@ -1,0 +1,154 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1>JS:P01 > operators : part-two</h1>
+<a href="JS-06.html">Next</a><a href="JS-04.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+bitwise operators
+--------------------------------------------------------------------------------
+- AND (&) > sets each bit to 1 if both bits are 1 
+- OR  (|) > sets each bit to 1 if one of two bits is 1 
+- XOR (^) > sets each bit to 1 if only one of two bits is 1 
+- NOT (~) > inverts all the bits 
+
+- zero fill left shift (<<) > shifts left by pushing zeros in from the right and left the leftmost bits fall off 
+- signed right shift   (>>) > shifts right by pushing copies of th eleftmost bit in from the left, and let the 
+                              rightmost bits fall of 
+- zero fill right shift (>>>) > shifts right by pushing zeros in from left, and let rightmost bits fall of shift 
+
+# examples 
+- 5 & 1  (0101 & 0001) > 1  (0001) (AND)
+- 5 | 1  (0101 & 0001) > 5  (0101) (OR)
+- 5 ^ 1  (0101 ^ 0001) > 4  (0100) (XOR)
+- ~5     (~0101)       > 10 (1010) (NOT)
+
+- 5 << 1 (0101 << 1)   > 10 (1010) (zero-fill left-shift)
+- 5 >>>1 (0101 >>> 1)  > 2  (0010) (zero-fill right-shift)
+- 5 >> 1 (0101 >> 1)   > 2  (0010) (signed right-shift)
+
+--------------------------------------------------------------------------------
+javascript uses 32-bits bitwise operands 
+--------------------------------------------------------------------------------
+- javascript stores numbers as 64-bits floating point numbers, but all bitwise operations are performed on 
+  32-bits binary numbers 
+- before a bitwise operation is performed, javascript converts numbers to 32-bits signed integers 
+- after the bitwise operation is performed, the result is converted back to 64-bits javascript numbers 
+- the examples above uses 4-bits unsigned binary numbers. because of this (~5) returns 10 
+  since javascript uses 32-bits signed integers, it will not return 10. it will return -6 
+  00000000000000000000000000000101 (5) 
+  11111111111111111111111111111010 (~5 = -6) 
+- a signed integer uses the leftmost bit as the minus sign 
+
+--------------------------------------------------------------------------------
+converting 
+--------------------------------------------------------------------------------
+# decimal to binary 
+- function dec2bin(dec) { return (dec >>> 0).toString(2); }
+
+# binary to decimal 
+- function bin2dec(bin) { return parseInt(bin, 2).toString(10); }
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+bitwise AND
+--------------------------------------------------------------------------------
+# when a bitwise AND is performed on a pair of bits, it returns 1 if both bits are 1 
+# 1-bit examples				# 4-bits examples
+- 0 & 0 > 0     				- 1111 & 0000 > 0000
+- 0 & 1 > 0     				- 1111 & 0001 > 0001
+- 1 & 0 > 0      				- 1111 & 0010 > 0010
+- 1 & 1 > 1      				- 1111 & 0100 > 0100
+
+# javascript bitwise AND (&) returns 1 only if both bits are 1
+- 5     (00000000000000000000000000000101)
+- 1     (00000000000000000000000000000001) 
+- 5 & 1 (00000000000000000000000000000001) (1)
+
+--------------------------------------------------------------------------------
+bitwise OR
+--------------------------------------------------------------------------------
+# when a bitwise OR is performed on a pair of bits, it returns 1 if one of the bits are 1 
+# 1-bit examples				# 4-bits examples
+- 0 | 0 > 0     				- 1111 & 0000 > 1111
+- 0 | 1 > 1     				- 1111 & 0001 > 1111
+- 1 | 0 > 1      				- 1111 & 0010 > 1111
+- 1 | 1 > 1      				- 1111 & 0100 > 1111
+
+# javascript bitwise OR (|) returns 1 if one of the bits are 1
+- 5     (00000000000000000000000000000101)
+- 1     (00000000000000000000000000000001) 
+- 5 | 1 (00000000000000000000000000000101) (5)
+
+--------------------------------------------------------------------------------
+bitwise XOR
+--------------------------------------------------------------------------------
+# when a bitwise XOR is performed on a pair of bits, it returns 1 if bits are different  
+# 1-bit examples				# 4-bits examples
+- 0 ^ 0 > 0     				- 1111 & 0000 > 0000
+- 0 ^ 1 > 1     				- 1111 & 0001 > 1110
+- 1 ^ 0 > 1      				- 1111 & 0010 > 1101
+- 1 ^ 1 > 0      				- 1111 & 0100 > 1011
+
+# javascript bitwise XOR (^) returns 1 if the bits are different 
+- 5     (00000000000000000000000000000101)
+- 1     (00000000000000000000000000000001) 
+- 5 ^ 1 (00000000000000000000000000000100) (4)
+</pre>
+
+<pre>
+---------------------------------------------------------------------------------
+NOT (~), Zero-Fill left-shift (<<), zero-fill right-shift (<<<), right-shift (>>)
+---------------------------------------------------------------------------------
+# javascript bitwise NOT (~) 
+- 5       (00000000000000000000000000000101)
+- ~5      (11111111111111111111111111111010) (-6)
+
+# javascript (Zero Fill) bitwise left-shift (<<)
+- 5       (00000000000000000000000000000101)
+- 5 << 1  (00000000000000000000000000001010) (10)
+
+# javascript (Sign Preserving) bitwise right-shift (>>)
+- this is a sign preserving right shift. copies of the leftmost bit are pushed in from the left, and the 
+  rightmost bits fall off - 
+- -5      (11111111111111111111111111111011)
+- -5 << 1 (11111111111111111111111111111101) (-3)
+
+# javascript (zero fill) bitwise right-shift (>>>)
+- this is a zero-fill shift. one or more zero bits are pushed in from the left, and the rightmost bits fall off 
+- 5       (00000000000000000000000000000000)
+- 5 <<< 1 (00000000000000000000000000000010) (2)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+binary numbers 
+--------------------------------------------------------------------------------
+# binary numbers with only one bit set is easy to understand 
+- 00000000000000000000000000000001 (1)
+- 00000000000000000000000000000010 (2)
+- 00000000000000000000000000000011 (3)
+- 00000000000000000000000000000100 (4)
+
+- 00000000000000000000000000001000 (8)
+- 00000000000000000000000000010000 (16)
+- 00000000000000000000000000100000 (32)
+- 00000000000000000000000001000000 (64)
+
+# setting a few more bits reveals th ebinary pattern 
+- 00000000000000000000000000010101 (5 > 4 + 1)
+- 00000000000000000000000000001101 (13 > 8 + 4 + 1)
+- 00000000000000000000000000101101 (45 > 32 + 8 + 4 + 1)
+ 
+# javascript binary numbers are stored in two's complement format 
+- this means that a negative number is the bitwise NOT of the number plus 1 
+- 00000000000000000000000000000101 (5)
+- 11111111111111111111111111111011 (-5)
+- 00000000000000000000000000000110 (6)
+- 11111111111111111111111111111010 (-6)
+- 00000000000000000000000000101000 (40)
+- 11111111111111111111111111011000 (-40)
+</pre>
