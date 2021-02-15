@@ -1,159 +1,118 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1>JS:P01 > data-types : complex (object)</h1>
+<h1>JS:P01 > object-types : part-two</h1>
 <a href="JS-15.html">Next</a><a href="JS-13.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-javascript (object) fundamental
+object definitions 
 --------------------------------------------------------------------------------
-# real life objects, properties, and methods 
-- in real life, a car is an object 
-- a car has (properties) like (weight and color), and (methods) like (start and stop) 
-- all cars have the same (properties), but the (property values) differ from car to car 
-- all cars have the same (methods), but the (methods) are performed at different times 
-
 # javascript objects 
-- yo have already learned that javascript variables are containers for data values 
-- this code assigns a (simple value) (Fiat) to a (variable) named car 
-  like > var car = "Fiat";
-- objects are variables too, but objects can contain many values 
-- this code assigns (many values (Fiat, 500, white) to a (variable) named car 
-  like > var car = {type: "Fiat", model:"500", color: "white"}; 
-- the values are written as (name:value) pairs (name and value separated by a colon) 
-- javascript objects are containers for (named values) called (properties or methods)
+- in javascript, objects are king. if you understand objects, you understand javascript 
+- in javascript, almost everything is an object 
+  > booleans can be objects (if defined with the (new) keyword) 
+  > numbers can be objects (if defined with the (new) keyword) 
+  > strings can be objects (if defined with the (new) keyword) 
+  > dates are always objects 
+  > maths are always objects 
+  > regular expressions are always objects 
+  > arrays are always objects
+  > functions are always objects 
+  > objects are always objects 
+- all javascript values, except primitives, are objects 
 
-# object definition 
-- you define (and create) a javascript object with an object literal - 
-  like > var person = {forstName: "John", lastName: "Doe", age: 50, eyeColor: "blue"}; 
-- spaces and line breaks are not important, an object definition can span multiple lines 
-  like > var person = { 
-  firstName: "john", 
-  lastName: "doe", 
-  age: 50, 
-  eyeColor: "blue"
-  };
-	
+# javascript primitives 
+- a (primitive value) is a value that has no properties or methods 
+- a (primitive data type) is data that has a primitive values
+- javascript defines 5 types of primitive data types (string | number | boolean | null | undefined) 
+- primitive values are immutable (they are hard-coded and therefore cannot be changed) 
+- note > if x = 3.14, you can change the value of (x). but you cannot change the value of 3.14 
+  > "hello" (is always string)
+  > 3.14 (is always number)
+  > true (is always true as boolean)
+  > null (is always null/object)
+  > undefined (is always undefined)
+  
+# objects are variables 
+- javascript variables can contain single values, like > var person = "john doe";
+- objects are variables too. but objects can contain many values 
+- the values are written as (name:value) pairs (name and value separated by a colon)
+  like > var person = { firstName:"john", lastName:"doe", age:50, eyeColor:"blue" };
+- note > a javascript objects is a collection of (named values) 
+
 # object properties 
-- the (name:values) pairs in javascript objects are called (properites) 
-
-# accessing object properites 
-- you can access object (properties) in two ways 
-  > objectName.propertryName 
-	like > person.lastName; 
-  > objectName["propertyName"]
-	like > person["lastName"];
-	
+- the named values, in javascript objects, are called (properties) 
+  > firstName (property) > "john" (value)
+  > age (property)       > 50 (value)
+  > eyeColor (properyt)  > "blue" (value)
+- objects written as (name:value) pairs are similar to 
+  > associative arrays in PHP 
+  > dictionaries in Python 
+  > hash tables in C
+  > hash maps in java 
+  > hashes in ruby and perl 
+  
 # object methods 
-- objects can also have (methods) 
 - methods are (actions) that can be performed on objects 
-- methods are stored in (properties) as (function definitions) 
-  like > 
-  var person { 
-  firstName: "john",
-	lastName: "doe",
-  age: 50,
-  eyeColor: "blue",
-  funllName: function() { return this.firstName + " " + this.lastName; } 
-  };
-- a method is a functio stored as a property 
+- object properties can be both (primitive values, other objects, and functions)
+- an (object method) is an object property containing a (function definition)
+  > firstName (property) > "john" (value)"
+  > age (propery)        > 50 (value)
+  > cycColor (property)  > "blue" (value)
+  > fullName (property)  > function() { return this.firstName + " " + this.lastName; } (value) 
+- note > javascript object are containers for named values, called (properties and methods)
 
-# the (this) keyword 
-- in a functio ndefinition, (this) refers to the (owner) of the function 
-- in the ecample above, (this) is the (person object) that (owns) the (fullName) function 
-- in other words, (this.firstName) means the (firstName) property of (this object) 
+# creating a javascript object 
+- with javascript, you can define and create your own objects 
+- there are different ways to create new objects 
+  > define and create a single object, using an object literal 
+  > define and create a single object, with the keyword (new) 
+  > define an object constructor, and then create objects of the constructed type 
+- note > in ECMAScript 5, an object can also be created with the function (Object.create()) 
 
-# accessing object methods 
-- you access an object (method) with th efollowing syntax 
-  > objectName.methodName() 
-	like > name = person.fullName(); 
-- if you access a method without the () parentheses, it will return the (function definition) 
-  like > name = person.fullName;
-	
-# do not declare (strings, numbers, and booleans) as objects 
-- when a javascript variable is declared with the keyword (new), the variable is created as an object 
-  like > var x = new String(); // declares (x) as a string-object 
-  like > var y = new Number(); // declares (y) as a number-object 
-  like > var z = new Boolean(); // declares (z) as a boolean-object 
-- avoid (string, number, and boolean) objects. they complicate your code and slow down execution speed
-</pre>
-
-<pre>
---------------------------------------------------------------------------------
-javascript (this) keyword 
---------------------------------------------------------------------------------
-# example - 
-  var person = { 
-  firstName: "john", lastName: "Doe", id: 5566, 
-  fullName: function() { return this.firstName + " " + this.lastName; } 
-  };
-	
-# what is (this) 
-- the javascript (this) keyword refers to the object it belongs to 
-- note > it has different values depending on where it is used 
-  > in a method, (this) refers to the (owner object) 
-  > alone, (this) referes to the (global object) 
-  > in a function, (this) refers to th e(global object) 
-  > in a function, in (strict) mode, (this) is (undefined) 
-  > in an event, (this) referes to the element that received tha event 
-  > methods like (call()), and (apply()) can refer (this) to (any object) 
-	
-# (this) in a method 
-- in an object method, (this) refers to the (owner) of th emethod 
-- in the example on the top of this page, (this) refers to the (person) object 
-- the (person) object is the (owner) of the (fulName) method 
-  like > fullName: function() { return this.firstName + " " + this.lastName; } 
-	
-# (this) alone 
-- when used alone, the (owner) is the (global) object, so (this) refers to the global object 
-- in a browser window the (global) object is [object Window] - 
-  like > var x = this; 
-- in (strict) mode, when used alone, (this) also refers to the (global) object [object Window] - 
-  like > "use strict"; var x = this; 
-	
-# (this) in a function (default) 
-- in a javascript function, the owner of the function is the (default) binding for (this) 
-- so, in a function, (this) refers to the (global) object [object Window]
-  like > function funcOne() { return this; } 
-	
-# (this) in a function (strict) 
-- javascript (strict) mode does not allow default binding 
-- so, when used in a function, in (strict) mode, (this) is (undefined) 
-  like > "use strict"; function funcOne() { return this; } 
-	
-# (this) in event handlers 
-- in html event handlers, (this) refers to the html element that received the event 
-  like > < button onclick="this.style.display='none'" > click to remove me </ button > 
-	
-# object method binding 
-- in these examples, (this) is the (person) object (the person object is the (owner) of the function) 
+# using an object literal 
+- this is the easiest way to create a javascript object 
+- using an object literal, you both define and create an object in one statement 
+- an object literal is a list of (name:value) pairs (like, age:5) inside curly braces {} 
+- the following example creates a new javascript object with four properties 
+  like > var person = { firstName: "john", lastName: "doe", age: 50, eyeColor: "blue" }
+- spaces and line breaks are not important. an object definition can span multiple lines 
   like > var person = { 
-  firstName: "John", lastName: "Deo", id: 5566, 
-  funcOne: function() { return this; } 
+    firstName: "john",
+    lastName: "doe",
+    age: 50, 
+    eyeColor: "blue"
   };
-	
-	like > var person = { 
-  firstName: "John", lastName: "Deo", id: 5566, 
-  funcOne: function() { return this.firstName + " " + this.lastName; } 
-  };
-	
-- in other words: (this.firstName) means the (firstName) property of (this) (person) object 
-
-# explicit function binding 
-- the (call()) and (apply()) methods are predefined javascript methods 
-- they can both be used to call an object method with another object as argument 
-- in the example below, when callign (person1.fullName) with (person2) as argument, (this) will refer to (person2),
-  even if it is a method of (person1) - 
-	live > var person1 = { 
+  
+# using the javascript keyword (new)
+- the following example also creates a new javascript object with four properties - 
+  like > var person = new Object(); 
+  person.firstName = "john";
+  person.lastName = "doe";
+  person.age = 50;
+  person.eyeColor = "blue"; 
+- note > the two examples above do exactly the same. thre is no need to use (new Object())
+  for simplicity, readability and execution speed, use the first one (the object literal method) 
+  
+# javascript objects are (mutable) 
+- objects are mutable: they are addressed by reference, not by value 
+- if person is an object, the following statement will not create a copy of person 
+  like > var x = person; // this will not create a copy of person 
+- the object (x) is (not a copy) of person. it is person. both (x) and (person) are the same (object) 
+- any changes to (x) will also change (person), because (x) and (person) are the same (object) 
+  like > var person = { firstName: "john", lastName: "doe", age: 50, eyeColor: "blue" }
+  var x = person;
+  x.age = 10; // this will change both (x.age) and (person.age)
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-javascript object 
+object properties
 --------------------------------------------------------------------------------
-
+# javascript object properties 
+- 
 </pre>
 
 

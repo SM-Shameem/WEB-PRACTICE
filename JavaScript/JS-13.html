@@ -1,446 +1,227 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1>JS:P01 > data-types : complex</h1>
+<h1>JS:P01 > object-type : part-one</h1>
 <a href="JS-14.html">Next</a><a href="JS-12.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
+
 <pre>
 --------------------------------------------------------------------------------
-complex type (array)
+object fundamental
 --------------------------------------------------------------------------------
-# javascript arrays are used to store multiple values in a single variable 
-  like > var cars = ["saab", "volvo", "BMW"];
-  
-# what is an array 
-- an array is a special variable, which can hold more than one value at a time 
-- if you have a list of items (a list of car names), storing the cars in single variables could look like this 
-  like > var carOne = "saab"; var carTwo = "volvo"; var carThree = "BMW";
-- however, what if you want to loop through the cars and find a specific one? 
-  and what if you had not 3 cars, but 300?
-- the solution is an array 
-- an array can hold many values under a single name, and you can access the values by referring to an index number 
+# real life objects, properties, and methods 
+- in real life, a car is an object 
+- a car has (properties) like (weight and color), and (methods) like (start and stop) 
+- all cars have the same (properties), but the (property values) differ from car to car 
+- all cars have the same (methods), but the (methods) are performed at different times 
 
-# creating an array 
-- usin gan array literal is the easiest way to create a javascript array 
-  syntax > var array_name = [itemOne, itemTwo, ...];
-- spaces and line breaks are not important. a declaration can span multiple lines 
-  syntax > 
-  var cars = [ 
-  itemOne,
-  itemTwo, 
-  ...
-  ];
-  
-# using the javascript (new) keyword
-- the following example also creates an array, and assigns values to it 
-  like > var cars = new Array("saab", "volvo", "BMW"); 
-- note > the two examples above do exactly the same. there is no need to use (new Array()). 
-  for simplicity, readability and execution speed, use the first one (the array literal method) 
-	
-# access the elements of an array 
-- you access an array element by referring to the (index number) 
-- this statement accesses the value of the first element in (cars) 
-  like > var name = cars[0];
-	like > var cars = ["saab", "volvo", "BMW"];
-  document.getElementById("demo").innerHTML = cars[0];
-- note > array indexes start with 0. [0] is the first element, [1] is the second element 
+# javascript objects 
+- yo have already learned that javascript variables are containers for data values 
+- this code assigns a (simple value) (Fiat) to a (variable) named car 
+  like > var car = "Fiat";
+- objects are variables too, but objects can contain many values 
+- this code assigns (many values (Fiat, 500, white) to a (variable) named car 
+  like > var car = {type: "Fiat", model:"500", color: "white"}; 
+- the values are written as (name:value) pairs (name and value separated by a colon) 
+- javascript objects are containers for (named values) called (properties or methods)
 
-# changing an array element 
-- this statement changes the value of the first element in (cars) 
-  like > cars[0] = "opel";
-  like > var cars = ["saab", "volvo", "BMW"];
-  cars[0] = "opel";
-  document.getElementById("demo").innerHTML = cars[0];
+# object definition 
+- you define (and create) a javascript object with an object literal - 
+  like > var person = {forstName: "John", lastName: "Doe", age: 50, eyeColor: "blue"}; 
+- spaces and line breaks are not important, an object definition can span multiple lines 
+  like > var person = { 
+  firstName: "john", 
+  lastName: "doe", 
+  age: 50, 
+  eyeColor: "blue"
+  };
 	
-# access the full array 
-- with javascript, the full array can be accessed by referring to the array name 
-  like > var cars = ["saab", "volvo", "BMW"];
-  document.getElementById("demo").innerHTML = cars; 
-	
-# arrays are objects 
-- arrays are a special type of objects. the (typeof) oeprator in javascript returns (object0 for arrays 
-- but , javascript arrays are best described as arrays 
-- arrays use (numbers) to access its (elements). in this example, (person[0]) returns john 
-  like > var person = ["john", "deo", 46]; 
-- objects use (names) to access its (members). in this examples, (person.firstNmae) returns john 
-  like > var person = {firstName: "john", lastName: "doe", age: 46}; 
-	
-# array elements can be objects 
-- javascript variables can be objects. arrays are special kinds of objects 
-- because of this, you can have variables of different types in the same array 
-- you can have object in an array. you can have functions in an array. you can have arrays in an array 
-  like > myArray[0] = Date.now 
-  like > myArray[1] = myFunction;
-  like > myArray[2] = myCars; 
-	
-# array (properties and methods) 
-- the real strength of javascript arrays are the built-in array (properites and methods) 
-  like > var x = cars.length; // the (length) property returns the number of elements 
-  like > var y = cars.sort(); // the (sort()) method sorts arrays 
-	
-# the (length) property 
-- the (length) property of an array returns the (lenght) of an array (the number of array elements) 
-  like > var fruits = ["banana", "orange", "apple", "mango"];
-  fruits.length; // the (lenght) of fruits is 4 
-- the (length) property is always one more than the highest array index 
+# object properties 
+- the (name:values) pairs in javascript objects are called (properites) 
 
-# accessing the (first and last) element of array 
-- first element of array 
-  like > fruits = ["banana", "orange", "apple", "mango"];
-  var first = fruits[0]; 
-- last element of array 
-  like > fruits = ["banana", "orange", "apple", "mango"];
-  var last = fruits[fruits.length - 1];
+# accessing object properites 
+- you can access object (properties) in two ways 
+  > objectName.propertryName 
+	like > person.lastName; 
+  > objectName["propertyName"]
+	like > person["lastName"];
 	
-# looping array elements 
-- the safest way to loop through an array, is using a (for) loop 
-  like > var fruits, text, fLen, i; 
-  fruits = ["banana", "orange", "apple", "mango"]; 
-  fLen = fruits.length; 
-  text = "< ul >"; 
-	for (i=0; i<fLen; i++) text += "< li >" + fruits[i] + "</ li >"; 
-	text += "</ ul >";
+# object methods 
+- objects can also have (methods) 
+- methods are (actions) that can be performed on objects 
+- methods are stored in (properties) as (function definitions) 
+  like > 
+  var person { 
+  firstName: "john",
+	lastName: "doe",
+  age: 50,
+  eyeColor: "blue",
+  funllName: function() { return this.firstName + " " + this.lastName; } 
+  };
+- a method is a functio stored as a property 
 
-- you can also use the (Array.forEach()) function 
-  like > var fruits, text; 
-  fruits = ["banana", "orange", "apple", "mango"]; 
-	text = "< ul >";
-  fruit.forEach(myFunction); 
-  text += "</ ul >"; 
-	
-	function myFunction(value) text += "< li >" + value + "</ li >"; 
-	
-# adding array elements 
-- the easiest way to add a new element to an array is using the (push()) method 
-  like > var fruits = ["banana", "orange", "apple", "mango"]; 
-  fruits.push("lemon"); // adds a new element (lemon) to fruits 
-- new lement can also be added to an array using the (lenght) property 
-  var fruits = ["banana", "orange", "apple", "mango"];
-  fruits[fruits.lenght] = "Lemon"; // adds a new element(lemon) to fruits 
-- warning > adding elements with high indexes can create undefined (holes) in an array 
-  like > var fruits = ["banana", "orange", "apple", "mango"];
-  fruits[6] = "lemon"; // adds a new element (lemon) to fruits 
-	
-# associative arrays 
-- many programming languages support arrays with named indexes 
-- arrays with named indexes are called associative arrays (or hashes) 
-- javascript does (not) support arrays with named indexes 
-- in javascript, (arrays) always use (numbered indexes) 
-  like > var person = []; 
-  person[0] = "john";
-  person[1] = "doe";
-  person[2] = 46; 
-  var x = person.lenght; // person.lenght will return 3 
-  var y = person[0]; // person[0] will return - john 
-- warning > if you use named indexes, javascript will redefine the array to a standard object 
-  after that, some array methods and properties will produce (incorrect results) 
-	like > var person = []; 
-  person["firstName"] = "john"; 
-  person["lastName"] = "doe"; 
-  person["age"] = 46; 
-  var x = person.lenght; // person.lenght will return 0 
-  var y = person[0]; // person[0] will return undefined 
-	
-# the difference between arrays and objects 
-- in javascript, (arrays) use (numbered indexes) 
-- in javascript, (objects) use (named indexes) 
-- arrays are a special kind of objects, with numbered indexes 
+# the (this) keyword 
+- in a functio ndefinition, (this) refers to the (owner) of the function 
+- in the ecample above, (this) is the (person object) that (owns) the (fullName) function 
+- in other words, (this.firstName) means the (firstName) property of (this object) 
 
-# when to use (arrays) and when to use (objects) 
-- javascript does not support associative (arrays) 
-- you should use (objects) when you want the element names to be (strings (text)) 
-- you should use (arrays) when you want the element names to be (numbers) 
-
-# avoid (new Array()) 
-- there is no need to use the javascript's built-in array constructor (new Array()) 
-- use [] instead 
-- these two different statemetns both create a new empty array named points 
-  like > var points = new Array(); // bad 
-  like > var points = []; //.good 
-- these two different statemetns both create a new array containing six numbers 
-  like > var points = new Array(40, 100, 1, 5, 25, 10); // bad 
-  like > var points = [40, 100, 1, 5, 25, 10]; // good 
-- the (new) keyword only complicates the code. it can also produce some unexpected results 
-  like > var points = new Array(40, 100); // creates an array with two elements (40 and 100) 
-- what if i remove one of the lements 
-  like > var points = new Array(40); // creates an array with 40 undefined elemetns !!!!
+# accessing object methods 
+- you access an object (method) with th efollowing syntax 
+  > objectName.methodName() 
+	like > name = person.fullName(); 
+- if you access a method without the () parentheses, it will return the (function definition) 
+  like > name = person.fullName;
 	
-# how to recognize an array 
-- a common question is, how do i know if a variable is an array 
-- the problem is that the javascript operator (typeof) returns (object) 
-  like > var fruits = ["banana", "orange", "apple", "mango"]; 
-  typeof fruits; // returns object 
-- the (typeof) operator returns object because a javascript array is an object 
-- solution 1 > to solve this problem ECMAScript 5 defines a new method (Array.isArray()). 
-  like > Array.isArray(fruits);  // returns true 
-- the problem with this solution is that ECMAScript 5 is (not supported in older browsers) 
-- solution 2 > to solve this problem you can create your own (isArray()) function 
-  like > function isArray(x) { return x.constructor.toString().indexOf("Array") > -1; } 
-- the function above always returns true if the argument is an array 
-- or more precisely - it returns true if the object prototype contains the word array 
-- solution 3 > the (instanceof) operator returns true if an object is created by a given constructor 
-  like > var fruits = ["banana", "orange", "apple", "mango"]; 
-  fruits instanceof Array; // returns true 
-
---------------------------------------------------------------------------------
-array methods | array sort | array iteration 
---------------------------------------------------------------------------------
-
+# do not declare (strings, numbers, and booleans) as objects 
+- when a javascript variable is declared with the keyword (new), the variable is created as an object 
+  like > var x = new String(); // declares (x) as a string-object 
+  like > var y = new Number(); // declares (y) as a number-object 
+  like > var z = new Boolean(); // declares (z) as a boolean-object 
+- avoid (string, number, and boolean) objects. they complicate your code and slow down execution speed
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-complex type (dates) 
+class fundamental
 --------------------------------------------------------------------------------
-# javascript (date object) lets us work with dates 
-  like > Tue Feb 02 2021 18:37:48 GMT+0600 (Bangladesh Standard Time) 
-	like > var d = new Date() 
-- by default, javascript will use the browser's time zone and display a date as a full text string - 
-  like > above 
+# ECMAScript 2015, also known as ES6, introduced javascript classes 
+# javascript classes are templates for javascript object 
+# class syntax 
+- use the keyword (class) to create a class 
+- always add a method named (constructor()) - 
+  like > class className { constructor() { .... } }
+	like > class car { constructor(name, year) { this.name = name; this.year = year; } } 
+- the example above creates a class named (car) 
+- the class has two initial properties: (name) and (year) 
+- note > a javascript class is not an (object), it is a (template) for javascript (object)
+
+# using a class 
+- when you have a class, you can use the class to crate objects 
+  like > let myCarOne = new car("ford", 2014); 
+  let myCarTwo = new car("audi", 2019); 
+- the example above uses the (car class) to create two (car objects) 
+- note > the (constructor) method is called automatically when a new object is created 
+
+# the (constructor) method 
+- the (constructor) method is a special method - 
+  > it has to have the exact name (constructor) 
+  > it is executed automatically when a new object is created 
+  > it is used to initialize object properties 
+- if you do not define a constructor method, javascript will add an empty constructor method 
+
+# class methods 
+- class methods are created with athe same syntax as object methods 
+- use the keyword (class) to create a class 
+- always add a (constructor()) method 
+- then add any number of methods 
+  like > 
+  class className { 
+  construction() { ... } 
+  methodOne() { ... } 
+  methodTwo() { ... } 
+  ... 
+  methodN() { ... } 
+  }
 	
-# creating (date) objects 
-- (date) objects are created with the (new Date()) constructor 
-- there are four (4) ways to create a new date object 
-  1. new Date() 
-  2. new Date(year, month, day, hours, minutes, seconds, milliseconds) 
-  3. new Date(milliseconds) 
-  4. new Date(date string) 
-- (new Date()) creates a new (date) object with the (current date and time), like > var d = new Date(); 
-  note > date objects are (static). the computer time is (ticking), but (date) objects are not 
-- (new Date(year, month, ...) creates a new (date) object with a (specified date and time) 
-  seven (7) numbers specify (year, month, day, hour, minute, second, and millisecond) in that order 
-	like > var d = new Date(2018, 11, 24, 10, 33, 30, 0); 
-  - note > javascript counts months from (0 to 11), (january is 0 and december is 11) 
-  - six (6) numbers specify (year, month, day, hour, minute, second) 
-    like > var d = new Date(2018, 11, 24, 10, 33, 30); 
-  - five (5) numbers specify (year, month, day, hour, and minute) 
-    like > var d = new Date(2018, 11, 24, 10, 33); 
-  - four (4) numbers specify (year, month, day, hour) 
-    like > var d = new Date(20188, 11, 24, 10);
-  - three (3) numbers specify (year, month, and day) 
-    like > var d = new Date(2018, 11, 24); 
-  - two (2) numbers specify year and month  
-    like > var d = new Date (2018, 11); 
-  - you cannot omit month. if you supply only one parameter it will be treated as (milliseconds) 
-    like > var d = new Date(2018) 
-- new Date(dateString) creates a new (date) object from a (date string) 
-  like > var d = new Date("October 13, 2014 11:13:00"); 
-
-# previous century - one and two digit years will be interpreted as 19xx 
-  like > d = new Date(99, 11, 24); 
-	like > d = new Date(9, 11, 24); 
-
-# javascript stores (dates) as millisecondes 
-- javascript stores dates as number of (milliseconds since (january 01, 1970, 00:00:00 UTC) 
-  note > UTC (universal time coordinated) 
-  note > zero time is (january 01, 1970 00:00:00 UTC) 
-	- (new Date(milliseconds)) creates a new (date) object as (zero time plus milliseconds) 
-	  like > var d = new Date(0); 
-  - 01 January 1970 plus 100 000 000 000 milliseconds is approximately 03 March 1970
-    like > var d = new Date(100000000000)
-  - january 01 1970 minus 100 000 000 000 milliseconds is approximately October 31 1966 
-    like > var d = new Date(-100000000000);
-    like > var d = new Date(86400000); 
-  - one day (24 hours) is 86 400 000 milliseconds 
+- create a class method named (age), that returns the care age - 
+  like > 
+  class car { 
+  constructor(name,year) { this.name = name; this.year = year; } 
+  age() { let date = new Date(); return date.getFullYear() - this.year; } 
+  } 
 	
-# date methods 
-- when a (date) object is created, a number of (methods) allow you to operate on it 
-- (date) methods allow you to get and set the (year, month, day, hour, minute, second, and millisecond) 
-  of date objects, using either local time or UTC (universal, or GMT) time 
-
-# displaying dates 
-- javascript will (by default) output dates in full text string format
-  like > Wed Mar 25 2015 06:00:00 GMT+0600 (bangladesh standard time) 
-- when you display a date object in HTML, it is automatically converted to a string, with the (toString) method
-  like > d = new Date(); document.getElementById("demo").innerHTML = d; 
-	like > d = new Date(); document.getElementById("demo").innerHTML = d.toString(); 
-- the (toUTCString()) method converts a (date) to a (UTC) string (a date display standard 
-  like > var d = new Date(); document.getElementById("demo").innerHTML = d.toUTCString(); 
-- the (toDateString()) method converts a date to a more readable format 
-  like > var d = new Date(); document.getElementById("demo").innerHTML = d.toDateString(); 
-- the (toISOString()) method converts a (date) to a string, using the ISO standard format 
-  like > var d = new Date(); document.getElementById("demo").innerHTML = d.toISOString();
+	let myCar = new car("ford", 2014);
+  document.getElementById("demo").innerHTML = "my car is " + myCar.age() + " years old."; 
 	
---------------------------------------------------------------------------------
-date formats 
---------------------------------------------------------------------------------
-# thre are generally three (3) types of javascript date input formats 
-  1. ISO date (2015-03-25" the international standard) 
-  2. short date ("03/25/2015")
-  3. long date ("Mar 25 2015" or 25 Mar 2015") 
-- the ISO format follows a (strict) standard in javascript 
-- the other formats are not so well defined and might be browser specific 
-
-# javascript (date) output 
-- independent of input format, javascript will (by default) output dates in full text string format 
-  like > Wed Mar 25 2015 06:00:00 GMT+0600 (Bangladesh Standard Time) 
+- can send parameters to class methods 
+like > 
+  class car { 
+  constructor(name,year) { this.name = name; this.year = year; } 
+  age(x) { return x - this.year; } 
+  } 
 	
-# javascript ISO (dates) 
-- ISO 8601 is the international standard for the representation of dates and times 
-- the ISO 8601 syntax (YYYY-MM-DD) is also the preferred javascript date format - 
-  like > var d = new Date("2015-03-25"); 
-- the computed date will be relative to your time zone 
-- depending on your time zone, the result above will vary between March 24 and March 25
-
-# ISO dates (Year and Month) 
-- ISO dates can be written without specifying the day (YYYY-MM) 
-  like > var d = new Date("2015-03");
-- time zones will vary the result above between February 28 and March 01 
-
-# ISO dates (only year) 
-- ISO dates can be written without month and day (YYYY) 
-  like > var d = new Date("2015"); 
-- time zones will vary the result above between December 31 2014 and January 01 2015 
-
-# ISO dates (date-time) 
-- ISO dates can be written with added (hours, minutes, and seconds (YYYY-MM-DDTHH:MM:SSZ))
-  like > var d = new Date("2015-03-25T2:00:00Z"); 
-- date and time is separated with a capital (T) 
-- UTC time is defined with a capital letter (Z) 
-- if you want to modify the time relative to UTC, remove the (Z) and add (+HH:MM or -HH:MM) instead 
-  like > var d = new Date("2015-03-25T12:00:00-06:30"); 
-- UTC is the same as GMT (greenwich mean time) 
-- omitting (T) and (Z) in a date-time string can give different results in different browsers 
-
-# time zones 
-- when setting a date, without specifying the time zone, javascript will use the browser's time zone 
-- when getting a date, without specifying the time zone, the resutl is converted to the boowser's time zone 
-- in other words: if a (date/time) is created in GMT (Greenwich Mean Time), the (date/time) will be converted to 
-  CDT (Central US Daylight Time) if a user browsers from central US 
+  let date = new Date();
+  let year = date.getFullYear(); 
 	
-# javascript short dates 
-- short dates are written with an ("MM/DD/YYYY") syntax like this
-  var d = new Date("03/25/2015"); 
-- warnings > in some browsers, (months or days) with no leading zeroes may produce and error 
-  like > var d = new Date("2015-03-25"); 
-- warnings > the behavior of ("YYYY/MM/DD") is undefined. some browsers will try to guess the format.
-  some will return (NaN), like > var d = new Date("2015/03/25"); 
-- warnings > the behavior of ("DD-MM-YYYY") is also undefined. some browsers will try to guess the format. 
-  some will return (NaN), like > var d = new Dte("25-03-2015");
-	
-# javascript long dates 
-- long dates are most often written with a ("MMM DD YYYY") syntax like this 
-  like > var d = new Date("Mar 25 2015"); 
-- month and day can be in any order, like > var d = new Date("25 Mar 2015"); 
-- and, month can be written in full (January), or abbreviated (Jan)
-  like > var d = new Date("january 25 2015); 
-  like > var d = new Date("Jan 25 2015); 
-- commas are ignored. names are case insensitive, like > var d = new Date("JANUARY, 25, 2015"); 
+	let myCar = new car("ford", 2014);
+  document.getElementById("demo").innerHTML = "my car is " + myCar.age(year) + " years old."; 
 
-# date input - parsing dates 
-- if you have a valid date string, you can use the (Date.parse()) method to convert it to milliseconds 
-- (Date.parse()) returns the number of milliseconds between the date and (January 1, 1970)
-  like > var msec = Date.parse("March 21, 2012"); 
-  document.getElementById("demo").innerHTML = msec; 
-- you can then use the number of milliseconds to (convert it to a date) object 
-  like > var msec = Date.parse("March 21, 2012"); 
-  var d = new Date(msec); 
-  document.getElementById("demo").innerHTML = d; 
-
---------------------------------------------------------------------------------
-Date (get and set) methods 
---------------------------------------------------------------------------------
-
+# browser support 
+- the following table defines the first browser version with full support for classes in javascript
+  chorme 49 | opear 36 | firefox 45 (2016), edge 12 | safari 9 (2015)
+- you will learn a lot more about javascript classes later in this tutorial 
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-complex type (math and random) 
+(this) keyword 
 --------------------------------------------------------------------------------
-# the javascript math object allows you to perform mathematical tasks on numbers 
-  like > Math.PI // returns 3.141592653589793
+# example - 
+  var person = { 
+  firstName: "john", lastName: "Doe", id: 5566, 
+  fullName: function() { return this.firstName + " " + this.lastName; } 
+  };
 	
-# some math functions 
-- (Math.round(x)) returns the value of (x) rounded to its nearest integer. 
-  like > Math.round(4.7);  // returns 5
-	like > Math.round(4.4);  // returns 4 
-- (Math.pow(x, y) returns the value of (x) to the power of (y), like > Math.pow(8, 2);   // returns 64 
-- (Math.sqrt(x)) returns the square root of (x), like > Math.sqrt(64);  // returns 8 
-- (Math.abs(x)) returns the absolute (positive) value of (x), like > Math.abs(-4.7);  // returns 4.7 
-- (Math.ceil(x)) returns the value of (x) rounded up to its nearest integer, like > Math.ceil(4.4);  // returns 5
-- (Math.floor(x)) returns the value of (x) rounded down to its nearest integer, like > Math.floor(4.7); // returns 4
-- (Math.sin(x)) returns the sine a value between (-1 and 1) of the angle (x) given in radians 
-  - if you want to use degrees instead of radians, you have to convert degrees to radians 
-  - angle in radians = Angle in degrees (x PI/180)
-  like > Math.sin(90 * Math.PI/180); // returns 1 (the sine of 90 degrees) 
-- (Math.cos(x)) returns the cosine (a value between -1 and 1) of the angle (x) given in radians 
-  - if you wan to use degrees instead of radians, you have to convert degree to radians 
-  - angle i radians = angle in degrees (x PI/180) 
-  like > Math.cos(0 * Math.PI/180); // returns 1 (the cos of 0 degrees) 
-- (Math.min() and Math.max()) can be used to find the lowest or highest value in a list of arguments 
-  like > Math.min(0, 150, 30, 20, -8, -299); // returns -200 
-  like > Math.max(0, 150, 30, 20, -8, -299); // returns 150
-- (Math.random()) returns a random number between 0 (inclusive), and 1 (exclusive) 
-  like > Math.random();  // returns a random number 
-	- you will learn more about (Math.random()) in the next chapter 
-
-# Math properties (constants) 
-- javascript provies eight (8) mathematical constants that can be accessed with the Math object 
-  1. Math.E  // returns Eqler's number 
-  2. Math.PI  // teruns PI 
-  3. Math.SQRT2  // returns the square root of 2 
-  4. Math.SQRT1_2  // returns the square root of 1/2
-  5. Math.LN2  // returns the natural logarithm of 2 
-  6. Math.LN10  // returns the natural logarithm or 10 
-  7. Math.LOG2E  // returns base 2 logarithm of E 
-  8. Math.LOG10E  // returns base 10 logarithm of E 
+# what is (this) 
+- the javascript (this) keyword refers to the object it belongs to 
+- note > it has different values depending on where it is used 
+  > in a method, (this) refers to the (owner object) 
+  > alone, (this) referes to the (global object) 
+  > in a function, (this) refers to th e(global object) 
+  > in a function, in (strict) mode, (this) is (undefined) 
+  > in an event, (this) referes to the element that received tha event 
+  > methods like (call()), and (apply()) can refer (this) to (any object) 
 	
-# math constructor 
-- unlike other (global) objects, the (Math) object has no constuctor. Methods and properties are static 
-- all (methods and properties) constants can be used without createing a (Math) object first 
-- math object methods 
-  1. abs(x) - returns the absolute value of (x) 
-  2. acos(x) - returns the arccosine of (x), in radians 
-  3. acosh(x) - returns the hyperbolic arccosine of (x) 
-  4. asin(x) - returns the arcsine of (x), in radians 
-  5. asinh(x) - returns the hyperbolic arcsine of (x) 
-  6. atan(x) - returns the arctangent of (x) as a numeric value between (-PI/2) and (PI/2) radians 
-  7. atan2(y, x) - returns the arctangent of the quotient of its arguments 
-  8. atanh(x) - returns the hyperbolic arctangent of (x) 
-  9. cbrt(x) - returns the cubic root of (x) 
-  10. ceil(x) - returns (x), rounded upwards to the nearest integer 
-  11. cos(x) - returns the cosine of (x), x is in radians 
-  12. cosh(x) - returns the hyperbolic cosine of (x) 
-  13. exp(x) - returns the value of E(x) 
-  14. floor(x) - returns (x), rounded downwards to the nearest integer 
-  15. log(x) - returns the natural logarithm (base E) of (x) 
-  16. max(x, y, z, ..., n) - rerunts the number with the hightest value 
-  17. min(x, y, z, ..., n) - returns the number with the lowest value 
-  18. pow(x, y) - returns the value of (x) to the power of (y) 
-  19. random() - returns a random number between 0 and 1 
-  20. round(x) - rounds (x) to the nearest integer 
-  21. sin(x) - returns the sine of (x), x is in radians 
-  22. sinh(x) - returns the hyperbolic sine of (x) 
-  23. sqrt(x) - returns the square root of (x) 
-  24. tan(x) - returns the tangent of an angle 
-  25. tanh(x) - returns the hyperbolic tangent of a number 
-  26. trunc(x) - returns the integer part of a number (x) 
-- complete math reference, contains descriptions and examples of all (Math properties and methods) 
-
---------------------------------------------------------------------------------
-random 
---------------------------------------------------------------------------------
-# (Math.random()) returns a random number between 0 (inclusive), and 1 (exclusive)
-  like > Math.random(); // returns a random number 
-	- note > (Math.random()) always returns a number lower than 1 
-
-# random integers, (Math.random()) used wiht (Math.floor()) can be used to return random integers 
-  like > Math.floor(Math.random() * 10); // returns a random integer from (0 to 9) 	
-  like > Math.floor(Math.random() * 11); // returns a random integer form (0 to 10)
-  like > Math.floor(Math.random() * 100); // returns a random integer form (0 to 99) 
-  like > Math.floor(Math.random() * 101); // returns a random integer from (0 to 101) 
-  like > Math.floor(Math.random() * 10) + 1; // returns a random integer from (1 to 10) 
-  like > Math.floor(Math.random() * 100) + 1; // returns a random integer from (1 to 100) 
+# (this) in a method 
+- in an object method, (this) refers to the (owner) of th emethod 
+- in the example on the top of this page, (this) refers to the (person) object 
+- the (person) object is the (owner) of the (fulName) method 
+  like > fullName: function() { return this.firstName + " " + this.lastName; } 
 	
-# a proper random function 
-- as you can see from the examples above, it might be a good idea to create a proper random function to use 
-  for all random integer purposes 
-- this javascript function always returns a random number between min (included) and max (excluded) 
-  like > function getRndInteger(min, max) { return Math.floor(Math.random() * (max - min)) + min; } 
-- this javascript function always returns a random number between (min and max) both included 
-  like > function getRndInteger(min, max) { return Math.floor(Math.random() * (max - min + 1) ) + min; } 
+# (this) alone 
+- when used alone, the (owner) is the (global) object, so (this) refers to the global object 
+- in a browser window the (global) object is [object Window] - 
+  like > var x = this; 
+- in (strict) mode, when used alone, (this) also refers to the (global) object [object Window] - 
+  like > "use strict"; var x = this; 
+	
+# (this) in a function (default) 
+- in a javascript function, the owner of the function is the (default) binding for (this) 
+- so, in a function, (this) refers to the (global) object [object Window]
+  like > function funcOne() { return this; } 
+	
+# (this) in a function (strict) 
+- javascript (strict) mode does not allow default binding 
+- so, when used in a function, in (strict) mode, (this) is (undefined) 
+  like > "use strict"; function funcOne() { return this; } 
+	
+# (this) in event handlers 
+- in html event handlers, (this) refers to the html element that received the event 
+  like > < button onclick="this.style.display='none'" > click to remove me </ button > 
+	
+# object method binding 
+- in these examples, (this) is the (person) object (the person object is the (owner) of the function) 
+  like > var person = { 
+  firstName: "John", lastName: "Deo", id: 5566, 
+  funcOne: function() { return this; } 
+  };
+	
+	like > var person = { 
+  firstName: "John", lastName: "Deo", id: 5566, 
+  funcOne: function() { return this.firstName + " " + this.lastName; } 
+  };
+	
+- in other words: (this.firstName) means the (firstName) property of (this) (person) object 
+
+# explicit function binding 
+- the (call()) and (apply()) methods are predefined javascript methods 
+- they can both be used to call an object method with another object as argument 
+- in the example below, when callign (person1.fullName) with (person2) as argument, (this) will refer to (person2),
+  even if it is a method of (person1) - 
+	live > var person1 = { 
 </pre>
+
 
 
 
