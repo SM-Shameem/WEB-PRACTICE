@@ -7,9 +7,170 @@
 
 <pre>
 --------------------------------------------------------------------------------
-javascript class
+class introduction 
 --------------------------------------------------------------------------------
+# ECMAScript 2015, also known as ES6, introduced javascript classes 
+# javascript classes are templates for javascript Objects 
 
+# class syntax 
+- use the keyword (class) to create a class 
+- always add a method named (constructor()) 
+  syntax > class className { constructor() { ... } }
+  like > class car { constructor(name, year) { this.name = name; this.year = year; }}
+- the example above creates a class named (car)
+- the class has two initial properties: (name and year)
+- note > a javascript class is not an object, it is a (template) for javascript objects
+
+# using a class 
+- when you have a class, you can use the class to create objects 
+  like > let myCar1 = new Car("ford", 2014); 
+  let myCar2 = new Car("audi", 2019); 
+- the example above uses the (car class) to create two (car objects) 
+- note > the constructor method is called automatically when a new object is created 
+
+# the constructor method 
+- the constructor method is a special method 
+  > it has to have the exact name (constructor) 
+  > it is executed automatically when a new object is created 
+  > it is used to initialize object properties 
+- if you do not define a constructor method, javascript will add an empty constructor method 
+
+# class methods 
+- class methods are created with the same syntax as object methods 
+- use the keyword (class) to create a class 
+- always add a (constructor()) method 
+- then add any number of methods 
+  syntax > class className { 
+  constructor() { ... }
+  method_1() { ... }
+  method_2() { ... }
+  method_3() { ... }
+  }
+- create a class method named (age), that returns the car age 
+  like > class car { 
+  constructor(name, year) { this.name = name; this.year = year; }
+  age() { let date = new Date(); return date.getFullYear() - this.year; }
+  }
+  let myCar = new Car("ford", 2014); 
+  document.getElementById("demo").innerHTML = "my car is " + myCar.age() + " years old.";
+- you can send parameters to class methods 
+  class car { 
+  constructor(name, year) { this.name = name; this.year = year; }
+  age(x) { return x - this.year; }
+  }
+  let date = new Date(); 
+  let year = date.getFullYear(); 
+  let myCar = new Car("ford", 2014); 
+  document.getElementById("demo").innerHTML = "my car is " + myCar.age(year) + " years old";
+  
+# "use strict"
+- the syntax in classes must be written in ("strict mode")
+- you will get an error if you do not follow the ("struct mode") rules 
+- in ("strict mode") you will get an error if you use a variable without declaring it 
+  like > car car { 
+  constructor(name, year) { this.name = name; this.year = year; }
+    age() { 
+    // date = new Date(); // this will not work
+    let date = new Date(); // this will work 
+    return date.getFullYear() - this.year; 
+    }
+  }
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+class inheritance
+--------------------------------------------------------------------------------
+# class inheritance 
+- to create a class inheritance, use the (extends) keyword 
+- a class created with a class inheritance inherits all the methods from another class 
+- example, create a class named (model) which will inherit the methods from the (car) class 
+  like > class car { 
+  constructor(brand) { this.carname = brand; }
+  present() { return 'i have a ' + this.carname; }
+  } 
+  class model extends car { 
+  constructor(brand, mod) { super(brand); this.model = mod; }
+  show() { return this.present() + ', it is a ' + this.model; }
+  }
+  let myCar = new Model("ford", "mustang");
+  document.getElementById("demo").innerHTML = myCar.show(); 
+- the (super()) method refers to the parent class 
+- by calling the (super()) method in the constructor method, we call the (parent's) constructor method and 
+  gets access to the parent's properties and methods 
+- note > inheritance is useful for code reusability: resue properties and methods of an existing class 
+  when you create a new class 
+  
+# getters and setters 
+- classes also allows you to use (getters and setters) 
+- it can be smart to use (getters and setters) for your properties, especially if you want to do something special
+  with the value before returing them, or before you set them 
+- to add (getters and setters) in the class, use the (get and set) keywords
+- create a (getter and setter) for the (carname) property 
+  like > class car { 
+  constructor(brand) { this.carname = brand; }
+  get cnam() { return this.carname; }
+  set cname(x) { this.carname = x; }
+  }
+  let myCar = new Car("ford");
+  document.getElementById("demo").innerHTML = myCar.cnam;
+- note > even if the (getter) is a method, you don not use (parentheses) when you want to get the property value 
+- the name of the (getter/setter) method cannot be the same as the name of the property, in this case (carname) 
+- many programmers use an underscore character (_) before the property name to separate the (getter/setter) from
+  the actual property 
+  like > class car { 
+  constructor(brand) { this._carname = brand; }
+  get carname() { return this._carname; }
+  set carname(x) { this._carname = x; }  
+  }
+  let myCar = new car("ford");
+  document.getElementById("demo").innerHTML = myCar.carname; 
+- to use a (setter), use the same syntax as when you set a property value, without parentheses 
+  like > class Car {
+  constructor(brand) { this._carname = brand; }
+  get carname() { return this._carname; }
+  set carname(x) { this._carname = x; }
+  }
+  let myCar = new Car("Ford");
+  myCar.carname = "Volvo";
+  document.getElementById("demo").innerHTML = myCar.carname;
+  
+# hoisting 
+- unlike functions, and other javascript declaration, class declarations are into hoisted 
+- that means that you must declare a class before you can use it 
+  like > /You cannot use the class yet.
+  //myCar = new Car("Ford")
+  //This would raise an error.
+  class Car {
+  constructor(brand) { this.carname = brand; }
+  }
+  //Now you can use the class:
+  let myCar = new Car("Ford")
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+class static
+--------------------------------------------------------------------------------
+# javascript static methods 
+- static class methods are defined on the class itself 
+- you cannot call a (static) method on an object, only on an object class 
+  like > class Car {
+  constructor(name) { this.name = name; }
+  static hello() { return "Hello!!"; }
+  }
+  let myCar = new Car("Ford");
+  // You can calll 'hello()' on the Car Class:
+  document.getElementById("demo").innerHTML = Car.hello();
+  // But NOT on a Car Object:
+  // document.getElementById("demo").innerHTML = myCar.hello();
+  // this will raise an error.
+- if you want to use the myCar object inside the (static) method, you can send it as a parameter 
+  like> class Car {
+  constructor(name) { this.name = name; }
+  static hello(x) { return "Hello " + x.name; }
+  }
+  let myCar = new Car("Ford");
 </pre>
 
 
