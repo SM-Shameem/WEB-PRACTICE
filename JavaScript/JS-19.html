@@ -1,6 +1,6 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1>JS:P01 > version : part-two</h1>
+<h1>JS:P02 > version : part-two</h1>
 <a href="JS-20.html">Next</a><a href="JS-18.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
@@ -28,32 +28,556 @@ JS 2009 (ES5)
   > trailing commas in array and object literals 
   > multi-line string literals 
   > reserved words as property names 
+
+# browser support of ES5 
+- chrome 23, EI10, and safari 6 were the first browsers to fully support ES5 
+  2012 (chrome 23 | EI10/Edge | safari 6), 2013 (firefox 21 | opera 15)
+  
+--------------------------------------------------------------------------------
+ES5 feature description
+--------------------------------------------------------------------------------
+# the ("use strict") directive
+- "use strict" defines that the javascript code should be executed in ("strict mode")
+- with (strict) mode you can, for example, not use undeclared variables 
+- note > you can use (strict) mode in all your programs. 
+  it helps you to write cleaner code, like preventing you from using undeclared variables 
+- note > ("use strict") is just a string expression. 
+  old browsers will not throw an error if they don't understand it 
+  
+# String.trim() 
+- (String.trim()) removes white-space from both sides of a string
+  like > var str = "         hello world        "; alert(str.trim());
+
+# array methods 
+- the (isArray()) method checks whether an object is an array 
+  like > var fruits = ["banana", "orange", "apple", "mango"]; x.innerHTML = Array.isArray(fruits); 
+- the (forEach()) method calls a function once for each array element 
+  like > var numbers = [ 1,2,3,4,5]; memebers.forEach(funcOne); function funcOne(value) { txt = txt + value; }
+- using (map()) method
+  like > var numbers1 = [1,2,3]; var numbers2 = numbers1.map(funcOne); function funcOne(value) { return value; }
+- using (filter()) method 
+  like > var num = [ 1,2,3,4,5 ]; var over4 = num.filter(funcOne); function funcOne(value) { return value > 4; } 
+- using (reduce()) method 
+  like > var num = [1,2,3]; var sum = num.reduce(funcOne); function funcOne(total, value) { return toral + value; }
+- the (reduceRight()) method 
+  like > var num = [1,2,3]; var sum = num.reduceRight(funcOne); 
+  function funcOne(total, value) { return total + value; }
+- use (every()) method 
+  like > var num = [1,2,3]; var allOver = num.every(funcOne); function funcOne(value) { return value; }
+- use (some()) method 
+  like > var num = [1,2,3]; var allOver = num.some(funcOne); function funcOne(value) { return value; }
+- search an array for an element value and returns its position usng (indexOf()) method 
+  like > var fruits = ["banana", "orange", "apple", "mango"]; var a = fruits.indexOf("apple");
+- (Array.lastIndexOf()) is the same as (Array.indexOf()), but searches from the end of the array 
+  like > var fruits = ["banana", "orange", "apple", "mango"]; var a = fruits.lastIndexOf("apple");
+  
+# JSON methods 
+- a common use of JSON is to receive data from a web server, imagine you received this text string from web server 
+  like > '{"name":"john", "age":30, "city":"new york"}'
+  - the javascript function (JSON.parse()) is used to convert the text into a javascript object 
+  var obj = JSON.parse('{"name":"john", "age":30, "city":"new york"}');
+- a common use of JSON is to send data to web server. when sending data to a web server the data has to be a string
+  imagine we have this object in javascript 
+  var obj = { name: "john", age: 30, city: "new york" };
+  - use the javascript function (JSON.stringify()) to convert it into a string 
+  var myJSON = JSON.stringify(obj);
+  - note > the result will be a string following the JSON notation 
+  - (myJSON) is not a wtring. and ready to be sent to a server 
+  var obj = { name: "john", age: 30, city: "new york" };
+  var myJSON = JSON.stringify(obj);
+  document.getElementById("demo").innerHTML = myJSON; 
+  
+# date methods 
+- (Date.now()) returns the number of milliseconds since zero date (january 1. 1970 00:00:00 UTC) 
+  var timInMSs = Date.now(); 
+  - (Date.now()) returns the same as (getTime()) performed on a (Date) object 
+  
+# property (getters and setters) 
+- ES5 lets you define object methods with a syntax that looks like (getting or setting) a property 
+- the example creates a (getter) for a property called (fullName) 
+  like > // Create an object:
+  var person = {
+    firstName: "John",
+    lastName : "Doe",
+    get fullName() { return this.firstName + " " + this.lastName; }
+  };
+  // Display data from the object using a getter:
+  document.getElementById("demo").innerHTML = person.fullName;
+- this example creates a (setter) and a (getter) for the language property 
+  like > var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+  get lang() { return this.language; },
+  set lang(value) { this.language = value; }
+  };
+  // Set an object property using a setter:
+  person.lang = "en";
+  // Display data from the object using a getter:
+  document.getElementById("demo").innerHTML = person.lang;
+- this example uses a (setter) to secure upper case updates of language 
+  like > var person = {
+  firstName: "John",
+  lastName : "Doe",
+  language : "NO",
+  set lang(value) { this.language = value.toUpperCase(); }
+  };
+  // Set an object property using a setter:
+  person.lang = "en";
+  // Display data from the object:
+  document.getElementById("demo").innerHTML = person.language;
+  
+# new object property methods 
+- (Object.defineProperty()) is a new Object method in ES5 
+- it lets you define an object property and/or change a property's value and/or metadata 
+  like > // Create an Object:
+  var person = {
+    firstName: "John",
+    lastName : "Doe",
+    language : "NO",
+  };
+  // Change a Property:
+  Object.defineProperty(person, "language", {
+    value: "EN",
+    writable : true,
+    enumerable : true,
+    configurable : true
+  });
+  // Enumerate Properties
+  var txt = "";
+  for (var x in person) { txt += person[x] + "<br>"; }
+  document.getElementById("demo").innerHTML = txt;
+- next example is the same code, except it hides the language property from enumeration 
+  like > // Create an Object:
+  var person = {
+    firstName: "John",
+    lastName : "Doe",
+    language : "NO",
+  };
+  // Change a Property:
+  Object.defineProperty(person, "language", {
+    value: "EN",
+    writable : true,
+    enumerable : false,
+    configurable : true
+  });
+  // Enumerate Properties
+  var txt = "";
+  for (var x in person) { txt += person[x] + "<br>"; }
+  document.getElementById("demo").innerHTML = txt;
+- this example creates a (setter) and a (gatter) to secure upper case updates of language 
+  like > /// Create an Object:
+  var person = {
+    firstName: "John",
+    lastName : "Doe",
+    language : "NO"
+  };
+  // Change a Property:
+  Object.defineProperty(person, "language", {
+    get : function() { return language },
+    set : function(value) { language = value.toUpperCase()}
+  });
+  // Change Language
+  person.language = "en";
+  // Display Language
+  document.getElementById("demo").innerHTML = person.language;
+- ES5 added a lot of new object methods to javascript
+  > Object.defineProperty(object, property, descriptor) // Adding or changing an object property
+  > Object.defineProperties(object, descriptors) // Adding or changing many object properties
+  > Object.getOwnPropertyDescriptor(object, property) // Accessing Properties
+  > Object.getOwnPropertyNames(object) // Returns all properties as an array
+  > Object.keys(object) // Returns enumerable properties as an array
+  > Object.getPrototypeOf(object) // Accessing the prototype
+  
+  > Object.preventExtensions(object) // Prevents adding properties to an object
+  > Object.isExtensible(object) // Returns true if properties can be added to an object
+  
+  > Object.seal(object) // Prevents changes of object properties (not values)
+  > Object.isSealed(object) // Returns true if object is sealed
+  
+  > Object.freeze(object) // Prevents any changes to an object
+  > Object.isFrozen(object) // Returns true if object is frozen
+  
+# property access on strings 
+- the (charAt()) method returns the character at a specified index (position) in a string 
+  like > var str = "HELLO WORLD"; str.charAt(0); // returns H
+- ES5 allows property access on strings 
+  like > var str = "HELLO WORLD"; str[0]; // returns H
+- note > property access on string might be a little unpredicatable 
+
+# trailing commas 
+- ES5 allows trailing commas in object and array definitions 
+  like > person = { firstName: "john", lastName: "doe", age: 46 }
+  aray exam > points = [ 1, 5, 10, 25, 40, 100, ];
+- WARNING > internet explorer 8 will crash, JSON does not allow trailing commas 
+- JSON objects - 
+  like > // Allowed:
+  var person = '{"firstName":"John", "lastName":"Doe", "age":46}'
+  JSON.parse(person)
+  // Not allowed:
+  var person = '{"firstName":"John", "lastName":"Doe", "age":46,}'
+  JSON.parse(person)
+- JSON Arrays - 
+  like > // Allowed:
+  points = [40, 100, 1, 5, 25, 10]
+  // Not allowed:
+  points = [40, 100, 1, 5, 25, 10,]
+  
+# strings over multiple lines 
+- ES5 allows string literals over multiple lines if escaped with a backslash 
+  like > "Hello \
+  Dolly!";
+- note > the (\) method might not have universal support
+  older browsers might treat the spaces around the backslash differently 
+  some older browsers do not allow spaces behind the (\) character 
+- a safer way to break up a string literal, is to use string addition 
+  like > "Hello " + 
+  "Dolly!";
+  
+# reserved words as property names 
+- ES5 allows reserved words as property names 
+  object exam > var obj = { name: "john", new: "yes" }
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 JS 2015 (ES6)
 --------------------------------------------------------------------------------
+# ECMAScript 2015 - (ES6)
+- ECMAScript 6 was the second major revision to javascript
+- ECMAScript 6 is also known as ES6 and ECMAScript 2015
+- this chapter describes the most important features of ES6 
 
+# new features in ES6 
+  > the (let) keyword 
+  > the (const) keyword 
+  > javascript Arrow-Functions 
+  > javascript (For/of) 
+  > javascript (classes) 
+  > javascript (promises) 
+  > javascript (symbol) 
+  > default parameters 
+  > function rest-parameter 
+  > Array.find() | Array.findIndex() 
+  > New Number Properties 
+  > New Number Methods 
+  > New Global Methods 
+  > javascript Modules 
+  
+# browser support for ES6 (ECMAScript 2015) 
+- safari 10 and edge 14 were the first browsers to fully support ES6 
+  2016 (edge 14 | safari 10), 2017 (chrome 58 | firefox 54), 2018 (opera 55) 
+
+--------------------------------------------------------------------------------
+ES6 feature description
+--------------------------------------------------------------------------------
+# javascript (let) keyword 
+- the (let) keyword allows you to declare a variable with block scope 
+  like > var x = 10; // here x is 10 
+  { let x = 2; // here x is 2 } // here x is 10
+  
+# javascript (const) keyword 
+- the (const) keyword allows you to declare a constant (a javascript variable with a constant value) 
+- constants are similar to (let) variables, except that the value cannot be changed 
+  like > var x = 10; // here x is 10 
+  { const x = 2; // here x is 2 } // here x is 10 
+  
+# arrow functions 
+- arrow functions allows a short syntax for writing function expressions 
+- you don't need the (function) keyword, the (return) keyword, and the (curly brackets) 
+  like > // ES5 
+  var x = function(x, y) { return x * y; }
+  // ES6 
+  const x = (x, y) => x * y; 
+- arrow functions do not have their own (this). they are not well suited for defining (object methods) 
+- arrow functions are not hoisted. they must be defined (before) they are used 
+- using (const) is safer than using (var), because a function expression is always a constant value 
+- you can only omit the (return) keyword and the curly brackets if the function is a single statement. 
+  because of this, it might be a good habit to always keep theme 
+  like > const x = (x, y) => { return x * y }; 
+  
+# the (For/Of) loop 
+- the javascript (for/of) statemetn loops through the values of an iterable objects 
+- (for/of) lets you loop over data structures that are iterable such as Arrays, Strings, Maps, NodeLists, and more
+- the (for/of) loop has the following syntax 
+  like > for (variable of iterable) { // code block to be executed }
+- variable- for every iteration the value of the next property is assigned to the variable 
+  variable can be declared with (const, let, or var) 
+- iterable - an object that has iterable properties 
+  looping over and array exam > var cars = ["BMW", "volvo", "mini"]; var x; 
+  for (x of cars) { document.write(x + "< br / >"); }
+  looping over a sting exam > var txt = "javascript"; var x; 
+  for (x of txt) { document.write(x + "< br / >"); }
+  
+# javascript classes 
+- javascript classes are templates for javascript objects 
+- use the keyword (class) to create a class 
+- always add a method named (constructor()), syntax > class className { constructor() { ... } }
+  like > class car { constructor(name, year) { this.name = name; this.year = year; } }
+- the example above creates a class named (car), the class has tow initial properties: (name and year) 
+- note > a javascript class is not an object , it is a (template) for javascript objects 
+
+- when you have a class, you can use the class to create objects 
+  like > let myCar1 = new Car("ford", 2014); 
+  let myCar2 = new Car("audi", 20019);
+  
+# javascript promises 
+- a promise is a javascript object that links (producing code) and (consuming code) 
+- (producing code) can take some time and (consuming code) must wait for the result - 
+  promise syntax > let myPromise = new Promise(function(myResolve, myReject) {
+  // "Producing Code" (May take some time)
+  myResolve(); // when successful
+  myReject();  // when error
+  });
+  // "Consuming Code" (Must wait for a fulfilled Promise).
+  myPromise.then(
+  function(value) { /* code if successful */ },
+  function(error) { /* code if some error */ }
+  );
+  exam using a promise > let myPromise = new Promise(function(myResolve, myReject) {
+  etTimeout(function() { myResolve("I love You !!"); }, 3000);
+  });
+  myPromise.then(function(value) {
+  document.getElementById("demo").innerHTML = value;
+  });
+  
+# the symbol type 
+- a javascript symbol is a primitive datatype just like (Number, String, or Boolean) 
+- it represents a unique (hidden) identifier that no other code can accedentally access 
+- for instance, if different coders want to add a person.id property to a person object belonging 
+  to a third-party code, they could mix each others values 
+- using (Symbol()) to create a unique identifiers, solves this problem - 
+  like > const person = { fName: "john", lName: "doe", age: 50, eyeColor: "blue" };
+  let id = Symbol('id'); person.id = 140353; 
+- note > Symbols are always unique. 
+  if you create two symbols with the same description they will have different values
+  like > Symbol("id") == Symbol("id") // false 
+  
+# default parameter values 
+- ES6 allows function parameters to have default values 
+  like > function funcOne(x, y = 10) { return x + y; // y is 10 till passed or undefined } funcOne(5); // return 15
+  
+# function rest-parameter 
+- the (rest parameter (...)) allows a function to treat an indefinite number of arguments as an array 
+  like > function sum(...args) { let sum = 0; for (let arg of args) sum += arg; return sum; }
+  let x = sum(4, 9, 16, 25, 29, 100, 66, 77);
+  
+# Array.find() method 
+- the (find()) method returns the value of the first array element that passes a test function 
+- this example finds (returns the value of) the first element that is larger than 18 
+  like > var num = [4, 9, 16, 25, 30]; var first = num.find(funcOne); 
+  function funcOne(value, index, array) { return value > 18; }
+- note that the function takes 3 arguments (item value | item index | array itself) 
+
+# Array.findIndex() method 
+- the (findIndex()) method returns the index of the first array element that passes a test function 
+- this example finds the index of the first element that is larget than 18 
+  like > var num = [4, 9, 16, 25, 30]; var first = num.findIndex(funcOne); 
+  function funcOne(value, index, array) { return value > 18; }
+- note that the function takes 3 arguments (item value | item index | array itself)
+
+# new number properties 
+- ES6 added the following properties to the number object ( EPSILON | MIN_SAFE_INTEGER | MAX_SAFE_INTEGER )
+  like > var x = Number.EPSILON; 
+  like > var x = Number.MIN_SAFE_INTEGER; 
+  like > var x = Number.MAX_SAFE_INTEGER;
+  
+# new number methods 
+- ES6 added 2 new methods to the Number objects ( isInteger() | isSafeInteger() )
+- the (Number.isInteger()) method returns (true) if the argument is an integer 
+  like > Number.isInteger(10); // returns true 
+  Number.isInteger(10.5); // returns false  
+- a safe integer is an integer that can be exactly represented as a double precision number 
+  the (Number.isSafeInteger()) method returns (true) if the argument is a safe integer 
+  like > Number.isSafeInteger(10); // returns true 
+  Number.isSafeInteger(123456789012345678980); // returns false 
+- note > safe integers are all integers from -(2p53 -1) to +(2p53+1)
+  this is safe: (9007199254740991). this is not safe: (9007199254740992)
+  
+# new Global methods 
+- ES6 added 2 new global number methods (isFinite() | isNaN() )
+- the global (isFinite()) method returns (false) if the argument is (Infinite) or (NaN) 
+  otherwise it returns (true)  
+  like > isFinite(10/0); // returns false 
+  isFinite(10/1); // returns true 
+- the global (isNaN()) method returns (true) if the argument is (NaN). otherwise it returns (false) 
+  like > isNaN("hello"); // returns true 
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 JS 2016
 --------------------------------------------------------------------------------
+# ECMAScript 2016 
+- the javascript naming convention started with ES1, ES2, ES3, ES5, and ES6 
+- but, ECMAScript 22016 and 2017 was not called ES7 and ES8 
+- since 2016 new version are named by year (ECMAScript 2016 / 2017 / 2018)
 
+# new feateurs in ECMAScript 2016 
+- this chapter introduces teh new features in ECMAScript 2016 
+  > javascript Exponentiation(**)
+  > javascript Exponentiation assignement (**=)
+  > javascript Array.prototype.includes 
+  
+--------------------------------------------------------------------------------
+feature description
+--------------------------------------------------------------------------------
+# exponentiation operator 
+- the (exponentiation) operator (**) raises the first operand to the power of the second operand 
+  like > let x = 5; let z = x ** 2; // result is 25 
+- (x ** y) produces the same result as (Math.pow(x, y)
+  like > let x = 5; let z = Math.pow(x, 2); // result is 25 
+  
+# exponentiation assignment 
+- the (exponentiation assignment) operator (**=) raises the value of a variable to the poser of the right operand 
+  like > let x = 5; x **= 2; // result 25 
+- chrome 52 and edge 14 was the first browsers to fully support the exponentiation operator 
+  2016 (chrome 52 | edge 14 | opera 39), 2017 (firefox 52 | safari 10.1)
+  
+# javascript (Array.prototype.includes) 
+- ECMAScript 2016 introduced (Array.prototype.includes) to arrays. 
+  this allows us to check if an element is present in an array 
+  like > const fruits = ["banana", "orange", "apple", "mango"]; 
+  fruits.includes("mango"); // is true 
+- all modern browsers support (Array.prototype.includes) 
+  2015 (chrome47 | firefox 43 | safari 9 | opera 43), 2016 (edge 14) 
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 JS 2017
 --------------------------------------------------------------------------------
+# ECMAScript 2017 
+- the javascript naming convention started with (ES1, ES2, ES3, ES5, and ES6)
+- but, ECMAScript 2016 and 2017 was not called ES7 and ES8
+- since 2016 new versions are named by year (ECMAScript 2016/ 2017 / 2018)
 
+# new features in ECMAScript 2017 
+- this chapters introduces the new features in ECMAScript 2017 
+  > javascript String padding 
+  > javascript Object entries 
+  > javascript Object values 
+  > javascript async functions 
+  > javascript shared memory 
+
+--------------------------------------------------------------------------------
+feature description
+--------------------------------------------------------------------------------
+# javascript string padding
+- ECMAScript 2017 added two string methods (padStart) and (padEnd) to support padding at the beginning and at the 
+  end of a string 
+  like > let str = "5"; str = str.padStart(4.0); // result is 0005
+  let str = "5"; str = str.padEnd(4.0); // result is 5000
+- string padding is not supported in (IE) 
+  firefox and safari were the first browsers with support for javascript string padding 
+  2016 (firefox 48 | safari 10), 2017 (chrome 57 | edge 15 | opera 44) 
+  
+# javascript object entries 
+- ECMAScript 2017 addes a new (Object.entries) method to objects 
+  like > const person = { fName: "john", lName: "doe", age: 50, eyeColor: "blue" }; 
+  document.getElementById("demo").innerHTML = Object.entries(person); 
+- chrome and firefox were the first browsers with support for (Object.entiries) 
+  2016 (chrome 47 | edge 14 | firefox 47 | opera 41), 2017 (safari 10.1)
+  
+# javascript Object Values 
+- (Object.values) are similar to (Object.entries), but returns a single dimension array of the object values 
+  like > const person = { fName: "john", lName: "doe", age: 50, eyeColor: "blue" };
+  document.getElementById("demo").innerHTML = Object.values(person); 
+- firefox and chrome were the first browsers with support fo r(Object.value) 
+  2016 (chrome54 | edge 14 | firefox 47 | opera 41), 2017 (safari 10.1)
+  
+# javascript Async Functions 
+  like > async function myDisplay() { 
+    let myPromise = new Promise(function(myResolve, myReject) 
+    { setTimeout(function() { myResolve("love");}, 3000);});
+    document.getElementById("demo").innerHTML = await myPromise; 
+  }
+  myDisplay(); 
+- firefox and chrome were the first browsers with support for async javascript functions 
+  2016 (chroms 55 | opera 42), 2017 (EDGE 15 | firefox 52 | safari 11)
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 JS 2018
 --------------------------------------------------------------------------------
-
+# ECMAScript 2018 
+- the javascript naming convention starte dwith (ES1, ES2, ES3, ES5, and ES6)
+- but, ECMAScript 2016 and 2017 was nto called ES7 and ES8 
+- since 2016 new versions are named by yera (ECMAScript 2016 / 2017 / 2018) 
+ 
+# new features in ECMAScript 2018 
+- this chapter introduces the new features in ECMAScript 2018 
+  > Asynchronous Iteration 
+  > Promise Finally 
+  > Object Rest Properties 
+  > New RegExp Fetures 
+  
+--------------------------------------------------------------------------------
+feature description 
+--------------------------------------------------------------------------------
+# javascript Asynchronous Iteration 
+- ECMAScript 2018 added asynchronous iterators and iterables 
+- with asynchronous iterables, we can use the (await) keyword in (for/of) loops 
+  like > for await() {}
+- firefox and safari were the first browsers with support for javascript asynchronous iteration 
+  2017 (chrome 63 | firefox 52 | safari 11), 2018 (opera 50), 2020 (edge 79)
+  
+# javascript Promise.finally 
+- ECMAScript 2018 finalizes the full implementation of the Promise object with (Promise.finally) 
+  like > let myPromise = new Promise(); 
+  myPromise.then(); myPromise.catch(); myPromise.finally(); 
+- chrome and firefox were the first browsers with support for (promise.finally) 
+  2017 (chrome 63), 2018 (edge 18 | firefox 58 | safari 11.1 | opera 50)
+  
+# javascript object rest properties 
+- ECMAScript 2018 added rest properties 
+- this allows us to destruct an object and collect the leftovers onto a new object 
+  like > let { x, y, ....z } = { x: 1, y: 2, a: 3, b: 4 };
+  x; // 1
+  y; // 2
+  z; // (a: 3, b: 4 )
+- chrome, firefox, and opera were the first browsers with support for object rest properties 
+  2017 (chrome 60 | firefox 55 | opera 47), 2018 (safari 11.1), 2020 (edge 79)
+  
+# new javascript RegExp features 
+- ECMAScript 2018 added 4 (four) new RegExp features 
+  > unicode Property Escapes (\p{...})
+  > lookbehind assertions (?<=) and (?<!)
+  > named capture groups 
+  . s (dotAll) Flag 
+- chrome and firefox were the first browsers with support for all the new RegExp features
+  2018 (chrome 64 | safari 12 | opera 51), 2020 (edge 79 | firefox 78)
 </pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

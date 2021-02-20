@@ -1,7 +1,7 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1>JS:P01 > coding-guide</h1>
-<a href="#">Next</a><a href="JS-19.html">Previous</a><a href="JS-01.html">Home</a>
+<h1>JS:P02 > coding-guide</h1>
+<a href="JS-21.html">Next</a><a href="JS-19.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
@@ -9,49 +9,511 @@
 --------------------------------------------------------------------------------
 Style Guide 
 --------------------------------------------------------------------------------
+# always use the same coding conventions for all your javascript projects 
+# javascript coding conventions 
+- coding conventions are (style guideline for programming). they typically cover 
+  > naming and declaration rules for variables and functions 
+  > rules for the use of white space, indentation, and comments 
+  > programming practices and principles 
+- coding conventions (secure quality) 
+  > improves code readability 
+  > make code maintenance easier 
+- coding conventions can be documented rules for teams to follow, or just be your individual coding practice 
+- note > this page describes the general javascript code conventions used by W3Schools. 
+  you should also read the next chapter (best practices), and learn how to avoid coding pitfalls 
+  
+# variable names 
+- at W3schools we use (camelCase) for identifier names (variables and functions) 
+- all names start with a (letter) 
+- at the bottom of this page, you will fine a wider discussion about naming rules 
 
+# spaces around operators 
+- always put spaces around operators ( = + - * / ), and after commas (,)
+  like > var x = y + z; var values = ["volvo", "saad", "fiat"];
+  
+# code indentation 
+- always use 2 spaces for indentation of code blocks 
+  like > function toCelsius(fahrenheit) { return (95 / 9) * (fahrenheit - 32)} 
+- note > do not use tabs (tabulators) for indentation. different editors interpret tabs differently
+
+# statemetn rules 
+- general rules for simple statements 
+  > always end a simple statement with a semicolon 
+  like > var values = ["volvo", "saab", "fiat"]; 
+  var person { fName: "john", lName: "doe", age: 50, eyeColor: "blue" };
+- general rules for complex (compound) statements 
+  > put the opening bracket at the end of the first line 
+  > use one space before the opening bracket 
+  > put the closing bracket on a new line, without leading spaces 
+  > do not end a complex statement with a semicolon 
+  functions, like > function toCelsius(fahrenheit) { return (5 / 9) * (fahrenheit - 32); } 
+  loops, like > for (i = 0; i < 5; i++) { x += i; }
+  conditionals > like > if (time < 20) { greeting = "good day"; } else { greeting = "good evening"; }
+  
+# object rules 
+- general rules for object definitions 
+  > place the opening bracket on the same line as the object name 
+  > use colon plus one space between each property and its value 
+  > use quotes around string values, not around numeric values 
+  > do not add a comma after the last property-value pair 
+  > place the closing bracket on a new line, without leading spaces 
+  > always end an object definition with a semicolon 
+  like > var person = { 
+    fName: "john", 
+    lName: "doe", 
+    age: 50, 
+    eyeColor: "blue" 
+  };
+- short object can be written compressed, on one line, using spaces only between properties 
+  like > var person = { fName: "john", lName: "doe", age: 50, eyeColor: "blue" };
+  
+# line length < 80 
+- for readability, avoid lines longer than 80 characters 
+- if a javascript statement does not fit on one file, the best place to break it, is after an operator or a comma 
+  like > document.getElementById("demo").innerHTML = 
+  "Hello Dolly.";
+  
+# naming conventions 
+- always use the same naming convention for all your code. for example - 
+  > variable and function names written as (camelCase) 
+  > global variables written in (UPPERCASE), we don't, but it's  quite common 
+  > constants (like PI) written in (UPPERCASE) 
+- should you use (hyp-hens, camelCase, or under_scores) in variable names? 
+  this is a question programmers often discuss. the answer depends on who you ask - 
+- (Hyphens in HTML and CSS) HTML5 attributes can start with data-(data-quality, data-price) 
+  CSS uses hyphens in property-names (font-size) 
+  note > hypens can be mistaken as subtraction attempts. hyphens are not allowed in javascript names 
+- (underscores) many programmers prefer to use underscores (date_of_birth), especially in SQL databases 
+  underscores are often used in PHP documentation 
+- (PascalCase) is often preferred by C programmers 
+- (camelcase) is used by javascript itself, by (jQuery) and other javascript libraries 
+- note > do nto start names with a ($) sign. it will put you in conflict with many javascript library names 
+
+# loading javascript in HTML 
+- use simple syntax for loading external scripts (the type attribute is not necessary) 
+  like < script src="myscript.js" >< /script >
+  
+# accessing HTML elements 
+- a consequence of using (untidy) HTML styles, might result in javascript errors 
+- these two javascript statements will produce different results - 
+  like > var obj = getElementById("demo")
+  var obj = getElementById("Demo")
+- if possible, use the same naming convention (as javascript) in HTML 
+
+# file extensions 
+- HTML files should have a (.html) extension (.html is allowed) 
+- CSS files should have a (.css) extensions
+- javascript files should have a (.js) extension 
+
+# use lower case file names 
+- most web servers (Apache, Unix) are case sensitive about file names)
+  like > (london.jpg) cannot be accessed as (London.jpg) 
+- Other web servers (Microsoft, IIS) are not case sensitive 
+  like > (london.jpg) can be accessed as (London.jpg) or (londong.jpg) 
+- if you use a mix of upper and lower case, you have to be extremely consistent 
+- if you move from a case insensitive, to a case sensitive server, even small errors can break your web site 
+- to avoid these problems, always use lower case file names (if possible) 
+
+# performance 
+- coding conventions are not used by computers. most rules have little impact on the execution of programs 
+- indentation and extra spaces are not significant in small scripts 
+- for code in development, readability should be preferred. larger production scripts should be minified 
+</pre>
+
+<pre>
 --------------------------------------------------------------------------------
 Best Practices 
 --------------------------------------------------------------------------------
+# avoid global variables, avoid (new), avoid (==), avoid (eval()) 
 
+# avoid global variables 
+- minimize the use of global variables 
+- this includes all data-types, objects, and functions 
+- global variables and functions can be overwritten by other scripts 
+- use local variables instead, and learn how to use (closures) 
+
+# always declare local variables 
+- all variables used in a function should be declared as (local) variables 
+- local variables (must) be declared with the (var) keyword or the (let) keyword, otherwise they will become 
+  global variables  
+- note > strict mode does not allow undeclared variables 
+
+# declarations on top 
+- it is a good coding practice to put all declarations at the top of each script or function 
+- this will - 
+  > give cleaner code 
+  > provide a single place to look for local variables 
+  > make it easier to avoid unwanted (implied) global variables 
+  > reduce the possibility of unwanted re-declarations 
+  like > // declare at the beginning 
+  var firstName, lastName, price, discount, fullPrice; 
+  // use later 
+  firstName = "john"; lastName = "doe";
+  price = 19.90; discount = 0.10; 
+  fullPrice = price -discount; 
+- this also goes for loop variables 
+  like > // declare at the beginning 
+  var i;
+  // use later 
+  for (i = 0; i < 5; i++) { .. }
+- note > by default, javascript moves all declarations to the top (javascript hoisting)
+
+# initialize variables 
+- it is a good coding practice to initialize variables when you declare them 
+- this will 
+  > give cleaner code 
+  > provide a single place to initialize variables 
+  > avoid undefined values 
+  like > // declare and initiate at the beginning 
+  var firstName = "",
+  lastName = "",
+  price = 0, 
+  discount = 0, 
+  fullPrice = 0, 
+  myArray = [], 
+  myObject = {};
+-  initializing variables provides an idea of the intended use (and intended data-type) 
+
+# never declare Number, String, or Boolean Objects
+- always treat (numbers, strings, or booleans) a primitive values. not as objects
+- declaring these types as objects, slows down execution speed, and produces nasty side effects 
+  like > var x = "john";
+  var y = new String("john");
+  (x === y) // is false because (x) is a string and (y) is an object 
+- or even worse 
+  like > var x = new String ("john"); 
+  var y = new String("john")
+  (x == y) // is false because you cannot compare objects 
+  
+# don't use (new) Object()
+- use {} instead of (new Object())
+- use "" instead of (new String())
+- use 0 instead of (new Numbers()) 
+- use false instead of (new boolean())
+- use [] instead of (new Array()) 
+- use /()/ instead of (new RegExp()) 
+- use (function() [ ... ]) instead of (new Function())
+  like > 
+  var x1 = {};           // new object
+  var x2 = "";           // new primitive string
+  var x3 = 0;            // new primitive number
+  var x4 = false;        // new primitive boolean
+  var x5 = [];           // new array object
+  var x6 = /()/;         // new regexp object
+  var x7 = function(){}; // new function object 
+  
+# beware of automatic type conversions 
+- beware that numbers can accidentally be converted to strings or (NaN), not a number 
+- javascript is loosely typed. a variable can contain different data-types, and a variable can change its data-type
+  like > var x = "hello"; // typeof (x) is string 
+  x = 5; // changes typeof (x) to a number 
+- when doing mathematical operations, javascript can convert numbers to strings 
+  like >  var x = 5 + 7;       // x.valueOf() is 12,  typeof x is a number
+  var x = 5 + "7";     // x.valueOf() is 57,  typeof x is a string
+  var x = "5" + 7;     // x.valueOf() is 57,  typeof x is a string
+  var x = 5 - 7;       // x.valueOf() is -2,  typeof x is a number
+  var x = 5 - "7";     // x.valueOf() is -2,  typeof x is a number
+  var x = "5" - 7;     // x.valueOf() is -2,  typeof x is a number
+  var x = 5 - "x";     // x.valueOf() is NaN, typeof x is a number 
+- subtracting a string from a string, does not generate an error but returns (NaN), not a number 
+  like > "hello" - "Dolly" // returns NaN
+  
+# use (===) comparison 
+- the (==) comparison operator always converts (to matching types) before comparison 
+- the (===) operator forces comparison of values and type 
+  liek > 0 == "";        // true
+  1 == "1";       // true
+  1 == true;      // true
+
+  0 === "";       // false
+  1 === "1";      // false
+  1 === true;     // false  
+  
+# use parameter defaults 
+- if a function is called with a missing argument, the value of the missing argument is set to (undefined) 
+- undefined values can break your code. it is a good havit to assign default values to arguments 
+  like > function funcOne(x, y) { if (y === undefined) { y = 0; }}
+- ECMAScript 2015 allows default parameters in the function definition 
+  like > function (a=-1, b=1) { // function code }
+  
+# end your switches with defaults 
+- always end your (switch) statements with a (default) even if you think there is no need for it 
+  like > switch (new Date().getDay()) {
+  case 0: day = "Sunday"; break;
+  case 1: day = "Monday"; break;
+  case 2: day = "Tuesday"; break;
+  case 3: day = "Wednesday"; break;
+  case 4: day = "Thursday"; break;
+  case 5: day = "Friday"; break;
+  case 6: day = "Saturday"; break;
+  default: day = "Unknown";
+  }
+
+# avoid using (eval()) 
+- the (eval()) function is used to run text as code. in almost all cases, it should not be necessary to use it 
+- because it allows arbitary code to be run. it also represents a security problem 
+
+--------------------------------------------------------------------------------
+Performance 
+--------------------------------------------------------------------------------
+# how to speed up your javascript code 
+# reduce activity in loops 
+- loops are often used in programming 
+- each statement in a loop, including the for statement, is executed for each iteration of the loop 
+- statements or assignments that can be placed outside the loop will make the loop run faster 
+  bad code like > var i; for (i = 0; i < arr.length; i++) { ... }
+  better code like > var i; var l = arr.length; for (i = 0; i < l; i++) { ... }
+- the bad code accesses the length property of an array each time the loop is iterated 
+- the better code accesses the length property outside the loop and makes the loop run faster 
+
+# reduce DOM access 
+- accessing the HTML DOM is very slow, compared to other javascript statemetns 
+- if you expect to access a DOM element several times, access it once, and use it as a local variable - 
+  like > var obj; obj = document.getElementById("demo"); obj.innerHTML = "Hello";
+  
+# reduce DOM size 
+- keep the number of elements in the HTML DOM small 
+- this will always improve page loading, and speed up rendering (page display), especially on smaller devices 
+- every attempt to search the DOM (like getElemetnsByTagName) will benefit from a smaller DOM 
+
+# avoid unnecessary variables 
+- don't create new variables if you don't plan to save values 
+- often you can replace code like this 
+  like > var fullName = firstName + " " + lastName; 
+  document.getElementById("demo").innerHTML = fullName; 
+- with this - 
+  like > document.getElementById("demo").innerHTML = firstName + " " + lastName; 
+  
+# delay javascript loading 
+- putting your scripts at the bottom of the page body lets the browser load the page first 
+- while a script is downloading, the browser will not start any other downloads. 
+  in addition all parsing and rendering activity might be blocked 
+- note > the HTTP specification defines that browsers should not download more than two components in parallel 
+- an alternative is to use (defer="true") in the script tag. the defer attribute specifies that the script should 
+  be executed after the page has finished parsing, but it only works for external scripts 
+- if possible, you can add your script to the page by code, after the page has loaded 
+  like > < script >
+  window.onload = function() { 
+    var element = document.createElement("script");
+    element.src = "myScript.js";
+    document.body.appendChild(element);
+  }
+  < /script >
+  
+# avoid using with 
+- avoid using the (with) keyword. it has a negative effect on speed. 
+  it also clutters up javascript scopes 
+- the (with) keyword is (not allowed) in (strict) mode 
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 Mistakes 
 --------------------------------------------------------------------------------
+# common mistakes 
+- this chapters points out some common javascript mistakes 
 
-</pre>
+# accidentally using the assignment operator 
+- javascript programs may generate unexpected results if a programmer accidentally uses an assignment operator 
+  (=), instead of a comparison operator (==) in an (if) statement 
+- this (if) statement returns (false), because (x) is not equal to 10 
+  like > var x = 0; if (x == 10) 
+- this (if) statement returns (true), because 10 is true 
+  like > var x = 0; if (x = 10) 
+- this (if) statement returns (false), because 0 is false 
+  like > var x = 0; if (x = 0) 
+- note > an assignment always returns the value of the assignment 
 
-<pre>
---------------------------------------------------------------------------------
-Performance 
---------------------------------------------------------------------------------
+# expecting loose comparison 
+- in regular comparison, data-type does not matter. this (if) statement returns true - 
+  like > var x = 10; var y = "10"; if (x == y) 
+- in (strict) comparison, data-type does matter. this (if) statement returns (false) 
+  like > var x = 10; var y = "10"; if (x === y) 
+- it is a common mistake to forget that (switch) statements use (strict) comparison 
+- this (case switch) will display an alert 
+  like > var x = 10; swicth(x) { case 10: alert("hello"); }
+- this (case switch) will not display an alert 
+  like > var x = 10; switch(x) { case "10": alert("hello"); }
+  
+# confusing addition & concatenation 
+- (addition) is about adding (numbers) 
+- (concatenation) is about adding (strings) 
+- in javascript both operations use the same (+) operator 
+- because of this, adding a number as a number will produce a different result from adding a number as a sting 
+  like > var x = 10 + 5; // the result in (x) is 15 
+  var x = 10 + "5"; // the result in (x) is "105"
+- when adding two variables, it can be difficult to anticipate the result 
+  like > var x = 10; var y = 5; var z = x + y; // the result in (x) is 15 
+  var x = 10; var y = "5"; var z = x + y; // the result in (z) is "105"
+  
+# misunderstanding floats 
+- all numbers in javascript are stored as 64-bits (floating point numbers), Floats 
+- all programming languages, including javascript, have difficulties with precise floating point values 
+  like > var x = 0.1; var y = 0.2; var z = x + y; // the result in (z) will not be 0.3
+- to solve the problem above, it helps to multiply and divide 
+  like > var z = (x * 10 + y * 10) / 10; // (z) will be 0.3 
+  
+# breaking a javascript string 
+- javascript will allow you to break a statement into two lines 
+  like > var x = 
+  "hello world"; 
+- but, breaking a statement in the middle of a string will not work 
+  like var x = "hello
+  world";
+- you must use a "backslash" if you must break a statement in a string 
+  like > var x = "hello \
+  world";
+  
+# misplacing semicolon 
+- because of a misplaced semicolon, this code block will execute regardless of the value of (x)
+  like > if (x == 19); { // code block }
+  
+# breaking a return statement 
+- it is a default javascript behavior to close a statement automatically at the end of a line 
+- because of this, these two examples will return the same result - 
+  like > function funcOne(a) { var power = 10; return a * power }
+  like > function funcTwo(a) { var power = 10; return a * power; }
+- javascript will also allow you to break a statement into two lines 
+- because of this, example 3 will also return the same result 
+  like > function funcThree(a) { 
+    var
+    power = 10; 
+    return a * power;  
+  }
+- but, what will happen if you break the return statement in tow lines like this ]
+  like > function funcFour(a) {
+    var 
+    power = 10; 
+    return 
+    a * poser;   
+  }
+- the function will return (undefined) 
+- why? because javascript thought you meant 
+  like > function funcFive(a) { 
+    var 
+    power = 10; 
+    return;
+    a * power; 
+  }
+  
+- explanation
+- if a statement is incomplete line, like > var 
+  javascript will try to complete the statement by reading the next line, like > power - 10; 
+- but since this statement is complete, like > return 
+  javascript will automatically close it like this, like > return; 
+- this happens because closing (ending) statements with semicolon is optional in javascript 
+- javascript will close the return statement at the end of the line, because it is a complete statement 
+- note > never break a return statement 
 
+# accessing arrays with named indexes 
+- many programming language support arrays with named indexes 
+- arrays with named indexes are called associative arrays (or hashes)
+- javascript does not support arrays with named indeses 
+- in javascript, (arrays) use (numbered indexes) 
+  like var person = []; person[0] = "john"; person[1] = "doe"; person[2] = 46; 
+  var x = person.lenght; // person.length will return 3 
+  var y = person[0]; // person[0] will return "john" 
+- in javascript, (objects) use (named indexes)
+- if you use a named index, when accessing an array, javascript will redefine the array to a standard object 
+- after the automatic redefinition, array methods are properties will produce undefined or incorrect results 
+  like > var person = [];
+  person["firstName"] = "john";
+  person["lastName"] = "doe";
+  person["age"] = 46; 
+  var x = person.lenght; // person.length will return 0 
+  var y = person[0]; // person[0] will return undefined
+  
+# ending definitions with a comma 
+- trailing commas in object and array definition are legal in ECMAScript5 
+  object like > person = { firstName: "john", lastName: "doe", age: 46, }
+  array like > points = [40, 100, 1, 5, 25, 10, ]; 
+- warning > IE8 will crash, JSON does not allow trailing commas 
+  JSON like > person = {"firstName":"john", "lastName":"doe", "age":46}
+  JSON like > points = [40, 100, 1, 5, 25, 10];
+  
+# undefined is not NULL 
+- javascript objects, variables, properties, and methods can be (undefined) 
+- in addition, empty javascript objects can have the value (null) 
+- this can make it a little bit difficult to test if an object is empty 
+- you can test if an object exists by testing if the type is (undefined) 
+  like > if (typeof myObj === "undefined")
+- but you cannot test if an object is (null), because this will throw an error if the object is (undefined) 
+  incorrect, like > if(myObj === null) 
+- to solve this problem, you must test if an object is not (null), and not (undefined)
+- but this can still throw an error 
+  incorrect, like > if (myObj !== null && typeof myObj !== "undefined")
+- because of this, you must test for not (undefined) before you can test for not (null)
+  correct, like > if (typeof myObje != "undefined" && myObj !== null)
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 Debugging 
 --------------------------------------------------------------------------------
+# errors can (will) happen, every time you write some new computer code 
 
+# code debugging 
+- programming code might contain syntax errors, or logical errors 
+- many of these errors are difficult to diagnose 
+- often, when programming code contains errors, nothing will happen. there are no error message, and you will get 
+  no indications where to search for errors 
+- searching for (and fixing) errors in programming code is called code debugging 
+
+# javascript debuggers 
+- debugging is nto easy. but fortunately, all modern browsers have a built-in javascript debugger 
+- built-in debugger can be turned on and off, forcing errors to be reported to the user 
+- with a debugger, you can also set breakpoints (places where code execution can be stopped), and examine 
+  variables while the code is executing 
+- normally, otherwise follow the steps at the bottom of this page, you activate debugging in your browser with the 
+  F12 key, and select (Console) in the debugger menu 
+  
+# the console.log() method 
+- if your browser supports debugging, you can use (console.log()) to display javascript values in the debugger
+  window, like > 
+  < !DOCTYPE html >
+  < html >
+  < body > < h1 >My First Web Page< /h1 >
+  < script >
+  a = 5;
+  b = 6;
+  c = a + b;
+  console.log(c);
+  < /script >
+  < /body >
+  < /html >  
+- tip > read more about the (console.log()) method in our (console reference) 
+
+# setting breakpoints 
+- in the debugger window, you can set breakpoints in the javascript code 
+- at each breakpoint, javascript will sotp executing, and let you examine javascript values 
+- after examining values, you can resume the execution of code (typically with a play button) 
+
+# the debugger keyword 
+- the (debugger) keyword stops the execution of javascript, and calls (if available) the debugging function 
+- this has the same function as setting a breakpoint in the debugger 
+- if no debugging is available, the debugger statement has no effect 
+- with the debugger turned on, this code will stop execting before it executes the third line 
+  like > var x = 15 * 5; 
+  debugger; 
+  document.getElementById("demo").innerHTML = x; 
+  
+# major browsers' debugging tools 
+- normally, you activate debugging in your browser with F12, and select (Console) in the debugger menu 
+- other wise follow these steps - 
+- chrome : from (menu), select (more tools) | from tools, choose (developer tools) | select (console)
+- firefox : from (menu), select (web developer) | select (web console) 
+- edge : from menu, select (developer tools) | select (console) 
+- opera : from (menu), select (developer) | from (developer), select (developer tools) | select (console) 
+- safari : from (menu), select (developer) | from (developer), select (developer tools) | select (console)
+
+# did you know 
+- debugging is the process of testing, finding, and reducing bugs (errors) in computer programs 
+- the first known computer bug was a real bug (an insect) stuck in the electronics '
 </pre>
 
 
 
 
 
-<pre>
---------------------------------------------------------------------------------
-JS Form
---------------------------------------------------------------------------------
 
-</pre>
-
-<pre>
---------------------------------------------------------------------------------
-JSON
---------------------------------------------------------------------------------
-
-</pre>
 
