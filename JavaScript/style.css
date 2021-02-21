@@ -24,8 +24,15 @@ div a:hover {
 }
 div h1 {
 	width: 40%;
-	margin: 2px 0px;
+	margin: 4px 0px;
 	padding: 0px;
 	float: left;
 	font-family: Consolas; font-size: 130%; color: #888;
 }
+
+div #P02 { color: #33AA66; }
+div #P03 { color: #AA6633; }
+div #P04 { color: #6633AA; }
+div #P05 { color: #AA3366; }
+div #P06 { color: #66AA33; }
+
