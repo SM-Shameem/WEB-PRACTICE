@@ -7,16 +7,154 @@
 
 <pre>
 --------------------------------------------------------------------------------
-Form
+introduction 
 --------------------------------------------------------------------------------
-
+# with the HTML-DOM, javascript can access and change all the elements of an HTML document 
+# the HTML-DOM (document object model)
+- when a web page is loaded, the browser creates a (document object model) of the page 
+- the (HTML-DOM) model is constructed as a tree of (Object) 
+- the HTML-DOM Tree of Objects 
+  > document > root-element (html)
+  
+  > root-element (html) > element (head) | element (body) 
+  
+  > root-element (html) > element (head) > element (title) : attribute > text (string)
+  > root-element (html) > element (head) > element (meta) : attribute > text (string)
+  
+  > root-element (html) > element (body) > element (a) : attribute (href) > text (string) 
+  > root-element (html) > element (body) > element (h1) : attribute > text (string)
+  
+- with the object model, javascript gets all the power it needs to create dynamic HTML
+  > javascript can change all the HTML elements in the page 
+  > javascript can change all the HTML attributes in the page 
+  > javascript can change all the CSS styles in the page 
+  > javascript can remove existing HTML elements and attributes 
+  > javascript can add new HTML elements and attributes 
+  > javascript can react to all existing HTML events in the page 
+  > javascript can create new HTML events in the page 
+  
+# what you will learn 
+- in the next chapters of this tutorial you will learn 
+  > how to change the content of HTML elements 
+  > how to change the style (css) of HTML elements 
+  > how to react to HTML DOM events 
+  > how to add and delete HTML elements 
+  
+# what is the DOM 
+- the DOM is a W3C (World Wide Web Consortium) standard 
+- the DOM defines a standard for accessing documents 
+  note > the W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and 
+  scripts to (dynamically access and update) the (content, structure, and style) of a document 
+- the W3C DOM standard is separated into 3 different parts 
+  > core DOM - standard model for all document types 
+  > XML DOM - standard model for XML documents 
+  > HTML DOM - standard model for HTML documents 
+  
+# what is the HTML-DOM 
+- the HTML-DOM is a standard (object) model and (programming interface) for HTLM. it defines - 
+  > the HTML (elements) as (object) 
+  > the (properties) of all HTML (elements) 
+  > the (methods) of access all HTML (elements) 
+  > the (events) for all HTML (elements)
+- in other words, the HTML-DOM is a standard for how to (get, change, add, or delete) HTML (element)  
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-WEB APIs
+DOM Methods
 --------------------------------------------------------------------------------
+# HTML-DOM methods are (actions) you can perform (on HTML elements) 
+# HTML-DOM properties are (values - of HTML elements) that you can set or change 
+# the DOM programming interface 
+- the HTML-DOM can be accessed with javascript (and with other programming languages)
+- in the DOM, all HTML elements are defined as (objects) 
+- the programming interface is the properties and methods of each object 
+- a (property) is a value that you can get or set (like changing the content of an HTML element) 
+- a (method) is an action you cna do (like add or deleting) an HTML element
+- the following example changes the content (the innerHTML) of the (p) element with (id)
+  
+  < html >
+  < body > 
+  < p id="demo" >< /p >
+  < script > document.getElementById("demo").innerHTML = "Hello World!"; < /script >
+  < /body >
+  < /html >  
+  
+- in the example above, (getElementById) is a (method), while (innerHTML) is a (property)
 
+# the (getElementById) method
+- the most common way to access an HTML element is to use the (id) of the element 
+- in the example above the (getElementById) method used (id="demo") to find the element
+
+# the (innerHTML) property 
+- the easiest way to get the content of an element is by using the (innerHTML) property 
+- the (innerHTML) property is useful for gettign or replacing the content of HTML elements 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+DOM document (methods and properties)
+--------------------------------------------------------------------------------
+# the HTML-DOM document object is the owner of all other objects in your web page 
+# the HTML-DOM document object 
+- the document object represents your web page 
+- if you want to access any element in an HTML page, you always start with accessing the document object 
+- below are some examples of how you can use the document object to access and manipulate HTML 
+
+# FINDING HTML elements (methods) 
+  01. document.getElement.ById(id)         > find an element by element (id) 
+  02. document.getElementsByTagName(name)  > find elements by (tag) name
+  03. document.getElementByClassName(name) > find clements by (class) name
+  
+# CHANGING HTML elements (property)
+  01. element.innerHTML = new html content     > change the inner HTML of an element 
+  02. element.attribute = new value            > change the attribute value of an HTML element 
+  03. element.style.property = new style       > change the style of an HTML element 
+# CHANGING HTML elements (method) 
+  01. element.setAttribute(attribute, value)   > change the attribute value of an HTML element 
+  
+# ADDING and DELETING elements (method)
+  01. document.createElement(element)          > create an HTML element 
+  02. document.removeChild(element)            > remove an HTML element 
+  03. document.appendChild(element)            > add an HTML element 
+  04. document.replaceChild(new, old)          > replace an HTML element 
+  05. document.write(text)                     > write into the HTML output stream 
+  
+# ADDING Event Handlers (method) 
+  01. document.getElementById(id).onclick = function() { code }
+  > adding event handler code to an onclick event 
+  
+# FINDING HTML objects (property)
+- the first HTML-DOM level 1 (1998), defined 11 HTML (objects, object collections, and properties) 
+  these are still valid in HTML5 
+- later, in HTML-DOM level 3, more (objects, collections, and properties) were added 
+
+  01. document.anchors                 > dom1 - returns all (a) elements that have a (name) attribute 
+  02. document.applets                 > dom1 - returns all (applet) elements (deprecated in HTML5)
+  03. document.body                    > dom1 - returns the (body) element 
+  04. document.cookie                  > dom1 - returns the document's cookie 
+  05. document.domain                  > dom1 - returns the domain name of the document server 
+  06. document.forms                   > dom1 - returns all (form) elements 
+  07. document.image                   > dom1 - returns all (img) element 
+  08. document.links                   > dom1 - returnst all (area) and (a) elements that have a (href) attribute
+  09. document.referrer                > dom1 - returns the URI of the referrer (the linking document) 
+  10. document.title                   > dom1 - returns the (title) element 
+  11. document.URL                     > dom1 - returns the complete URL of the document 
+  
+  01. document.baseURI                 > dom3 - returns the absolute base URI of the document 
+  02. document.doctype                 > dom3 - returns the document's doctype 
+  03. document.documentElement         > dom3 - returns the (html) element 
+  04. document.documentMode            > dom3 - returns the mode used by the browser 
+  05. document.documentURI             > dom3 - returns the URI of the document 
+  06. document.domConfig               > dom3 - Obsolete. returns the DOM configuration 
+  07. document.embeds                  > dom3 - returns all (embed) elements 
+  08. document.head                    > dom3 - returns the (head) element 
+  09. document.implementation          > dom3 - returns the DOM implementation 
+  10. document.inputEncoding           > dom3 - returns the document's encoding (character set) 
+  11. document.lastModified            > dom3 - returns the date and time the document was updated 
+  12. document.readyState              > dom3 - returns the (loading) status of the document 
+  13. document.scripts                 > dom3 - returns all (script) elements 
+  14. document.strictErrorChecking     > dom3 - returns if error checking is enforced   
 </pre>
 
 

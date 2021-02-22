@@ -7,12 +7,236 @@
 
 <pre>
 --------------------------------------------------------------------------------
-JSON
+DOM elements 
 --------------------------------------------------------------------------------
+# this page teaches you how to find and access HTML elements in an HTML page
+# finding HTML elements 
+- often, with javascript, you want to manipulate HTML elements 
+- to do so, you have to find the elements first. there are several ways to do this 
+  > finding HTML elements by (id) 
+  > finding HTML elements by (tag name) 
+  > finding HTML elements by (class name) 
+  > finding HTML elements by (css selectors) 
+  > finding HTML elements by (HTML object collections)
+  
+# finding HTML element by (id) 
+- the easiest way to find an HTML element in the DOM, is by using the element (id) 
+- this example finds the element with (id="intro")
+  like > var myElement = document.getElementById("intro");
+- if the element is found, the method will return the element as an object (in myElement) 
+- if the element is not found, (myElement) will contain (null) 
 
+# finding HTML elements by (tag-name) 
+- this example finds all (p) elements 
+  like > var x = document.getElementsByTagName("p");
+- this example finds the element with (id="main"), and then finds all (p) elements inside ("main")
+  like > var x = document.getElementById("main");
+  var y = x.getElementsByTagName("p");
+  
+# finding HTML elements by (class-name) 
+- if you want to find all HTML elements with the same (class-name), use (getElementsByClassName()) 
+- this example returns a list of all elements with (class="intro")
+  like > var x = document.getElementsByClassName("intro");
+- finding elements by class name does not work in (ID8) and earlier versions 
+
+# finding HTML elements by css selectors 
+- if you want to find all HTML elements that match a specified (css-selector) like 
+  (id, class-names, types, attributes, values of attributes, etc), use the (querySelectorAll()) method 
+- this example returns a list of all (p) elements with (class="intro")
+  like > var x = document.querySelectorAll("p.intro");
+- note > teh (querySelectorAll()) method does not work in (IE8) and earlier versions 
+
+# finding HTML elements by HTML object collections 
+- this example finds the form element with (id="frm1"), in the forms collection, and displays all element values 
+  like > var x = document.forms["frm1"];
+  var text = "";
+  var i;
+  for (i = 0; i < x.length; i++) { text += x.elements[i].value + "<br>"; }
+  document.getElementById("demo").innerHTML = text; 
+  
+- the following HTML objects (and object collections) are also accessible 
+  01. document.anchors 
+  02. document.body
+  03. document.documentElement 
+  04. document.embeds 
+  05. document.forms 
+  06. document.head 
+  07. document.images 
+  08. document.links 
+  09. document.scripts 
+  10. document.title 
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+DOM-HTML
+--------------------------------------------------------------------------------
+# javascript HTML-DOM - changing HTML 
+- the HTML-DOM allows javascript to change the content of HTML elements 
 
+# changing the HTML output stream 
+- javascript can create dynamic HTML content 
+  Date: Sun Feb 21 2021 18:15:04 GMT+0600 (Bangladesh Standard Time) 
+- in javascript, (document.write()) can be used to write directly to the HTML output stream 
+
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < script > document.write(Date()); < /script >
+  < /body >
+  < /html >  
+  
+- note > never use (document.write()) after the document is loaded. it will overwrite the document
+
+# changing HTML content 
+- the easiest way to modify the content of an HTML element is by using the (innerHTML) property 
+- to change the content of an HTML element, use this syntax 
+  like > document.getElementById(id).innerHTML = new HTML 
+- this example changes the content of a (p) element 
+
+  < html >
+  < body >
+  < p id="p1" >Hello World!< /p >
+  < script > document.getElementById("p1").innerHTML = "New text!"; < /script >
+  < /body >
+  < /html > 
+  
+- example explained 
+  > the HTML document above contains a (p) element with (id="p1")
+  > we use the HTML-DOM to get the element with (id="p1")
+  > a javascript changes the content (innerHTML) of that element to (new text) 
+- this example changes the content of an (h1) element 
+
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < h1 id="id01" >Old Heading< /h1 >
+  < script >
+  var element = document.getElementById("id01");
+  element.innerHTML = "New Heading";
+  < /script >
+  < /body >
+  < /html > 
+  
+- example explained 
+  > the HTML document above contains an (h1) element with (id="id01")
+  > we use the HTML-DOM to get the element with (id="id01")
+  > a javascript changes the content (innerHTML) of that element ot ("new heading")
+  
+# changing the value of an attribute 
+- to change the value of an HTML attribute, use this syntax 
+  like > document.getElementById(id).attribute = new_value 
+- this example changes the value of the (src) attribute of an (img) element 
+
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < img id="myImage" src="smiley.gif" >
+  < script > document.getElementById("myImage").src = "landscape.jpg"; < /script >
+  < /body >
+  < /html > 
+  
+- example explained 
+  > the HTML document above contains an (img) element with (id="myImage")
+  > we use the HTML-DOM to get the element with (id="myImage")
+  > a javascript changes the (src) attribute of that element from (smiley.gif) to (landscape.jpg)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+DOM CSS 
+--------------------------------------------------------------------------------
+# javascript HTML-DOM - changing CSS 
+- the HTML-DOM allows javascript to change the style of HTML elements 
+
+# changing HTML style 
+- to change the style of an HTML element, use this syntax 
+  like > document.getElementById(id).style.property = new-style 
+- the following example changes the style of a (p) element 
+  
+  < html >
+  < body >
+  < p id="p2" >Hello World!< /p >
+  < script > document.getElementById("p2").style.color = "blue"; < /script >
+  < p >The paragraph above was changed by a script.< /p >
+  < /body >
+  < /html > 
+  
+# using events 
+- the HTML-DOM allows you to execute code when an event occurs 
+- events are generated by the browser when (things happen) to HTML elements 
+  > an element is clicked on 
+  > the page has loaded 
+  > input fields are changed 
+- you will learn more about events in the next chapter of this tutorial 
+- this example changes the style of the HTML element with (id="id1"), when the user clicks a button 
+  
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < h1 id="id1" >My Heading 1< /h1 >
+  < button type="button" onclick="document.getElementById('id1').style.color = 'red'" > Click Me! < /button >
+  < /body >
+  < /html >   
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+DOM Animations 
+--------------------------------------------------------------------------------
+# javascript HTML DOM animation 
+- learn to create HTML animations using javascript 
+
+# a basic web page 
+- to demonstrate how to create HTML animations with javascript, we will use a simple web page 
+
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < h1 >My First JavaScript Animation< /h1 >
+  < div id="animation" >My animation will go here< /div >
+  < /body >
+  < /html >
+  
+# create an animation container 
+- all animations should be relative to a container element 
+
+  < div id="container" >  
+  < div id="animate" >my animation will go here< /div >
+  < /div >
+  
+# style the elements 
+- the container element should be created with (style="position: relative")
+- the animation element should be created with (style="position: absolute")
+
+  #container { width: 400px; height: 400px; position: relative; background: yellow; }
+  #animate { width: 50px; height: 50px; position: absolute; background: red; }
+  
+# animation code 
+- javascript animations are done by programming gradual changes in an element's style 
+- the changes are called by a timer. when the timer interval si small, the animation looks continuous 
+- the basic code is 
+  
+  var id = setInterval(frame, 5);
+  function frame() {
+  if (/* test for finished */) { clearInterval(id); } 
+  else { /* code to change the element style */ }
+  }
+  
+# create the full animation using javascript
+
+  var id = null;
+  function myMove() {
+    var elem = document.getElementById("animate");
+    var pos = 0;
+    clearInterval(id);
+    id = setInterval(frame, 5);
+    function frame() {
+      if (pos == 350) { clearInterval(id); } 
+      else { pos++; elem.style.top = pos + 'px'; elem.style.left = pos + 'px'; }
+    }
+  } 
+</pre>
 
 
 

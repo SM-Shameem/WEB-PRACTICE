@@ -7,9 +7,180 @@
 
 <pre>
 --------------------------------------------------------------------------------
-AJAX
+DOM events 
 --------------------------------------------------------------------------------
+# HTML DOM allows javascript to react to HTML events 
+# reacting to events 
+- a javascript can be executed when an event occurs, like when a user clicks on an HTML element 
+- to execute code when a user clicks on an element, add javascript code to an HTML event attribute 
+  like > onclick = javascript 
+- examples of HTML events 
+  > when a user clicks the mouse 
+  > when a web page has loaded 
+  > when an image has been loaded 
+  > when the mouse moves over an element 
+  > when an input filed is changed 
+  > when an HTML form is submitted 
+  > when a user strokes a key 
+  
+- in this example, the content of the (h1) element is changed when a user clicks on it 
+  
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < h1 onclick="this.innerHTML = 'Ooops!'" >Click on this text!< /h1 >
+  < /body >
+  < /html > 
+  
+- in this example, a function is called from the event handler 
+ 
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < h1 onclick="changeText(this)" >Click on this text!< /h1 >
+  < script >
+    function changeText(id) { id.innerHTML = "Ooops!"; }
+  < /script >
+  < /body >
+  < /html >
+  
+# HTML event attributes 
+- to assign events to HTML elements you can use event attributes 
+- example > assign an onclick event to a button element   
+  < button onclick="displayDate()" > try it < /button >
+- in the example above, a function named (displayDate) will be executed when the button is clicked 
 
+# assign events using the HTML DOM
+- the HTML-DOM allows you to assign events to HTML elements using javascript
+- example > assign an onclidk event to a button element 
+  < script > document.getElementById('myBtn').onclick = displayDate; < /script >
+- in the example above, a function named (displayDate) is assigned to an HTML element with the (id="myBtn")
+- the function will be executed when the button is clicked 
+
+# the (onload) and (onunload) events 
+- the (onload) and (onunload) events are triggered when the user enters or leaves the page 
+- the (onload) event can be used to check the visitor's browser type and browser version, and load the proper 
+  version of the web page based on the information 
+- the (onload) and (onunload) events can be used to deal with cookies
+  like > < body onload="checkCookies()" >
+  
+# the (onchange) event 
+- the (onchange) evnet is often used in combination with validation of input fields 
+- below is an example of how to use the (onchange). the (upperCase()) function will be called when a user 
+  changes the content of an input field 
+  like > < input type="text" id="fName" onchange="upperCase()">
+  
+# the (onmouseover and onmouseout) events 
+- the (onmouseover) and (onmouseout) events can be used to trigger a function when the user mouse over, or out of, 
+  an HTML element 
+  
+  < body >
+  < div onmouseover="mOver(this)" onmouseout="mOut(this)" 
+  style="background-color:#D94A38;width:120px;height:20px;padding:40px;" >
+  Mouse Over Me
+  < /div >
+  < script >
+  function mOver(obj) { obj.innerHTML = "Thank You" }
+  function mOut(obj) { obj.innerHTML = "Mouse Over Me" }
+  < /script >
+  < /body >
+  
+# the (onmousedown, onmouseup, and onclick) events 
+- the (onmousedown, onmouseup, and onclick) events are all parts of a (mouse-click). 
+  first when a mouse-button is clicked, the (onmousedown) event is triggered, then, when the mouse-button is
+  release, the (onmouseup) event is triggered, finally, when the mouse-click is completed, the (onclick) event
+  is triggered 
+  
+  < body >
+  < div onmousedown="mDown(this)" onmouseup="mUp(this)"
+  style="background-color:#D94A38;width:90px;height:20px;padding:40px;" >
+  Click Me
+  < /div >
+  < script >
+  function mDown(obj) { obj.style.backgroundColor = "#1ec5e5"; obj.innerHTML = "Release Me"; }
+  function mUp(obj) { obj.style.backgroundColor="#D94A38"; obj.innerHTML="Thank You"; }
+  < /script >
+  < /body >
+  
+# more examples 
+  > onmousedown and onmouseup - change an image when a user holds doen the mouse button 
+  > onload - display an alert box when the page has finished loading 
+  > onfocus - change the background-color of an input field when it gets focus 
+  > mouse-events - change the color of an element when the cursor moves over it 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+DOM event-listener
+--------------------------------------------------------------------------------
+# the (addEventListener()) method 
+- example > add an event listener that fires when  user clicks a button 
+  document.getElementById("myBtn").addEventListener("click", displayDate);
+- the (addEventListener()) method attaches an event handler to the specified element
+- (addEventListener()) method attaches an event handler to an element without overwriting existing event handlers 
+- you can add many event handlers to one element 
+- you can add many event handlers of the same type of one element, (i.e two "click" events)
+- you can add event listeners to any DOM object not only HTML elements (i.e the window object) 
+- the (addEventListener()) method makes it easier to control how the event reacts to bubbling 
+- when using th e(addEventListener()) method, the javascript is separated from the HTML markup, for better 
+  readability and allows you to add event listeners even when you do not control the HTML markup 
+- you can easily remove an event listener by using the (removeEventListener()) method 
+
+# syntax > element.addEventListener(event, function, useCapture); 
+- the first parameter is the type of the event (like "click" or "mousedown" or any other HTML DOM event)
+- the second paramete ris the function we want to call when the event occurs 
+- the third parameter is a boolean value specifying whether to use event bubbling or event capturing 
+  this parameter is optional 
+- note > note that you don't use the "on" prefix for the event; use "click" instead of "onclick"
+
+# add an event handler to an element 
+- alert (hello world) when the user clicks on an element 
+  like > element.addEventListener("click", function() { alert("hello world"); });
+- you can also refer to an external (named) function  
+- alert (hellow world) when the user clicks on an element 
+  element.addEventListener("click", myFunction); 
+  function myFunction() { alert ("hello world"); }
+  
+# add many event handlers to the same element 
+- the (addEventListener()) method allows you to add many events to the same element, without overwriting 
+  existing events  
+  like > element.addEventListener("click", myFunction); 
+  element.addEventListener("click", mySecondFunction);
+- you can add events of different types of the same element 
+  like > element.addEventListener("mouseover", myFunction); 
+  element.addEventListener("click", mySecondFunction); 
+  element.addEventListener("mouseout" myThirdFunction);
+  
+# add an event handler to the window object 
+- the (addEventListener()) method allows you to add event listeners on any HTML-DOM object such as HTML elements,
+  the HTML document, the window object, or other objects that support events, like the (xmlHttpRequest) object 
+- example > add an event listener that fires when a user resizes the window 
+  like > window.addEventListener("resize", function() { document.getElementById("demo").innerHTML = sometext; });
+  
+# passing parameters 
+- when passing parameter values, use an (anonymous function) that calls the specified function with the parameters 
+  like > element.addEventListener("click", function() { myFunction(p1, p2); });
+  
+# event bubbling or event capturing 
+- there are two ways of event propagation in the HTML DOM, bubbling and capturing 
+- event propagation is a way of defining the element order when an event occurs. 
+  if you have a (p) element inside a (div) element, and the user clicks on the (p) element, which element's 
+  (click) event should be handled first?
+- in bubbling the inner most element's event is handled first and then the outer: the (p) element's click event is 
+  handled first, then the (div) element's click event 
+- in capturing the outer most element's event is handled first and then the inner: the (div) element's click 
+  event will be handled first, then the (p) element's  click event 
+- with the addEventListener() method you can specify the propagation type by using the (useCapture) parameter
+  like > addEventListener(event, function, useCapture); 
+- the default value is false, which will use the bubbling propagation, when the value is set to true, the event 
+  uses the capturing propagation 
+  like > document.getElementById("myP").addEventListener("click", myFunction, true);
+  document.getElementById("myDiv").addEventListener("click", myFunction, true);
+  
+# the (removeEventListener()) method
+- the (removeEventListener()) method removes event handlers that have been attached with the (addEventListener())
+  method 
+  like > element.removeEventListener("mousemove", myFunction);
 </pre>
 
 
