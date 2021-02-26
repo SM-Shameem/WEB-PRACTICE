@@ -7,9 +7,376 @@
 
 <pre>
 --------------------------------------------------------------------------------
-jQuery
+DOM Navigation
 --------------------------------------------------------------------------------
+# with the HTML DOM, you can navigate the node tree using node relationships 
+# DOM Nodes 
+- according to the W3C HTML DOM standard, everything in an HTML document is a node 
+  > the entire document is a document node 
+  > every HTML element is an element node 
+  > the text inside HTML elements are text nodes 
+  > every HTML attribute is an attribute note (deprecated) 
+  > all comments are comment nodes 
+  
+  > document > root-element (html) 
+  > root-element (html) > element (head) | element (body) 
+  > element (head) > element (title) > text (string) 
+  > element (body) > element (a) -> attribute:value > text (string) 
+  > element (body) > element (h1) > text (string)  
+  
+- with the HTML-DOM, all nodes in the node tree can be accessed by javascript 
+- new nodes can be created, and all nodes can be modifies or deleted 
 
+# node relationships 
+- the nodes in the node tree have a hierarchical relationship to each other 
+- the terms parent, child, and sibling are use to describe the relationships 
+  > in a node tree, the top node is called the root (or root node) 
+  > every node has exactly one parent, except the root (which has no parent) 
+  > a node can have a number of children
+  > siblings (brothers or sisters) are nodes with the same parent 
+  
+  > root-element (html) : parentNode > element (head) : firstChild | element (body) : lastChild
+  > element (head) > nextSibling : element (body) 
+  > element (body) > previousSibling : element (head) 
+  
+- from the HTML above you can read 
+  > (html) is the root node 
+  > (html) has no parents 
+  > (html) is the parent of (head) and (body) 
+  > (head) is the first-child of (html) 
+  > (body) is the last-child of (html) 
+- and 
+  > (head) has one child (title) 
+  > (title) has one child (a text node) 
+  > (body) has tow children (h1) and (p) 
+  > (head) and (body) are sibling of each other 
+  > (h1) has one child (a text node) 
+  > (p) has one child (a text node) 
+  > (h1) and (p) are siblings of each other 
+  
+# navigating between nodes 
+- you can use the following node properties to navigate between nodes with javascript
+  1. parentNode 
+  2. childNodes[nodeNumber]
+  3. firstChild
+  4. lastChild
+  5. nextSibling
+  6. prviousSibling 
+  
+# child nodes and node values 
+- note > a common error in DOM processing is to expect an element node to contain text 
+  like > < title id="demo" > DOM Tutorial < /title >
+- the element node (title) does not contain text 
+- it contains a (text-node) with the value (DOM Tutorial)
+- the value of the (text-node) can be accessed by the node's (innreHTML) property 
+  like > var myTitle = document.getElementById("demo").innerHTML; 
+- accessing the (innerHTML) property is the same as accessing the (nodeValue) of the (first-child) 
+  like > var myTitle = document.getElementById("demo").firstChild.nodeValue; 
+- accessing the (first-child) can also be done like this 
+  like > var myTitle = document.getElementById("demo").childNodes[0].nodeValue; 
+- all the three (3) following examples retrives the text of an (h1) element and copies it into a (p) element 
+  like > 
+  
+  < html >
+  < body >
+  < h1 id="id01" >My First Page< /h1 >
+  < p id="id02" >< /p >
+  < script >
+  // procedure 1
+  document.getElementById("id02").innerHTML = document.getElementById("id01").innerHTML;
+  // procedure 2 
+  document.getElementById("id02").innerHTML = document.getElementById("id01").firstChild.nodeValue;
+  // procedure 3
+  document.getElementById("id02").innerHTML = document.getElementById("id01").childNodes[0].nodeValue;
+  < /script >
+  < /body >
+  < /html > 
+  
+# innerHTML 
+- in this tutorial we use the (innerHTML) property to retrieve the content of an HTML element 
+- however, learning the other methods above is useful for understanding the tree structure and the navigation 
+  of the DOM 
+  
+# DOM Root Nodes 
+- thre are two spacial properties that allows access to the full document 
+  1. document.body (the body of the document) 
+  2. document.documentElement (the full document) 
+- example 
+  
+  < html >
+  < body >
+  < p >Hello World!< /p >
+  < div >
+  < p >The DOM is very useful!< /p >
+  < p >This example demonstrates the < b >document.body or document.documentElement< /b > property.< /p >
+  < /div >
+  < script >   
+  alert(document.body.innerHTML);                // procedure 1
+  alert(document.documentElement.innerHTML);     // procedure 2
+  < /script >  
+  < /body >
+  < /html > 
+
+# the (nodeName) property 
+- the (nodeName) property specifies the name of a node 
+  > (nodeName) is read-only 
+  > (nodeName) of an (element-node) is the same as the (tag-name) 
+  > (nodeName) of an (attribute-node) is the (attribute-name) 
+  > (nodeName) of a (text-node) is always (#text) 
+  > (nodeName) of the (document-node) is always (#document) 
+- example 
+
+  < h1 id="id01" >My First Page< /h1 >
+  < p id="id02" >< /p >
+  < script >
+  document.getElementById("id02").innerHTML = document.getElementById("id01").nodeName;
+  < /script >  
+  
+- note > (nodeNmae) always contains the uppercase tag name of an HTML element 
+
+# the (nodeValue) property 
+- the (nodeValue) property specifies the value of a node 
+  > (nodeValue) for (element-nodes) is (null) 
+  > (nodeValue) for (text-nodes) is the (text-itself)
+  > (nodeValue) for (attribute-nodes) is the (attribute-value) 
+  
+# the (nodeType) property 
+- the (nodeType) property is read only. it returns the type of a node 
+  like > 
+  
+  < h1 id="id01" >My First Page< /h1 >
+  < p id="id02" >< /p >
+  < script >
+  document.getElementById("id02").innerHTML = document.getElementById("id01").nodeType;
+  < /script >
+  
+- the most important (nodeType) properties are - 
+  > ELEMENT_NODE       : type 1  : < h1 class="heading" > w3schools < /h1 >
+  > ATTRIBUTE_NODE     : type 2  : class="heading" (deprecated)
+  > TEXT_NODE          : type 3  : w3schools 
+  > COMMENT_NODE       : type 8  : < !-- comment -- >
+  > DOCUMENT_NODE      : type 9  : the HTML document itself (the parent of < html >)
+  > DOCUMENT_TYPE_NODE : type 10 : < !Doctype html >
+- note > type 2 - is deprecated in the HTML-DOM (but works). it is not deprecated in the XML-DOM
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+HTML DOM elements (nodes) 
+--------------------------------------------------------------------------------
+# adding and removing nodes (HTML elements) 
+# creating new HTML elements (nodes) 
+- to add a new element to the HTML DOM, you must create the element (element-node) first, and then append it 
+  to an existing element 
+  like > 
+  
+  < div id="div1" >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+  < script >
+  var para = document.createElement("p");
+  var node = document.createTextNode("This is new.");
+  para.appendChild(node);
+  var element = document.getElementById("div1");
+  element.appendChild(para);
+  < /script > 
+  
+- example explained 
+- this code creates a new (p) element 
+  like > var para - document.createElement("p");
+- to add text to the (p) element, you must create a (text-node). this code creates a (text-node) 
+  like > var node = document.createTextNode("this is a new paragraph");
+- then you must append the (text-node) to the (p) element 
+  like > para.appendChild(node); 
+- finally you must append the new element to an existing element 
+- this code finds an existing element 
+  like > var element = document.getElementById("div1"); 
+- this code appends the new element to the existing element 
+  like > element.appendChild(para); 
+  
+# creating new HTML elements - insertBefore() 
+- the (appendChild()) method in the previous example, appended the new element as the last-child of the parent 
+- if you don't want that you can use the insertBefore() method 
+  like > 
+  
+  < div id="div1" >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+  < script >
+  var para = document.createElement("p");
+  var node = document.createTextNode("This is new.");
+  para.appendChild(node);
+
+  var element = document.getElementById("div1");
+  var child = document.getElementById("p1");
+  element.insertBefore(para, child);
+  < /script >
+  
+# removing existing HTML elements 
+- to remove an HTML element, use the (remove()) method 
+  like > 
+  
+  < div >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+  < script >
+  var elmnt = document.getElementById("p1");
+  elmnt.remove();
+  < /script >  
+  
+- example explained 
+- the HTML document contains a (div) element with two-child-nodes (two (p) elements) 
+  like > 
+  
+  < div >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+
+- find the element you want to remove 
+  like > var elmnt = document.getElementById("p1");
+- then execute the remove() method on that element 
+  like > elmnt.remove(); 
+- note > the (remove()) method does not work in older browsers, see the example below on how to use 
+  (removeChild()) instead 
+  
+# removing a child-node 
+- for browsers that does not support the (remove()) method, you have to find the parent-node to remove 
+  an element 
+  like > 
+  
+  < div id="div1" >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+
+  < script >
+  var parent = document.getElementById("div1");
+  var child = document.getElementById("p1");
+  parent.removeChild(child);
+  < /script > 
+  
+- example explained 
+- this HTML document contains a (div) element with tow child-nodes (two (p) elements) 
+  like > 
+    
+  < div id="div1" >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+
+- find the element with (id="div1")
+  like > var parent = document.getElementById("div1");
+- find the (p) element with (id="p1")
+  like > var child = document.getElementById("p1");
+- remove the child from 
+  like > parent.removeChild(child); 
+- here is a common workaround: find the child you want to remove, and use its (parentNode) property to find 
+  the parent 
+  like > var child = document.getElementById("p1");
+  child.parentNode.removeChild(child);
+  
+# replacing html elements 
+- to replace an element to the HTML DOM, use the (replaceChild()) method 
+  like > 
+  
+  < div id="div1" >
+  < p id="p1" >This is a paragraph.< /p >
+  < p id="p2" >This is another paragraph.< /p >
+  < /div >
+
+  < script >
+  var para = document.createElement("p");
+  var node = document.createTextNode("This is new.");
+  para.appendChild(node);
+
+  var parent = document.getElementById("div1");
+  var child = document.getElementById("p1");
+  parent.replaceChild(para, child);
+  < /script > 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+HTML DOM collections 
+--------------------------------------------------------------------------------
+# the HTMLCollection object 
+- the (getElementsByTagName()) method returns an (HTMLCollection) object 
+- an (HTMLCollection) object is an array-like list (collection) of HTML-elements 
+- the following code selects all (p) elements in a document 
+  like > var x = document.getElementsByTagName("p") ;
+- the elements in the collection can be accessed by an index number 
+- to access the second (p) element you can write 
+  like > y = x[1];
+- note > the index starts at 0
+
+# HTML HTMLCollection length 
+- the (length) property defines the number of elements in an (HTMLCollection) 
+  like > var myCollection = document.getElementsByTagName("p");
+  document.getElementById("demo").innerHTML = myCollection.length; 
+- example explained 
+  1. create a collection of all (p) elements 
+  2. display the length of the collection 
+- the (length) property is useful when you want to loop through the elements in a collection 
+- example > change the background color of all (p) elements 
+  var myCollection = document.getElementsByTagName("p"); 
+  var i; 
+  for (i = 0; i < myCollection; i++) myCollection[i].style.color = "red"; 
+  
+- note > an (HTMLCollection) is NOT an array
+- an HTMLCollection may look like an array, but it is not 
+- you can loop through the list and refer to the elements with a number (just like an array) 
+- however, you cannot use array methods like (valueOf(), pop(), push(), or join()) on an (HTMLCollection)   
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+HTML DOM node-lists
+--------------------------------------------------------------------------------
+# the HTML DOM NodeList object 
+- a (NodeList) object is a list (collection) of nodes extracted from a document 
+- a (NodeList) object is almost the same as an (HTMLCollection) object 
+- some (older) browsers return a (NodeList) object instead of an (HTMLCollection) for methods like
+  (getElementsByClassName()) 
+- all browsers return a (NodeList) object for the propert (childNodes) 
+- most browsers return a (NodeList) object for the method (querySelectorAll())
+- the following code selects all (p) nodes in a document 
+  like > var myNodeList = document.querySelectorAll("p");
+- the elements is the NodeList can be accessed by an index number 
+- to access the second (p) node you can write 
+  like > y = myNodeList[1];
+- note > the index starts at 0 
+
+# HTML DOM NodeList length 
+- the (length) property defines the number of nodes in a node-list 
+  like > var myNodelist = document.querySelectorAll("p");
+  document.getElementById("demo").innerHTML = myNodelist.length; 
+- example explained 
+  1. create a list of all (p) elements 
+  2. display the length of the list 
+- the (length) property is useful when you want to loop through the nodes in a NodeList 
+- change the color of all (p) elements in a NodeList 
+  like > var myNodelist = document.querySelectorAll("p");
+  var i; 
+  for (i = 0; i < myNodelist.length; i++) myNodelist[i].style.color = "red"; 
+  
+# the difference between an (HTMLCollection) and a (NodeList) 
+- an (HTMLCollection) is a collection of HTML elements 
+- a (NodeList) is a collection of document nodes
+- a (NodeList) and an (HTMLCollection) is very much the same thing 
+- both an (HTMLCollection) object and a (NodeList) object is an (array-like) list (collection) of objects 
+- both have a (length) property defining the number of items in the list (collection) 
+- both provide an index (0, 1,2, 3, 4 .. ) to access each item like an array 
+- (HTMLCollection) items can be accessed by their (name, id, or index) number 
+- (NodeList) items can only be accessed by their index number 
+- only the (NodeList) object can contain (attribute-nodes) and (text-nodes) 
+- note > a (node list) is not an array 
+- a (node list) may look like an array, but it is not 
+- you can loop through the (node list) and refer to it (nodes) like an array 
+- however, you cannot use array methods, like (valueOf(), push(), pop(), or join()) on a (node list)   
 </pre>
 
 

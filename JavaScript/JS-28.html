@@ -1,17 +1,210 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P04">JS:P04 > JSON</h1>
+<h1 id="P04">JS:P04 > AJAX : part-two</h1>
 <a href="JS-29.html">Next</a><a href="JS-27.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-JSON
+AJAX - Send a request to a server 
 --------------------------------------------------------------------------------
+# the (XMLHttpRequest) object is used to exchange data with a server 
 
+# send a request to a server 
+- to send a request to a server, we use the (open() and send()) methods of the (XMLHttpRequest) object 
+  like > xhttp.open("GET", "ajax_info.txt", true); xhttp.send(); 
+- send-request methods description
+  1. open(method, url, async) - specifies the type of request 
+    - method (the type of request GET or POST) 
+    - url (the server file location) 
+    - async (true (asynchronous) or false (synchronous))
+  2. send() - sends the request to the server (used for GET) 
+  3. send(string) - sends the request to the server (used of POST) 
+  
+# GET or POST 
+- (GET) is simpler and faster than (POST), and can be used in most cases 
+- however, always use (POST) requests when 
+  > a cached file is not an option (update a file or database on the server)
+  > sending a large amount of data to the server (POST has no size limitations) 
+  > sending user input (which can contain unknown characters), PSOT is more robust and secure than (GET) 
+  
+# GET requests 
+- a simple (GET) request 
+  like > xhttp.open ("GET", "demo_get.asp", true); xhttp.send(); 
+- if you want to send information with the (GET) method, add the information to the URL
+  like > xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford", true); xhttp.send(); 
+  
+# POST requests 
+- a simple (POST) request 
+  like > xhttp.open("POST", "demo_post.asp", ture); xhttp.send(); 
+- to POST data like an HTML form, add an HTTP header with (setRequestHeader()). specify the data you want to 
+  send in the (send()) method 
+  like > xhttp.open("POST", "ajax_test.asp", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www.form-urlencoded"); 
+  xhttp.send("fname=Henry&lname=Ford");
+- post request methods description 
+  1. setRequestHeader(header, value) - adds HTTP headers to the request 
+    - header (specifies the header name) 
+    - value (specifies the header value) 
+    
+# the (url) - a file on a server 
+- the (url) parameter of the (open()) method, is an address to a file on a servers
+  like > xhttp.open("GET", "ajax_test.asp", true);
+- the file can be any kind of file, like (.txt) and (.xml), or server scripting file like (.asp) and (.php),
+  which can perform actions on the server before sending the response back 
+ 
+# asynchronous - true or false 
+- server requests should be sent asynchronously 
+- the (async) parameter of the (open()) method should be set to true 
+  like > xhttp.open("GET", "ajax_text.asp", true); 
+- by sending asynchronously, the javascript does not have to wait for the server response, but can instead 
+  > execute other scripts while waiting for server response 
+  > deal with the response after the response is ready 
+  
+# the (onreadystatechange) property 
+- with the (XMLHttpRequest) object you can define a function to be executed when the request receives an answer
+- the function is defined in the (onreadystatechange) property of the (XMLHttpRequest) object 
+  like > xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) { 
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send(); 
+- you will learn more about (onreadystatechange) in a later chapter
+
+# synchronous request 
+- to execute a synchronous request, change the third parameter in the (open()) method to (false) 
+  like > xhttp.open("GET", "ajax_info.txt", false); 
+- sometimes (async=false) are used for quick testing. you will also find synchronous requests in older 
+  javascript code 
+- since the code will wait for server completion, there is no need for an (onreadystatechange) function 
+  like > xhttp.one("GET", "ajax_info.txt", false);
+  xhttp.send();
+  document.getElementById("demo").innerHTML = xhttp.responseText;
+  
+- note > synchronous (XMLHttpRequest) (async=false) is not recommended because the javascript will stop 
+  executing until the server response is ready. 
+- if the server is busy or slow, the application will hang or stop 
+- synchronous (XMLHttpRequest) is in the process of being removed from the web standard, but this process can 
+  take many years 
+- modern developer tools are encouraged to warn about using synchronous requests and may throw an 
+  (InvalidAccessError) exception when it occurs
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+AJAX - server response 
+--------------------------------------------------------------------------------
+# the (onreadystatechange) property 
+- the (readyState) property holds the status of the (XMLHttpRequest) 
+- the (onreadystatechange) property defines a function to be executed when the (readyState) changes 
+- the (status) property and the (statusText) property holds the status of the (XMLHttpRequest) object 
+- property description 
+  1. onreadystatechange - defines a function to be called when the (readyState) property changes 
+  2. readyState - holds the status of the (XMLHttpRequest) 
+    - 0 - request not initialized 
+    - 1 - server connection established 
+    - 2 - request received 
+    - 3 - processing request 
+    - 4 - request finished and response is ready 
+  3. status - 
+    (200 "ok" | 403 "forbidden" | 404 "page not found" | for a complete list go to the Http messages reference)
+  4. statusText - returns the status-text (e.g OK or Not Found)
+- the (onreadystatechange) function is called every time the (readyState) changes 
+- when (readyState) is 4 and status is 200, the response is ready 
+  like > 
+  
+  function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML =
+        this.responseText;
+      }
+    };
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+  }
+- the (onreadystatechange) event is triggered four times (1-4), one time for each change in the (readyState) 
+
+# using a callback function 
+- a callback function is a functio passed as a parameter to another function 
+- if you have more than one AJAX task i a website, you should create one function for executing the 
+  (XMLHttpRequest) object, and one callback function for each AJAX task 
+- the function call should contain the URL and what function to call when the response is ready 
+  like > 
+  
+  loadDoc("url-1", myFunction1);
+  loadDoc("url-2", myFunction2);
+  function loadDoc(url, cFunction) {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) { cFunction(this); }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+  }
+
+  function myFunction1(xhttp) { // action goes here }
+  function myFunction2(xhttp) { // action goes here }
+  
+# server response properties 
+  1. responseText - get the response data as a string 
+  2. responseXML - get the response data as XML data 
+# server response methods 
+  1. getResponseHeader() - returns specific header information from the server resource 
+  2. getAllResponseHeaders() - returns all the header information from the server resource 
+  
+# the (responseText) property 
+- the (responseText) property returns the server response as a javascript string, and you can use it accordingly
+  like > document.getElementById("demo").innerHTML = xhttp.responseText;
+  
+# the (responseXML) property 
+- the (XMLHttpRequest) object has an (in-built XML parser) 
+- the (responseXML) property returns the server response as an XML-DOM object 
+- using this property you can parse the response as an XML DOM object - 
+- example > request the file (cd_catalog.xml) and parse the response 
+  like > 
+  
+  xmlDoc = xhttp.responseXML;
+  txt = "";
+  x = xmlDoc.getElementsByTagName("ARTIST");
+  for (i = 0; i < x.length; i++) { txt += x[i].childNodes[0].nodeValue + "<br>"; }
+  document.getElementById("demo").innerHTML = txt;
+  xhttp.open("GET", "cd_catalog.xml", true);
+  xhttp.send(); 
+  
+- note > you will learn a lot more about XML DOM in the DOM chapters of this tutorial 
+
+# the (getAllResponseHeaders()) methods- the (getAllResponseHeaders()) method returns all header information 
+  from the server response 
+  like > 
+  
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) { 
+      document.getElementById("demo").innerHTML =
+      this.getAllResponseHeaders();
+    }
+  }; 
+  
+# the (getResponseHeader()) method 
+- the (getResponseHeader()) method returns specific header information from the server response 
+  like > 
+  
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.getResponseHeader("Last-Modified");
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+</pre>
 
 
 

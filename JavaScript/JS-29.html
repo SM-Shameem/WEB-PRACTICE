@@ -1,24 +1,348 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > JS-FORM and WEB-APIs</h1>
+<h1 id="P04">JS:P04 > AJAX : part-three</h1>
 <a href="JS-30.html">Next</a><a href="JS-28.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-Form
+AJAX XML File
 --------------------------------------------------------------------------------
-
+# AJAX can be used for interactive communication with an XML file 
+# AJAX XML example 
+- the following example will demonstrate how a web page can fetch information from an XML file with AJAX 
+  like > 
+  
+  < !DOCTYPE html >
+  < html >
+  < style >
+  table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+  }
+  th,td { padding: 5px; }
+  < /style >
+  < body >
+  < h2 >The XMLHttpRequest Object< /h2 >
+  < button type="button" onclick="loadDoc()" >Get my CD collection< /button >
+  < br >< br > 
+  < table id="demo" >< /table >
+  < script >
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) { myFunction(this); }
+    };
+    xhttp.open("GET", "cd_catalog.xml", true);
+    xhttp.send();
+  }
+  function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var table="<tr><th>Artist</th><th>Title</th></tr>";
+    var x = xmlDoc.getElementsByTagName("CD");
+    for (i = 0; i <x.length; i++) { 
+      table += "<tr><td>" +
+      x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+      "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+  }
+  < /script >
+  < /body >
+  < /html >
+  
+- example explained 
+- when a user clicks on the (get CD info) button above, the (loadDoc()) function is executed 
+- the (loadDoc()) function creates an (XMLHttpRequest) object, adds the function to be executed when the 
+  server response is ready, and sends the request off to the server
+- when the server response is ready, an HTML table is built, nodes (elements) are extracted from the XML file, 
+  and it finally updates the element (demo) with the HTML table filled with XML data 
+  like > 
+  
+  function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) { myFunction(this); }
+    };
+    xhttp.open("GET", "cd_catalog.xml", true);
+    xhttp.send();
+  }
+  function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var table="<tr><th>Artist</th><th>Title</th></tr>";
+    var x = xmlDoc.getElementsByTagName("CD");
+    for (i = 0; i <x.length; i++) {
+      table += "<tr><td>" +
+      x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+      "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+  }  
+- the XML file used in the example above looks like this (cd_catalog.xml) 
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-WEB APIs
+AJAX PHP
 --------------------------------------------------------------------------------
+# AJAX is used to create more interactive applications 
+# AJAX PHP example 
+- the following example demonstrates how a web page can communicate with a web server while a user types 
+  characters in an input field 
+- example explained 
+- in the example above, when a user types a character in the input filed, a function called (showHint()) is 
+  executed
+- the function is triggered by the (onkeyup) event 
+- here is the HTML code 
+  like > 
+    
+  < html >
+  < body >
+  < p >< b >Start typing a name in the input field below:< /b >< /p >
+  < p >Suggestions: < span id="txtHint" >< /span >< /p >
+  < form >First name: < input type="text" onkeyup="showHint(this.value)" >< /form >
+  < script >
+    function showHint(str) {
+      if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+      } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+      };
+      xmlhttp.open("GET", "gethint.php?q=" + str, true);
+      xmlhttp.send();
+    }
+  }
+  < /script >
+  < /body >
+  < /html >  
+  
+- code explanation 
+- first, check if the input field is empty (str.length == 0). if it is, clear the contnet of the (txtHint) 
+  placeholder and exit the function 
+- however, if the input field is not empty, do the following 
+  > create an (XMLHttpRequest) object 
+  > create the function to be executed when the server response is ready 
+  > send the request off to a PHP file (gethint.php) on the server 
+  > notice that (q) parameter is added (gethint.php?q="+str)
+  > the (str) variable holds the content of the input field 
+  
+# the PHP file - "gethint.php"
+- the php file checks an array of names, and returns the corresponding name(s) to the browser 
+ 
+  <?php
+  // Array with names
+  $a[] = "Anna";
+  $a[] = "Brittany";
+  $a[] = "Cinderella";
+  $a[] = "Diana";
+  $a[] = "Eva";
 
+  // get the q parameter from URL
+  $q = $_REQUEST["q"];
+
+  $hint = "";
+
+  // lookup all hints from array if $q is different from ""
+  if ($q !== "") {
+    $q = strtolower($q);
+    $len=strlen($q);
+    foreach($a as $name) {
+      if (stristr($q, substr($name, 0, $len))) {
+        if ($hint === "") { $hint = $name; }
+        else { $hint .= ", $name"; }
+      }
+    }
+  }
+
+  // Output "no suggestion" if no hint was found or output correct values
+  echo $hint === "" ? "no suggestion" : $hint;
+  ?> 
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+AJAX Database
+--------------------------------------------------------------------------------
+# AJAX can be used for interactive communication with a database 
+# AJAX database example 
+- the following example will demonstrate how a web page can fetch information from a database with AJAX 
+
+# example explained - the (showCustomer()) function 
+- when a user selects a customer in the drop-down list above, a function called (showCustomer()) is executed.
+  the function is triggered by the (onchange) event 
+  like > 
+  
+  function showCustomer(str) {
+    var xhttp;
+    if (str == "") {
+      document.getElementById("txtHint").innerHTML = "";
+      return;
+    }
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "getcustomer.php?q="+str, true);
+    xhttp.send();
+  }
+- the (showCustomer()) function does the following 
+  > check if a customer is selected 
+  > create an (XMLHttpRequest) object
+  > create the function to be executed when the server response is ready 
+  > send the request off to a file on the server 
+  > notice that a parameter (q) is added to the URL (with the content of the drop-down list) 
+  
+# the AJAX server page
+- the page on the server called by the javascript above is a PHP file called (getcustomer.php)
+- the source code in (getcustomer.php) runs a query against a database, and returns the result in an HTML table 
+  like > 
+  
+  <?php
+  $mysqli = new mysqli("servername", "username", "password", "dbname");
+  if($mysqli->connect_error) { exit('Could not connect'); }
+
+  $sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country
+  FROM customers WHERE customerid = ?";
+
+  $stmt = $mysqli->prepare($sql);
+  $stmt->bind_param("s", $_GET['q']);
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($cid, $cname, $name, $adr, $city, $pcode, $country);
+  $stmt->fetch();
+  $stmt->close();
+
+  echo "< table >";
+  echo "< tr >";
+  echo "< th >CustomerID< /th >";
+  echo "< td >" . $cid . "< /td >";
+  echo "< th >CompanyName< /th >";
+  echo "< td >" . $cname . "< /td >";
+  echo "< th >ContactName< /th >";
+  echo "< td >" . $name . "< /td >";
+  echo "< th >Address< /th >"; 
+  echo "< td >" . $adr . "< /td >";
+  echo "< th >City< /th >";
+  echo "< td >" . $city . "< /td >";
+  echo "< th >PostalCode< /th >";
+  echo "< td >" . $pcode . "< /td >";
+  echo "< th >Country< /th >";
+  echo "< td >" . $country . "< /td >"; 
+  echo "< /tr >";
+  echo "< /table >";
+  ?> 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+AJAX Applications
+--------------------------------------------------------------------------------
+# this chapter demonstrates some HTML applications using XML, HTTP, DOM, and JavaScript 
+# the XML document used - in this chapter we will use the XML file called (cd_catalog.xml) 
+# display XML data in and HTML table 
+- this example loops through each (cd) element, and displays the values of the (ARTIST) and the (TITLE) 
+  elements in an HTML table 
+  like > 
+  
+  < html >
+  < head >
+  < style >
+  table, th, td { border: 1px solid black; border-collapse: collapse; }
+  th, td { padding: 5px; }
+  < /style >
+  < /head >
+  < body >
+  < table id="demo" >< /table >
+  < script >
+  function loadXMLDoc() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) { myFunction(this); }
+    };
+    xmlhttp.open("GET", "cd_catalog.xml", true);
+    xmlhttp.send();
+  }
+  function myFunction(xml) {
+    var i;
+    var xmlDoc = xml.responseXML;
+    var table="<tr><th>Artist</th><th>Title</th></tr>";
+    var x = xmlDoc.getElementsByTagName("CD");
+    for (i = 0; i <x.length; i++) {
+      table += "<tr><td>" +
+      x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+      "</td><td>" +
+      x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+      "</td></tr>";
+    }
+    document.getElementById("demo").innerHTML = table;
+  }
+  < /script >
+  < /body >
+  < /html >
+- for more information about using javascript and the XML DOM, go to DOM intro
+
+# display the first CD in an HTML div element 
+- this example uses a function to display the first CD element in an HTML element with (id="showCD") 
+  like > 
+  
+  displayCD(0);
+  function displayCD(i) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) { myFunction(this, i); }
+    };
+    xmlhttp.open("GET", "cd_catalog.xml", true);
+    xmlhttp.send();
+  }
+
+  function myFunction(xml, i) {
+    var xmlDoc = xml.responseXML;
+    x = xmlDoc.getElementsByTagName("CD");
+    document.getElementById("showCD").innerHTML = "Artist: " +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "< br >Title: " +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "< br >Year: " +
+    x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+  }
+  
+# navigate between the CDs
+- to navigate between the CDs in the example above, create a (next()) and (previous()) function 
+  like > 
+  
+  function next() {
+    // display the next CD, unless you are on the last CD
+    if (i < len-1) { i++; displayCD(i); }
+  }
+
+  function previous() {
+    // display the previous CD, unless you are on the first CD
+    if (i > 0) { i--; displayCD(i); }
+  }
+  
+# show album information when clicking on a CD 
+- the last example shows how you can show album information when the user clicks on a CD 
+  like > 
+  
+  function displayCD(i) {
+    document.getElementById("showCD").innerHTML = "Artist: " +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "< br >Title: " +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "< br >Year: " +
+    x[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+  } 
+</pre>
 
 
 

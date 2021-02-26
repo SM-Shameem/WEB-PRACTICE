@@ -7,9 +7,377 @@
 
 <pre>
 --------------------------------------------------------------------------------
-jQuery
+navigator - the Browser Object Model
 --------------------------------------------------------------------------------
+# the (window.navigator) object contains information about the visitor's browser
+# window navigator 
+- the (window.navigator) object can be written without the window prefix
+- some examples 
+  1. navigator.appName
+  2. navigator.appCodeName 
+  3. navigator.platform 
+  
+# browser cookies 
+- the (cookieEnabled) property returns true if cookies are enabled, otherwise false 
+- example > 
 
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = "cookiesEnabled is " + navigator.cookieEnabled;
+  < /script > 
+  
+# browser application name 
+- the (appName) property returns the application name of the browser 
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = "navigator.appName is " + navigator.appName;
+  < /script > 
+- note > strange enough, "Netscape" is the application name for both (IE11, Chrome, Firefox, and Safari)
+
+# browser application code name 
+- the (appCodeName) property returns the application code name of the browser 
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = "navigator.appCodeName is " + navigator.appCodeName;
+  < /script > 
+- note > "Mozilla" is the application code name for both (Chrome, Firefox, IE, Safari, and Opera)
+
+# the browser engine 
+- the (product) property returns the product name of the browser engine 
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = "navigator.product is " + navigator.product;
+  < /script > 
+- note > do not rely on this. most browsers returns (Gecko) as product name
+
+# the browser version 
+- the (appVersion) property returns version information about the browser 
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = navigator.appVersion;
+  < /script > 
+  
+# the browser agent 
+- the (userAgent) property returns the (user-agent) header sent by the browser to the server
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = navigator.userAgent;
+  < /script >
+  
+# warning 
+- the information from the navigator object can often be misleading, and should not be used to detect browser
+  versions because 
+  > different browsers can use the same name 
+  > the navigator data can be changed by the browser owner 
+  > some browsers misidentify themselves to by pass site tests 
+  > browsers cannot report new operating systems, released later than the browser 
+  
+# the browser platform 
+- the (platform) property returns the broser platform (operating system) 
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = navigator.platform;
+  < /script > 
+  
+# the browser language 
+- the (language) property returns the browser's language 
+- example > 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = navigator.language;
+  < /script >
+  
+# is the browser online 
+- the (onLine) property returns true if the browser is online
+- example 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = navigator.onLine;
+  < /script >  
+  
+# is java enabled
+- the (javaEnabled()) method returns true if java is enabled 
+- example 
+
+  < p id="demo" >< /p >
+  < script >
+  document.getElementById("demo").innerHTML = navigator.javaEnabled();
+  < /script > 
+</pre> 
+
+<pre>
+--------------------------------------------------------------------------------
+popup-alert - the Browser Object Model
+--------------------------------------------------------------------------------
+# javascript has three kind of popup boxes (alert-box, confrim-box, and prompt-box) 
+
+# alert-box 
+- an (alert-box) is often used if you want to make sure information comes through to the user 
+- when an (alert-box) pops up, the user will have to click OK to proceed 
+- syntax > window.alert("sometext"); 
+- the (window.alert()) method can be written without the window prefix 
+  like > alert("alertbox");
+  
+# confirm-box 
+- a (confirm-box) is often used if you wan the user to verify or accept something 
+- when a (confirm-box) pops up, the user will have to click either OK or Cancel to proceed 
+- if the user clicks OK, the box returns true, if the user clicks Cancel, the box returns false 
+- syntax > window.confirm("smetext");
+- the (window.confirm()) method can be written without the window prefix 
+  like > if (confirm("press a button")) txt = "you pressed ok";
+  else txt = "you pressed cancel";
+  
+# prompt-box 
+- a (prompt-box) is often used if you want the user to input a value before entering a page 
+- when a (prompt-box) pops up, the user will have to click either OK or Cancel to proceed after entering an 
+  input value 
+- if the user clicks OK the box returns the input value. if the user clicks Cancel the box returns null 
+- syntax > window.prompt("sometext", "defaultText");
+- the (window.prompt()) method can be written without the window prefix 
+  like > var person = prompt("please enter your name", "harry potter");
+  if (person == null || person = "") txt = "user canceled the prompt"
+  else txt = "hello " + person + "! how are you today?";
+  
+# line breaks 
+- to display line breaks inside a (popup-box), use a back-slash followed by the character (n) 
+  like > alert("hello\nHow are you?");
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+timing - the Browser Object Model
+--------------------------------------------------------------------------------
+# javascript can be executed in time-intervals 
+# this is called timing events 
+
+# timing events 
+- the (window) object allows executing of code at specified time intervals 
+- these time intervals are called timing events 
+- the two key methods to use with javascript are - 
+  1. setTimeout(function, milliseconds) - executes a function, after waiting a specified number of milliseconds
+  2. setInterval(function, milliseconds) - same as (setTimeout()), but repeats the execution of the function 
+     continuously 
+- note > the (setTimeout()) and (setInterval()) are both methods of the HTML-DOM (window object) 
+
+# the (setTimeout()) method 
+- syntax > window.setTimeout(function, milliseconds); 
+- the (window.setTimeout()) method can be written without the (window prefix) 
+- the first-parameter is a function into be executed 
+- the second-parameter indicates the number of (milliseconds before execution) 
+- click a button. wait 3 seconds, ant the page will alert (hello) 
+
+  < button onclick="setTimeout(myFunction, 3000)" >Try it< /button >
+  < script >
+  function myFunction() {
+    alert('Hello');
+  }
+  < /script > 
+
+# how to stop the execution 
+- the (clearTimeout()) method stops the execution of the function specified in (setTimeout()) 
+  like > window.clearTimeout(timeoutVariable) 
+- the (window.clearTimeout()) method can be written without the (window prefix) 
+- the (clearTimeout()) method uses the variable returned from (setTimeout()) 
+  like > myVar = setTimeout(function, milliseconds); clearTimeout(myVar); 
+- if the function has not already been executed, you can stop the execution by calling 
+  the (clearTimeout()) method 
+- same example as above, but with an added (stop) button 
+  like > < button onclick="myVar = setTimeout(myFunction, 3000)" >Try it< /button >
+  < button onclick="clearTimeout(myVar)" >Stop it< /button >
+  
+# the (setInterval()) method 
+- the (setInterval()) method repeats a given function at every given (time-interval) 
+  like > window.setInterval(function, milliseconds); 
+- the (window.setInterval()) method can be written without the (window prefix) 
+- the first-parameter is the function to be executed 
+- the second-parameter indicates the length of the (time-interval) between each execution
+- this example executes a function called (myTimer) once every second (like a digital watch) 
+- display the current time 
+  like > var myVar = setInterval(myTimer, 1000); 
+  function myTimer() { var d = new Date(); document.getElementById("demo").innerHTML = d.toLocateTimeString(); }
+- note > thre are 1000 milliseconds in one second
+
+# how to stop the execution 
+- the (clearInterval()) method stops the executions of the function specified in the (setInterval()) method 
+  like > window.clearInterval(timerVariable) 
+- the (window.clearInterval()) method can be written without the (window prefix) 
+- the (clearInterval()) method uses the variable returned from (setInterval()) 
+  like > myVar = setInterval(function, milliseconds); clearInterval(myVar); 
+- example > same example as above, but we have added a (stop time) button 
+
+  < p id="demo" >< /p >
+  < button onclick="clearInterval(myVar)" >Stop time< /button >
+  < script >
+  var myVar = setInterval(myTimer, 1000);
+  function myTimer() {
+  var d = new Date();
+  document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+  }
+  < /script > 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+cookies - the Browser Object Model
+--------------------------------------------------------------------------------
+# cookies let you store user information in web pages 
+# what are cookies 
+- cookies are data, stored in small text files, on your computer 
+- when a web server has sent a web page to a browser, the connection is shut-down, and the server forgets 
+  everything about the user 
+- cookies were invented to solve the problem (how to remember information about the user) 
+  > when a user visits a web page, his/her name can be stored in a cookie 
+  > next time the user visits the page, the cookie (remembers) his her name 
+- cookies are saved in name-value pairs like 
+  like > username = john doe 
+- when a browser requests a web page from a server, cookies belonging to the page are added to the request. 
+  this way the server gets the necessary data to (remember) information about users 
+- note > none of the examples below will work if your browser has local cookies support turned off 
+
+# create a cookie with javascript
+- javascript can (create, read, and delete) cookies with the (document.cookie) property 
+- with javascript, a cookie can be created like this 
+  like > document.cookie = "username=john Doe";
+- you can also add an expiry date (in UTC time). by default, the cookie is deleted when the browser is closed 
+  like > document.cookie = "username=john Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+- with a path parameter, you can tell the browser what path the cookie belongs to. by default, 
+  the cookie belongs to the current page 
+  like > document.cookie = "username=john Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+  
+# read a cookie with javascript
+- with javascript can be read like this 
+  like > var x = document.cookie; 
+- note > (document.cookie) will return all cookies in one string much like: 
+  (cookie1=value; cookie2=value; cookie3=value;)
+  
+# change a cookie with javascript
+- with javascript, you can change a cookie the same way as you create it 
+  like > document.cookie = "username=john smith; expires=thu, 18 Dec 2013 12:00:00 UTC; path=/";
+- the old cookie is overwritten 
+
+# delete a cookie with javascript
+- deleting a cookie is very simple 
+- you don't have to specify a cookie value when you delete a cookie 
+- just set the expires parameter to a passed date 
+  like > document.cookie = "username=; expires-Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+- note > you should define the cookie path to ensure that you delete the right cookie 
+- note > some browsers will not let you delete a cookie if you don't specify the path 
+
+# the cookie string 
+- the (document.cookie) property looks like a normal text string. but it is not 
+- even if you write a whole cookie string to (document.cookie), when you read it out again, 
+  you can only see the (name-value) pair of it 
+- if you set a new cookie, older cookies are not overwritten. the new cookie is added to (document.cookie), 
+  so if yo read (document.cookie) again you will get something like 
+  like > cookie1 = value; cookie2 = value  
+- if you want ot find the value of one specified cookie, you must write a javascript function that searches 
+  for the cookie value in the cookie string 
+  
+# javascript cookie example 
+- in the example to follow, we will create a cookie that stores the name of a visitor 
+- the first time a visitor arrives to the web page, he/she will be asked to fill in his/her name 
+  the name is then stored in a cookie 
+- the next time the visitor arrives at the same page, he/she will get a welcome message 
+- for the example we will create 3 javascript functions 
+  > a function to set a cookie value 
+  > a function to get a cookie value 
+  > a function to check a cookie value 
+  
+# a function to set a cookie 
+- first, we create a (function) that stores the name of the visitor in a cookie variable 
+  like > function setCookie(cName, cValue, exDays) { 
+    var d = new Date(); 
+    d.setTime(d.getTime() + (exDays*24*60*60*1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cName + "=" + cValue + ";" + expires + ";path=/";
+  }
+  
+- example explained 
+- the parameters to the function above are the name of the cookie (cName), the value of the cookie (cValue), 
+  and the number of days until the cookie should expire (exDays) 
+- the function sets a cookie by adding together the cookiename, the cookie value, and the expires string 
+
+# a function to get a cookie 
+- then, we create a (function) that returns the value of a specified cookie 
+  like > 
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1);
+      if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+  }
+- function explained 
+- take the cookiename as parameter (cName) 
+- create a variable (name) with the text to search for (cName + "=")
+- decode the cookie string, to handle cookies with special charactrs, (e.g. '$')
+- split (document.cookie) on semicolons into an array called ca (ca=decodedCookie.split(';'))
+- loop through the ca array (i=0; i<ca.lenght; i++), and read out each value (c = ca[i])
+- if the cookie is found (c.indexOf(name) == 0), return the value of the cookie 
+  (c.substring(name.length, c.length)
+- if the cookie is not found, return ""
+
+# a function to check a cookie 
+- last, we create the function that checks if a cookie is set 
+- if the cookie is set it will display a greeting 
+- if the cookie is not set, it will display a prompt box, asking for the name of th euser, and stores the 
+  username cookie for 365 days, by calling the (setCookie) function 
+  like > 
+  function checkCookie() {
+    var username = getCookie("username");
+    if (username != "") { alert("Welcome again " + username); } 
+    else { 
+      username = prompt("Please enter your name:", ""); 
+      if (username != "" && username != null) { setCookie("username", username, 365); }
+    }
+  }
+  
+# all together now 
+- example 
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') { c = c.substring(1); }
+      if (c.indexOf(name) == 0) { return c.substring(name.length, c.length); }
+    }
+    return "";
+  }
+
+  function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") { alert("Welcome again " + user); } 
+    else {
+      user = prompt("Please enter your name:", "");
+      if (user != "" && user != null) { setCookie("username", user, 365); }
+    }
+  }  
 </pre>
 
 

@@ -1,15 +1,135 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P04">JS:P04 > AJAX</h1>
+<h1 id="P04">JS:P04 > AJAX : part-one</h1>
 <a href="JS-28.html">Next</a><a href="JS-26.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-AJAX
+AJAX Introduction
 --------------------------------------------------------------------------------
+# AJAX is a developer's dream, because you can 
+  > read data from a web server - after the page has loaded 
+  > update a web page without reloading the page 
+  > send data to a web server - in the background 
+- AJAX example 
+  
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < div id="demo" >
+  < h2 >The XMLHttpRequest Object< /h2 >
+  < button type="button" onclick="loadDoc()" >Change Content< /button >
+  < /div >
 
+  < script >
+  function loadDoc() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML =
+        this.responseText;
+      }
+    };
+    xhttp.open("GET", "ajax_info.txt", true);
+    xhttp.send();
+  }
+  < /script >
+  < /body >
+  < /html > 
+- example explained 
+- the HTML page contains a (div) section and a (button) 
+- the (button) calls a function (if it is clicked) 
+- the function requests data from a web server and displays it 
+
+# what is AJAX 
+- AJAX = Asynchronous JavaScript And XML 
+- AJAX is not a programming language 
+- AJAX just uses a combination of
+  > a browser built-in (XMLHttpRequest) object (to request data from a web server) 
+  > javascript and HTML-DOM (to display or use the data) 
+- note > AJAX is a misleading name. AJAX applications might use XML to transport data, but it is equally 
+  common to transport data as plain text or JSON text 
+- AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes 
+  this means that it is possible to update parts of a web page, without reloading the whole page 
+  
+# how AJAX works 
+- 1. an event occurs in a web page (the page is loaded, a button is clicked) 
+- 2. an XMLHttprequest object is created by javascript
+- 3. the XMLHttpRequest object sends a request to a web server 
+- 4. the server processes the request 
+- 5. the server sends a response back to the web page 
+- 6. the response is read by javascript
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+AJAX - the XMLHttpRequest Object
+--------------------------------------------------------------------------------
+# the keystone of AJAX is the XMLHttpRequest object 
+# the XMLHttpRequest Object 
+- all modern browsers support the (XMLHttpRequest) object 
+- the (XMLHttpRequest) object can be used to exchange data with a web server behind the scenes. 
+  this means that it is pssible to update parts of a web page, without reloading the whole page 
+  
+# create an (XMLHttpRequest) object 
+- all modern browsers (chrome, firefox, IE7+, Edge, Safari, Opera) have a built-in (XMLHttpRequest) object
+- syntax for creating an (XMLHttpRequest) object 
+  like > variable = new XMLHttpRequest(); 
+- example > var xhttp = new XMLHttpRequest(); 
+
+# access across domains 
+- for security reasons, modern browsers do not allow access across domains 
+- this means that both the web page and the XML file it tries to load, must be located on the same server 
+- the examples on W3Schools all open XML files located on the W3Schools domain 
+- if you want to use the example above on one of your own web pages, the XML files you load must be located on 
+  your own server 
+  
+# modern brosers (fetch API) 
+- modern browsers can use fetch API instead of the (XMLHttpRequest Object) 
+- the fetch API interface allows web browser to make HTTP requests to web servers 
+- if you use the (XMLHttpRequest) object, fetch can do the same in a simpler way
+
+# old browsers (IE5 and IE6) 
+- old versions of IE5/IE6) use an (ActiveX object) instead of the (XMLHttpRequest object) 
+  like > variable = new ActiveXObject("Microsoft.XMLHTTP");
+- to handle (IE5 and IE6), check if the browser supports the (XMLHttpRequest object), or else create an 
+  (ActiveX) object 
+  like > if (window.XMLHttpRequest) { xmlhttp = new XMLHttpRequest(); // code for modern browsers } 
+  else { xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); // code for old IE browsers } 
+  
+# XMLHttpRequest Object Methods 
+  1. new XMLHttpRequest() - create a new (XMLHttpRequest object) 
+  2. abort() - cancels the current request 
+  3. getAllResponseHeaders() - returns header information 
+  4. getResponseHeader() - returns specific header information 
+  5. open(method, url, async, user, psw) - specifies the request 
+     - method (the request type GET or POST) 
+     - url (the file location) 
+     - async (true (asynchronous) or false (synchronous))
+     - user (optional user name) 
+     - psw (optional password)
+  6. send() - sends the request to the server (used for GET requests) 
+  7. send(string) - sends the request to the server (used for POST requests)
+  8. setRequestHeader() - adds a label/value pair to the header to be sent 
+  
+# XMLHttpRequest object properties 
+  1. onreadystatechange - defines a function to be called when the readyState property changes 
+  2. readyState - holds the status of the (XMLHttpRequest) 
+     - 0 (request not initialized) 
+     - 1 (request not initialized) 
+     - 2 (request received) 
+     - 3 (processing request) 
+     - 4 (request finished and response is ready)
+  3. responseText - returns the response data as a string 
+  4. responseXML - returns the response data as XML data 
+  5. status - returns the status-number of a request 
+     - 200 (ok)
+     - 403 (forbidden)
+     - 404 (not found) 
+     - for a complete list go to the (Http messages reference) 
+  6. statusText - returns the status-text (e.g. "OK" or "Not Found")
 </pre>
 
 

@@ -7,11 +7,212 @@
 
 <pre>
 --------------------------------------------------------------------------------
-jQuery
+Window - the Browser Object Model
 --------------------------------------------------------------------------------
+# the Browser Object Model (BOM) allows javascript to (talk to) the browser 
+# the Browser Object Model (BOM) 
+- there are no official standards for the Browser Object Model (BOM) 
+- since modern browsers have implemented (almost) the same methods and properties for javascript interactivity,
+  it is often referred to, as methods and properties of the BOM 
+  
+# the Window Object 
+- the (window) object is supported by all browsers. it represents the browser's window
+- all global javascript (objects, functions, and variables) automatically become members of the window object 
+- (global) variables are (properties) of the (window object) 
+- (global) functions are (methods) of the (window object) 
+- even the (document object - of the HTML DOM) is a (property) of the (window object) 
+  like > window.document.getElementById("header");
+- is the same as 
+  like > document.getElementById("header");
+  
+# window size 
+- two (properties) can be used to determine the size of the browser window
+- both (properties) return the size in pixels 
+  1. (window.innerHeight) - the inner height of the browser window (in pixels) 
+  2. (window.innerWidth) - the inner width of the browser window (in pixels)
+- note > the browser window (the browser view-port) is NOT including toolbars and scroll-bars 
+- for IE 8, 7, 6, 5 
+  > document.documentElement.clientHeight
+  > document.documentElement.clientWidth
+- or 
+  > document.body.clientHeight
+  > document.body.clientWidth
+- a practical javascript solution (covering all browsers) 
+  like > 
+  var w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight; 
+- the example displays the browser window's height and width (NOT including toolbars/scrollbars) 
 
+# other window methods 
+- some other methods are below - 
+  1. window.open() - open a new window 
+  2. window.close() - close the current window 
+  3. window.moveTo() - move the current window 
+  4. window.resizeTo() - resize the current window   
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+Screen - the Browser Object Model
+--------------------------------------------------------------------------------
+# the (window.screen) object contains information about the user's screen 
+# window screen 
+- the (window.screen) object can be written without the (window prefix) 
+- properties 
+  1. screen.width
+  2. screen.height
+  3. screen.availWidth
+  4. screen.availHeight
+  5. screen.colorDepth
+  6. screen.pixelDepth 
+  
+# window screen width 
+- the (screen.width) property returns the width of the visitor's screen in pixels 
+- example > display the width of the screen in pixels 
+  document.getElementById("demo").innerHTML = "screen width : " + screen.width + "px"; 
+  
+# window screen height 
+- the (screen.height) property returns the height of the visitor's screen in pixels 
+- example > display the height of the screen in pixels 
+  document.getElementById("demo").innerHTML = "screen height : " + screen.height + "px";
+  
+# window screen available width 
+- the (screen.availWidth) property returns the width of the visitor's screen, in pixels, minus interface 
+  features like the Windows Taskbar
+- display the available width of the screen in pixels 
+  document.getElementById("demo").innerHTML = "available screen width : " + screen.availWidth + "px";
+  
+# widow screen available height 
+- the (screen.availHeight) property jreturns the height of the visitor's screen. in pixels, minus interface 
+  features like the Windows Taskbar
+- example > display the available height of the screen in pixels 
+  document.getElementById("demo").innerHTML = "available screen height : " + screen.availHeight + "px";
+  
+# window screen color depth 
+- the (screen.colorDepth) property returns the number of bits used to display one color
+- all modern computers use 24-bit or 32-bit hardware for color resolution 
+  1. 24-bits = 16,777,216 different "True Colors"
+  2. 32-bits = 4,294,967,296 different "Deep Colors"
+- older computers used 16-bit = 65,536 different "High Colors" resolution
+- very old computers, and old cell phones use 8-bit = 256 different "VGA Colors"
+- example > display the color depth of the screen in bits 
+  document.getElementById("demo").innerHTML = "screen color depth : " + screen.colorDepth + "px";
+- note > the (#rrggbb) or (rgb) values used in HTML  represents "True Colors" (16,777,216) different colors
+
+# window screen pixel depth 
+- the (screen.pixelDepth) property returns the pixel depth of the screen
+- example > display the pixel depth of the screen in bits 
+  document.getElementById("demo").innerHTML = "screen pixel depth : " + screen.pixelDepth + "px";
+- note > for modern computers, color depth and pixel depth are equal   
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+location - the Browser Object Model
+--------------------------------------------------------------------------------
+# the (window.location) object can be used to get the current page address (URL) and to redirect the browser
+  to a new page 
+# window location 
+- the (window.location) object can be written without the window prefix 
+- some examples 
+  1. (window.location.href) returns the (href URL) of the (current page)
+  2. (window.location.hostname) returns the (domain name) of the (web host) 
+  3. (window.location.pathname) returns the (path and filename) of the (current page) 
+  4. (window.location.protocol) returns the (web protocol) used (http: or https:) 
+  5. (window.location.assign()) loads a new document 
+  
+# window location (href) 
+- the (window.location.href) property returns the URL of the current page 
+- example > display the href (URL) of the current page 
+  document.getElementById("demo").innerHTML = "page location is : " + window.location.href;
+  
+# window location (hostname) 
+- the (window.location.hostname) property returns the name of the internet host (of the current page) 
+- example > display the name of the host 
+  document.getElementById("demo").innerHTML = "page hostname is : " + window.location.hostname; 
+  
+# window location (pathname)
+- the (window.location.pathname) property returns the pathname of the current page 
+- example > display the path name of the current URL 
+  document.getElementById("demo").innerHTML = "page path is : " + window.location.pathname; 
+  
+# window location protocol 
+- the (window.location.protocol) property returns the web protocol of the page 
+- example > display the web protocol 
+  document.getElementById("demo").innerHTML = "page protocol is : " + window.location.protocol; 
+  
+# window location port 
+- the (window.location.port) property returns the number of the internet host port (of the current page)
+- example > display the name of the host 
+  document.getElementById("demo").innerHTML = "port number is : " + window.location.port; 
+- note > most browsers will not display default port numbers (80 for http and 443 for https)
+  
+# window location assign 
+- the (window.location.assign()) method loads a new document 
+- example > load a new document 
+  
+  < html >
+  < head >
+  < script >
+  function newDoc() {
+    window.location.assign("https://www.w3schools.com")
+  }
+  < /script >
+  < /head >
+  < body >
+  < input type="button" value="Load new document" onclick="newDoc()" > 
+  < /body >
+  < /html >  
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+history - the Browser Object Model
+--------------------------------------------------------------------------------
+# the (window.history) object contains the browsers history
+# window history 
+- the (window.history) object can be written without the window prefix 
+- to protect the privacy of the users, there are limitations to how javascript can access this object 
+- some methods 
+  1. history.back() - same as clicking back in the browser 
+  2. history.forward() - same as clicking forward in the browser
+  
+# window history back 
+- the (history.back()) method loads the previous URL in the history list 
+- this is the same as clicking the back button in the browser 
+- example > create a back button on a page 
+  
+  < html >
+  < head >
+  < script >
+  function goBack() {
+    window.history.back()
+  }
+  < /script >
+  < /head >
+  < body >
+  < input type="button" value="Back" onclick="goBack()" >
+  < /body >
+  < /html >  
+  
+# window history forward 
+- the (history.forward()) method loads the next URL in the history list 
+- this is the same as clicking the forward button in the browser 
+- example > create a forward button on a page 
+  
+  < html >
+  < head >
+  < script >
+  function goForward() {
+    window.history.forward()
+  }
+  < /script >
+  < /head >
+  < body >
+  < input type="button" value="Forward" onclick="goForward()" >
+  < /body >
+  < /html >    
+</pre>
 
 
 

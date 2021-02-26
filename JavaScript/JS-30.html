@@ -1,44 +1,96 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > library and framework</h1>
+<h1 id="P04">JS:P04 > JSON : part-one</h1>
 <a href="JS-31.html">Next</a><a href="JS-29.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-jQuery
+introduction
 --------------------------------------------------------------------------------
+# JSON : JavaScript Object Notation 
+# JSON is a syntax for storing and exchanging data 
+# JSON is text, written with JavaScript object notation 
 
+# exchanging data 
+- when exchanging data between a browser and a server, the data can only be text 
+- JSON is text, and we can convert any javascript object into JSON, and send JSON to the server 
+- we can also convert any JSON received from the server into javascript objects 
+- this way we can work with the data as javascript objects, with no complicated parsing and translations 
+
+# sending data 
+- if you have data stored in a javascript object, you can convert the object into JSON, and send it to a server 
+  like > 
+  var myObj = {name: "John", age: 31, city: "New York"};
+  var myJSON = JSON.stringify(myObj);
+  window.location = "demo_json.php?x=" + myJSON;
+- you will learn more about the (JSON.stringify()) function later 
+
+# receiving data 
+- if you receive data in JSON format, you can convert it into a javascript object 
+  like > 
+  var myJSON = '{"name":"John", "age":31, "city":"New York"}';
+  var myObj = JSON.parse(myJSON);
+  document.getElementById("demo").innerHTML = myObj.name; 
+- you will learn more about the (JSON.parse()) function later 
+
+# storing data 
+- when storing data, the data has to be a certain format, and regardless of where you choose to store it, 
+  text is always one of the legal formats 
+- JSON makes it possible to store javascript objects as text 
+- storing data in local storage 
+  like > 	
+  // Storing data:
+  myObj = {name: "John", age: 31, city: "New York"};
+  myJSON = JSON.stringify(myObj);
+  localStorage.setItem("testJSON", myJSON);
+
+  // Retrieving data:
+  text = localStorage.getItem("testJSON");
+  obj = JSON.parse(text);
+  document.getElementById("demo").innerHTML = obj.name; 
+  
+# what is JSON 
+- JSON stands for JavaScript Object Notation 
+- JSON is a lightweight data-interchange format 
+- JSON is "self-describing" and easy to understand 
+- JSON is language independent* 
+- note > * JSON use javascript syntax, but the JSON format is text only. 
+  text can be read and used as a data format by any programming language 
+- note > the JSON format was originally specified by (Douglas Crockford)
+
+# why use JSON 
+- since the JSON format is text only, it can easily be sent to and from a server, and used as a data format 
+  by any programming language 
+- javascript has a built in function to convert a string like (JSON format), into native javascript objects 
+  like > JSON.parse() 
+- so, if you receive data from a server, in JSON format, you can use it like any other javascript object 
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-AngularJS
+syntax 
 --------------------------------------------------------------------------------
+# the JSON syntax is a subset of the javascript syntax 
 
+# JSON syntax rules 
+- JSON syntax is derived form javascript object notation syntax 
+  > data is in (name/value) pairs 
+  > data is separated by commas 
+  > curly braces hold objects 
+  > square brackets hold arrays 
+  
+# JSON data - a Name and a Value 
+- JSON data is written as (name/value) pairs 
+- a (name/value) pair consists of a field name (in double quotes), followed by a colon, followed by a value - 
+  like > "name":"john"
+- note > JSON names require double quotes. javascript names don't
+
+# JSON - evaluates to javascript objects 
+- 
 </pre>
 
-<pre>
---------------------------------------------------------------------------------
-React
---------------------------------------------------------------------------------
-
-</pre>
-
-<pre>
---------------------------------------------------------------------------------
-nodeJS
---------------------------------------------------------------------------------
-
-</pre>
-
-<pre>
---------------------------------------------------------------------------------
-other frameworks
---------------------------------------------------------------------------------
-
-</pre>
 
 
 
