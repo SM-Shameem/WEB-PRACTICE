@@ -7,11 +7,136 @@
 
 <pre>
 --------------------------------------------------------------------------------
-web api
+introduction 
 --------------------------------------------------------------------------------
+# a web-api is a developer's dream 
+  > it can extend the functionality of the browser 
+  > it can greatly simplify complex functions 
+  > it can provide easy syntax to complex code 
+  
+# what is web api 
+- API stands for Application Programming Interface 
+- a web API is an application programming interface for the web 
+- a browser API can extend the functionality of a web browser 
+- a server API can extend the functionality of a web server 
 
+# browser APIs
+- all browsers have a set of built-in web APIs to support complex operations, and to help accessing data 
+- for example, the Geo-location API can return the coordinates of where the browser is located 
+- example > get the latitude and longitude of the user's position 
+  var x = document.getElementById("demo");
+  function getLocation() {
+    if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition); } 
+    else { x.innerHTML = "Geolocation is not supported by this browser."; }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "< br >Longitude: " + position.coords.longitude;
+  }
+  
+# third party APIs
+- third party APIs are not built into your browser 
+- to use these APIs, you will have to download the code from the web 
+- examples 
+  > YouTube API - allows you to display videos on a web site 
+  > twitter API - allows you to display tweets on a web site 
+  > Facebook API - allows you to display Facebook into on a web site 
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+history API
+--------------------------------------------------------------------------------
+# the web history API provides easy methods to access the (windows.history) object
+# the (window.history) object contains the URLs (web sites) visited by the user 
+# the web history API is supported in all browsers 
+
+# the history (back()) method 
+- the (back()) method loads the previous URL i the (windows.history) list 
+- it is the same as clicking the (back arrow) in your browser 
+  like > 
+  < button onclick="myFunction()" >Go Back< /button >
+  < script >
+  function myFunction() {
+    window.history.back();
+  }
+  < /script > 
+  
+# the history (go()) method 
+- the (go()) method loads a specfic URL from the history list 
+  like > 
+  < button onclick="myFunction()" >Go Back 2 Pages< /button >
+  < script >
+  function myFunction() {
+    window.history.go(-2);
+  }
+  < /script >
+  
+# history object properties 
+  1. length - returns the number of URLs in the history list 
+# history object methods 
+  1. back() - loads the previous URL in the history list 
+  2. forward() - loads the next URL in the history list 
+  3. go() - loads a specific URL from the history list 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+storage api
+--------------------------------------------------------------------------------
+# the web storage API is a simple syntax for storing and retrieving data in the browser 
+  it is very easy to use 
+  like > localStorage.setItem("name", "john doe");
+  localStorage.getItem("name");
+- the web storage API is supported in all browsers 
+
+# the (localStorage) object 
+- the (localStorage) object provides access to a local storage for a particular web site. 
+  it allows you to (store, read, add, modify, and delete) data items for that domain 
+- the data is stored with no expiration date, and will not be deleted when the browser is closed 
+- the data will be available for (days, weeks, and years) 
+
+# the (setItem()) method 
+- the (localStorage.setItem()) method stores a data item in a storage 
+- it takes a name and a value as parameters 
+  like > localStorage.setItem("name", "john doe");
+  
+# the (getItem()) method 
+- the (localStorage.getItem()) method retrieves a data item from the storage
+- it takes a name as parameter 
+  like > localStorage.getItem("name");
+  
+# the (sessionStorage) object 
+- the (sessionStorage) object is identical to the (localStorage) object 
+- the difference is that the (sessionStorage) object stores data for one session 
+- the data is deleted when the browser is closed 
+  like > sessionStorage.getItem("name"); 
+  
+# the (setItem()) method 
+- the (sessionStorage.setItem()) method stores a data item in a storage 
+- it takes a name and a value as parameters 
+  like > sessionStorage.setItem("name", "john doe");
+  
+# the (getItem()) method 
+- the (sessionStorage.getItem()) method retrieves a data item from the storage 
+- it takes a name as parameter 
+  like > sessionStorage.getItem("name");
+  
+# storage object (methods)
+  1. key(n) - returns the name of the (nth) key in the storage 
+  2. getItem(keyname) - returns the value of the specified key name 
+  3. setItem(keyname, value) - adds that key to the storage, or update that key's value if it already exists
+  4. removeItem(keyname) - removes that key from the storage 
+  5. clear() - empty all key out of the storage 
+# storage object (properties) 
+  1. length - returns the number of data items stored in the storage object 
+# related pages for web storage API (properties)
+  1. window.localStorage - allows to save (key/value) pairs in a web browser. 
+     stores the data with no expiration date 
+  2. window.sessionStorage - allows to save (key/value) pairs in a web browser. 
+     stores the data for one session   
+</pre>
 
 
 

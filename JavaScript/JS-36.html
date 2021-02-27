@@ -1,6 +1,6 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P04">JS:P04 > form</h1>
+<h1 id="P04">JS:P04 > form and form api</h1>
 <a href="JS-37.html">Next</a><a href="JS-35.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
@@ -9,7 +9,152 @@
 --------------------------------------------------------------------------------
 form
 --------------------------------------------------------------------------------
+# javascript form validation 
+- HTML form validation can be done by javascript
+- if a form field (fName) is empty, this function alerts a message, and returns false, to prevent the form 
+  from being submitted 
+- javascript example >  
+  function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == "") { alert("Name must be filled out"); return false; }
+  } 
+- the function can be called when the form is submitted 
+- html form example > 
+  < form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post" >
+  Name: < input type="text" name="fname" >
+  < input type="submit" value="Submit" >
+  < /form > 
+  
+# javascript can validate numeric input 
+- javascript is often used to validate numeric input 
+  like > 
+  < !DOCTYPE html >
+  < html >
+  < body >
+  < h2 >JavaScript Can Validate Input< /h2 >
+  < p >Please input a number between 1 and 10:< /p >
+  < input id="numb" >
+  < button type="button" onclick="myFunction()" >Submit< /button >
+  < p id="demo" >< /p >
+  < script >
+  function myFunction() {
+    var x, text;
+    // Get the value of the input field with id="numb"
+    x = document.getElementById("numb").value;
+    // If x is Not a Number or less than one or greater than 10
+    if (isNaN(x) || x < 1 || x > 10) { text = "Input not valid"; } 
+    else { text = "Input OK"; }
+    document.getElementById("demo").innerHTML = text;
+  }
+  < /script >
+  < /body >
+  < /html > 
+  
+# automatic HTML form validation 
+- HTML form validation can be performed automatically by the browser 
+- if a form field (fName) is empty, the (required) attribute prevents this form from being submitted 
+- HTML form example > 
+  < form action="/action_page.php" method="post" >
+    < input type="text" name="fname" required >
+    < input type="submit" value="Submit" >
+  < /form > 
+- note > automatic HTML form validation does not work in IE9 or earlier 
 
+# data validation 
+- data validation is the process of ensuring that user input is clean, correct, and useful 
+- typical validation tasks are 
+  > has the user filled in all required fields
+  > has the user entered a valid date
+  > has the user entered text in a numeric field 
+- most often, the purpose of data validation is to ensure correct user input 
+- validation can be defined by many different methods, and deployed in many different ways 
+- (server side validation) is performed by a web server, after input has been sent to the server 
+- (client side validation) is performed by a web browser, before input is sent to a web server 
+
+# HTML constraint validation 
+- HTML5 introduced a new HTML validation concept called (constraint validation) 
+- HTML constraint validation is based on 
+  > constraint validation (HTML Input Attributes) 
+  > constraint validation (CSS Pseudo Selectors) 
+  > constraint validation (DOM properties and methods) 
+  
+# constraint validation HTML input (attributes)
+  1. disabled - specifies that the input element should be disabled 
+  2. max - specifies the maximum value of an input element 
+  3. min - specifies the minimum value of an input element 
+  4. pattern - specifies the vale pattern of an input element 
+  5. required - specifies that the input field requires an element 
+  6. type - specifies the type of an input element 
+  
+# constraint validation (css pseudo-selectors)
+  1. :disabled - selects input elements with the (disabled) attribute specified 
+  2. :invalid - selects input elements with invalid values 
+  3. :optional - selects input elements with no (required) attribute specified 
+  4. :required - selects input elements with the (required) attribute specified 
+  5. :valid - selects input elements with valid values   
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+forms api 
+--------------------------------------------------------------------------------
+# constraint validation (DOM method)
+  1. checkValidity() - returns true if an input element contains valid data 
+  2. setCustomValidity() - sets the validationMessage property of an input element 
+- if an input field contains invalid data, display a message 
+  like > the (checkValidity()) method 
+  < input id="id1" type="number" min="100" max="300" required >
+  < button onclick="myFunction()" >OK< /button >
+  < p id="demo" >< /p >
+  < script >
+  function myFunction() {
+    var inpObj = document.getElementById("id1");
+    if (!inpObj.checkValidity()) { document.getElementById("demo").innerHTML = inpObj.validationMessage; }
+  }
+  < /script > 
+  
+# constraint validation (DOM properties)
+  1. validity - contains boolean properties related to the validity of an input element 
+  2. validationMessage - contains the message a browser will display when the validity is false 
+  3. willValidate - indicates if an input element will be validated 
+  
+# validity properties 
+- the (validity property) of an input element contains a number of properties related to the validity of data 
+  1. customError - set to true, if a custom validity message is set 
+  2. patternMismatch - set to true, if an element's value does not match its pattern attribute 
+  3. rangeOverflow - set to true, if an element's value is greater than its max attribute 
+  4. rangeUnderflow - set to true, if an element's value is less than its min attribute 
+  5. stepMismatch - set to true, if an element's vale is invalid per its step attribute 
+  6. tooLong - set to true, if an element's value exceeds its maxLength attribute 
+  7. typeMismatch - set to true, if an element's value is invalid per its type attribute '
+  8. valueMissing - set to true, if an element (with a required attribute) has no value 
+  9. valid - set to true, if an element's value is valid 
+  
+# examples 
+- if the number in an input filed is greater than 100 (the input's max attribute), display a messages  
+- example > the (rangeOverflow) property 
+  < input id="id1" type="number" max="100" >
+  < button onclick="myFunction()" >OK< /button >
+  < p id="demo" >< /p >
+  < script >
+  function myFunction() {
+    var txt = "";
+    if (document.getElementById("id1").validity.rangeOverflow) { txt = "Value too large"; }
+    document.getElementById("demo").innerHTML = txt;
+  }
+  < /script >
+- if the number in an input field is less than 100 (the input's min attribute), display a message 
+- example > the (rangeUnderflow) property 
+  < input id="id1" type="number" min="100" >
+  < button onclick="myFunction()" >OK< /button >
+  < p id="demo" >< /p >
+  < script >
+  function myFunction() {
+    var txt = "";
+    if (document.getElementById("id1").validity.rangeUnderflow) { txt = "Value too small"; }
+    document.getElementById("demo").innerHTML = txt;
+  }
+  < /script >
 </pre>
 
 

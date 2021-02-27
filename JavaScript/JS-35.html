@@ -7,9 +7,262 @@
 
 <pre>
 --------------------------------------------------------------------------------
-web api
+worker api 
 --------------------------------------------------------------------------------
+# a web worker is a javascript running in the background, without affecting the performance of the page 
+# what is a web worker 
+- when executing scripts in an HTML page, the page becomes unresponsive until the script is finished 
+- a web worker is a javascript that runs in the background, independently of other scripts, without affecting 
+  the performance of the page. lkyou can continue to do whatever you want: clicking, selecting things, etc ..,
+  while the web worker runs in the background 
+  
+# browser support 
+- the numbers in the table specify the first browser version that fully support web workers 
+  chrome 4 (2010) | opera 11.5 (2011) | IE10 (2012) | firefox 3.5 and safari 4 (2009)
+  
+# web workers example 
+- the example below creates a simple web worker that count numbers in the background 
 
+  < !DOCTYPE html >
+  < html >
+  < body >
+
+  < p >Count numbers: < output id="result" >< /output >< /p >
+  < button onclick="startWorker()" >Start Worker< /button > 
+  < button onclick="stopWorker()" >Stop Worker< /button >
+
+  < p >< strong >Note:< /strong > Internet Explorer 9 and earlier versions do not support Web Workers.< /p >
+
+  < script >
+  var w;
+
+  function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+      if(typeof(w) == "undefined") { w = new Worker("demo_workers.js"); }
+      w.onmessage = function(event) { document.getElementById("result").innerHTML = event.data; };
+    } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+  }
+
+  function stopWorker() { 
+    w.terminate();
+    w = undefined;
+  }
+  < /script >
+
+  < /body >
+  < /html >
+  
+# check web worker support 
+- before creating a web worker, check whether the user's browser supports it 
+  like > 
+  if (typeof(worker) !== "undefined") // yes! web worker support!
+  else // sorry! no web worker support ...
+  
+# create a web worker file 
+- now, let's create our web worker in an external javascript
+- here, we create a script that counts. the script is stored in the (demo_workers.js) file 
+  like > 
+  var i = 0; 
+  function timedCount() { 
+    i = i + 1; 
+    postMessage(i);
+    setTimeout("timedCount()", 500);
+  }
+  timedCout();
+- the important part of the code above is the (postMessage()) method - which is used to post a message back 
+  to the HTML page 
+- note > normally web workers are not used for such simple scripts, but for more CPU intensive tasks 
+
+# create a web worker object 
+- now that we have the web worker file, we need to call it from an HTML page 
+- the following lines checks if the worker already exists, if not - it creates a new web worker object and 
+  runs the code in (demo_workers.js) 
+  like > if (typeof(w) == "undefined") w = new Worker("demo_workers.js");
+- then we can send and receive messages from the web worker 
+- and an (onmessage) event listener to the web worker 
+  like > w.onmessage = function(event) { document.getElementById("result").innerHTML = event.data; };
+- when the web worker posts a message, the code within the event listener is executed. 
+  the data from the web worker is stored in (event.data) 
+  
+# terminate a web worker 
+- when a web worker object is created, it will continue to listen for messages 
+  (even after the external script is finished) until it is terminated 
+- to terminate a web worker, and free browser/computer resources, use the (terminate()) method 
+  like > w.terminate(); 
+  
+# reuse the web worker 
+- if you set the worker variable to undefined, after it has been terminated, you can reuse the code 
+  like > w = undefined; 
+  
+# full web worker example code 
+- we have already seen teh worker code in the (.js) file. below is the code for the HTML page 
+  like > 
+  
+  < !DOCTYPE html >
+  < html >
+  < body >
+
+  < p >Count numbers: < output id="result" >< /output >< /p >
+  < button onclick="startWorker()" >Start Worker< /button >
+  < button onclick="stopWorker()" >Stop Worker< /button >
+
+  < script >
+  var w;
+
+  function startWorker() {
+    if (typeof(Worker) !== "undefined") {
+      if (typeof(w) == "undefined") { w = new Worker("demo_workers.js"); }
+      w.onmessage = function(event) { document.getElementById("result").innerHTML = event.data; };
+    } else {
+      document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
+    }
+  }
+
+  function stopWorker() {
+    w.terminate();
+    w = undefined;
+  }
+  < /script >
+
+  < /body >
+  < /html > 
+  
+# web workers and the DOM 
+- since web workers are in external files, they do not have access to the following javascript objects 
+  > the window object 
+  > the document object 
+  > the parent object 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+fetch api 
+--------------------------------------------------------------------------------
+# the (fetch API) interface allows web browser to make HTTP requests to web servers 
+# if you use the (XMLHttpRequest) object, (fetch) can do the same in a simpler way 
+# browser support 
+- the numbers in the table the first browser versions that full support (fetch api) 
+  chrome 2 | opera 29 | firefox 40 (2015), edge 14 (2016), safari 10.1 (2017)
+  
+# a (fetch api) example 
+- the example below (fetches) a file and displays the content 
+  like > fetch(file) .then(x => x.text()) .then(y => myDisplay(y)); 
+- since fetch is based on async and await, the example above might be easier to understand like this 
+  like > async function getText(file) { let x = await fetch(file); let y = await x.text(); myDisplay(y); }
+- or even better: use understandable names instead of (x) and (y) 
+  like > async function getText(file) { 
+  let myObject = await fetch(file); 
+  let myText = await myObject.text(); 
+  myDisplay(myText);
+  }
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+geolocation api 
+--------------------------------------------------------------------------------
+# locate the user's position 
+- the HTML (geolocation api) is used to get the (geographical) position of a user 
+- since this can compromise privacy, the position is nto available unless the user approves it 
+- note > geolocation is most accurate for devices with GPS, like smartphone 
+- browser support : the geolocation api si supported in all browsers 
+- note > as of chrome 50, the geolocation api will onlyh work on secure contexts such as HTTPS. 
+  if your site is hosted on an non-secure origin (such as HTTP) the requests to get the users 
+  location will no longer function 
+  
+# using the geolocation API 
+- the (getCurrentPosition()) method is used to return the user's position 
+- the example below returns the latitude and longitude of the user's position 
+  like > 
+  < script >
+  var x = document.getElementById("demo");
+  function getLocation() {
+    if (navigator.geolocation) { navigator.geolocation.getCurrentPosition(showPosition); } 
+    else { x.innerHTML = "Geolocation is not supported by this browser."; }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "< br >Longitude: " + position.coords.longitude;
+  }
+  < /script > 
+  
+- example explained 
+- check if geolocation is supported 
+- if supported, run the (getCurrentPosition()) method. if not, display a message to the user 
+- if the (getCurrentPosistion()) method is successful, it returns a coordinates object to the function 
+  specified in the parameter (showPosition) 
+- the (showPosition()) function outputs the latitude and longitude 
+- the example above is a very basic geolocation script, with no error handling 
+
+# handling errors and rejections 
+- the second parameter of the (getCuurentPosition()) method is used to handle errors. it specifies a function 
+  to run if it fails to get the user's location 
+  like > 
+  function showError(error) {
+    switch(error.code) {
+      case error.PERMISSION_DENIED: x.innerHTML = "User denied the request for Geolocation." break;
+      case error.POSITION_UNAVAILABLE: x.innerHTML = "Location information is unavailable." break;
+      case error.TIMEOUT: x.innerHTML = "The request to get user location timed out." break;
+      case error.UNKNOWN_ERROR: x.innerHTML = "An unknown error occurred." break;
+    }  
+  } 
+  
+# displaying the result in a map 
+- to display the result in a map, you need access to a map service, lie google maps 
+- in the example below, the returned latitude and longitude is used to show the location in a google map 
+  (using a static image) 
+  like > 
+  function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=
+    "+latlon+"&zoom=14&size=400x300&sensor=false&key=YOUR_KEY";
+
+    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+  }
+  
+# location-specific information 
+- this page has demonstrated how to show a user's position on a map 
+- geolocation is also very useful for location-specific information, like 
+  > up-to-date local information 
+  > showing points-of-interest near the user 
+  > turn-by-turn navigation (GPS) 
+  
+# the (getCurrentPosition()) method - return data 
+- the (getCurrentPosition()) method returns an object on success. the latitude, longigude and accuracy 
+  properties are always returned. 
+- the other (properties) are returned if available 
+  1. coord.latitude - the latigude as a decimal number (always returned) 
+  2. coords.longitude - the longitude as a decimal number (always returned) 
+  3. coords.accuracy - the accuracy of position (always returned) 
+  4. coords.altitude - the altitude in meter above the mean sea level (returned if available)
+  5. coords.altitudeAccuracy - the altitude accuracy of position (returned if available) 
+  6. coords.heading - the heading as degrees clockwise from north (returned if available) 
+  7. coords.speed - the speed in meters per second (returned if available) 
+  8. timestamp - the (date/time) of the response (returned if available) 
+  
+# geolocation object - other interesting methods
+- the geolocation object also has other interesting methods 
+  > (watchPosition()) - returns the current position of the user and continues to return updated position 
+    as the user moves (like the GPS in a car) 
+  > (clearWatch()) - stops the (watchPosition()) method 
+- the example below shows the (watchPosition()) method. you need an accurate GPS device to test this 
+  (like smartphone) 
+  like > 
+  < script >
+  var x = document.getElementById("demo");
+  function getLocation() {
+    if (navigator.geolocation) { navigator.geolocation.watchPosition(showPosition); } 
+    else { x.innerHTML = "Geolocation is not supported by this browser."; }
+  }
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "< br 	>Longitude: " + position.coords.longitude;
+  }
+  < /script > 
 </pre>
 
 
