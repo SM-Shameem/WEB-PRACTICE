@@ -7,12 +7,230 @@
 
 <pre>
 --------------------------------------------------------------------------------
-JSON
+data-types
 --------------------------------------------------------------------------------
-
+# valid data-types 
+- in JSON, values must be one of the following data-types 
+  > a string 
+  > a number 
+  > an object (JSON object) 
+  > an array 
+  > a boolean 
+  > null 
+- JSON values cannot be one of the following data-types 
+  > a function 
+  > a date 
+  > undefined 
+  
+# JSON strings 
+- strings in JSON must be written in double quotes 
+  like > { "name":"john" }
+# JSON numbers 
+- numbers in JSON must be an integer or a floating point 
+  like > { "age": 30 }
+# JSON objects 
+- values in JSON can be objects 
+  like > { "employee": { "name": "john", "age": 30, "city": "new york" } }
+- objects are values in JSON must follow the same rules as JSON objects 
+# JSON arrays 
+- values in JSON can be arrays 
+  like > { "employees": [ "john", "anna", "peter" ] } 
+# JSON booleans 
+- value in JSON can be (true/false)
+  like > { "sale": true }
+# JSON null
+- values in JSON can be null 
+  like > { "middlename": null }
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+parse
+--------------------------------------------------------------------------------
+# JSON.parse()
+- a common use of JSON is to exchange data to/from a web server 
+- when receiving data from a web server, the data is always a string 
+- parse the data with (JSON.parse()), and the data becomes a javascript object 
 
+# example - parsing JSON 
+- imagine we received this text from a web server 
+  like > '{ "name": "john", "age": 30, "city": "new your"}'
+- using the javascript function (JSON.parse()) to convert text into a javascript object 
+  like > var obj = JSON.parse('{ "name": "john", "age": 30, "city": "new york" }' )
+- note > make sure the text is written in JSON format, or else you will get a syntax error 
+- use the javascript object in your page 
+  like > 
+  < p id="demo" >< /p >
+  < script > document.getElementById("demo").innerHTML = obj.name + ", " + obj.age; < /script >
+  
+# JSON from the server 
+- you can request JSON from the server by using an AJAX request 
+- as long as the response from the server is written in JSON format, you can parse the string into a 
+  javascript object 
+- use th e(XMLHttpRequest) to get data from the server 
+  like > 
+  
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML = myObj.name;
+    }
+  };
+  xmlhttp.open("GET", "json_demo.txt", true);
+  xmlhttp.send(); 
+  
+- json_demo.txt 
+  
+  {
+    "name":"John",
+    "age":31,
+    "pets":[
+        { "animal":"dog", "name":"Fido" },
+        { "animal":"cat", "name":"Felix" },
+        { "animal":"hamster", "name":"Lightning" }
+    ]
+  }
+
+# array as JSON 
+- when using the (JSON.parse()) on a JSON derived from an array, the method will return a javascript array, 
+  instead of a javascript object 
+- the JSON returned from the server is an array 
+  like > 
+  
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myArr = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML = myArr[0];
+    }
+  };
+  xmlhttp.open("GET", "json_demo_array.txt", true);
+  xmlhttp.send(); 
+  
+- json_demo_array.txt
+  like > [ "Ford", "BMW", "Audi", "Fiat" ]
+  
+# exceptions - parsing dates 
+- date objects are not allow in JOSN 
+- if you need to include a date, write it as a sting 
+- you can convert it back into a date object later 
+- convert a string into a date 
+  like > 
+  
+  var text = '{ "name":"John", "birth":"1986-12-14", "city":"New York"}';
+  var obj = JSON.parse(text);
+  obj.birth = new Date(obj.birth);
+  document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth; 
+  
+- or, you can use the second parameter, of the (JSON.parse()) function, called reviver, 
+- the reviver parameter is a funciton that checks each property, before returning the value 
+- convert a string into a date, using the reviver function 
+  like > 
+  
+  var text = '{ "name":"John", "birth":"1986-12-14", "city":"New York"}';
+  var obj = JSON.parse(text, function (key, value) {
+    if (key == "birth") { return new Date(value); } 
+    else { return value; }
+  });
+  document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth; 
+
+# exceptions - parsing functions 
+- functions are not allowed in JSON 
+- if you need to include a function, write it as a sting 
+- you can convert if back into a funciton later 
+- convert a string into a function 
+  like > 
+  
+  var text = '{ "name":"John", "age":"function () {return 30;}", "city":"New York"}';
+  var obj = JSON.parse(text);
+  obj.age = eval("(" + obj.age + ")");
+  document.getElementById("demo").innerHTML = obj.name + ", " + obj.age(); 
+  
+- note > you should avoid using functions in JSON, the functions will lose their scope, and you would have to 
+  use (eval()) to convert them back into functions 
+  
+# broser support 
+- (JSON.parse()) function is included in all major browsers and in the latest ECMAScript (javascript) standard
+- the numbers in table below specifies the first browser version that full supports the (JSON.parse()) function 
+  chrome all | edge 8 | firefox 3.5 | safari 4.0 | opera 10.0
+- for older browsers, a javascript library is available at (https://github.com/douglascrockford/JSON-js)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+stringify
+--------------------------------------------------------------------------------
+# JSON.stringify()
+- a common use of JOSN is to exchange data to/from a web server 
+- when sending data to a web server, the data has to be a string 
+- convert a javascript object into a string with (JSON.stringify()) 
+
+# stringify a javascript object 
+- imagine we have this object in javascript
+  like > var obj = { name: "john", age: 30, city: "new york" }
+- use the javascript function (JSON.stringify()) to convert it into a string 
+  like > var myJSON = JSON.stringify(obj);
+- note > the result will be string following the JSON notation 
+- (myJSON) is now a string, and ready to be sent to a server 
+  like > 
+  
+  var obj = { name: "John", age: 30, city: "New York" };
+  var myJSON = JSON.stringify(obj);
+  document.getElementById("demo").innerHTML = myJSON; 
+  
+- you will learn how to send JSON to the server in the next chapter 
+
+# stringify a javascript array 
+- it is also possible to stringify javascript arrays 
+- imagine we have this array in javascript
+  like > var arr = [ "john", "peter", "sally", "jane" ];
+- use the javascript function (JSON.stringify()) to convert it into a string 
+  like > var myJSON = JSON.stringify(arr);
+- note > the result will be a sting following the JSON 
+- (myJSON) is now a string, and ready to be sent to a server 
+  like > 
+  
+  var arr = [ "John", "Peter", "Sally", "Jane" ];
+  var myJSON = JSON.stringify(arr);
+  document.getElementById("demo").innerHTML = myJSON; 
+  
+- you will learn how to send JSON to the server in the next chapter 
+
+# exceptions - stringify dates 
+- in JOSN, date objects are not allowed. the (JSON.strignify()) function will convert any dates into strings 
+  like > 
+  
+  var obj = { name: "John", today: new Date(), city : "New York" };
+  var myJSON = JSON.stringify(obj);
+  document.getElementById("demo").innerHTML = myJSON; 
+  
+- you can convert the string back into a date object at the receiver 
+
+# exceptions - stringify functions 
+- in JSON, functions are not allowed as object values 
+- the (JSON.stringify()) function will remove any functions from a javascript object, both the key and the value 
+  like > 
+  
+  var obj = { name: "John", age: function () {return 30;}, city: "New York"};
+  var myJSON = JSON.stringify(obj);
+  document.getElementById("demo").innerHTML = myJSON; 
+  
+- this can be omitted if you convert your functions into strings before running the (JSON.stringify()) function 
+  like > 
+  
+  var obj = { name: "John", age: function () {return 30;}, city: "New York" };
+  obj.age = obj.age.toString();
+  var myJSON = JSON.stringify(obj);
+  document.getElementById("demo").innerHTML = myJSON; 
+  
+- note > if you send functions using JSON, the functions will lose their scope, and the receiver would have to 
+  use (eval()) to convert them back into functions 
+  
+# browser support 
+- the (JSON.stringify()) function is included in javascript (ECMAScript) and is supported in all major browsers 
+  chrome all | edge 6.0 | firefox 3.5 | safari 4.0 | opera 10.0 
+</pre>
 
 
 

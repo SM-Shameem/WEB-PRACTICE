@@ -7,9 +7,329 @@
 
 <pre>
 --------------------------------------------------------------------------------
-JSON
+PHP
 --------------------------------------------------------------------------------
+# a common use of JSON is to read data from a web server, and display then data in a web page 
+# this chapter will teach you how to exchange JSON data between the client and a PHP server 
 
+# the PHP file 
+- php has some built-in functions to handle JSON 
+- objects in PHP can be converted into JSON by using the php function (jhson_encode()) 
+  like > 
+  <?php
+  $myObj->name = "John";
+  $myObj->age = 30;
+  $myObj->city = "New York";
+  $myJSON = json_encode($myObj);
+  echo $myJSON;
+  ?>
+  
+# the client javascript
+- here is a javascript on the client, using an AJAX call to request the php file from the example above 
+- example > use JSON.parse() to convert the result into a javascript object 
+  
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML = myObj.name;
+    }
+  };
+  xmlhttp.open("GET", "demo_file.php", true);
+  xmlhttp.send();
+  
+# php array 
+- arrays in php will also be converted into JSON when using the php function (json_encode())
+  like > 
+  <?php
+  $myArr = array("John", "Mary", "Peter", "Sally");
+  $myJSON = json_encode($myArr);
+  echo $myJSON;
+  ?>
+  
+# the client javascript 
+- here is a javascript on the client, using an AJAX call to request the PHP file from the array example above 
+- use JSON.parse() to convert the result into a javascript array 
+  like > 
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML = myObj[2];
+    }
+  };
+  xmlhttp.open("GET", "demo_file_array.php", true);
+  xmlhttp.send(); 
+  
+# php database 
+- php is a server side programming language, and can be used to access a database 
+- imagine you have a database on your server, and you want to send a request to it from the client where you 
+  ask for the 10 first rows in a table called (customers)
+- on the client, make a JSON object that describes the numbers of rows you want to return 
+- before you send the request to the server, convert the JSON object into a string and send it as a parameter 
+  to the URL of the PHP page 
+- use JSON.stringify() to convert the javascript object into JSON 
+  like > 
+  
+  obj = { "limit":10 };
+  dbParam = JSON.stringify(obj);
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xmlhttp.open("GET", "json_demo_db.php?x=" + dbParam, true);
+  xmlhttp.send(); 
+
+- example explained 
+- define an object containing a (limit) property and value 
+- convert the object into a JSON string 
+- send a request to the PHP file, with the JSON string as a parameter 
+- wait until the request returns with the result (as JSON) 
+- display the result received from the PHP file 
+- take a look at the PHP file 
+  like > 
+  
+  <?php
+  header("Content-Type: application/json; charset=UTF-8");
+  $obj = json_decode($_GET["x"], false);
+
+  $conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+  $stmt = $conn->prepare("SELECT name FROM customers LIMIT ?");
+  $stmt->bind_param("s", $obj->limit);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $outp = $result->fetch_all(MYSQLI_ASSOC);
+
+  echo json_encode($outp);
+  ?>
+  
+- php file explained 
+- convert the request into an object, using the php funciton (json_decode()) \
+- access the database, and fill an array with the requested data 
+- add the array to an object, and return the object as JSON using the (json_encode()) function 
+
+# loop through the result 
+- convert the result received form the php file into a javascript object, or in this case, a javascript array 
+- use JSON.parse() to convert the JSON into a javascript object 
+  like > 
+  ...
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myObj = JSON.parse(this.responseText);
+      for (x in myObj) { txt += myObj[x].name + "<br>"; }
+      document.getElementById("demo").innerHTML = txt;
+    }
+  };
+  ...
+  
+# php method = post 
+- when sending data to the server, it is often best to use the HTTP (POST) method 
+- to send AJAX requests usign the (POST) method, specify the method, and the correct header 
+- the data sent to the server must now be an argument to the (Send()) method 
+  like > 
+  
+  obj = { "limit":10 };
+  dbParam = JSON.stringify(obj);
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myObj = JSON.parse(this.responseText);
+      for (x in myObj) { txt += myObj[x].name + "<br>"; }
+    document.getElementById("demo").innerHTML = txt;
+    }
+  };
+  xmlhttp.open("POST", "json_demo_db_post.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send("x=" + dbParam);
+  
+- the only difference in the PHP file is the method for getting the transferred data 
+- use ($_POST) instead of ($_GET) 
+  like > 
+  
+  <?php
+  header("Content-Type: application/json; charset=UTF-8");
+  $obj = json_decode($_POST["x"], false);
+
+  $conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+  $stmt = $conn->prepare("SELECT name FROM customers LIMIT ?");
+  $stmt->bind_param("s", $obj->limit);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $outp = $result->fetch_all(MYSQLI_ASSOC);
+
+  echo json_encode($outp);
+  ?>  
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+HTML 
+--------------------------------------------------------------------------------
+# JSON can very easily be translated into javascript
+# javascript can be used to make HTML in your web pages 
+
+# HTML table 
+- make an HTML table with data received as JSON 
+  like > 
+  
+  obj = { table: "customers", limit: 20 };
+  dbParam = JSON.stringify(obj);
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myObj = JSON.parse(this.responseText);
+      txt += "< table border='1' >"
+      for (x in myObj) { txt += "< tr >< td >" + myObj[x].name + "< /td >< /tr >"; }
+        txt += "< /table >"
+        document.getElementById("demo").innerHTML = txt;
+      }
+    }
+  xmlhttp.open("POST", "json_demo_db_post.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send("x=" + dbParam); 
+  
+# dynamic HTML table 
+- make the HTML table based on the value of a drop down menu 
+  like > 
+  
+  < select id="myselect" onchange="change_myselect(this.value)" >
+  < option value="" >Choose an option:< /option >
+  < option value="customers" >Customers< /option >
+  < option value="products" >Products< /option >
+  < option value="suppliers" >Suppliers< /option >
+  < /select >
+
+  < script >
+  function change_myselect(sel) {
+    var obj, dbParam, xmlhttp, myObj, x, txt = "";
+    obj = { table: sel, limit: 20 };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        txt += "< table border='1' >"
+        for (x in myObj) { txt += "< tr >< td >" + myObj[x].name + "< /td >< /tr >"; }
+        txt += "< /table >"
+        document.getElementById("demo").innerHTML = txt;
+      }
+    };
+    xmlhttp.open("POST", "json_demo_html_table.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=" + dbParam);
+  }
+  < /script >
+  
+# HTML drop down list 
+- make an HTML drop down list with data received as JSON 
+  like > 
+  
+  obj = { table: "customers", limit: 20 };
+  dbParam = JSON.stringify(obj);
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+	    myObj = JSON.parse(this.responseText);
+	    txt += "< select >"
+	    for (x in myObj) { txt += "< option >" + myObj[x].name; }
+	    txt += "< /select >"
+	    document.getElementById("demo").innerHTML = txt;
+	  }
+  }
+  xmlhttp.open("POST", "json_demo_html_table.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send("x=" + dbParam); 
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+JSONP
+--------------------------------------------------------------------------------
+# JSONP is a method for sending JSON data without worrying about cross-domain issues 
+# JSONP does not use the (XMLHttpRequest) object 
+# JSONP uses the < script > tag instead 
+
+# JSONP intro 
+- note > JSONP stands for JSON with padding 
+- requesting a file from another domain can cause problems, due to cress-domain policy 
+- requesting an external script from another domain does not have this problem 
+- JSONP uses this advantage, and request files using the script tag instead of the (XMLHttpRequest) objects
+  like > < script src="demo_jsonp.php" >
+  
+# the server file 
+- the file on the server wraps the result inside a function call 
+  like > 
+  <?php 
+  $myJSON = '{ "name":"john", "age": 30, "cigy":"new york" }';
+  echo "myFunc(".$myJSON.");";  
+  ?>
+- the result returns a call to a function named (myFunc) with the JSON data as a parameter 
+- make sure that the function exists on the client 
+
+# the javascript function 
+- the function named (myFunc) is located on the client, and ready to handle JSON data 
+  like > function myFunc(myObj) { document.getElementById("demo").innerHTML = myObj.name; }
+  
+# creating a dynamic script tag 
+- the example above will execute the (myFunc) function when the page is loading, based on where you put the 
+  script tag, which is not very satisfying 
+- the script tag should only be created when needed 
+- example > create and insert the < script > tag when a button is clicked 
+  function clickButton() {
+    var s = document.createElement("script");
+    s.src = "demo_jsonp.php";
+    document.body.appendChild(s);
+  } 
+  
+# dynamic JSONP result 
+- the examples above are still very static 
+- make the example dynamic by sending JSON to the php file, and let the php file return a JSON object based on 
+  the information it gets 
+  like > 
+  <?php
+  header("Content-Type: application/json; charset=UTF-8");
+  $obj = json_decode($_GET["x"], false);
+
+  $conn = new mysqli("myServer", "myUser", "myPassword", "Northwind");
+  $result = $conn->query("SELECT name FROM ".$obj->$table." LIMIT ".$obj->$limit);
+  $outp = array();
+  $outp = $result->fetch_all(MYSQLI_ASSOC);
+
+  echo "myFunc(".json_encode($outp).")";
+  ?>
+  
+- php file explained 
+  > convert the request into an object, using the php function (json_decode())
+  > access the database, and fill an array with the requested data 
+  > add the array to an object 
+  > convert the array into JSON using the (json_encode()) function 
+  > wrap (myFunc()) around the return object 
+- example > the (myFunc) function will be called from the php file 
+  function clickButton() {
+    var obj, s
+    obj = { table: "products", limit: 10 };
+    s = document.createElement("script");
+    s.src = "jsonp_demo_db.php?x=" + JSON.stringify(obj);
+    document.body.appendChild(s);
+  }
+  function myFunc(myObj) {
+    var x, txt = "";
+    for (x in myObj) { txt += myObj[x].name + "< br >"; }
+    document.getElementById("demo").innerHTML = txt;
+  }
+  
+# callback function 
+- when you have no control over the server file, how do you get the server file to call the correct function 
+- sometimes the server file offers a callback function as a parameter 
+- example > the php file will call the function you pass as a callback parameter 
+  
+  function clickButton() {
+    var s = document.createElement("script");
+    s.src = "jsonp_demo_db.php?callback=myDisplayFunction";
+    document.body.appendChild(s);
+  } 
 </pre>
 
 

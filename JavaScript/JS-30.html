@@ -88,7 +88,93 @@ syntax
 - note > JSON names require double quotes. javascript names don't
 
 # JSON - evaluates to javascript objects 
-- 
+- the JSON format is almost identical to javascript objects 
+- in JSON, keys must be strings, written with double quotes 
+  like > { "name":"john" }
+- in javascript, keys can be strings, numbers, or identifier names -
+  like > { name: "john" }
+  
+# JSON values 
+- in JSON, values must be one of the following data types 
+  1. a string 
+  2. a number 
+  3. an object (JSON object)
+  4. an array 
+  5. a boolean 
+  6. null 
+- in javascript values can be all of the above, plus any other valid javascript expression, including 
+  > a function 
+  > a date 
+  > undefined 
+- in JSON, string values must be written with double quotes 
+  like > { "name":"john" }
+- in javascript, you can write string values with double or single quotes 
+  like > { name: 'john' }
+  
+# JSON uses javascript syntax 
+- because JSON syntax is derived from javascript object notation, very little extra software is needed to work 
+  with JSON within javascript 
+- with javascript you can create an object and assign data to it, like this
+  like > var person = { name: "john", age: 31, city: "new youk" } 
+- you can access a javascript object like this, like > person.name; // returns john
+- it can also be accessed like this, like > person["name"]; // returns john 
+- data can be modified like this, like > person.name = "gilbert";
+- it can also be modified like this, like > person["name"] = "gilbert";
+- note > you will learn how to convert javascript objects into JSON later 
+
+# javascript arrays as JSON 
+- the same way javascript objects can be used as JSON, javascript arrays can also be used as JSON 
+- you will learn more about arrays as JSON later in this tutorial 
+
+# JSON files 
+  > the file type for JSON files is (.json)
+  > the MIME type for JSON text is (application/json)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+JSON vs XML
+--------------------------------------------------------------------------------
+# both JSON and XML can be used to receive data from a web server 
+# the following JSON and XML examples both define an employees object, with an array of 3 employees 
+- JSON example >   
+  {"employees":[
+  { "firstName":"John", "lastName":"Doe" },
+  { "firstName":"Anna", "lastName":"Smith" },
+  { "firstName":"Peter", "lastName":"Jones" }
+  ]}
+- XML example > 
+  < employees >
+    < employee > < firstName >John< /firstName > < lastName >Doe< /lastName > < /employee >
+    < employee > < firstName >Anna< /firstName > < lastName >Smith< /lastName > < /employee >
+    < employee > < firstName >Peter< /firstName > < lastName >Jones< /lastName > < /employee >
+  < /employees >
+  
+# JSON is like XML because 
+  > both JSON and XML are (self describing and human readable) 
+  > both JSON and XML are hierarchical (values within values) 
+  > both JSON and XML can be parsed and used by lots of programming languages 
+  > both JSON and XML can be fetched with an (XMLHttpRequest) 
+  
+# JSON is unlike XML because 
+  > JSON doesn't use end tag 
+  > JSON is shorter 
+  > JSON is quicker to read and write 
+  > JSON can use arrays 
+- the biggest difference is - XML has to be parsed with an XML parse. JSON can be parsed by a standard 
+  javascript function 
+  
+# why JSON is better than XML 
+- note > XML is much more difficult to parse than JSON 
+  JSON is parsed into a ready-to-use javascript object 
+- for AJAX applications, JSON is faster and easier than XML 
+- using XML 
+  > fetch an XML document 
+  > use the XML DOM to loop through the document 
+  > extract values and store in variables 
+- using JSON 
+  > fetch a JSON string 
+  > JSON.Parse the JSON string 
 </pre>
 
 
