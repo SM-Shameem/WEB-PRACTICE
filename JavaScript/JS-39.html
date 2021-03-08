@@ -1,17 +1,600 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > reference : part-three</h1>
+<h1 id="P05">JS:P05 > reference : string (primitive)</h1>
 <a href="JS-40.html">Next</a><a href="JS-38.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-reference
+introduction
 --------------------------------------------------------------------------------
+# javascript strings 
+- a javascript strings stores a series of characters like ("john doe")
+- a string can be any text inside (double or single) quotes 
+  like > var carName1 = "volvo xc60";
+  like > var carName2 = 'volvo xc60';
+- string indexes are zero-based: the first character is in position 0, the second in 1, and so on 
 
+# String 
+- normally, javascript strings are primitive values, created form literals, but strings can also be defined as 
+  objects with the keyword (new) 
+  like > var firstName = new String("john");
+- don't create strings as objects. it slows down executing speed. the (new) keyword complicates the code.
+  this can produce some unexpected results 
+   
+# padStart and padEnd
+- ECMAScript 2017 added two String methods (padStart and padEnd) to support padding at the beginning and 
+  at the end of a string 
+  like > let str = "5"; str = str.padStart(4, 0); 
+  like > let str = "5"; str = str.padEnd(4, 0);
+- string padding is not supported IE but firefox and safari were the first browser with support for padding
+
+# property access - ECMAScript 5 (2009) allows property access [] on strings 
+  like > var str = "hello world"; str[0]; 
+- property access might be a little (unpredictable) 
+  - it does not work in IE7 or earlier 
+  - it makes strings look like arrays (but they are not) 
+  - if no characer is found. [] returns undefined. while charAt() returns an empty string 
+  - it is ready only str[0] = "A" gives on error (but does not work)
+  like > var str = "hello world"; str[0] = "a"; // gives no error, but does not work 
+- if you want to work with a string as an array, you can convert it to an array   
+
+--------------------------------------------------------------------------------
+escape character 
+--------------------------------------------------------------------------------
+01. single quote (')     > (\')
+02. double quote (")     > (\")
+03. backslash    (\)     > (\\)
+04. backspace            > (\b)
+05. form feed            > (\f)
+06. new line             > (\n)
+07. carriage return      > (\r)
+08. horizontal tabulator > (\t)
+09. vertical tabulator   > (\v)
+
+--------------------------------------------------------------------------------
+string properties and methods 
+--------------------------------------------------------------------------------
+# string properties and methods with HTML wrapper methods 
+  example > var str = "john doe";
+- primitive values, like ("john doe"), cannot have properties or methods (because they are not objects) 
+- but with javascript, methods and properties are also available to primitive values, because javascript treats 
+  primitive values as objects when executing methods and properties 
+- all string methods return a new value. they do not change the original variable 
+
+- the HTML wrapper methods return the string wrapped inside the appropriate HTML tag 
+- these are not standard methods, and may not work as expected in all browsers 
+
+--------------------------------------------------------------------------------
+# string properties 
+  1. constructor - returns the sting's constructor function 
+  2. length      - returns the length of a string 
+  3. prototype   - allows you to add properties and methods to an object 
+
+--------------------------------------------------------------------------------
+# string methods 
+  01. charAt()            - returns the character at the specified index (position) 
+  02. charCodeAt()        - returns the unicode of the character at the specified index 
+  03. concat()            - Joins two or more strings, and returns a new joined strings
+  04. endsWith()          - Checks whether a string ends with specified string/characters
+  05. fromCharCode()      - Converts Unicode values to characters
+  06. includes()          - Checks whether a string contains the specified string/characters
+  07. indexOf()           - Returns the position of the first found occurrence of a specified value in a string
+  08. lastIndexOf()       - Returns the position of the last found occurrence of a specified value in a string
+  09. localeCompare()     - Compares two strings in the current locale
+  10. match()             - Searches a string for a match against a regular expression, and returns the matches
+  11. repeat()            - Returns a new string with a specified number of copies of an existing string
+  12. replace()           - Searches a string for a specified value, or a regular expression, and returns a new 
+                            string where the specified values are replaced
+  13. search()            - Searches a string for a specified value, or regular expression, and returns the  
+                            position of the match
+  14. slice()             - Extracts a part of a string and returns a new string
+  15. split()             - Splits a string into an array of substrings
+  16. startsWith()        - Checks whether a string begins with specified characters
+  17. substr()            - Extracts the characters from a string, beginning at a specified start position, and 
+                            through the specified number of character
+  18. substring()         - Extracts the characters from a string, between two specified indices
+  19. toLocaleLowerCase() - Converts a string to lowercase letters, according to the host's locale
+  20. toLocaleUpperCase() - Converts a string to uppercase letters, according to the host's locale
+  21. toLowerCase()       - Converts a string to lowercase letters
+  22. toString()          - Returns the value of a String object
+  23. toUpperCase()       - Converts a string to uppercase letters
+  24. trim()              - Removes white-space from both ends of a string
+  25. valueOf()           - Returns the primitive value of a String object
+- all string methods return a new value. they do not change the original variable 
+
+--------------------------------------------------------------------------------
+# string HTML wrapper methods 
+- the HTML wrapper methods return the sting wrapped inside the appropriate HTML tag 
+- note > these are not standard methods, and may not work as expected in all browsers 
+  01. anchor()    - Creates an anchor
+  02. big()       - Displays a string using a big font
+  03. blink()     - Displays a blinking string
+  04. bold()      - Displays a string in bold
+  05. fixed()     - Displays a string using a fixed-pitch font
+  06. fontcolor() - Displays a string using a specified color
+  07. fontsize()  - Displays a string using a specified size
+  08. italics()   - Displays a string in italic
+  09. link()      - Displays a string as a hyperlink
+  10. small()     - Displays a string using a small font
+  11. strike()    - Displays a string with a strike-through
+  12. sub()       - Displays a string as subscript text
+  13. sup()       - Displays a string as superscript text
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+properties 
+--------------------------------------------------------------------------------
+# constructor - strVar.constructor - 1.1
+  return  > function String() { [native code] }
+  example > var str = "string"; str.constructor; // return function String() { [native code] }
+- n JavaScript, the constructor property returns the constructor function for an object.
+- The return value is a reference to the function, not the name of the function:
+- For JavaScript numbers the constructor property returns function Number() { [native code] }
+- For JavaScript strings the constructor property returns function String() { [native code] }
+- For JavaScript booleans the constructor property returns function Boolean() { [native code] }
+
+# prototype - FuncObject.prototype.ArgName = value - ECMAScript1
+  return  > a reference to the (String.prototype) object 
+  example > 
+  function employee(name, jobtitle, born) {
+    this.name = name;
+    this.jobtitle = jobtitle;
+    this.born = born;
+  }
+  employee.prototype.salary = 2000;  
+  var fred = new employee("Fred Flintstone", "Caveman", 1970);   
+  fred.salary; // return 2000
+- The prototype property allows you to add new properties and methods to existing object types.
+- Note: Prototype is a global property which is available with almost all JavaScript objects.
+
+# length - strVar.length - 1.0
+  return  > the length of a string 
+  example > var str = "string"; var n str.length; 
+- The length property returns the length of a string (number of characters).
+- The length of an empty string is 0.
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+methods
+--------------------------------------------------------------------------------
+# charAt() - strVar.charAt(index) - ECMAScript1 (extracting string characters)
+  parameter > (index) - required, an integer representing the index of the character you want to return 
+  return    > a string, representing the character at the specified index, or an empty string if the index 
+              number is not found 
+  example   > var str = "string one"; var res = str.charAt(0);
+  example   > var str = "string two"; var res = str.charAt(str.length-1);
+- The charAt() method returns the character at the specified index in a string.
+- The index of the first character is 0, the second character is 1, and so on.
+- Tip: The index of the last character in a string is string.length-1, the second last character is 
+  string.length-2, and so on (See "More Examples").
+  
+# charCodeAt() - strVar.charCodeAt(index) - ECMAScript1 (extracting string characters)
+  parameter > (index) - optional, a number representing the index of the character you want to return 
+              if not specified, default value is 0
+  return    > a number, representing the unicode of the character at the specified index 
+              note, this method returns (NaN) if there is no character at the specified index, 
+              or if the index is less than 0
+  example   > var str = "string one"; var n = str.charcodeAt(0); 
+  example   > var str = "string two"; var n = str.charCodeAt(str.length - 1);
+- The charCodeAt() method returns the Unicode of the character at the specified index in a string.
+- The index of the first character is 0, the second character 1, and so on.
+- Tip: You can use the charCodeAt() method together with the length property to return the Unicode of the last 
+  character in a string. The index of the last character is -1, the second last character is -2, 
+  and so on (See Example below).
+- Tip: For more information about Unicode Character Sets, visit our HTML Character Sets reference.
+
+# slice() - strVar.slice(start, end) - ECMAScript1 (one of 3 methods for extracting string parts)
+  parameter > (start) - required. the position where to begin the extraction. first character is at position 0
+  parameter > (end) - optional. the position (up to, but not including) where to end the extraction. 
+                      if omitted, slice() selects all charactes from the start-position to the end of the string 
+                    - if you omit the second parameter, the method will slice out the rest of the string 
+                    - or counting from the end
+  return    > a string, representing the extracted part of the string 
+  example   > var str = "Hello world!"; var res = str.slice(0, 5);
+  example   > var str = "Hello world!"; var res = str.slice(0);
+  example   > var str = "Hello world!"; var res = str.slice(3);
+  example   > var str = "Hello world!"; var res = str.slice(3, 8);
+  example   > var str = "Hello world!"; var res = str.slice(0, 1);
+  example   > var str = "Hello world!"; var res = str.slice(-1);
+- The slice() method extracts parts of a string and returns the extracted parts in a new string.
+- Use the start and end parameters to specify the part of the string you want to extract.
+- The first character has the position 0, the second has position 1, and so on.
+- Tip: Use a negative number to select from the end of the string.
+
+# substr() - strVar.substr(start, length) - ECMAScript1 (one of 3 methods for extracting string parts)
+  parameter > (start) - required. the position where to start the extraction. first character is at index 0.
+              start is positive and greater than, or equal, to the length of the string, returns an empty string
+              if start is negative, substr() uses it as a character index from the end of the string 
+              if start is negative or larger than the length of the string, start is set to 0 
+  parameter > (length) - optional. number of characters to extract. if omitted, it extracts the rest of string 
+  return    > a new string, containing the extracted part of the text. if length is 0 or negative, an empty 
+              string is returned 
+  example   > var str = "Hello world!"; var res = str.substr(1, 4); 
+  example   > var str = "Hello world!"; var res = str.substr(2); 
+  example   > var str = "Hello world!"; var res = str.substr(0, 1); 
+  example   > var str = "Hello world!"; var res = str.substr(11, 1); 
+- The substr() method extracts parts of a string, beginning at the character at the specified position, and
+  returns the specified number of characters.
+- Tip: To extract characters from the end of the string, use a negative start number (This does not work in IE 8)
+- Note: The substr() method does not change the original string.
+
+# substring() - strVar.substring(start, end); - ECMAScript1 (one of 3 methods for extracting string parts)
+  parameter > (start) - required. the position where to start the extraction. first character is at index 0 
+  parameter > (end) - optional. the position (up to, but not including) where to end the extraction. 
+              if omitted, it extracts the rest of the string 
+  return    > a new string containing the extracted characters 
+  example   > var str = "Hello world!"; var res = str.substring(1, 4);
+  example   > var str = "Hello world!"; var res = str.substring(2); 
+  example   > var str = "Hello world!"; var res = str.substring(4, 1);
+  example   > var str = "Hello world!"; var res = str.substring(-3);
+  example   > var str = "Hello world!"; var res = str.substring(0, 1); 
+  example > var str = "Hello world!"; var res = str.substring(str.length - 1, str.length);
+- substring() method extracts characters from string, between two specified indices, and returns new sub string.
+- This method extracts the characters in a string between "start" and "end", not including "end" itself.
+- If "start" is greater than "end", this method will swap the two arguments, 
+  meaning str.substring(1, 4) == str.substring(4, 1).
+- If either "start" or "end" is less than 0, it is treated as if it were 0.
+- Note: The substring() method does not change the original string. 
+
+# indexOf() - strVar.indexOf(searchValue, start) - ECMAScript1 (finding a string in a string)
+  parameter > (searchValue) - required. the string to search for 
+  parameter > (start) - optional, default 0. at which position to start the search
+  return    > a number, representing th eposition where the specified search-value occurs for the first time,
+              or (-1) if it never occurs
+  example   > var str = "Hello world, welcome to the universe."; var n = str.indexOf("welcome");
+  example   > var str = "Hello world, welcome to the universe."; var n = str.indexOf("e");
+  example   > var str = "Hello world, welcome to the universe."; var n = str.indexOf("e", 5);
+- The indexOf() method returns the position of the first occurrence of a specified value in a string.
+- This method returns (-1) if the value to search for never occurs.
+- Note: The indexOf() method is case sensitive.
+- Tip: Also look at the lastIndexOf() method.
+- notice, the two methods (indexOf) and (serch), are equal. they accept the same arguments (parameters), 
+  and returns the same value, but the two methods are NOT equal, these are the difference - 
+  - the (search) method cannot take a second start position argument 
+  - the (indexOf) method cannot take powerful search values (regular expressions)
+
+# lsatIndexOf() - strVar.lastIndexOf(searchValue, start) - ECMAScript1 (finding a string in a string)
+  parameter > (searchValue) - required. the string to search for 
+  parameter > (start) - optional. the position where to start the search (searching backwards). if omitted, the 
+              default value is the length of the string 
+  return    > a number, representing the position where the specified search-value occurs for the last time, or 
+              (-1) if it never occurs               
+  example   > var str = "Hello planet earth, you are a great planet."; var n = str.lastIndexOf("planet");
+  example   > var str = "Hello planet earth, you are a great planet."; var n = str.lastIndexOf("planet", 20);
+- The lastIndexOf() method returns the position of the last occurrence of a specified value in a string.
+- Note: The string is searched from the end to the beginning, but returns the index starting at at position 0.
+- This method returns -1 if the value to search for never occurs.
+- Note: The lastIndexOf() method is case sensitive!
+- Tip: Also look at the indexOf() method.
+
+# search() - strVar.search(searchValue) - ECMAScript1 (searcing for a string in a string)
+  parameter > (searchValue) - required. a regular expression. a string will automatically be converted to a regExp
+  return    > a number, representing the position of the first occurrence of the specified searchValue, or 
+              (-1) if no match is found 
+  example   > var str = "Visit W3Schools!"; var n = str.search("W3Schools");
+  example   > var str = "Mr. Blue has a blue house"; var n = str.search("blue");
+  example   > var str = "Mr. Blue has a blue house"; var n = str.search(/blue/i);
+- The search() method searches a string for a specified value, and returns the position of the match.
+- The search value can be string or a regular expression.
+- This method returns -1 if no match is found.
+- Read more about regular expressions in our RegExp Tutorial and our RegExp Object Reference.
+- notice, the two methods (indexOf) and (serch), are equal. they accept the same arguments (parameters), 
+  and returns the same value, but the two methods are NOT equal, these are the difference - 
+  - the (search) method cannot take a second start position argument 
+  - the (indexOf) method cannot take powerful search values (regular expressions)
+
+# replace() - strVar.replace(searchValue, newValue) - ECMAScript1 (replacing string content)
+  parameter > (searchValue) - required. the value, or regExp, that will be replaced by the new value 
+  parameter > (newValue) - required. the value to replace the search value with 
+  return    > a new string. where the specified value(s) has been replaced by the new value 
+  example   > var str = "Visit Microsoft!"; var res = str.replace("Microsoft", "W3Schools");
+  example   > var str = "Mr Blue has a blue house and a blue car"; var res = str.replace(/blue/g, "red");
+  example   > var str = "Mr Blue has a blue house and a blue car"; var res = str.replace(/blue/gi, "red");
+  example   > var str = "Mr Blue has a blue house and a blue car"; 
+              var res = str.replace(/blue|house|car/gi, function (x) { return x.toUpperCase(); }); 
+- The replace() method searches a string for a specified value, or a regular expression, and returns a new string 
+  where the specified values are replaced.
+- Note: If you are replacing a value (and not a RegExp), only first instance of the value will be replaced. 
+  To replace all occurrences of a specified value, use the global (g) modifier (see "More Examples" below).
+- Read more about regular expressions in our RegExp Tutorial and our RegExp Object Reference.
+- This method does not change the original string.
+
+# split() - strVar.split(separator, limit) - ECMAScript1 (converting a string to an array)
+  parameter > (separator) - optional. specifies the character, or the regular expression, to use for splitting 
+              the string. if omitted, the entire string will be returned (an array with only one item) 
+  parameter > (limit) - optional. an integer that specifies the number of splits, items after the split limit 
+              will not be included in the array 
+  return    > an array, containing the splitted values 
+  example   > var str = "How are you doing today?"; var res = str.split(" "); 
+  example   > var str = "How are you doing today?"; var res = str.split();
+  example   > var str = "How are you doing today?"; var res = str.split("");
+  example   > var str = "How are you doing today?"; var res = str.split(" ", 3);
+  example   > var str = "How are you doing today?"; var res = str.split("o");
+- The split() method is used to split a string into an array of substrings, and returns the new array.
+- Tip: If an empty string ("") is used as the separator, the string is split between each character.
+- Note: The split() method does not change the original string.
+
+# toUpperCase() - strVar.toUpperCase() - ECMAScript1 (converting to upper and lower case)
+  parameter > none 
+  return    > a string. representing the value of a string converted to uppercase 
+  example   > var str = "Hello World!"; var res = str.toUpperCase();
+- The toUpperCase() method converts a string to uppercase letters.
+- Note: The toUpperCase() method does not change the original string.
+- Tip: Use the toLowerCase() method to convert a string to lowercase letters.
+  
+# toLowerCase() - strVar.toLowerCase() - ECMAScript1 (converting to upper and lower case)
+  parameter > none 
+  return    > a string, representing the value of a string converted to lowercase 
+  example   > var str = "Hello World!"; var res = str.toLowerCase();
+- The toLowerCase() method converts a string to lowercase letters.
+- Note: The toLowerCase() method does not change the original string.
+- Tip: Use the toUpperCase() method to convert a string to uppercase letters.
+
+# concat() - strVar.concat(string1, string2, ..., stringX); - ECMAScript1
+  parameter > (string1, string2, ..., stringX) - required. the strings to be joined 
+  return    > a new string, containing the text of the combined strings 
+  example   > var str1 = "hello ", str2 = "world", str3 = " nice day"; var res = str1.concat(str2, str3);
+- The concat() method is used to join two or more strings.
+- method does not change existing strings, but returns a new string containing the text of the joined strings.
+
+# toString() - strVar.toString() - ECMAScript1
+  parameter > none 
+  return    > a string, representing the value of a string 
+  example   > var str = "Hello World!"; var res = str.toString(); 
+- The toString() method returns the value of a String object.
+
+# trim() - strVar.trim() - ECMAScript5
+  parameter > none 
+  return    > a string, representing the string with removed white-space from both ends 
+  example   > var str = "       Hello World!        "; alert(str.trim());
+  example   > function myTrim(x) { return x.replace(/^\s+|\s+$/gm,''); }
+              function myFunction() { var str = myTrim("        Hello World!        "); alert(str); }
+- The trim() method removes whitespace from both sides of a string.
+- Note: The trim() method does not change the original string.
+
+# includes() - strVar.includes(searchvalue, start) - ECMAScript6
+  parameter > (searchValue) - required. teh string to search for 
+  parameter > (start) - optional, default 0, at which position to start the search 
+  return    > a boolean. returns (true) if the string contains the value, otherwise it returns (false) 
+  example   > var str = "Hello world, welcome to the universe."; var n = str.includes("world");
+  example   > var str = "Hello world, welcome to the universe."; var n = str.includes("world", 12);
+- The includes() method determines whether a string contains the characters of a specified string.
+- This method returns true if the string contains the characters, and false if not.
+- Note: The includes() method is case sensitive.
+
+# match() - strVar.match(regexp) - ECMAScript1
+  parameter > (regexp) - required. the value of search for, as a regular expression 
+  return    > an array, containing the matches, one item for each match, or NULL if no match is found 
+  example   > var str = "The rain in SPAIN stays mainly in the plain"; var res = str.match(/ain/g);
+  example   > var str = "The rain in SPAIN stays mainly in the plain"; var res = str.match(/ain/gi);
+- match() searches a string for a match against a (RegExp), and returns the matches, as an Array object.
+- Read more about regular expressions in our RegExp Tutorial and our RegExp Object Reference.
+- Note: If the regular expression does not include the g modifier (to perform a global search), the match() 
+  method will return only the first match in the string.
+- This method returns null if no match is found.
+
+# repeat() - strVar.repeat(count) - ECMAScript6
+  parameter > (count) - required. number of times the original string value should be repeated in the new string
+  return    > a string. a new string containing copies of the original string 
+  example   > var str = "Hello world!"; str.repeat(2);
+- The repeat() method returns a new string with a specified number of copies of the string it was called on.
+
+# startsWith() - strVar.startsWith(searchValue, start) - ECMAScript6
+  parameter > (searchValue) - required. the string to search for 
+  parameter > (start) - optional. default 0. at which position to start the search 
+  return    > a boolean. returns (true) if the string starts with the value, otherwise it returns (false) 
+  example   > var str = "Hello world, welcome to the universe."; var n = str.startsWith("Hello");
+  example   > var str = "Hello world, welcome to the universe."; var n = str.startsWith("world", 6);
+- The startsWith() method determines whether a string begins with the characters of a specified string.
+- This method returns true if the string begins with the characters, and false if not.
+- Note: The startsWith() method is case sensitive.
+
+# endsWith() - strVar.endsWidth(searchvalue, length) - ECMAScript16
+  parameter > (searchvalue) - required. the string to search for 
+  parameter > (length) - optional, specify the length of the string to search. if omitted, the default value is 
+              the length of the stirng
+  return    > a boolean. returns (true) if the string ends with the value, otherwise it returns (false) 
+  example   > var str = "hello world, welcome to the universe"; var n = str.endsWidth("universe");
+  example   > var str = "Hello world, welcome to the universe."; var n = str.endsWith("world", 11);
+- The endsWith() method determines whether a string ends with the characters of a specified string.
+- This method returns true if the string ends with the characters, and false if not.
+- Note: The endsWith() method is case sensitive.
+
+# fromCharCode() - String.fromCharCode(n1, n2, .., nX) - ECMAScript1
+  parameter > (n1, n2, .., nX) - required, one or more unicode values to be converted 
+  return    > a string, representing the character(s) representing the specified unicode number(s)
+  example   > var res = String.fromCharCode(65);
+  example   > var res = String.fromCharCode(72, 69, 76, 76, 79);
+- The fromCharCode() method converts Unicode values into characters.
+- Note: This is a static method of the String object, and the syntax is always String.fromCharCode().
+- Tip: For a list of all Unicode values, please study our Complete Unicode Reference.
+
+# localeCompare() - strVar.localCompare(compareString) - ECMAScript1
+  parameter > (compareString) - required. the string to compare with 
+  return    > a number, indicating whether the reference string comes before, after or is the same as the 
+              (compareString) in sort order. returns one of three values - 
+              - (-1) if the reference string is stored before the (compareString) 
+              - (0) if the two strings are equal 
+              - (1) if the reference string is stored after the (compareString) 
+  example   > var str1 = "ab"; var str2 = "cd"; var n = str1.localeCompare(str2);
+  example   > var str1 = "cd"; var str2 = "ab"; var n = str1.localeCompare(str2);
+  example   > var str1 = "ab"; var str2 = "ab"; var n = str1.localeCompare(str2);
+- The localeCompare() method compares two strings in the current locale.
+- The locale is based on the language settings of the browser.
+- The localeCompare() method returns a number indicating whether the string comes before, after or is equal as
+  the compareString in sort order.
+
+# toLocaleLowerCase() - strVar.toLocaleLowerCase() - ECMAScript1
+  parameter > none 
+  return    > a string, representing value of string converted to lowercase according to the host's current locale
+  example   > var str = "Hello World!"; var res = str.toLocaleLowerCase();
+- The toLocaleLowerCase() method converts a string to lowercase letters, according to the host's current locale.
+- The locale is based on the language settings of the browser.
+- Generally, this method returns the same result as the toLowerCase() method. However, for some locales, where 
+  language conflict with the regular Unicode case mappings occurs (such as Turkish), the results may vary.
+- Note: The toLocaleLowerCase() method does not change the original string.
+- Tip: Use the toLocaleUpperCase() method to convert a string to uppercase letters, according to the host's 
+  current locale.
+  
+# toLocaleUpperCase() - strVar.toLocaleUpperCase() - ECMAScript1
+  parameter > none 
+  return    > string, representing value of string converted to uppercase according to the host's current locale 
+  example   > var str = "Hello World!"; var res = str.toLocaleUpperCase();
+- The toLocaleUpperCase() method converts a string to uppercase letters, according to the host's current locale.
+- The locale is based on the language settings of the browser.
+- Generally, this method returns the same result as the toUpperCase() method. However, for some locales, where 
+  language conflict with the regular Unicode case mappings occurs (such as Turkish), the results may vary.
+- Note: The toLocaleUpperCase() method does not change the original string.
+- Tip: Use the toLocaleLowerCase() method to convert a string to lowercase letters, according to the host's 
+  current locale.
+
+# valueOf() - strVar.valueOf() - ECMAScript1
+  parameter > none 
+  return    > a string. representing the primitive value of a string 
+  example   > var str = "Hello World!"; var res = str.valueOf(); 
+- The valueOf() method returns the primitive value of a String object.
+- Note: This method is usually called automatically by JavaScript behind the scenes, and not explicitly in code.
+--------------------------------------------------------------------------------
+string HTML wrapper methods  
+--------------------------------------------------------------------------------
+# anchor() - strVar.anchor("name") - ECMAScript1
+  parameter > (name) - required. the name of the anchor 
+  return    > a string embedded in the (a) tag 
+  example   > var txt = "Chapter 10"; txt.anchor("chap10"); alert(txt.anchor("chap10")); 
+- The anchor() method is not standard, and may not work as expected in all browsers.
+- The anchor() method is used to create an HTML anchor.
+- This method returns the string embedded in the < a > tag, like this: < a name="anchorname" >string< /a >
+
+# big() - strVar.big() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (big) tag 
+  example   > var str = "Hello World!"; var result = str.big();
+  example   > var txt = "Hello World!";
+              document.write("The original string: " + txt);
+              document.write("< p >Big: " + txt.big() + "< /p >");
+              document.write("< p >Small: " + txt.small() + "< /p >");
+              document.write("< p >Bold: " + txt.bold() + "< /p >");
+              document.write("< p >Italic: " + txt.italics() + "< /p >");
+              document.write("< p >Fixed: " + txt.fixed() + "< /p >");
+              document.write("< p >Strike: " + txt.strike() + "< /p >");
+              document.write("< p >Fontcolor: " + txt.fontcolor("green") + "< /p >");
+              document.write("< p >Fontsize: " + txt.fontsize(6) + "< /p >");
+              document.write("< p >Subscript: " + txt.sub() + "< /p >");
+              document.write("< p >Superscript: " + txt.sup() + "< /p >");
+              document.write("< p >Link: " + txt.link("https://www.w3schools.com") + "< /p >");
+              document.write("< p >Blink: " + txt.blink() + " (works only in Opera)< /p >");
+- The big() method is not standard, and may not work as expected in all browsers.
+- The big() method is used to display a string in a big font.
+- This method returns the string embedded in the < big > tag, like this: < big >string< /big >
+- The < big > tag is not supported in HTML5. Use CSS instead.
+
+# blink() - strVar.blink() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (blink) tag 
+  example   > var str = "Hello World!"; var result = str.blink();
+  example   > same as (big()) 
+- The blink() method is not standard, and may not work as expected in all browsers.
+- The blink() method is used to display a blinking string.
+- This method returns the string embedded in the < blink > tag, like this: < blink >string< /blink >
+- The HTML < blink > tag is obsolete.
+
+# bold() - strVar.bold() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (b) tag 
+  example   > var str = "Hello World!"; var result = str.bold();
+  example   > example as (big())
+- The bold() method is not standard, and may not work as expected in all browsers.
+- The bold() method is used to display a string in bold.
+- This method returns the string embedded in the < b > tag, like this: < b >string< /b >
+
+# fixed() - strVar.fixed() - ECMAScript1
+  parameters > none 
+  return     > a string embedded in the (tt) tag 
+  example    > var str = "Hello World!"; var result = str.fixed();
+  example    > example as (big())
+- The fixed() method is not standard, and may not work as expected in all browsers.
+- The fixed() method is used to display a string as teletype text.
+- This method returns the string embedded in the < tt > tag, like this: < tt >string< /tt >
+- The < tt > tag is not supported in HTML5. Use CSS instead.
+
+# fontcolor() - strVar.fontcolor("color") - ECMAScript1
+  parameter > (color) - required. a color value. the value can be a color name, an RGB value, or a hex number 
+  return    > a string embedded in the (font) tag 
+  example   > var str = "Hello World!"; var result = str.fontcolor("green");
+  example   > example as (big())
+- The fontcolor() method is not standard, and may not work as expected in all browsers.
+- The fontcolor() method is used to display a string in a specified color.
+- This method returns the string embedded in < font > tag, like this: < font color="colorvalue" >string< /font >
+- The < font > tag is not supported in HTML5. Use CSS instead.
+
+# fontsize() - strVar.fontsize(size) - ECMAScript1
+  parameter > (size) - required. an integer between 1 and 7 that specifies the font size 
+  required  > a string embedded in the (font) tag 
+  example   > var str = "Hello World!"; var result = str.fontsize(7);
+  example   > example as (big()) 
+- The fontsize() method is not standard, and may not work as expected in all browsers.
+- The fontsize() method is used to display a string in a specified size.
+- This method returns the string embedded in the < font > tag, like this: < font size="size" >string< /font >
+- The <font> tag is not supported in HTML5. Use CSS instead.
+
+# italics() - strVar.italics() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (i) tag 
+  example   > var str = "Hello World!"; var result = str.italics();
+  example   > example as (big()) 
+- The italics() method is not standard, and may not work as expected in all browsers.
+- The italics() method is used to display a string in italic.
+- This method returns the string embedded in the < i > tag, like this: < i> string< /i >
+
+# link() - strVar.link() - ECMAScript1
+  parameter > (url) - required. the URL to link to 
+  return    > a string embedded in the (a) tag 
+  example   > var str = "Free Web Building Tutorials!"; var result = str.link("https://www.w3schools.com");
+  example   > same as (big())
+- The link() method is not standard, and may not work as expected in all browsers.
+- The link() method is used to display a string as a hyperlink.
+- This method returns the string embedded in the < a > tag, like this: < a href="url" >string< /a >
+
+# small() - strVar.small() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (small) tag 
+  example   > var str = "Hello World!"; var result = str.small();
+  example   > same as (big()) 
+- The small() method is not standard, and may not work as expected in all browsers.
+- The small() method is used to display a string in a small font.
+- This method returns the string embedded in the < small > tag, like this: < small >string< /small >
+
+# strike() - strVar.strike() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (strike) tag 
+  example   > var str = "Hello World!"; var result = str.strike();
+  example   > same as (big()) 
+- The strike() method is used to display a string that is struck out.
+- This method returns the string embedded in the < strike > tag, like this: < strike >string< /strike >
+- The < strike > tag is not supported in HTML5. Use CSS instead. 
+
+# sub() - strVar.sub() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (sub) tag 
+  example   > var str = "Hello World!"; var result = str.sub();
+  example   > same as (big())
+- The sub() method is not standard, and may not work as expected in all browsers.
+- The sub() method is used to display a string as subscript text.
+- This method returns the string embedded in the < sub > tag, like this: < sub >string< /sub >
+
+# sup() - strVar.sup() - ECMAScript1
+  parameter > none 
+  return    > a string embedded in the (sup) tag 
+  example   > var str = "Hello World!"; var result = str.sup();
+  example   > same as (big())
+- The sup() method is not standard, and may not work as expected in all browsers.
+- The sup() method is used to display a string as superscript text.
+- This method returns the string embedded in the < sup > tag, like this: < sup >string< /sup >
+</pre>
 
 
 

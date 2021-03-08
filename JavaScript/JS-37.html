@@ -1,49 +1,294 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > reference : part-one</h1>
+<h1 id="P05">JS:P05 > reference : number (primitive)</h1>
 <a href="JS-38.html">Next</a><a href="JS-36.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-reference
+introduction
 --------------------------------------------------------------------------------
-
+# numbers 
+- javascript has only one type of number 
+- numbers can be written with, or without, decimals 
+  like > var x = 3.14;     // A number with decimals
+  like > var y = 34;       // A number without decimals 
+- extra large or extra small numbers can be written with scientific (exponent) notation
+  like > var x = 123e5;    // 12300000
+  like > var y = 123e-5;   // 0.00123
+- infinitive number - Represents "infinity" value, it can be (positive or negative)
+  like > typeof Infinity  // return (number)
+  like > var x = 2; while (x !- Infinity); // execute till Infinity
+--------------------------------------------------------------------------------  
+# there are 7 (sevent) properties for (number)  
+  01. MAX_VALUE         - Returns the largest number possible in JavaScript
+  02. MIN_VALUE         - Returns the smallest number possible in JavaScript
+  03. NEGATIVE_INFINITY - Represents negative infinity (returned on overflow)
+  04. POSITIVE_INFINITY - Represents infinity (returned on overflow)
+  05. NaN               - Represents a "Not-a-Number" value
+  
+  06. constructor       - returns the function that created javascript numbers prototype
+  07. prototype         - Allows you to add properties and methods to an object
+--------------------------------------------------------------------------------  
+# converting variables to numbers (global methods)
+  11. Number() // also used on dates 
+  12. parseInt() 
+  13. parseFloat() 
+  
+# there are 10 (ten) methods for (number)
+  06. isFinite()        - Checks whether a value is a finite number
+  07. isInteger()       - Checks whether a value is an integer
+  09. isSafeInteger()   - Checks whether a value is a safe integer
+  08. isNaN()           - Checks whether a value is Number.NaN
+  
+  03. toPrecision(x)    - Formats a number to x length
+  01. toExponential(x)  - Converts a number into an exponential notation  
+  02. toFixed(x)        - Formats a number with x numbers of digits after the decimal point   
+  05. valueOf()         - Returns the primitive value of a number
+  04. toString()        - Converts a number to a string  
+  10. toLocaleString() - Converts a number into a string, based on the locale settings
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+properties
+--------------------------------------------------------------------------------
+# MAX_VALUE - Number.MAX_VALUE - ECMAScript1
+  example > Number.MAX_VALUE // return maximum value 
+  example > var x.MAX_VALUE  // return undefined 
+- The MAX_VALUE property returns the largest number possible in JavaScript.
+- This static property has a value of 1.7976931348623157e+308.
+- Note: Numbers larger than MAX_VALUE are represented as infinity.
+- Always Use Number.MAX_VALUE
+> MAX_VALUE is a static property of the JavaScript Number object. You can only use it as Number.MAX_VALUE.
+> Using x.MAX_VALUE, where x is a number or a Number object, will return undefined
 
+# MIN_VLAUE - Number.MIN_VALUE - ECMAScript1
+  example > Number.MIN_VALUE // return minimum value 
+  example > var x.MIN_VALUE  // return undefined 
+- The MIN_VALUE property returns the smallest positive number possible in JavaScript.
+- This static property has a value of 5e-324.
+- Note: Numbers smaller than this are converted to 0.
+- Note: MIN_VALUE is the value closest to 0. The most negative number is the negative MAX_NUMBER.
+- Always Use Number.MIN_VALUE
+> MIN_VALUE is a static property of the JavaScript Number object. You can only use it as Number.MIN_VALUE.
+> Using x.MIN_VALUE, where x is a number or a Number object, will return undefined
 
+# POSITIVE_INFINITY - Number.POSITIVE_INFINITY - ECMAScript1 
+  example > Number.POSITIVE_INFINITY // return Infinity
+  example > var x.POSITIVE_INFINITY  // return undefined 
+- The POSITIVE_INFINITY property represents positive infinity.
+- The POSITIVE_INFINITY is returned on overflow
+- Positive infinity can be explained as something that is higher than any other number.
+- Always Use Number.POSITIVE_INFINITY
+> POSITIVE_INFINITY a static property of the JavaScript Number object.
+> You can only use it as Number.POSITIVE_INFINITY.
+> Using x.POSITIVE_INFINITY, where x is a number or a Number object, will return undefined
 
+# NEGATIVE_INFINITY - Number.NEGATIVE_INFINITY - ECMAScript1
+  example > Number.NEGATIVE_INFINITY // return -Infinity
+  example > var x.NEGATIVE_INFINITY  // return undefined 
+- The NEGATIVE_INFINITY property represents negative infinity.
+- The NEGATIVE_INFINITY is returned on overflow
+- Negative infinity can be explained as something that is lower than any other number.
+- Always Use Number.NEGATIVE_INFINITY
+> NEGATIVE_INFINITY is a static property of the JavaScript Number object.
+> You can only use it as Number.NEGATIVE_INFINITY.
+> Using x.NEGATIVE_INFINITY, where x is a number or a Number object, will return undefined
 
+# NaN - Number.NaN - ECMAScript1
+  example > var x = Number.NaN;
+  example > var x = 100 / "a"  // return NaN
+  example > var x = "a"; a.NaN // undefined 
+- The NaN is a javascript reserved word
+- The NaN property represents "Not-a-Number" value. This property indicates that a value is not a legal number.
+- The NaN property is the same as the (Number.NaN) property.
+- Tip: Use the isNaN() global function to check if a value is a NaN value.
 
+- note > (Number) properties belongs to the javascript's number object wrapper called (Number) 
+  these properties can only be accessed as (Number.NaN). 
+- note > calling (Number) properties through (variable, expression, or value) will returned (undefined) 
 
+# constructor - variable.constructor - ECMAScritp1
+  example > var num = 123; num.constructor; // returned - function Number() { [native code] }
+  example > var str = "a"; str.constructor; // returned - function String() { [native code] }
+- in javascript, the constructor property returns the constructor function for an object 
+- the return value is a reference to the function, not the name of the function 
+- for javascript (numbers) the constructor property returns - function Number() { [native code] }
+- for javascript (strings) the constructor property returns - function String() { [native code] }
+- for javascript (booleans) the constructor property returns - function Booleans() { [native code] }
 
+# prototype - Number.prototype.name=value 
+  example > 
+  Number.prototype.myMethod = function() { 
+    return this.valueOf() / 2; 
+  };
+  function myFunction() { 
+    var n = 55; 
+    document.getElementById("demo").innerHTML = n.myMethod(); 
+  }
+- The prototype constructor allows you to add new properties and methods to JavaScript numbers.
+- When constructing a property, ALL numbers will be given the property, and its value, as default.
+- When constructing a method, ALL numbers will have this method available.
+- Note: Number.prototype does not refer to a single number object, but to the Number() object itself.
+- Note: Prototype is a global object constructor which is available for all JavaScript objects.
 
+# infinity - Infinity 
+  example > typeof Infinity // returned (is a number)
+  example > var x = 2/0  // returned (Infinity)
+  example > var x = -2/0  // returned (-Infinity)
+  example > var x = 2; while(x != Infinity); // execute until Infinity
+- (Infinity) is a number;
+</pre>
 
+<pre>
+--------------------------------------------------------------------------------
+methods
+--------------------------------------------------------------------------------
+# Number() - Number(value); - 
+  parameter > (value) required. value to be converted as an object (with (new) keyword), or number
+  return    > an object or number or NaN
+  example   > var y = new Number(123); 
+  example   > Number("10");
+  example   > Number(new Date("2017-09-30"));
+- normally javascript numbers are primitive values created from literals, but numbers can also be defined as 
+  object with the keyword (new), like > new Number(10);
+- note > do not create Number objects. it slows down execution speed. the (new) keyword complicates the code 
+  this can produce some unexpected result 
+- (Number()) can be used to convert javascript variables to numbers. if the number cannot be converted, 
+  (NaN) not-a-number is returned 
+- (Number()) can also convert a date to a number, the (Number()) method above returns the number of 
+  milliseconds since (1.1.1970) 
+  
+# parseInt() - parseInt(value) - 
+  parameter > (value) required. value to be converted into integer type number 
+  return    > integer type number or NaN
+  example   > parseInt("10"); // return 10 
+  example   > parseInt("10.20"); // return 10
+  example   > parseInt("10 20 30"); // return 10
+  example   > parseInt("10 years"); // return 10
+- parseInt() parses a string and returns a whole number. spaces are allowed. only the first number is returned 
+- if the number cannot be converted, (NaN) not-a-number is returned 
 
+# parseFloat() - parseFloat(value) - 
+  parameter > (value) required. value to be converted into floating-point number 
+  return    > floating-point number or NaN
+  example   > parseFloat("10"); // return 10 
+  example   > parseFloat("10.20"); // return 10.20
+  example   > parseFloat("10 20 30"); // return 10
+- parseFloat() parses a string and returns a number. spaces are allowed. only the first number is returned 
+- if the number cannot be converted, (NaN) not-a-number is returned 
 
+# isFinite() - Number.isFinite(value) - ECMAScript6
+  parameter > (value) arequired. the value to be tested 
+  return    > A Boolean. Returns true if the value is a finite Number, otherwise it returns false
+  example   > Number.isFinite(123) //true
+  example   > Number.isFinite(1.23) //true
+- The Number.isFinite() method determines whether a value is a finite number.
+- This method returns true if the value is of the type Number, and equates to a finite number. 
+  Otherwise it returns false.
+- Number.isFinite() is different from the global isFinite() function. The global isFinite() function converts 
+  the tested value to a Number, then tests it.
+- Number.isFinite() does not convert the values to a Number, and will not return true for any value that is not 
+  of the type Number.
+  
+# isInteger - Number.isInteger(value) - ECMAScript6
+  parameter > (value) required. the value to be tested 
+  return    > A Boolean. Returns true if the value is an integer Number, otherwise it returns false
+  example   > Number.isInteger(123) //true
+  example   > Number.isInteger(1.23) //false
+- The Number.isInteger() method determines whether a value an integer.
+- This method returns true if the value is of the type Number, and an integer (a number without decimals). 
+  Otherwise it returns false.
 
+# isSafeInteger - Number.isSafeInteger(value) - ECMAScript6
+  parameter > (value) required. the value to be tested 
+  return    > A Boolean. Returns true if the value is a safe integer Number, otherwise it returns false
+  example   > Number.isSafeInteger(123) //true
+  example   > Number.isSafeInteger(Math.pow(2, 53)) //false
+- The Number.isSafeInteger() method determines whether a value is a safe integer.
+- A safe integer is an integer that can be exactly represented as an IEEE-754 double precision number 
+  (all integers from (253 - 1) to -(253 - 1))
+- This method returns true if the value is of the type Number, and a safe integer. Otherwise it returns false.
 
+# isNaN - Number.isNaN - ECMAScript6  
+  parameter > (value) required. the value to be tested 
+  return    > A Boolean. Returns true if the value is Number.NaN, otherwise it returns false
+  example   > Number.isNaN(123) //false
+  example   > Number.isNaN("123") //true
+- The Number.isNaN() method determines whether a value is NaN (Not-A-Number).
+- This method returns true if the value is of the type Number, and equates to NaN. Otherwise it returns false.
+- Number.isNaN() is different from the global isNaN() function. The global isNaN() function converts the tested 
+  value to a Number, then tests it.
+- Number.isNaN() does not convert the values to a Number, and will not return true for any value that is not of 
+  the type Number.
+- Tip: In JavaScript, the value NaN is considered a type of number.
 
+# toPrecision() - variable.toPrecision(x) - ECMAScript3
+  parameter > (x) Optional. The number of digits. If omitted, it returns the entire number 
+                  (without any formatting)
+  return    > A String, representing a number formatted to the specified precision
+  example   > var num = 13.3714; num.toPrecision(2); // 13
+  example   > var num = 13.3714; num.toPrecision(3); // 13.4
+  example   > var num = 13.3714; num.toPrecision(10); // 13.37140000
+- The toPrecision() method formats a number to a specified length.
+- A decimal point and nulls are added (if needed), to create the specified length.
 
+# toExponential(x) - variable.toExponential(x) - ECMAScript3
+  parameter > (x) Optional. An integer between 0 and 20 representing the number of digits in the notation after 
+                  the decimal point. If omitted, it is set to as many digits as necessary to represent the value
+  return    > A String, representing the number as an exponential notation
+  example   > var num = 5.56789; var n = num.toExponential();  // return 5.56789e+0
+  example   > var num = 5.56789; var n = num.toExponential(3); // return 5.568e+0
+- The toExponential() method converts a number into an exponential notation.
 
+# toFixed(x) - variable.toFixed(x) - ECMAScript3
+  parameter > (x) Optional. The number of digits after the decimal point. Default is 0 
+                  (no digits after the decimal point)
+  return    > A String, representing a number, with the exact number of decimals
+  example   > var num = 5.56789; var n = num.toFixed(2);  // 5.57
+  example   > var num = 5.56789; var n = num.toFixed();   // 6
+  example   > var num = 5.56789; var n = num.toFixed(10); // 5.5678900000
+  
+# valueOf() - variable.valueOf() - ECMAScript1
+  parameter > none
+  return    > A Number, representing the primitive value of a number
+  example   > var num = 15; num.valueOf(); // 15
+- The valueOf() method returns the primitive value of a number.
 
+# toString - variable.toString(radix) - ECMAScript1
+  parameter > (radix) Optional. Which base to use for representing a numeric value. 
+                      Must be an integer between 2 and 36.
+                      2  - The number will show as a binary value
+                      8  - The number will show as an octal value
+                      16 - The number will show as an hexadecimal value
+  return    > A String, representing a number
+  example   > var num = 15; num.toString(); // 15
+  example   > var num = 15; num.toString(2); // 1111
+  example   > var num = 15; num.toString(8); // 17
+  example   > var num = 15; num.toString(16); // f
+- The toString() method converts a number to a string.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# toLocaleString() - variable.toLocaleString(locales, options) - ECMAScript3
+  parameter > (locales) Optional. Which language specific format to use. 
+                        Legal Values: ar-SA Arabic (Saudi Arabia) | bn-BD Bangla (Bangladesh) | reference 
+              (options) Optional. An object were you can set some properties.
+                        Legal properties: 
+                        1. currency > Legal values: any currency code (like "EUR", "USD", "INR", etc.)
+                        2. currencyDisplay > Legal values: ("symbol" (default) | "code" | "name")
+                        3. localeMatcher > Legal values: ("best-fit" (default) | "lookup")
+                        4. maximumFractionDigits > A number from 0 to 20 (default is 3)
+                        5. maximumSignificantDigits > A number from 1 to 21 (default is 21)
+                        6. minimumFractionDigits > A number from 0 to 20 (default is 3)
+                        7. minimumIntegerDigits > A number from 1 to 21 (default is 1)
+                        8. minimumSignificantDigits > A number from 1 to 21 (default is 21)
+                        9. style > Legal values: "currency" | "decimal" (default) | "percent"
+                        0. useGrouping > Legal values: "true" (default) | "false" | 
+  return    > A String, representing a number
+  example   > var num = new Number(1000000).toLocaleString("fi-FI"); // 1 000 000 (FINLAND)
+  example   > var n = new Number(1000000); var myObj = { style: "currency", currency: "EUR" }
+              document.write(n.toLocaleString("en-GB", myObj));  // €1,000,000.00 
+- The toLocaleString() method converts a number into a string, using a local language format.
+- The default language depends on the locale setup on your computer.
+</pre>

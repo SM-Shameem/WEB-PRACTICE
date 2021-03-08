@@ -1,17 +1,87 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > reference : part-two</h1>
+<h1 id="P05">JS:P05 > reference : boolean (primitive)</h1>
 <a href="JS-39.html">Next</a><a href="JS-37.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-reference
+introduction
 --------------------------------------------------------------------------------
+# javascript booleans can have one of two values (true or false) 
+  like > Boolean(10 > 9)     // returns true 
+  like > (10 > 9)            // also returns true
+  like > 10 > 9              // also returns true 
 
+# Boolean() method 
+- you can use the (Boolean()) function to find out if an expression (or a variable) is true
+  like > Boolean(10 > 9) // returns true 
+- normally, javascript booleans are primitive values created form literals, like > var x = false;
+- but booleans can also be defined as objects with the keyword (new)
+  like > var y = new Boolean(false); 
+- do not create boolean objects. it slows down execution speed 
+  the (new) keyword complicates the code. this can produce some unexpected results 
+
+--------------------------------------------------------------------------------
+properties 
+--------------------------------------------------------------------------------
+01. constructor - returns the function that created javascript's boolean prototype 
+02. prototype   - allows you to add properties and methods to the boolean prototype 
+
+--------------------------------------------------------------------------------
+methods 
+--------------------------------------------------------------------------------
+01. toString() - converts a boolean value to a string, and returns the result 
+02. valueOf()  - returns the primitive value of a boolean 
 </pre>
 
+<pre>
+--------------------------------------------------------------------------------
+properties 
+--------------------------------------------------------------------------------
+# constructor - boolVar.constructor - ECMAScript1
+  return  > function Boolean() { [native code] }
+  example > var bool = false; bool.constructor; 
+- In JavaScript, the constructor property returns the constructor function for an object.
+- The return value is a reference to the function, not the name of the function:
+- For JavaScript numbers the constructor property returns function Number() { [native code] }
+- For JavaScript strings the constructor property returns function String() { [native code] }
+- For JavaScript booleans the constructor property returns function Boolean() { [native code] }
+
+# prototype - Boolean.prototype.name = value
+  example > 
+  Boolean.prototype.myColor = function() {
+    if (this.valueOf() == true) { return "green"; } 
+    else { return = "red"; }
+  }; 
+  var a = true;
+  var b = a.myColor(); 
+- The prototype constructor allows you to add new properties and methods to JavaScript booleans.
+- When constructing a property, ALL booleans will be given the property, and its value, as default.
+- When constructing a method, ALL booleans will have this method available.
+- Note: Boolean.prototype does not refer to a single boolean, but to the Boolean() object itself.
+- Note: Prototype is a global object constructor which is available for all JavaScript objects.
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+methods
+--------------------------------------------------------------------------------
+# toString() - boolVar.toString() - ECMAScript1
+  parameters > none 
+  return     > a string, either (true or false)
+  example    > var bool = true; var x = bool.toString();
+- The toString() method returns a boolean value as a string.
+- Note: This method is called by JavaScript automatically whenever a boolean is used in a string operation.
+
+# valueOf() - boolVar.valueOf() - ECMAScript1
+  parameter > none 
+  return    > a boolean, either (true or false) 
+  example   > var bool = false; var x = bool.valueOf();
+- The valueOf() method returns the primitive value of a boolean.
+- Note: This method is usually called automatically by JavaScript behind the scenes, and not explicitly in code.
+</pre>
 
 
 
