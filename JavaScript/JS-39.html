@@ -39,10 +39,8 @@ introduction
   - it is ready only str[0] = "A" gives on error (but does not work)
   like > var str = "hello world"; str[0] = "a"; // gives no error, but does not work 
 - if you want to work with a string as an array, you can convert it to an array   
-
 --------------------------------------------------------------------------------
-escape character 
---------------------------------------------------------------------------------
+# there are nine (09) escape character 
 01. single quote (')     > (\')
 02. double quote (")     > (\")
 03. backslash    (\)     > (\\)
@@ -52,11 +50,8 @@ escape character
 07. carriage return      > (\r)
 08. horizontal tabulator > (\t)
 09. vertical tabulator   > (\v)
-
 --------------------------------------------------------------------------------
-string properties and methods 
---------------------------------------------------------------------------------
-# string properties and methods with HTML wrapper methods 
+# string properties, methods and HTML wrapper methods 
   example > var str = "john doe";
 - primitive values, like ("john doe"), cannot have properties or methods (because they are not objects) 
 - but with javascript, methods and properties are also available to primitive values, because javascript treats 
@@ -65,15 +60,14 @@ string properties and methods
 
 - the HTML wrapper methods return the string wrapped inside the appropriate HTML tag 
 - these are not standard methods, and may not work as expected in all browsers 
-
 --------------------------------------------------------------------------------
-# string properties 
-  1. constructor - returns the sting's constructor function 
-  2. length      - returns the length of a string 
-  3. prototype   - allows you to add properties and methods to an object 
-
+# there are three (03) string properties 
+01. constructor - returns the sting's constructor function 
+02. length      - returns the length of a string 
+03. prototype   - allows you to add properties and methods to an object 
 --------------------------------------------------------------------------------
-# string methods 
+# there are twenty-five (25) string methods 
+- all string methods return a new value. they do not change the original variable 
   01. charAt()            - returns the character at the specified index (position) 
   02. charCodeAt()        - returns the unicode of the character at the specified index 
   03. concat()            - Joins two or more strings, and returns a new joined strings
@@ -102,10 +96,8 @@ string properties and methods
   23. toUpperCase()       - Converts a string to uppercase letters
   24. trim()              - Removes white-space from both ends of a string
   25. valueOf()           - Returns the primitive value of a String object
-- all string methods return a new value. they do not change the original variable 
-
 --------------------------------------------------------------------------------
-# string HTML wrapper methods 
+# there are thirteen (13) string HTML wrapper methods 
 - the HTML wrapper methods return the sting wrapped inside the appropriate HTML tag 
 - note > these are not standard methods, and may not work as expected in all browsers 
   01. anchor()    - Creates an anchor

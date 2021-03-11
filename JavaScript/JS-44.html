@@ -1,0 +1,514 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1 id="P05">JS:P05 > reference : date (object) </h1>
+<a href="#">Next</a><a href="JS-43.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+introduction
+--------------------------------------------------------------------------------
+# the date object is used to work with dates and times 
+# date objects are created with (new Date()) 
+# there are four ways of instantiating a date 
+  like > var d = new Date();
+  like > var d = new Date(milliseconds);
+  like > var d = new Date(dateString);
+  like > var d = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+--------------------------------------------------------------------------------
+# date object properties 
+01. constructor          - Returns the function that created the Date object's prototype
+02. prototype            - Allows you to add properties and methods to an object
+--------------------------------------------------------------------------------
+# date object methods 
+01. getDate()            - Returns the day of the month (from 1-31)
+02. getDay()             - Returns the day of the week (from 0-6)
+03. getFullYear()        - Returns the year
+04. getHours()           - Returns the hour (from 0-23)
+05. getMilliseconds()    - Returns the milliseconds (from 0-999)
+06. getMinutes()         - Returns the minutes (from 0-59)
+07. getMonth()           - Returns the month (from 0-11)
+08. getSeconds()         - Returns the seconds (from 0-59)
+09. getTime()            - Returns the number of milliseconds since midnight Jan 1 1970, and a specified date
+10. getTimezoneOffset()  - Returns the time difference between UTC time and local time, in minutes
+11. getUTCDate()         - Returns the day of the month, according to universal time (from 1-31)
+12. getUTCDay()          - Returns the day of the week, according to universal time (from 0-6)
+13. getUTCFullYear()     - Returns the year, according to universal time
+14. getUTCHours()        - Returns the hour, according to universal time (from 0-23)
+15. getUTCMilliseconds() - Returns the milliseconds, according to universal time (from 0-999)
+16. getUTCMinutes()      - Returns the minutes, according to universal time (from 0-59)
+17. getUTCMonth()        - Returns the month, according to universal time (from 0-11)
+18. getUTCSeconds()      - Returns the seconds, according to universal time (from 0-59)
+19. getYear()            - Deprecated. Use the getFullYear() method instead
+20. now()                - Returns the number of milliseconds since midnight Jan 1, 1970
+21. parse()              - Parses a date string and returns the number of milliseconds since January 1, 1970
+22. setDate()            - Sets the day of the month of a date object
+23. setFullYear()        - Sets the year of a date object
+24. setHours()           - Sets the hour of a date object
+25. setMilliseconds()    - Sets the milliseconds of a date object
+26. setMinutes()         - Set the minutes of a date object
+27. setMonth()           - Sets the month of a date object
+28. setSeconds()         - Sets the seconds of a date object
+29. setTime()            - Sets a date to a specified number of milliseconds after/before January 1, 1970
+30. setUTCDate()         - Sets the day of the month of a date object, according to universal time
+31. setUTCFullYear()     - Sets the year of a date object, according to universal time
+32. setUTCHours()        - Sets the hour of a date object, according to universal time
+33. setUTCMilliseconds() - Sets the milliseconds of a date object, according to universal time
+34. setUTCMinutes()      - Set the minutes of a date object, according to universal time
+35. setUTCMonth()        - Sets the month of a date object, according to universal time
+36. setUTCSeconds()      - Set the seconds of a date object, according to universal time
+37. setYear()            - Deprecated. Use the setFullYear() method instead
+38. toDateString()       - Converts the date portion of a Date object into a readable string
+39. toGMTString()        - Deprecated. Use the toUTCString() method instead
+40. toISOString()        - Returns the date as a string, using the ISO standard
+41. toJSON()             - Returns the date as a string, formatted as a JSON date
+42. toLocaleDateString() - Returns the date portion of a Date object as a string, using locale conventions
+43. toLocaleTimeString() - Returns the time portion of a Date object as a string, using locale conventions
+44. toLocaleString()     - Converts a Date object to a string, using locale conventions
+45. toString()           - Converts a Date object to a string
+46. toTimeString()       - Converts the time portion of a Date object to a string
+47. toUTCString()        - Converts a Date object to a string, according to universal time
+48. UTC()                - Returns milliseconds in a date since midnight of January 1, 1970, according to UTC time
+49. valueOf()            - Returns the primitive value of a Date object
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+properties
+--------------------------------------------------------------------------------
+# constructor - Date.constructor - ECMAScript1 
+  return  > function Date() { [native code] }
+  example > The constructor property returns a date's constructor function:
+  var d = new Date();
+- In JavaScript, the constructor property returns the constructor function for an object.
+- The return value is a reference to the function, not the name of the function:
+- For JavaScript dates the constructor property returns function Date() { [native code] }
+- For JavaScript numbers the constructor property returns function Number() { [native code] }
+- For JavaScript strings the constructor property returns function String() { [native code] }
+
+# prototype - Date.prototype.name = value - ECMAScript1
+  example > Make a new date method that gives the date object a month-name property called myProp:
+  Date.prototype.myMet = function() {
+  if (this.getMonth() == 0){this.myProp = "January"};
+  if (this.getMonth() == 1){this.myProp = "February"};
+  if (this.getMonth() == 2){this.myProp = "March"};
+  if (this.getMonth() == 3){this.myProp = "April"};
+  if (this.getMonth() == 4){this.myProp = "May"};
+  if (this.getMonth() == 5){this.myProp = "June"};
+  if (this.getMonth() == 6){this.myProp = "July"};
+  if (this.getMonth() == 7){this.myProp = "August"};
+  if (this.getMonth() == 8){this.myProp = "September"};
+  if (this.getMonth() == 9){this.myProp = "October"};
+  if (this.getMonth() == 10){this.myProp = "November"};
+  if (this.getMonth() == 11){this.myProp = "December"};
+  };
+  > Make a Date object, then call the myMet method:
+  var d = new Date();
+  d.myMet();
+  var monthname = d.myProp;
+- The prototype constructor allows you to add new properties and methods to the Date() object.
+- When constructing a property, ALL date objects will be given the property, and its value, as default.
+- When constructing a method, ALL date objects will have this method available.
+- Note: Date.prototype does not refer to a single date object, but to the Date() object itself.
+- Note: Prototype is a global object constructor which is available for all JavaScript objects.
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+methods 
+--------------------------------------------------------------------------------
+# getDate() - Date.getDate() - ECMAScript1 
+  parameter > none 
+  return    > a number, from (1 to 31), representing the day of the month 
+  example   > Return the day of the month:
+  var d = new Date();
+  var n = d.getDate();
+  example   > Return the day of the month from a specific date:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getDate();
+- The getDate() method returns the day of the month (from 1 to 31) for the specified date.
+
+# getDay() - Date.getDay() - ECMAScript1 
+  parameter > none 
+  return    > a number, from (0 to 6), representing the day of the week 
+  example   > Return the day of the week:
+  var d = new Date();
+  var n = d.getDay();
+  example   > Return the name of the weekday (not just a number):
+  var d = new Date();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+  var n = weekday[d.getDay()];
+- The getDay() method returns the day of the week (from 0 to 6) for the specified date.
+- Note: Sunday is 0, Monday is 1, and so on.
+
+# getFullYear() - Date.getFullYear() - ECMAScript1
+  parameter > none 
+  return    > a number, representing the year of the specified date 
+  example   > Return the year:
+  var d = new Date();
+  var n = d.getFullYear();
+  example   > Return the year of a specific date:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getFullYear();
+- getFullYear() method returns the year (four digits for dates between year 1000 and 9999) of the specified date. 
+
+# getHours() - Date.getHours() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0 to 23), representing the hour 
+  example   > Return the hour, according to local time:
+  var d = new Date();
+  var n = d.getHours();
+  example   > Return the hour from a specific date and time:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getHours();
+- The getHours() method returns the hour (from 0 to 23) of the specified date and time.
+
+# getMilliseconds() - Date.getMilliseconds() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0 to 999), representing milliseconds 
+  example   > Return the milliseconds, according to local time:
+  var d = new Date();
+  var n = d.getMilliseconds();
+  example   > Return the milliseconds from a specific date and time:
+  var d = new Date("July 21, 1983 01:15:00:526");
+  var n = d.getMilliseconds();
+- The getMilliseconds() method returns the milliseconds (from 0 to 999) of the specified date and time.
+
+# getMinutes() - Date.getMinutes() - ECMAScript1 
+  parameter > none 
+  return    > a number, from (0 to 59), representing ninutes 
+  example   > Return the minutes, according to local time:
+  var d = new Date();
+  var n = d.getMinutes();
+  example   > Return the minutes from a specific date and time:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getMinutes();
+- The getMinutes() method returns the minutes (from 0 to 59) of the specified date and time.
+
+# getMonth() - Date.getMonth() - ECMAScript1 
+  parameter > none 
+  return    > a number, from (0 to 11), representing the month 
+  example   > Return the month:
+  var d = new Date();
+  var n = d.getMonth();
+  example   > Return the name of the month (not just a number):
+  var d = new Date();
+  var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+  var n = month[d.getMonth()];
+- The getMonth() method returns the month (from 0 to 11) for the specified date, according to local time.
+- Note: January is 0, February is 1, and so on.
+
+# getSeconds() - Date.getSeconds() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0 to 59), representing the seconds 
+  example   > Return the seconds, according to local time:
+  var d = new Date();
+  var n = d.getSeconds();
+  example   > Using getHours(), getMinutes(), and getSeconds() to display the time:
+  function addZero(i) {
+    if (i < 10) { i = "0" + i; }
+    return i;
+  }
+  function myFunction() {
+    var d = new Date();
+    var x = document.getElementById("demo");
+    var h = addZero(d.getHours());
+    var m = addZero(d.getMinutes());
+    var s = addZero(d.getSeconds());
+    x.innerHTML = h + ":" + m + ":" + s;
+  } 
+- The getSeconds() method returns the seconds (from 0 to 59) of the specified date and time.
+
+# getTime() - Date.getTime() - ECMAScript1 
+  parameter > none 
+  return    > a number, representing the number of milliseconds since midnight january 1, 1970 
+  example   > Return the number of milliseconds since 1970/01/01:
+  var d = new Date();
+  var n = d.getTime();
+  example   > Calculate the number of years since 1970/01/01:
+  var minutes = 1000 * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var d = new Date();
+  var t = d.getTime();
+  var y = Math.round(t / years); 
+- getTime() method returns the number of milliseconds between midnight of January 1, 1970 and the specified date.
+
+# getTimezoneOffset() - Date.getTimezoneOffset() - ECMAScript1
+  parameter > none 
+  return    > a number, representing the time difference between UTC and local time, in minutes 
+  example   > Return the timezone difference between UTC and Local Time:
+  var d = new Date();
+  var n = d.getTimezoneOffset();
+- The getTimezoneOffset() method returns the time difference between UTC time and local time, in minutes.
+- For example, If your time zone is GMT+2, -120 will be returned.
+- Note: The returned value is not a constant, because of the practice of using Daylight Saving Time.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCDate() - Date.getUTCDate() - ECMAScript1 
+  parameter > none 
+  return    > a number, from (1 to 31), representing the day of the month 
+  example   > Return the day of the month, according to universal time:
+  var d = new Date();
+  var n = d.getUTCDate();
+  example   > Return the UTC day of the month of a specific, local time, date-time:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getUTCDate();
+- getUTCDate() method returns the day of the month (from 1 to 31) of the date object, according to universal time.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCDay() - Date.getUTCDay() - ECMAScript1 
+  parameter > none 
+  return    > a number, from (0 to 6), representing the day of the week 
+  example   > Return the day of the week, according to universal time:
+  var d = new Date();
+  var n = d.getUTCDay();
+  example   > Return the name of the weekday (not just a number):
+  var d = new Date();
+  var weekday = new Array();
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+  var n = weekday[d.getUTCDay()];
+- getUTCDay() method returns the day of the week (0 to 6) for the specified date, according to universal time.
+- Note: Sunday is 0, Monday is 1, and so on.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCFullYear() - Date.getUTCFullYear() - ECMAScript1 
+  parameter > none 
+  return    > a number, representing the year 
+  example   > Return the year, according to universal time:
+  var d = new Date();
+  var n = d.getUTCFullYear();
+  example   > Return the UTC year of a specific date:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getUTCFullYear();
+- The getUTCFullYear() method returns the year (four digits for dates between year 1000 and 9999) of the 
+  specified date, according to universal time.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCHours() - Date.getUTCHours() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0 to 23), representing the hour 
+  example   > Return the hour, according to universal time:
+  var d = new Date();
+  var n = d.getUTCHours();
+  example   > Return the UTC hour from a specific date and time:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getUTCHours();
+  example   > Using getUTCHours(), getUTCMinutes(), and getUTCSeconds() to display the universal time:
+  function addZero(i) {
+    if (i < 10) { i = "0" + i; }
+    return i;
+  }
+  function myFunction() {
+    var d = new Date();
+    var x = document.getElementById("demo");
+    var h = addZero(d.getUTCHours());
+    var m = addZero(d.getUTCMinutes());
+    var s = addZero(d.getUTCSeconds());
+    x.innerHTML = h + ":" + m + ":" + s;
+}
+- getUTCHours() method returns the hour (0 to 23) of the specified date and time, according to universal time.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCMilliseconds() - Date.getUTCMilliseconds() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0-999), representing milliseconds 
+  example   > Return the milliseconds, according to UTC:
+  var d = new Date();
+  var n = d.getUTCMilliseconds();
+  example   > Return the UTC milliseconds from a specific date and time:
+  var d = new Date("July 21, 1983 01:15:00:195");
+  var n = d.getUTCMilliseconds(); 
+- The getUTCMilliseconds() method returns the milliseconds (from 0 to 999) of the specified date and time, 
+  according to universal time.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCMinutes() - Date.getUTCMinutes() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0-59), representing the minutes 
+  example   > Return the minutes, according to universal time:
+  var d = new Date();
+  var n = d.getUTCMinutes();
+  example   > Return the UTC minutes from a specific date and time:
+  var d = new Date("July 21, 1983 01:15:00");
+  var n = d.getUTCMinutes();
+  example   > Using getUTCHours(), getUTCMinutes(), and getUTCSeconds() to display the universal time:
+  function addZero(i) {
+    if (i < 10) { i = "0" + i; }
+    return i;
+  }
+  function myFunction() {
+    var d = new Date();
+    var x = document.getElementById("demo");
+    var h = addZero(d.getUTCHours());
+    var m = addZero(d.getUTCMinutes());
+    var s = addZero(d.getUTCSeconds());
+    x.innerHTML = h + ":" + m + ":" + s;
+  }
+- getUTCMinutes() method returns minutes (0 to 59) of the specified date and time, according to universal time.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCMonth() - Date.getUTCMonth() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0-11), representing the month 
+  example   > Return the month, according to universal time:
+  var d = new Date();
+  var n = d.getUTCMonth();
+  example   > Return the name of the month, according to universal time (not just a number):
+  var d = new Date()
+  var month = new Array(12);
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+  var n = month[d.getUTCMonth()];
+- The getUTCMonth() method returns the month (from 0 to 11) for the specified date, according to universal time.
+- Note: January is 0, February is 1, and so on.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# getUTCSeconds() - Date.getUTCSeconds() - ECMAScript1
+  parameter > none 
+  return    > a number, from (0-59), representing the seconds 
+  example   > Return the seconds, according to universal time:
+  var d = new Date();
+  var n = d.getUTCSeconds();
+  example   > Using getUTCHours(), getUTCMinutes(), and getUTCSeconds() to display the universal time:
+  function addZero(i) {
+    if (i < 10) { i = "0" + i; }
+    return i;
+   }
+  function myFunction() {
+    var d = new Date();
+    var x = document.getElementById("demo");
+    var h = addZero(d.getUTCHours());
+    var m = addZero(d.getUTCMinutes());
+    var s = addZero(d.getUTCSeconds());
+    x.innerHTML = h + ":" + m + ":" + s;
+  }
+- getUTCSeconds() method returns seconds (0 to 59) of the specified date and time, according to universal time.
+- The UTC methods calculate their date assuming that the date object is of local time and date.
+- Tip: The Universal Coordinated Time (UTC) is the time set by the World Time Standard.
+- Note: UTC time is the same as GMT time.
+
+# now() - Date.now() - ECMAScript5 (2009) 
+  parameter > none 
+  return    > a number, representing the number of milliseconds since midnight january 1, 1970 
+  example   > Return the number of milliseconds since 1970/01/01:
+  var n = Date.now();
+  example   > Calculate the number of years since 1970/01/01:
+  var minutes = 1000 * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var t = Date.now();
+  var y = Math.round(t / years); 
+- The Date.now() method returns the number of milliseconds since January 1, 1970 00:00:00 UTC.
+
+# parse() - Date.parse(datestring) - ECMAScript1
+  parameter > datestring - required. a string representing a date
+  return    > a number, representing the number of milliseconds between the specified 
+              date-time and midnight January 1, 1970
+  example   > Return the number of milliseconds between January 1, 1970 and March 21, 2012:
+  var d = Date.parse("March 21, 2012");
+  example   > Calculate the number of years between January 1, 1970 to March 21, 2012:
+  var d = Date.parse("March 21, 2012");
+  var minutes = 1000 * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var y = Math.round(d / years);
+- The parse() method parses a date string and returns the number of milliseconds between the date string and 
+  midnight of January 1, 1970.
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

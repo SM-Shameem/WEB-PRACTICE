@@ -1,15 +1,720 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > reference </h1>
+<h1 id="P05">JS:P05 > reference : array (object)</h1>
 <a href="JS-42.html">Next</a><a href="JS-40.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-
+introduction 
 --------------------------------------------------------------------------------
+# the array object is used to store multiple values in a single variable 
+  like > var cars = ["saab", "volvo", "BMW"]; 
+- array indexes are zero-based: the first element in the array is 0, the second is 1, and so on 
+--------------------------------------------------------------------------------
+# there are three (03) array properties 
+01. constructor - Returns the function that created the Array object's prototype
+02. length      - Sets or returns the number of elements in an array
+03. prototype   - Allows you to add properties and methods to an Array object
+--------------------------------------------------------------------------------
+# there are thirtieth (30) array methods 
+01. concat()      - Joins two or more arrays, and returns a copy of the joined arrays
+02. copyWithin()  - Copies array elements within the array, to and from specified positions
+03. entries()     - Returns a key/value pair Array Iteration Object
+04. every()       - Checks if every element in an array pass a test
+05. fill()        - Fill the elements in an array with a static value
+06. filter()      - Creates a new array with every element in an array that pass a test
+07. find()        - Returns the value of the first element in an array that pass a test
+08. findIndex()   - Returns the index of the first element in an array that pass a test
+09. forEach()     - Calls a function for each array element
+10. from()        - Creates an array from an object
+11. includes()    - Check if an array contains the specified element
+12. indexOf()     - Search the array for an element and returns its position
+13. isArray()     - Checks whether an object is an array
+14. join()        - Joins all elements of an array into a string
+15. keys()        - Returns a Array Iteration Object, containing the keys of the original array
+16. lastIndexOf() - Search the array for an element, starting at the end, and returns its position
+17. map()         - Creates a new array with the result of calling a function for each array element
+18. pop()         - Removes the last element of an array, and returns that element
+19. push()        - Adds new elements to the end of an array, and returns the new length
+20. reduce()      - Reduce the values of an array to a single value (going left-to-right)
+21. reduceRight() - Reduce the values of an array to a single value (going right-to-left)
+22. reverse()     - Reverses the order of the elements in an array
+23. shift()       - Removes the first element of an array, and returns that element
+24. slice()       - Selects a part of an array, and returns the new array
+25. some()        - Checks if any of the elements in an array pass a test
+26. sort()        - Sorts the elements of an array
+27. splice()      - Adds/Removes elements from an array
+28. toString()    - Converts an array to a string, and returns the result
+29. unshift()     - Adds new elements to the beginning of an array, and returns the new length
+30. valueOf()     - Returns the primitive value of an array
+</pre>
 
+<pre>
+--------------------------------------------------------------------------------
+properties
+--------------------------------------------------------------------------------
+# constructor - arrayVar.constructor - ECMAScript1 
+  return > function Array() { [native code] }
+  example > The constructor property returns an array's constructor function:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.constructor;
+- In JavaScript, the constructor property returns the constructor function for an object.
+- The return value is a reference to the function, not the name of the function:
+- For JavaScript arrays the constructor property returns function Array() { [native code] }
+- For JavaScript numbers the constructor property returns function Number() { [native code] }
+- For JavaScript strings the constructor property returns function String() { [native code] }
+- note > You can use the constructor property to check if a variable is an array.
+
+# length - ECMAScript1
+  syntax  > arrayVar.length // return the length of an array 
+  syntax  > arrayVar.length = number // set the length of an array 
+  return  > a number, representing the number of elements in the array object 
+  example > Return the length of an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.length; 
+- The length property sets or returns the number of elements in an array.
+
+# prototype - Array.prototype.name = value 
+  example > Make a new array method that transforms array values into upper case:
+  Array.prototype.myUcase = function() {
+    for (i = 0; i < this.length; i++) { this[i] = this[i].toUpperCase(); }
+  }; 
+  > Make an array, then call the myUcase method:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.myUcase(); 
+- The prototype constructor allows you to add new properties and methods to the Array() object.
+- When constructing a property, ALL arrays will be given the property, and its value, as default.
+- When constructing a method, ALL arrays will have this method available.
+- Note: Array.prototype does not refer to a single array, but to the Array() object itself.
+- Note: Prototype is a global object constructor which is available for all JavaScript objects.
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+methods 
+--------------------------------------------------------------------------------
+# array methods 
+- converting array to string - toString() , join() 
+- popping and pushing - pop() , push() 
+- shifting elements - shift() , unshift() 
+- changing elements - 
+- deleting element - 
+- splicing an array - splice() 
+- remove elements using splice() 
+- merging (concatenating) array - concat() 
+- slicing an array - slice() 
+- automatic toString() 
+- finding max and min value in an array 
+
+# array sort - 
+- sorting an array - sort() 
+- reversing an array - reverse() 
+- numeric sort - sort() 
+- compare function - sort() 
+- sorting an array in random order - 
+- the fisher yates method 
+- find the highest (or lowest) array value - 
+- math.max() on an array = 
+- math.min() on an array = 
+- sorting object arrays 
+
+# iteration - 
+- array.forEach() 
+- array.map()
+- array.filter() 
+- array.reduce() 
+- array.reduceRight() 
+- array.every() 
+- array.some() 
+- array.indexOf() 
+- array.lastIndexOf() 
+- array.find() 
+- array.findIndex() 
+
+# contact() - array1.contact(array2, array3, ..., arrayX) - ECMAScript1
+  parameter > (array2, array3, ..., arrayX) - required. the arrays to be joined 
+  return    > an array object, representing the joined array 
+  example   > Join two arrays:
+  var hege = ["Cecilie", "Lone"];
+  var stale = ["Emil", "Tobias", "Linus"];
+  var children = hege.concat(stale);
+  example   > Join three arrays:
+  var hege = ["Cecilie", "Lone"];
+  var stale = ["Emil", "Tobias", "Linus"];
+  var kai = ["Robin"];
+  var children = hege.concat(stale, kai); 
+- The concat() method is used to join two or more arrays.
+- This method does not change existing arrays, but returns a new array, containing values of the joined arrays.
+
+# copyWithin() - arraVar.copyWithin(target, start, end) - ECMAScript6
+  parameter > (target) - required. the index position to copy the elements to 
+  parameter > (start) - optional, the index position to start copying elements form (default is 0) 
+  parameter > (end) - optional, the index position to stop copying elements from (default is array.length) 
+  return    > an array, the changed array 
+  example   > Copy the first two array elements to the last two array elements:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.copyWithin(2, 0); 
+  example   > Copy the first two array elements to the third and fourth position:
+  var fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi", "Papaya"];
+  fruits.copyWithin(2, 0, 2); 
+- The copyWithin() method copies array elements to another position in the array, overwriting the existing values.
+- This method will never add more items to the array.
+- Note: this method overwrites the original array.
+
+# entries() - arrayVar.entries() - ECMAScript6
+  parameter > none 
+  return    > an array iterator object 
+  example   > Create an Array Iterator object, and create a loop that iterates each key/value pair:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var f = fruits.entries();
+  for (x of f) { document.getElementById("demo").innerHTML += x; } 
+- The entries() method returns an Array Iterator object with key/value pairs.
+- For each item in the original array, the new iteration object will contain an array with the index as the key, 
+  and the item value as the value: [0, "Banana"] [1, "Orange"] [2, "Apple"] [3, "Mango"]
+- Note: This method does not change the original array.
+
+# every() - arrayvar.every(function(currentValue, index, arr), thisValue) - ECMAScript5
+  parameter > function(currentValue, index, array) - required. a function to be run for each element in the array 
+              function arguments 
+              > currentValue - required. the value of the current element 
+              > index        - optional. the array index of the current element 
+              > arr          - optional. the array object the current element belongs to 
+  parameter > thisValue - optional. a value to the functio nto be used as its ("this") value. 
+              if this parameter is empty, the value ("undefined") will be passed as its ("this") value 
+  return    > a boolean. returns (true) if all elements in the array pass the test, otherwise it returns (false)
+  example   > Check if all the values in the ages array are 18 or over:
+  var ages = [32, 33, 16, 40];
+  function checkAdult(age) { return age >= 18; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.every(checkAdult); } 
+  example   > Check if all the values in the ages array are a specific number or over :
+  < p >Minimum age: < input type="number" id="ageToCheck" value="18" >< /p >
+  < button onclick="myFunction()" >Try it< /button >
+  < p >All ages above minimum? < span id="demo" >< /span >< /p >
+  < script >
+  var ages = [32, 33, 12, 40];
+  function checkAdult(age) { return age >= document.getElementById("ageToCheck").value; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.every(checkAdult); }
+  < /script > 
+  example   > Check if all the answer values in the array are the same:
+  < script >
+  var survey = [
+  { name: "Steve", answer: "Yes"},
+  { name: "Jessica", answer: "Yes"},
+  { name: "Peter", answer: "Yes"},
+  { name: "Elaine", answer: "No"}
+  ];
+  function isSameAnswer(el, index, arr) {
+    if (index === 0){ return true; } 
+    else { return (el.answer === arr[index - 1].answer);   }
+  }
+  function myFunction() { document.getElementById("demo").innerHTML = survey.every(isSameAnswer); }
+  < /script > 
+- The every() method checks if all elements in an array pass a test (provided as a function).
+- The every() method executes the function once for each element present in the array:
+  > If it finds an array element where the function returns a false value, every() returns false 
+    (and does not check the remaining values)
+  > If no false occur, every() returns true
+- Note: every() does not execute the function for array elements without values.
+- Note: every() does not change the original array
+
+# fill() - arrayVar.fill(value, start, end) - ECMAScript6
+  parameter > (value) - required. the value to fill the array with 
+  parameter > (start) - optional. the index to start filling the array (default is 0)
+  parameter > (end)   - optional. the index to stop filling the array (default is array.length) 
+  return    > an array, the changed array 
+  example   > Fill all the array elements with a static value:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.fill("Kiwi"); 
+  example   > Fill the last two array elements with a static value:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.fill("Kiwi", 2, 4); 
+- The fill() method fills the specified elements in an array with a static value.
+- You can specify the position of where to start and end the filling. 
+  If not specified, all elements will be filled.
+- Note: this method overwrites the original array.
+
+# filter() - array.filter(function(currentValue, index, arr), thisValue) - ECMAScript5
+  parameter > function(currentValue, index, array) - required. a function to be run for each element in the array 
+              function arguments 
+              > currentValue - required. the value of the current element 
+              > index        - optional. the array index of the current element 
+              > arr          - optional. the array object the current element belongs to 
+  parameter > thisValue - optional. a value to the functio nto be used as its ("this") value. 
+              if this parameter is empty, the value ("undefined") will be passed as its ("this") value 
+  return    > an array containing all the array elements that pass the test. 
+              if no elements pass the text it returns an empty array 
+  example   > Return an array of all the values in the ages array that are 18 or over:
+  var ages = [32, 33, 16, 40];
+  function checkAdult(age) { return age >= 18; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.filter(checkAdult); } 
+  example   > Return an array of all the values in the ages array that are a specific number or over:
+  < p >Minimum age: < input type="number" id="ageToCheck" value="18" >< /p >
+  < button onclick="myFunction()" >Try it< /button >
+  < p >All ages above minimum: < span id="demo" >< /span >< /p >
+  < script >
+  var ages = [32, 33, 12, 40];
+  function checkAdult(age) { return age >= document.getElementById("ageToCheck").value; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.filter(checkAdult); }
+  < /script >  
+- The filter() method creates an array filled with all array elements that pass a test (provided as a function).
+- Note: filter() does not execute the function for array elements without values.
+- Note: filter() does not change the original array.
+
+# find() - array.find(fucntion(currentValue, index, arr), thisValue) - ECMAScript6
+  parameter > function(currentValue, index, array) - required. a function to be run for each element in the array 
+              function arguments 
+              > currentValue - required. the value of the current element 
+              > index        - optional. the array index of the current element 
+              > arr          - optional. the array object the current element belongs to 
+  parameter > thisValue - optional. a value to the functio nto be used as its ("this") value. 
+              if this parameter is empty, the value ("undefined") will be passed as its ("this") value 
+  return    > Returns the array element value if any of the elements in the array pass the test, 
+              otherwise it returns undefined
+  example   > Get the value of the first element in the array that has a value of 18 or more:
+  var ages = [3, 10, 18, 20];
+  function checkAdult(age) { return age >= 18; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.find(checkAdult); } 
+  example   > Get the value of the first element in the array that has a value above a specific number:
+  < p >Minimum age: < input type="number" id="ageToCheck" value="18" >< /p >
+  < button onclick="myFunction()" >Try it< /button >
+  < p >Any ages above: < span id="demo" >< /span >< /p >
+  < script >
+  var ages = [4, 12, 16, 20];
+  function checkAdult(age) { return age >= document.getElementById("ageToCheck").value; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.find(checkAdult); }
+  < /script > 
+- The find() method returns the value of the first element in an array that pass a test (provided as a function).
+- The find() method executes the function once for each element present in the array:
+  > If it finds an array element where the function returns a true value, 
+    find() returns the value of that array element (and does not check the remaining values)
+  > Otherwise it returns undefined
+- Note: find() does not execute the function for empty arrays.
+- Note: find() does not change the original array.
+
+# findIndex() - array.findIndex(function(currentValue, index, arr), thisValue) - ECMAScript6
+  parameter > function(currentValue, index, array) - required. a function to be run for each element in the array 
+              function arguments 
+              > currentValue - required. the value of the current element 
+              > index        - optional. the array index of the current element 
+              > arr          - optional. the array object the current element belongs to 
+  parameter > thisValue - optional. a value to the functio nto be used as its ("this") value. 
+              if this parameter is empty, the value ("undefined") will be passed as its ("this") value 
+  return    > returns the array element index if any of the elements in the array pass the test, 
+              otherwise it returns (-1)
+  example   > Get the index of the first element in the array that has a value of 18 or more:
+  var ages = [3, 10, 18, 20];
+  function checkAdult(age) { return age >= 18; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.findIndex(checkAdult); } 
+  example > Get the index of the first element in the array that has a value above a specific number:
+  < p >Minimum age: < input type="number" id="ageToCheck" value="18" >< /p >
+  < button onclick="myFunction()" >Try it< /button >
+  < p >Any ages above: < span id="demo" >< /span >< /p >
+  < script >
+  var ages = [4, 12, 16, 20];
+  function checkAdult(age) { return age >= document.getElementById("ageToCheck").value; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.findIndex(checkAdult); }
+  < /script >  
+- findIndex() method returns the index of first element in an array that pass a test (provided as a function).
+- findIndex() method executes the function once for each element present in the array:
+  > If it finds an array element where the function returns a true value, 
+    findIndex() returns the index of that array element (and does not check the remaining values)
+  > Otherwise it returns -1
+- Note: findIndex() does not execute the function for array elements without values.
+- Note: findIndex() does not change the original array.
+
+# forEach() - arrayVar.forEach(function(currentValue, index, arr), thisValue) - ECMAScript5
+  parameter > function(currentValue, index, array) - required. a function to be run for each element in the array 
+              function arguments 
+              > currentValue - required. the value of the current element 
+              > index        - optional. the array index of the current element 
+              > arr          - optional. the array object the current element belongs to 
+  parameter > thisValue - optional. a value to the functio nto be used as its ("this") value. 
+              if this parameter is empty, the value ("undefined") will be passed as its ("this") value 
+  return    > undefined
+  example   > List each item in the array:
+  var fruits = ["apple", "orange", "cherry"];
+  fruits.forEach(myFunction);
+  function myFunction(item, index) {document.getElementById("demo").innerHTML += index + ":" + item + "< br >";} 
+  example   > Get the sum of all the values in the array:
+  var sum = 0;
+  var numbers = [65, 44, 12, 4];
+  numbers.forEach(myFunction);
+  function myFunction(item) { sum += item; document.getElementById("demo").innerHTML = sum; } 
+  example   > For each element in the array: update the value with 10 times the original value:
+  var numbers = [65, 44, 12, 4];
+  numbers.forEach(myFunction)
+  function myFunction(item, index, arr) { arr[index] = item * 10; }   
+- The forEach() method calls a function once for each element in an array, in order.
+- Note: the function is not executed for array elements without values.
+
+# from() - Array.fro(object, mapFunction, thisValue) - ECMAScript6
+  parameter > object      - Required. The object to convert to an array
+  parameter > mapFunction - Optional. A map function to call on each item of the array
+  parameter > thisValue   - Optional. A value to use as this when executing the mapFunction
+  return    > an array object 
+  example   > Create an Array from a String:
+  var myArr = Array.from("ABCDEFG");
+- The Array.from() method returns an Array object from any object with a length property or an iterable object.
+
+# includes() - array.includes(element, start) - ECMAScript7
+  parameter > element - required, the element to search for 
+  parameter > start   - optional, default 0, at which position in the array to start the search 
+  return    > a boolean 
+  example   > Check if an array includes "Mango":
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var n = fruits.includes("Mango");
+  example > Check if an array includes "Banana", starting the search at position 3:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var n = fruits.includes("Banana", 3);
+- The includes() method determines whether an array contains a specified element.
+- This method returns true if the array contains the element, and false if not.
+- Note: The includes() method is case sensitive.
+
+# indexOf() - array.indexOf(item, start) - ECMAScript5
+  parameter > item  - required. teh item to search for 
+  parameter > start - Optional. Where to start the search. 
+              Negative values will start at the given position counting from the end, and search to the end.
+  return    > a number, representing the position of the specified item, otherwise (-1)
+  example   > Search an array for the item "Apple":
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var a = fruits.indexOf("Apple");
+  example   > Search an array for the item "Apple", starting the search at position 4:
+  var fruits = ["Banana", "Orange", "Apple", "Mango", "Banana", "Orange", "Apple"];
+  var a = fruits.indexOf("Apple", 4);
+- The indexOf() method searches the array for the specified item, and returns its position.
+- The search will start at the specified position, or at the beginning if no start position is specified, 
+  and end the search at the end of the array.
+- Returns -1 if the item is not found.
+- If the item is present more than once, the indexOf method returns the position of the first occurence.
+- Note: The first item has position 0, the second item has position 1, and so on.
+- Tip: If you want to search from end to start, use the lastIndexOf() method
+
+# isArray() - Array.isArray(obj) - ECMAScript5
+  parameter > obj - required. the object to be tested 
+  return    > a boolean, returns true if the object is an array, otherwise it returns false 
+  example   > Check whether an object is an array:
+  function myFunction() {
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    var x = document.getElementById("demo");
+    x.innerHTML = Array.isArray(fruits);
+  } 
+- The isArray() method determines whether an object is an array.
+- This function returns true if the object is an array, and false if not.
+
+# join() - arrayVar.join(separator) - ECMAScript1
+  parameter > separator - Optional. separator to be used. If omitted, the elements are separated with a comma
+  return    > a string. representing the array values, separated by the specified separator 
+  example   > Convert the elements of an array into a string:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var energy = fruits.join();
+  example > Try using a different separator:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var energy = fruits.join(" and ");
+- The join() method returns the array as a string.
+- The elements will be separated by a specified separator. The default separator is comma (,).
+- Note: this method will not change the original array.
+
+# keys() - array.keys() - ECMAScript6
+  parameter > no
+  return    > an array iterator object 
+  example   > Create an Array Iterator object, only containing the keys of array, and then loop through each key:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var fk = fruits.keys();
+  for (x of fk) { document.getElementById("demo").innerHTML += x + "< br >"; } 
+- The keys() method returns an Array Iterator object with the keys of an array.
+- Note: this method does not change the original array.
+
+# lastIndexOf() - arrayVar.lastIndexOf(item, start) - ECMAScript5
+  parameter > item - required. the item to search for 
+  parameter > start - optional. where to start the search. negative values will start at the given 
+              position counting from the end, and search to the beginning 
+  return    > a number, representing the position of the specified item, otherwise (-1)
+  example   > Search an array for the item "Apple":
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var a = fruits.lastIndexOf("Apple");
+  example   > Search an array for the item "Apple":
+  var fruits = ["Banana", "Orange", "Apple", "Mango", "Banana", "Orange", "Apple"];
+  var a = fruits.lastIndexOf("Apple");
+  example   > Search an array for the item "Apple", starting the search at position 4:
+  var fruits = ["Banana", "Orange", "Apple", "Mango", "Banana", "Orange", "Apple"];
+  var a = fruits.lastIndexOf("Apple", 4);
+- The lastIndexOf() method searches the array for the specified item, and returns its position.
+- The search will start at the specified position, or at the end if no start position is specified, 
+  and end the search at the beginning of the array.
+- Returns -1 if the item is not found.
+- If the item to search for is present more than once, 
+  the lastIndexOf method returns the position of the last occurence.
+- Tip: If you want to search from start to end, use the indexOf() method
+
+# map() - arrayVar.map(function(currentValue, index, arr), thisValue) - ECMAScript5
+  parameter > function(currentValue, index, array) - required. a function to be run for each element in the array 
+              function arguments 
+              > currentValue - required. the value of the current element 
+              > index        - optional. the array index of the current element 
+              > arr          - optional. the array object the current element belongs to 
+  parameter > thisValue - optional. a value to the functio nto be used as its ("this") value. 
+              if this parameter is empty, the value ("undefined") will be passed as its ("this") value 
+  return    > an array containing the results of calling the provided function for each element in 
+              the original array
+  example   > Return an array with the square root of all the values in the original array:
+  var numbers = [4, 9, 16, 25];
+  var x = numbers.map(Math.sqrt)
+  document.getElementById("demo").innerHTML = x; 
+  example   > Multiply all the values in array with 10:
+  var numbers = [65, 44, 12, 4];
+  var newarray = numbers.map(myFunction)
+  function myFunction(num) { return num * 10; }
+  document.getElementById("demo").innerHTML = newarray;
+  example   > Get the full name for each person in the array:
+  var persons = [
+    {firstname : "Malcom", lastname: "Reynolds"},
+    {firstname : "Kaylee", lastname: "Frye"},
+    {firstname : "Jayne", lastname: "Cobb"}
+  ];
+  function getFullName(item) {
+    var fullname = [item.firstname,item.lastname].join(" ");
+    return fullname;
+  }
+  function myFunction() { document.getElementById("demo").innerHTML = persons.map(getFullName); } 
+- The map() method creates a new array with the results of calling a function for every array element.
+- The map() method calls the provided function once for each element in an array, in order.
+- Note: map() does not execute the function for array elements without values.
+- Note: this method does not change the original array.
+  
+# pop() - arrayVar.pop() - ECMAScript1
+  parameter > none
+  return    > any type*, representing the removed array item. *An array item can be 
+              a string, a number, an array, a boolean, or any other object types that are allowed in an array 
+  example   > Remove the last element of an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.pop();
+- The pop() method removes the last element of an array, and returns that element.
+- Note: This method changes the length of an array.
+- Tip: To remove the first element of an array, use the shift() method.
+
+# push() - arrayVar.push(item1, item2, ..., itemX) - ECMAScript1
+  parameter > (item1, item2, ..., itemX) - required. the item(s) to add to the array 
+  return    > a number, representing the new length of the array 
+  example   > Add a new item to an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.push("Kiwi"); 
+  example > Add more than one item:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.push("Kiwi", "Lemon", "Pineapple"); 
+- The push() method adds new items to the end of an array, and returns the new length.
+- Note: The new item(s) will be added at the end of the array.
+- Note: This method changes the length of the array.
+- Tip: To add items at the beginning of an array, use the unshift() method.
+
+# reduce() - arrayVar.reduce(function(total, currentValue, currentIndex, arr), initialValue) - ECMAScript5
+  parameter > function(total, currentValue, index, arr) - required. a function to be run for each element in array
+              - total        - required. the initialValue, or the previously returned value of the function 
+              - currentValue - required. the value of the current element 
+              - currentIndex - optional. the array index of the current element 
+              - arr          - optional. the array object the current element belongs to 
+  parameter > optional, a value to be passed to the function as the initial value 
+  return    > returns the accumulated result from the last call of the callback function 
+  example   > Subtract the numbers in the array, starting from the beginning:
+  var numbers = [175, 50, 25];
+  document.getElementById("demo").innerHTML = numbers.reduce(myFunc);
+  function myFunc(total, num) { return total - num; } 
+  example > Round all the numbers in an array, and display the sum:
+  < button onclick="myFunction()" >Try it< /button >
+  < p >Sum of numbers in array: < span id="demo" >< /span >< /p >
+  < script >
+  var numbers = [15.5, 2.3, 1.1, 4.7];
+  function getSum(total, num) { return total + Math.round(num); }
+  function myFunction(item) { document.getElementById("demo").innerHTML = numbers.reduce(getSum, 0); }
+  < /script > 
+- The reduce() method reduces the array to a single value.
+- The reduce() method executes a provided function for each value of the array (from left-to-right).
+- The return value of the function is stored in an accumulator (result/total).
+- Note: reduce() does not execute the function for array elements without values.
+- Note: This method does not change the original array.
+
+# reduceRight() - arVar.reduceRight(function(total, currentValue, currentIndex, arr), initialValue) - ECMAScript5
+  parameter > function(total, currentValue, index, arr) - required. function to be run for each element in array
+              - total        - required. the initialValue, or the previously returned value of the function 
+              - currentValue - required. the value of the current element 
+              - currentIndex - optional. the array index of the current element 
+              - arr          - optional. the array object the current element belongs to 
+  parameter > thisValue      - optional. a value to be passed to the function as the initial value 
+              if this parameter is empty, the value (undefined) will be passed as its (this) value
+  return    > returns the accumulated result from the last call of the callback function 
+  example   > Subtract the numbers in the array, starting from the end:
+  var numbers = [175, 50, 25];
+  document.getElementById("demo").innerHTML = numbers.reduceRight(myFunc);
+  function myFunc(total, num) { return total - num; } 
+  example > Subtract the numbers, right-to-left, and display the sum:
+  < button onclick="myFunction()" >Try it< /button >
+  < p >Sum of numbers in array: < span id="demo" >< /span >< /p >
+  < script >
+  var numbers = [2, 45, 30, 100];
+  function getSum(total, num) { return total - num; }
+  function myFunction(item) { document.getElementById("demo").innerHTML = numbers.reduceRight(getSum); }
+  < /script > 
+- The reduceRight() method reduces the array to a single value.
+- The reduceRight() method executes a provided function for each value of the array (from right-to-left).
+- The return value of the function is stored in an accumulator (result/total).
+- Note: reduceRight() does not execute the function for array elements without values.
+
+# reverse() - arrayVar.reverse() - ECMAScript1
+  parameter > none
+  return    > an array, representing the array after it has been reversed 
+  example   > Reverse the order of the elements in an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.reverse();
+- The reverse() method reverses the order of the elements in an array.
+- Note: this method will change the original array.
+
+# shift() - arrayVar.shift() - ECMAScript1
+  parameter > none
+  return    > any type*, representign the removed array item, *an array item can be 
+              a string, a number, an array, a boolean, or any other object types that are allowed in an array 
+  example   > Remove the first item of an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.shift(); 
+- The shift() method removes the first item of an array.
+- Note: This method changes the length of the array.
+- Note: The return value of the shift method is the removed item.
+- Tip: To remove the last item of an array, use the pop() method.
+- Note: this method will change the original array.
+
+# slice() - arrayVar.slice(start, end) - ECMAScript1
+  parameter > start - optional. an integer that specifies where to start the selection (1st element has index 0)
+              use negative numbers to select from the end of an array. if omitted, it acts like "0"
+  parameter > end - optional. an integer that specifies where to end the selection. 
+              if omitted, all elements from the start position and to the end of the array will be selected. 
+              use negative numbers to select from the end of an array 
+  return    > a new array, containing the selected elements 
+  example   > Select elements from an array:
+  var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+  var citrus = fruits.slice(1, 3);
+  example   > Select elements using negative values:
+  var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+  var myBest = fruits.slice(-3, -1);
+- The slice() method returns the selected elements in an array, as a new array object.
+- The slice() method selects the elements starting at the given start argument, and ends at, 
+  but does not include, the given end argument.
+- Note: The original array will not be changed.
+
+# some() - arrayVar.some(function(currentValue, index, arr), thisValue) - ECMAScript3
+  parameter > function(total, currentValue, index, arr) - required. function to be run for each element in array
+              - currentValue - required. the value of the current element 
+              - currentIndex - optional. the array index of the current element 
+              - arr          - optional. the array object the current element belongs to 
+  parameter > thisValue      - optional. a value to be passed to the function as the initial value 
+              if this parameter is empty, the value (undefined) will be passed as its (this) value
+  return    > a boolean, returns true if any of the elements in array pass the test, otherwise if returns false 
+  example   > Check if any values in the ages array are 18 or over:
+  var ages = [3, 10, 18, 20];
+  function checkAdult(age) { return age >= 18; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.some(checkAdult); } 
+  example   > Check if any of the values in the ages array are a specific number or over:
+  < p >Minimum age: < input type="number" id="ageToCheck" value="18" >< /p >
+  < button onclick="myFunction()" >Try it< /button >
+  < p >Any ages above: < span id="demo" >< /span >< /p >
+  < script >
+  var ages = [4, 12, 16, 20];
+  function checkAdult(age) { return age >= document.getElementById("ageToCheck").value; }
+  function myFunction() { document.getElementById("demo").innerHTML = ages.some(checkAdult); }
+  < /script > 
+- The some() method checks if any of the elements in an array pass a test (provided as a function).
+- The some() method executes the function once for each element present in the array:
+  > If it finds an array element where the function returns a true value, 
+    some() returns true (and does not check the remaining values)
+  > Otherwise it returns false
+- Note: some() does not execute the function for array elements without values.
+- Note: some() does not change the original array.
+
+# sort() - arrayVar.sort() - ECMAScript1 
+  parameter > compareFunctio - optional. a function that defines an alternative sort order. 
+              the function should return a negative, zero, or positive value, depending on the arguments, 
+              like > function(a,b) { return a-b }
+              when the sort() method compares two values, it sends the values to the compare function, 
+              and sorts the values according to the returned (negative, zero, positive) value 
+              example > When comparing 40 and 100, the sort() method calls the compare function(40,100).
+              example > The function calculates 40-100, and returns -60 (a negative value).
+              example > The sort function will sort 40 as a value lower than 100. 
+  return    > the array object, with the items sorted 
+  example   > Sort an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.sort();
+  example   > Sort numbers in an array in ascending order:
+  var points = [40, 100, 1, 5, 25, 10];
+  points.sort(function(a, b){return a-b});
+  example   > Sort numbers in an array in descending order:
+  var points = [40, 100, 1, 5, 25, 10];
+  points.sort(function(a, b){return b-a});
+  example   > Get the highest value in an array:
+  var points = [40, 100, 1, 5, 25, 10];
+  points.sort(function(a, b){return b-a});    // Sort the numbers in the array in descending order
+  // The first item in the array (points[0]) is now the highest value
+  example   > Get the lowest value in an array:
+  var points = [40, 100, 1, 5, 25, 10];
+  points.sort(function(a, b){return a-b});    // Sort the numbers in the array in ascending order
+  // The first item in the array (points[0]) is now the lowest value
+  example   > Sort an array alphabetically, and then reverse the order of the sorted items (descending):
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.sort();
+  fruits.reverse();
+- The sort() method sorts the items of an array.
+- The sort order can be either alphabetic or numeric, and either ascending (up) or descending (down).
+- By default, the sort() method sorts the values as strings in alphabetical and ascending order.
+- This works well for strings ("Apple" comes before "Banana"). However, if numbers are sorted as strings, 
+  "25" is bigger than "100", because "2" is bigger than "1".
+- Because of this, the sort() method will produce an incorrect result when sorting numbers.
+- You can fix this by providing a "compare function" (See "Parameter Values" below).
+- Note: This method changes the original array.
+
+# splice() - array.splice(index, howmany, item1, ...., itemX) - ECMAScript1
+  parameter > index - required, an integer that specifies at what position to add/remove items, use negative 
+              values to specify the position from the end of the array 
+              howmany - optional, the number of items to be removed. if set to 0, no items will be removed
+              item1, ..., itemX - optional. the new items(s) to be added to the array   
+  return    > a new array, containing the removed items (if any) 
+  example   > Add items to the array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.splice(2, 0, "Lemon", "Kiwi");
+  example   > At position 2, add the new items, and remove 1 item:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.splice(2, 1, "Lemon", "Kiwi");
+  example   > At position 2, remove 2 items:
+  var fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
+  fruits.splice(2, 2); 
+- The splice() method adds/removes items to/from an array, and returns the removed item(s).
+- Note: This method changes the original array.
+
+# toString() - arrayVar.toString() - ECMAScript1
+  parameter > none 
+  return > a string, representign the values of the array, separated by a comma
+  example   > Convert an array to a string:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var x = fruits.toString();
+- The toString() method returns a string with all the array values, separated by commas.
+- Note: This method will not change the original array.
+
+# unshift() - arrayVar.unshift(item1, item2, ...., itemX) - ECMAScript1
+  parameter > item1, item2, ..., itemX - required, the item(s) to add to the beginning of the array 
+  return > a number, representing the new length of the array 
+  example > Add new items to the beginning of an array:
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  fruits.unshift("Lemon","Pineapple");
+- The unshift() method adds new items to the beginning of an array, and returns the new length.
+- Note: This method changes the length of an array.
+- Tip: To add new items at the end of an array, use the push() method.
+
+# valueOf() - arrayVar.valueOf() - ECMAScript1
+  parameter > none
+  return    > an array. the valueOf() method returns itself  
+  example   > valueOf() is the default method of the array object.
+  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  var v = fruits.valueOf();
+- The valueOf() method returns the array.
+- This method is the default method of the array object. Array.valueOf() will return the same as Array
+- Note: This method will not change the original array.
 </pre>
 
 

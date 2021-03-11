@@ -1,15 +1,176 @@
 <link href="style.css" rel="stylesheet" type="text/css" />
 <div>
-<h1 id="P05">JS:P05 > reference </h1>
-<a href="#">Next</a><a href="JS-41.html">Previous</a><a href="JS-01.html">Home</a>
+<h1 id="P05">JS:P05 > reference : classes (object) </h1>
+<a href="JS-43.html">Next</a><a href="JS-41.html">Previous</a><a href="JS-01.html">Home</a>
 </div>
 <!-- ----------------------------------------------------------------------- -->
 
 <pre>
 --------------------------------------------------------------------------------
-
+introduction 
 --------------------------------------------------------------------------------
+# a (class) is a type of function, but instead of using the keyword (function) to initiate it, we use the 
+  keyword (class), and the properties are assigned inside a constractor() method 
+  like > Create a Car class, and then create an object called "mycar" based on the Car class:
+  class Car {  // Create a class
+    constructor(brand) {  // Class constructor
+      this.carname = brand;  // Class body/properties
+    }
+  }  
+  mycar = new Car("Ford");  // Create an object of Car class  
+--------------------------------------------------------------------------------
+# class methods
+01. constructor() - a special method for creating and initializing objects created within a class 
+--------------------------------------------------------------------------------
+# class keywords
+01. extends - extends a class (inherit) 
+02. static  - defines a static method for a class 
+03. super   - refers to the parent class 
+</pre>
 
+<pre>
+--------------------------------------------------------------------------------
+methods 
+--------------------------------------------------------------------------------
+# constructor - constructor(parameters) - ECMAScript 2015 (ES6) 
+  example   > Create a Car class, and then create an object called "mycar" based on the Car class:
+  class Car { 
+    constructor(brand) {  // Constructor
+      this.carname = brand;
+    }
+  }
+  mycar = new Car("Ford");
+- The constructor() method is a special method for creating and initializing objects created within a class.
+- The constructor() method is called automatically when a class is initiated, and it has to have the exact name 
+  "constructor", in fact, if you do not have a constructor method, JavaScript will add an invisible and empty 
+  constructor method.
+- Note: A class cannot have more than one constructor() method. This will throw a SyntaxError.
+- You can use the super() method to call the constructor of a parent class (see "More Examples" below).
+
+- To create a class inheritance, use the extends keyword.
+- A class created with a class inheritance inherits all the methods from another class:
+  example   > Create a class named "Model" which will inherit the methods from the "Car" class:
+  class Car {
+    constructor(brand) {
+      this.carname = brand;
+    }
+    present() {
+      return 'I have a ' + this.carname;
+    }  
+  }
+  class Model extends Car {
+    constructor(brand, mod) {
+      super(brand);
+      this.model = mod;
+    }  
+    show() {
+      return this.present() + ', it is a ' + this.model;
+    }
+  }
+  mycar = new Model("Ford", "Mustang");
+  document.getElementById("demo").innerHTML = mycar.show();
+- The super() method refers to the parent class.
+- By calling the super() method in the constructor method, we call the parent's constructor method and gets  
+  access to the parent's properties and methods.
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+keywords 
+--------------------------------------------------------------------------------
+# extends - class childClass extends parentClass - ECMAScript 2015 (ES6)
+  example   > Create a class named "Model" which will inherit the methods from the "Car" class:
+  class Car {
+    constructor(brand) {
+      this.carname = brand;
+    }
+    present() {
+      return 'I have a ' + this.carname;
+    }
+  }
+
+  class Model extends Car {
+    constructor(brand, mod) {
+      super(brand);
+      this.model = mod;
+    }
+    show() {
+      return this.present() + ', it is a ' + this.model;
+    }
+  }
+
+  mycar = new Model("Ford", "Mustang");
+  document.getElementById("demo").innerHTML = mycar.show();
+- The extends keyword is used to create a child class of another class (parent).
+- The child class inherits all the methods from another class.
+- Inheritance is useful for code reusability: 
+  reuse properties and methods of an existing class when you create a new class.
+- Note: From the example above; The super() method refers to the parent class. By calling the super() method in 
+  constructor method, we call parent's constructor method and gets access to parent's properties and methods.
+  
+# static - static methodName() - ECMAScript 2015 (ES6)
+  example   > Create a static method and call it on the class:
+  class Car {
+    constructor(brand) {
+      this.carname = brand;
+    }
+    static hello() {  // static method
+      return "Hello!!";
+    }
+  }
+  mycar = new Car("Ford");
+  //Call 'hello()' on the class Car:
+  document.getElementById("demo").innerHTML = Car.hello();
+  //and NOT on the 'mycar' object:
+  //document.getElementById("demo").innerHTML = mycar.hello();
+  //this would raise an error. 
+  example   > If you want to use the mycar object, inside the static method, you can send it as a parameter:
+              Send "mycar" as a parameter:
+  class Car {
+    constructor(brand) {
+      this.carname = brand;
+    }
+    static hello(x) {
+      return "Hello " + x.carname;
+    }
+  }
+  mycar = new Car("Ford");
+  document.getElementById("demo").innerHTML = Car.hello(mycar); 
+- The static keyword defines static methods for classes.
+- Static methods are called directly on the class (Car from the example above) - without creating an instance/\
+  object (mycar) of the class.
+  
+# super - ECMAScript 2015 (ES6)
+  syntax  > super(argument); // calls the parent constructor (only inside the constructor) 
+  syntax  > super.parentMethod(arguments); // calls a parent method 
+  example > Create a class named "Model" which will inherit the methods from the "Car" class, by using the 
+            extends keyword.
+            By calling the super() method in the constructor method, we call the parent's constructor method and 
+            gets access to the parent's properties and methods:
+  class Car {
+    constructor(brand) {
+      this.carname = brand;
+    }
+    present() {
+      return 'I have a ' + this.carname;
+    }
+  }
+
+  class Model extends Car {
+    constructor(brand, mod) {
+      super(brand);
+      this.model = mod;
+    }
+    show() {
+      return this.present() + ', it is a ' + this.model;
+    }
+  }
+
+  mycar = new Model("Ford", "Mustang");
+  document.getElementById("demo").innerHTML = mycar.show();
+- The super keyword refers to the parent class.
+- It is used to call the constructor of the parent class and to access the parent's properties and methods.
+- Tip: To understand the "inheritance" concept (parent and child classes) better, read our Classes Tutorial.
 </pre>
 
 

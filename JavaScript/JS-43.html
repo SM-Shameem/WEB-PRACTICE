@@ -1,0 +1,535 @@
+<link href="style.css" rel="stylesheet" type="text/css" />
+<div>
+<h1 id="P05">JS:P05 > reference : math (object) </h1>
+<a href="JS-44.html">Next</a><a href="JS-42.html">Previous</a><a href="JS-01.html">Home</a>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+
+<pre>
+--------------------------------------------------------------------------------
+introduction 
+--------------------------------------------------------------------------------
+# the math object allows you to perform mathematical tasks 
+# Math is not a constructor. all properties/methods of math can be called by using math as an object, 
+  without creating it 
+  like > var x = Math.PI; // returns PI
+  like > var y = Math.sqrt(16); // returns the square root of 16 
+--------------------------------------------------------------------------------
+# there are eight (08) math object properties 
+01. E                - Returns Euler's number (approx. 2.718)
+02. LN2              - Returns the natural logarithm of 2 (approx. 0.693)
+03. LN10             - Returns the natural logarithm of 10 (approx. 2.302)
+04. LOG2E            - Returns the base-2 logarithm of E (approx. 1.442)
+05. LOG10E           - Returns the base-10 logarithm of E (approx. 0.434)
+06. PI               - Returns PI (approx. 3.14)
+07. SQRT1_2          - Returns the square root of 1/2 (approx. 0.707)
+08. SQRT2            - Returns the square root of 2 (approx. 1.414)
+--------------------------------------------------------------------------------
+# there are thirty-three (33) math object methods 
+01. abs(x)               - Returns the absolute value of x
+02. acos(x)              - Returns the arccosine of x, in radians
+03. acosh(x)             - Returns the hyperbolic arccosine of x
+04. asin(x)              - Returns the arcsine of x, in radians
+05. asinh(x)             - Returns the hyperbolic arcsine of x
+06. atan(x)              - Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+07. atan2(y, x)          - Returns the arctangent of the quotient of its arguments
+08. atanh(x)             - Returns the hyperbolic arctangent of x
+09. cbrt(x)              - Returns the cubic root of x
+10. ceil(x)              - Returns x, rounded upwards to the nearest integer
+11. clz32(x)             - Returns the number of leading zeros in a 32-bit binary representation of x
+12. cos(x)               - Returns the cosine of x (x is in radians)
+13. cosh(x)              - Returns the hyperbolic cosine of x
+14. exp(x)               - Returns the value of Ex
+15. expm1(x)             - Returns the value of Ex minus 1
+16. floor(x)             - Returns x, rounded downwards to the nearest integer
+17. fround(x)            - Returns the nearest (32-bit single precision) float representation of a number
+18. log(x)               - Returns the natural logarithmof x
+19. log10(x)             - Returns the base-10 logarithm of x
+20. log1p(x)             - Returns the natural logarithm of 1 + x
+21. log2(x)              - Returns the base-2 logarithm of x
+22. max(x, y, z, ..., n) - Returns the number with the highest value
+23. min(x, y, z, ..., n) - Returns the number with the lowest value
+24. pow(x, y)            - Returns the value of x to the power of y
+25. random()             - Returns a random number between 0 and 1
+26. round(x)             - Rounds x to the nearest integer
+27. sign(x)              - Returns the sign of a number (checks whether it is positive, negative or zero)
+28. sin(x)               - Returns the sine of x (x is in radians)
+29. sinh(x)              - Returns the hyperbolic sine of x
+30. sqrt(x)              - Returns the square root of x
+31. tan(x)               - Returns the tangent of an angle
+32. tanh(x)              - Returns the hyperbolic tangent of a number
+33. trunc(x)             - Returns the integer part of a number (x)
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+properties 
+--------------------------------------------------------------------------------
+# E - Math.E - ECMAScript1 
+  return  > a number, representing Euler's number 
+  example > Return the Euler's number:
+  Math.E;
+- The E property returns the Euler's number and the base of natural logarithms, approximately 2.718.
+
+# LN2 - MATH.LN2 - ECMAScript1
+  return  > a number, representing the natural logarithm of 2 
+  example > Return the natural logarithm of 2:
+  Math.LN2; 
+- The LN2 property returns the natural logarithm of 2, approximately 0.693.
+
+# LN10 - Math.LN10 - ECMAScript1
+  return  > a number, representing the natural logarithm of 10 
+  example > Return the natural logarithm of 10:
+  Math.LN10; 
+- The LN10 property returns the natural logarithm of 10, approximately 2.302.
+
+# LOG2E - Math.LOG2E - ECMAScript1 
+  return  > a number, representing the base-2 logarithm of E 
+  example > Return the base-2 logarithm of E:
+  Math.LOG2E; 
+- The LOG2E property returns the base-2 logarithm of E, approximately 1.442.
+
+# LOG10E - Math.LOG10E - ECMAScript1
+  return  > a number, representing the base-10 logarithm of E
+  example > Return the base-10 logarithm of E:
+  Math.LOG10E; 
+- The LOG10E property returns the base-10 logarithm of E, approximately 0.434.
+
+# PI - Math.PI - ECMAScript1
+  return  > a number, representing PI 
+  example > Return PI:
+  Math.PI; 
+- The PI property returns the ratio of a circle's area to the square of its radius, approximately 3.14
+
+# SQRT1_2 - Math.SQRT1_2 - ECMAScript1 
+  return  > a number, representing the square root of 1/2 
+  example > Return the square root of 1/2:
+  Math.SQRT1_2; 
+- The SQRT1_2 property returns the square root of 1/2, approximately 0.707.
+
+# SQRT2 - Math.SQRT2 - ECMAScript1 
+  return  > a number, representing the square root of 2 
+  example > Return the square root of 2:
+  Math.SQRT2; 
+- The SQRT2 property returns the square root of 2, approximately 1.414.
+</pre>
+
+<pre>
+--------------------------------------------------------------------------------
+methods
+--------------------------------------------------------------------------------
+# abs() - Math.abs(x) - ECMAScript1 
+  parameter > (x) - required. a number 
+  return    > a number, representing the absolute value of the specified number, 
+              or NaN if the value is not a number, or 0 if the value is (null) 
+  example   > Return the absolute value of a number:
+  Math.abs(-7.25);
+  example   > Return the absolute value of different numbers:
+  var a = Math.abs(7.25);    // result 7.25
+  var b = Math.abs(-7.25);   // result 7.25
+  var c = Math.abs(null);    // result 0
+  var d = Math.abs("Hello"); // result NaN
+  var e = Math.abs(2+3);     // result 5
+- The abs() method returns the absolute value of a number.
+
+# acos() - Math.acos(x) - ECMAScript1
+  parameter > x - required. a number 
+  return    > a number, from 0 to PI, or NaN if the value is outside the range of (-1) to (1) 
+  example   > Return the arccosine of a number:
+  Math.acos(0.5);
+- The acos() method returns the arccosine of a number as a value value between 0 and PI radians.
+- Note: If the parameter x is outside the range -1 to 1, the method will return NaN.
+- Tip: -1 will return the value of PI.
+
+# acosh() - Math.acosh(x) - ECMAScript6 
+  parameter > x - required, a nubmer 
+  return    > a number, or NaN if the parameter is less than 1 
+  example   > Return the hyperbolic arccosine of a number:
+  Math.acosh(2);
+- The acosh() method returns the hyperbolic arccosine of a number.
+- Note: If the parameter x is less than 1, the method will return NaN.
+
+# asin() - Math.asin(x) - ECMAScript1 
+  parameter > x - required, a number 
+  return    > a number, from (-PI/2) to (PI/2), or NaN if the value is outside the range of (-1) to (1) 
+  example   > Return the arcsine of a number:
+  Math.asin(0.5);
+- The asin() method returns the arcsine of a number as a value between -PI/2 and PI/2 radians.
+- Note: If the parameter x is outside the range -1 to 1, the browser will return NaN.
+- Tip: 1 will return the value of PI/2. -1 will return the value of -PI/2.
+
+# asinh() - Math.asinh(x) - ECMAScript6
+  parameter > x - required, a number 
+  return    > a number 
+  example   > Return the hyperbolic arcsine of a number:
+  Math.asinh(1);
+- The asinh() method returns the hyperbolic arcsine of a number.
+
+# atan() - Math.atan(x) - ECMAScript1 
+  parameter > x - required. a number 
+  return    > a number, from (-PI/2) to (PI/2), or NaN if the value is empty 
+  example   > Return the arctangent of a specified number:
+  Math.atan(2);
+- The atan() method returns the arctangent of a number as a value between -PI/2 and PI/2 radians.
+
+# atan2() - Math.atan2(y, x) - ECMAScript1
+  parameter > y - required, a number representing the y coordinate 
+  parameter > x - required, a number representing the x coordinate 
+  return    > a number, from (PI) to (-PI), or NaN if the value(s) are empty 
+  example   > Assume you had a point with the (x,y) coordinates of (4,8), you could calculate the angle in 
+              radians between that point and the positive X axis as follows:
+  Math.atan2(8, 4);
+- atan2() returns the arctangent of the quotient of its arguments, as a numeric value between PI and -PI radians.
+- The number returned represents the counterclockwise angle in radians (not degrees) 
+  between the positive X axis and the point (x, y).
+- Note: With atan2(), the y coordinate is passed as 1st argument and the x coordinate is passed as 2nd argument.
+
+# atanh() - Math.atanh(x) - ECMAScript6
+  parameter > x - required, a number 
+  return    > a number, or NaN, or Infinity, or (-Infinity) 
+  example   > Return the hyperbolic arctangent of a specified number:
+  Math.atanh(0.5);
+- The atanh() method returns the hyperbolic arctangent of a number.
+- Note: If the parameter x is greater than 1, or less than -1, the method will return NaN.
+- Note: If the parameter x is 1, the method will return Infinity.
+- Note: If the parameter x is -1, the method will return -Infinity.
+
+# cbrt() - Math.cbrt(x) - ECMAScript6
+  parameter > x - required, a number
+  return    > a number
+  example   > Return the cubic root of a number:
+  Math.cbrt(125);
+- The cbrt() method returns the cubic root of a number.
+
+# ceil() - Math.ceil(x) - ECMAScript1 
+  parameter > x - required, the number you want to round 
+  return    > a number, representing the nearest integer when rounding upwards 
+  example   > Round a number upward to its nearest integer:
+  Math.ceil(1.4)
+  example   > Use the ceil() method on different numbers:
+  var a = Math.ceil(0.60);   // result 1 
+  var b = Math.ceil(0.40);   // result 1 
+  var c = Math.ceil(5);      // result 5 
+  var d = Math.ceil(5.1);    // result 6
+  var e = Math.ceil(-5.1);   // result -5
+  var f = Math.ceil(-5.9);   // result -5
+- The ceil() method rounds a number UPWARDS to the nearest integer, and returns the result.
+- If the passed argument is an integer, the value will not be rounded.
+
+# clz32() - Math.clz32(x) - ECMAScript 2015 
+  parameter > x - required, a number 
+  return    > The number of leading zeros bits in the 32-bit binary representation of a number. 
+              If the number is 0, then this method returns 32 (as all bits are 0).
+  example   > Return the number of leading zeros in a 32-bit binary representation of different numbers:
+  var a = Math.clz32(0);
+  var b = Math.clz32(1);
+  var c = Math.clz32(2);
+  var d = Math.clz32(4); 
+- The clz32() method is short for CountLeadingZeroes32, 
+  and it returns the number of leading zeros in a 32-bit binary representation of a number.
+  
+# cos() - Math.cos(x) - ECMAScript1
+  parameter > x - required. a number 
+  return    > A Number, from -1 to 1, representing the cosine of an angle, or NaN if the value is empty
+  example   > Return the cosine of a number:
+  Math.cos(3);
+- The cos() method returns the cosine of a number.
+- Note: The cos() method returns a numeric value between -1 and 1, which represents the cosine of the angle.
+
+# cosh() - Math.cosh(x) - ECMAScript6
+  parameter > x - required. a number
+  return    > a number 
+  example   > Return the hyperbolic cosine of a number:
+  Math.cosh(3);
+- The cosh() method returns the hyperbolic cosine of a number.
+
+# exp() - Math.exp(x) - ECMAScript1
+  parameter > x - required. a number 
+  return    > a number, representing E(x) 
+  example   > Find the exponential value of a number:
+  Math.exp(3);
+  example   > Use the exp() method on different numbers:
+  var a = Math.exp(1);
+  var b = Math.exp(-1);
+  var c = Math.exp(5);
+  var d = Math.exp(10);
+- exp() returns value of Ex, where E is Euler's number (approximately 2.7183) and x is the number passed to it.
+
+# expm1() - Math.expm1(x) - ECMAScript 2015 
+  parameter > x - required. a number 
+  return    > a number, representing E(x) minus 1 
+  example   > Find the exponential value of a number - 1:
+  Math.expm1(3);
+  example   > Use the expm1() method on different numbers:
+  var a = Math.exp(1);
+  var b = Math.exp(-1);
+  var c = Math.exp(5);
+  var d = Math.exp(10);
+- The expm1() method returns the value of Ex minus 1, 
+  where E is Euler's number (approximately 2.7183) and x is the number passed to it.
+- This method is more accurate than using Math.exp() and subtracting 1.
+
+# floor() - Math.floor(x) - ECMAScript1
+  parameter > x - required. the number you want to round 
+  return    > a number, representing the nearest integer when rounding downwards 
+  example   > Round a number downward to its nearest integer:
+  Math.floor(1.6);
+  example   > Use the floor() method on different numbers:
+  var a = Math.floor(0.60);
+  var b = Math.floor(0.40);
+  var c = Math.floor(5);
+  var d = Math.floor(5.1);
+  var e = Math.floor(-5.1);
+  var f = Math.floor(-5.9);
+- The floor() method rounds a number DOWNWARDS to the nearest integer, and returns the result.
+- If the passed argument is an integer, the value will not be rounded.
+
+# fround() - Math.fround(x) - ECMAScript 2015 
+  parameter > x - required. a number 
+  return    > returns the nearest 32-bit single precision float representation of a number 
+  example   > Round different numbers to the nearest (32-bit single precision) float representation of a number:
+  var a = Math.fround(2.60);
+  var b = Math.fround(2.50);
+  var c = Math.fround(2.49);
+  var d = Math.fround(-2.60);
+  var e = Math.fround(-2.50);
+  var f = Math.fround(-2.49);
+- The fround() method returns the nearest (32-bit single precision) float representation of a number.
+
+# log() - Math.log(x) - ECMAScript1
+  parameter > x - required. a number 
+  return    > a number, representing the natural logarithm of a specified number 
+              if the number negative, NaN is returned 
+              if the number is 0, (-infinity) is returned 
+  example   > Return the natural logarithm of the number "2":
+  Math.log(2);
+  example   > Use the log() method on different numbers:
+  var a = Math.log(2.7183);
+  var b = Math.log(2);
+  var c = Math.log(1);
+  var d = Math.log(0);
+  var e = Math.log(-1);
+- The log() method returns the natural logarithm (base E) of a number.
+
+# log10() - Math.log10(x) - ECMAScript 2015
+  parameter > x - required. a number 
+  return    > a number representing the base-10 logarithm of a number 
+              if the number is negative, NaN is returned 
+              if the number is 0, (-infinity) is returned 
+  example   > Return the base-10 logarithm of the number "2":
+  Math.log10(2);
+  example   > Use the log10() method on different numbers:
+  var a = Math.log10(2.7183);
+  var b = Math.log10(2);
+  var c = Math.log10(1);
+  var d = Math.log10(0);
+  var e = Math.log10(-1);
+- The log10() method returns the base-10 logarithm of a number.
+
+# log1p() - Math.log1p(x) - ECMAScript 2015
+  parameter > x - required. a number 
+  return    > a number, representing the natural logarithm (base E) of 1 + the specified number 
+              if the number is (-1), (-infinity) is returned 
+              if the number is less than (-1), it returns NaN
+  example   > Return the natural logarithm (base E) of 1 + different numbers:
+  var a = Math.log1p(2.7183);
+  var b = Math.log1p(2);
+  var c = Math.log1p(1);
+  var d = Math.log1p(0);
+  var e = Math.log1p(-1); 
+- The log1p() method returns the natural logarithm (base E) of 1 + a specified number.
+
+# log2() - Math.log2(x) - ECMAScript 2015 
+  parameter > x - required. a number 
+  return    > a number, representing the base-2 logarithm of a number 
+              if the number is (-1), (-infinity) is returned 
+              if the nubmer is less than (-1), it returns NaN
+  example   > Return the base 2 logarithm of different numbers:
+  var a = Math.log2(2.7183);
+  var b = Math.log2(2);
+  var c = Math.log2(1);
+  var d = Math.log2(0);
+  var e = Math.log2(-1); 
+- The log2() method returns the base-2 logarithm of a number.
+
+# max() - Math.max(n1, n2, n3, ..., nX) - ECMAScript1
+  parameter > n1, n2, ..., nX - optional. one or more numbers to compare 
+  return    > a number, representing the highest number of the arguments, 
+              or (-infinity) if no arguments are given, or NaN if one or more arguments are not numbers 
+  example   > Return the number with the highest value:
+  Math.max(5, 10);
+  example   > Return the number with the highest value:
+  var a = Math.max(5, 10);
+  var b = Math.max(0, 150, 30, 20, 38);
+  var c = Math.max(-5, 10);
+  var d = Math.max(-5, -10);
+  var e = Math.max(1.5, 2.5);
+- The max() method returns the number with the highest value.
+- Tip: The min() method returns the number with the lowest value.
+  
+# min() - Math.min(n1, n2, n3, ..., nX) - ECMAScript1
+  parameter > n1, n2, n3, ..., nX - optional, one or more numbers to compare 
+  return    > A Number, representing the lowest number of the arguments, 
+              or Infinity if no arguments are given, or NaN if one or more arguments are not numbers
+  example   > Return the number with the lowest value:
+  Math.min(5, 10);
+  example   > Return the number with the lowest value:
+  var a = Math.min(5, 10);
+  var b = Math.min(0, 150, 30, 20, 38);
+  var c = Math.min(-5, 10);
+  var d = Math.min(-5, -10);
+  var e = Math.min(1.5, 2.5);
+- The min() method returns the number with the lowest value.
+- Tip: The max() method returns the number with the highest value.
+
+# pow() - Math.pow(x, y) - ECMAScript1
+  parameter > x - required. the base 
+  parameter > y - required. the exponent 
+  return    > a number, representing the value of x to the power of y 
+  example   > Return the value of the number 4 to the power of 3 (4*4*4):
+  Math.pow(4, 3);
+  example   > Use the pow() method on different numbers:
+  var a = Math.pow(0, 1);
+  var b = Math.pow(1, 1);
+  var c = Math.pow(1, 10);
+  var d = Math.pow(3, 3);
+  var e = Math.pow(-3, 3);
+  var f = Math.pow(2, 4);
+- The pow() method returns the value of x to the power of y.
+
+# random() - Math.random() - ECMAScript1
+  parameter > none 
+  return    > a number, representing a number from 0 up to but not including 1 
+  example   > Return a random number between 0 (inclusive) and 1 (exclusive):
+  Math.random();
+  example   > Return a random number between 1 and 10:
+  Math.floor((Math.random() * 10) + 1);
+  example   > Return a random number between 1 and 100:
+  Math.floor((Math.random() * 100) + 1);
+- The random() method returns a random number from 0 (inclusive) up to but not including 1 (exclusive).
+
+# round() - Math.round(x) - ECMAScript1
+  parameter > x - required. the number to be rounded 
+  return    > a number, representing the nearest integer 
+  example   > Round a number to the nearest integer:
+  Math.round(2.5);
+  example   > Round different numbers to the nearest integer:
+  var a = Math.round(2.60);
+  var b = Math.round(2.50);
+  var c = Math.round(2.49);
+  var d = Math.round(-2.60);
+  var e = Math.round(-2.50);
+  var f = Math.round(-2.49);
+- The round() method rounds a number to the nearest integer.
+- Note: 2.49 will be rounded down (2), and 2.5 will be rounded up (3).
+
+# sign() - Math.sign(x) - ECMAScript 2015 
+  parameter > x - required. a number 
+  return    > a number, representing the sign of the specified number 
+              - if the number is positive, it returns 1 
+              - if the number is negative, it returns (-1)
+              - if the number is positive zero, it returns 0 
+              - if the number is negative zero, it returns (-0) 
+              - if the number is not a number, it returns NaN
+  example   > Find out if a number is negative or positive:
+  var a = Math.sign(3);    // Returns 1 (positive)
+  var b = Math.sign(-3);   // Returns -1 (negative)
+  var c = Math.sign(0);    // Returns 0 (zero) 
+- The sign() method checks whether a number is negative, positive or zero.
+- If the number is positive, this method returns 1.
+- f the number is negative, it returns -1.
+- If the number is zero, it returns 0. 
+
+# sin() - Math.sin(x) - ECMAScript1
+  parameter > x - required, a number 
+  return    > a number, from (-1) or (1), representing the sine of an angel, or NaN if the value is empty 
+  example   > Return the sine of a number:
+  Math.sin(3);
+  example   > Return the sine of different numbers:
+  var a = Math.sin(3);
+  var b = Math.sin(-3);
+  var c = Math.sin(0);
+  var d = Math.sin(Math.PI);
+  var e = Math.sin(Math.PI / 2);
+- The sin() method returns the sine of a number.
+- Note: This method returns a value between -1 and 1, which represents the sine of the parameter x.
+
+# sinh() - Math.sinh(x) - ECMAScript6 
+  parameter > x - required. a number 
+  return    > a number 
+  example   > Return the hyperbolic sine of a number:
+  Math.sinh(3);
+- The sinh() method returns the hyperbolic sine of a number.
+
+# sqrt() - Math.sqrt(x) - ECMAScript1
+  parameter > x - required. a number 
+  return    > a number. if (x) is a negative number, NaN is returned 
+  example   > Return the square root of a number:
+  Math.sqrt(9);
+  example   > Return the square root of different numbers:
+  var a = Math.sqrt(0);
+  var b = Math.sqrt(1);
+  var c = Math.sqrt(9);
+  var d = Math.sqrt(64);
+  var e = Math.sqrt(-9);
+- The sqrt() method returns the square root of a number.
+
+# tan() - Math.tan(x) - ECMAScript1 
+  parameter > x - required. a number, in radians, to find the tangent of 
+  return    > a number, representing the tangent of a number 
+  example   > Return the tangent of a number:
+  Math.tan(1);
+- The tan() method returns a number that represents the tangent of a number.
+
+# tanh() - Math.tanh(x) - ECMAScript6
+  parameter > x - required. a number 
+  return    > a number 
+  example   > Return the hyperbolic tangent of a number:
+  Math.tanh(1);
+- The tanh() method returns a number that represents the hyperbolic tangent of a number.
+
+# trunc() - Math.trunc(x) - ECMAScript6 
+  parameter > x - required. a number 
+  return    > a number 
+  example   > Return the integer part of a number:
+  Math.trunc(8.76);
+- The trunc() method returns the integer part of a number.
+- Note: This method will NOT round the number up/down to the nearest integer, but simply remove the decimals.
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
+
+
+
+
+
+
+
+
+
+

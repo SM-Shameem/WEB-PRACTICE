@@ -17,32 +17,23 @@ introduction
   > /w3schools/1 - is a regular expression 
   > w3schools    - is a pattern (to be used in a search) 
   > i            - is a modifier (modifiers the search to be case-insensitive) 
-  
 --------------------------------------------------------------------------------
-modifiers
---------------------------------------------------------------------------------
+# there are three (03) modifiers
 # modifieres are used to perform case-insensitive and global searches 
-
 01. g - Perform a global match (find all matches rather than stopping after the first match)
 02. i - Perform case-insensitive matching
 03. m - Perform multiline matching
-
 --------------------------------------------------------------------------------
-brackets
---------------------------------------------------------------------------------
+# there are five (05) brackets
 # Brackets are used to find a range of characters
-
 01. [abc]  - Find any character between the brackets
 02. [^abc] - Find any character NOT between the brackets
 03. [0-9]  - Find any character between the brackets (any digit)
 04. [^0-9] - Find any character NOT between the brackets (any non-digit)
 05. (x|y)  - Find any of the alternatives specified
-
 --------------------------------------------------------------------------------
-metacharacters
---------------------------------------------------------------------------------
+# there are eighteen (18) metacharacters
 # Metacharacters are characters with a special meaning:
-
 01. .      - Find a single character, except newline or line terminator
 02. \w     - Find a word character
 03. \W     - Find a non-word character
@@ -61,10 +52,8 @@ metacharacters
 16. \xxx   - Find the character specified by an octal number xxx
 17. \xdd   - Find the character specified by a hexadecimal number dd
 18. \udddd - Find the Unicode character specified by a hexadecimal number dddd
-
 --------------------------------------------------------------------------------
-Quantifiers
---------------------------------------------------------------------------------
+# there are ten (10) Quantifiers
 01. n+     - Matches any string that contains at least one n
 02. n*     - Matches any string that contains zero or more occurrences of n
 03. n?     - Matches any string that contains zero or one occurrences of n
@@ -75,21 +64,16 @@ Quantifiers
 08. ^n     - Matches any string with n at the beginning of it
 09. ?=n    - Matches any string that is followed by a specific string n
 10. ?!n    - Matches any string that is not followed by a specific string n
-
 --------------------------------------------------------------------------------
-RegExp Object Properties
---------------------------------------------------------------------------------
+# there are five (05) RegExp Object Properties
 # source 	Returns the text of the RegExp pattern
-
 01. constructor - Returns the function that created the RegExp object's prototype
 02. global      - Checks whether the "g" modifier is set
 03. ignoreCase  - Checks whether the "i" modifier is set
 04. lastIndex   - Specifies the index at which to start the next match
 05. multiline   - Checks whether the "m" modifier is set
-
 --------------------------------------------------------------------------------
-RegExp Object Methods
---------------------------------------------------------------------------------
+# there are four (04) RegExp Object Methods
 01. compile()  - Deprecated in version 1.5. Compiles a regular expression
 02. exec()     - Tests for a match in a string. Returns the first match
 03. test()     - Tests for a match in a string. Returns true or false
@@ -100,42 +84,510 @@ RegExp Object Methods
 --------------------------------------------------------------------------------
 modifiers
 --------------------------------------------------------------------------------
+# (g) - new RegExp("regexp", "g") or simply /regexp/g - support all
+  example > var str = "Is this all there is?"; var patt1 = /is/gi; 
+  // do a global, case-insensitive search for is
+- The g modifier is used to perform a global match (find all matches rather than stopping after the first match).
+- Tip: To perform a global, case-insensitive search, use this modifier together with the "i" modifier.
+- Tip: Use the global property to specify whether or not the g modifier is set.
 
+# (i) - new RegExp("regexp", "i") or /regexp/i - support all 
+  example > var str = "Visit W3Schools"; var patt1 = /w3schools/i;
+  // do a case-insensitive search for "w3schools" in a string
+- The i modifier is used to perform case-insensitive matching.
+- Tip: Use the ignoreCase property to check whether or not the "i" modifier is set.
+
+# (m) - new RegExp("regexp", "m") or simply /regexp/m - support all 
+  example > var str = "\nIs th\nis it?"; var patt1 = /^is/m;
+  // Do a multiline search for "is" at the beginning of each line in a string:
+- The m modifier is used to perform a multi-line match.
+- The m modifier treat beginning (^) and end ($) characters to match the beginning or end of each line of a 
+  string (delimited by \n or \r), rather than just the beginning or end of the string.
+- Note: The m modifier is case-sensitive and will stop the search after the first match. To perform a global, 
+  case-insensitive, multi-line search, use this modifier together with "g" and "i".
+- Tip: Use the multi-line property to specify whether or not the m modifier is set.
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
-brackets
+brackets - expression
 --------------------------------------------------------------------------------
+# [abc] - new RegExp("[abc]") or simply /[abc]/ - support all
+  syntax with modifiers > new RegExp("[abc]", "g") or simply /[abc]/g
+  example > Do a global search for the characters "i" and "s" in a string
+  var str = "Do you know if this is all there is?"; var patt1 = /[is]/gi; 
+  example > Do a global search for the character-span from lowercase "a" to lowercase "h" in a string:
+  var str = "Is this all there is?";
+  var patt1 = /[a-h]/g;
+  example > Do a global search for the character-span from uppercase "A" to uppercase "E":
+  var str = "I SCREAM FOR ICE CREAM!";
+  var patt1 = /[A-E]/g; 
+  example > Do a global search for the character-span from uppercase "A" to lowercase "e" 
+            (will search for all uppercase letters, but only lowercase letters from a to e.)
+  var str = "I Scream For Ice Cream, is that OK?!";
+  var patt1 = /[A-e]/g; 
+  example > Do a global, case-insensitive search for the character-span [a-s]:
+  var str = "I Scream For Ice Cream, is that OK?!";
+  var patt1 = /[a-s]/gi; 
+  example > A demonstration of "g" and "gi"-search for characters:
+  var str = "THIS This this";
+  var patt1 = /[THIS]/g;
+  var str = "THIS This this";
+  var patt1 = /[THIS]/gi; 
+- The [abc] expression is used to find any character between the brackets.
+- The characters inside the brackets can be any characters or span of characters:
+  > [abcde..] - Any character between the brackets
+  > [A-Z] - Any character from uppercase A to uppercase Z
+  > [a-z] - Any character from lowercase a to lowercase z
+  > [A-z ]- Any character from uppercase A to lowercase z
+- Tip: Use the [^abc] expression to find any character NOT between the brackets.
 
+# [^abc] - new RegExp("[^xyz]") or simply /[^xyz]/ - support all 
+  syntax with modifiers > new RegExp("[^xyz]", "g") or simply /\[^xyz]/g
+  example > Do a global search for characters that are NOT "i" and "s" in a string:
+  var str = "Do you know if this is all there is?";
+  var patt1 = /[^is]/gi; 
+  example > Do a global search for the character-span NOT from lowercase "a" to lowercase "h" in a string:
+  var str = "Is this all there is?";
+  var patt1 = /[^a-h]/g;
+  example > Do a global search for the character-span NOT from uppercase "A" to uppercase "E":
+  var str = "I SCREAM FOR ICE CREAM!";
+  var patt1 = /[^A-E]/g; 
+  example > Do a global search for the character-span NOT from uppercase "A" to lowercase "e":
+  var str = "I Scream For Ice Cream, is that OK?!";
+  var patt1 = /[^A-e]/g; 
+  example > Do a global, case-insensitive search for the character-span that's NOT [a-s]:
+  var str = "I Scream For Ice Cream, is that OK?!";
+  var patt1 = /[^a-s]/gi; 
+- The [^abc] expression is used to find any character NOT between the brackets.
+- The characters inside the brackets can be any characters or span of characters:
+  > [abcde..] - Any character between the brackets
+  > [A-Z] - Any character from uppercase A to uppercase Z
+  > [a-z] - Any character from lowercase a to lowercase z
+  > [A-z ]- Any character from uppercase A to lowercase z
+- Tip: Use the [abc] expression to find any character between the brackets.
+
+# [0-9] - new RegExp("[0-9]") or simply /[0-9]/
+  syntax with modifieres > new RegExp("[0-9]", "g") or simply /\[0-9]/g
+  example > Do a global search for the number "1" in a string:
+  var str = "12121212";
+  var patt1 = /[1]/g; 
+- The [0-9] expression is used to find any character between the brackets.
+- The digits inside the brackets can be any numbers or span of numbers from 0 to 9.
+- Tip: Use the [^0-9] expression to find any character that is NOT a digit.
+
+# [^0-9] - new RegExp("[^0-9]") or simply /[^0-9]/ - support all 
+  syntax with modifiers > new RegExp("[^0-9]", "g") or simply /\[^0-9]/g
+  example > Do a global search for numbers that are NOT "1" in a string:
+  var str = "12121212";
+  var patt1 = /[^1]/g; 
+  example > Do a global search for numbers that are NOT 5 to 8 in a string:
+  var str = "123456789";
+  var patt1 = /[^5-8]/g; 
+- The [^0-9] expression is used to find any character that is NOT a digit.
+- The digits inside the brackets can be any numbers or span of numbers from 0 to 9.
+- Tip: Use the [0-9] expression to find any character between the brackets that is a digit.
+
+# (x|y) - new RegExp("(x|y)") or simply /(x|y)/ - support all 
+  syntax with modifier > new RegExp("(x|y)", "g") or simply /(x|y)/g
+  example > Do a global search to find any of the specified alternatives (0|5|7):
+  var str = "01234567890123456789";
+  var patt1 = /(0|5|7)/g; 
+- The (x|y) expression is used to find any of the alternatives specified.
+- The alternatives can be of any characters.
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 metacharacters
 --------------------------------------------------------------------------------
+# . - new RegExp("regexp.") or simply /regexp./ - support all 
+  syntax with modifiers > new RegExp("regexp.", "g") or simply /regexp./g
+  example > Do a global search for "h.t" in a string:
+  var str = "That's hot!";
+  var patt1 = /h.t/g;
+- The . metacharacter is used to find a single character, except newline or other line terminators.
 
+# \w - new RegExp("\\w") or simply /\w/ - support all 
+  syntax with modifiers > new RegExp("\\w", "g") or simply /\w/g
+  example > Do a global search for word characters in a string:
+  var str = "Give 100%!";
+  var patt1 = /\w/g;
+- The \w metacharacter is used to find a word character.
+- A word character is a character from a-z, A-Z, 0-9, including the _ (underscore) character.
+
+# \W - new RegExp("\\W") or simply /\W/ - support all 
+  syntax with modifiers > new RegExp("\\W", "g") or simply /\W/g
+  example > Do a global search for non-word characters in a string:
+  var str = "Give 100%!";
+  var patt1 = /\W/g;
+- The \W metacharacter is used to find a non-word character.
+- A word character is a character from a-z, A-Z, 0-9, including the _ (underscore) character.
+
+# \d - new RegExp("\\d") or simply /\d/ - support all 
+  syntax with modifieres > new RegExp("\\d", "g") or simply /\d/g
+  example > Do a global search for digits:
+  var str = "Give 100%!";
+  var patt1 = /\d/g;
+- The \d metacharacter is used to find a digit from 0-9.
+
+# \D - new RegExp("\\D") or simply /\D/ - support all 
+  syntax with modifiers > new RegExp("\\D", "g") or simply /\D/g
+  example > Do a global search for non-digit characters:
+  var str = "Give 100%!";
+  var patt1 = /\D/g;
+- The \D metacharacter is used to find a non-digit character.
+
+# \s - new RegExp("\\s") or simply /\s/ - support all 
+  syntax with modifiers > new RegExp("\\s", "g") or simply /\s/g
+  example > Do a global search for whitespace characters in a string:
+  var str = "Is this all there is?";
+  var patt1 = /\s/g;
+- The \s metacharacter is used to find a whitespace character.
+- A whitespace character can be:
+  > A space character
+  > A tab character
+  > A carriage return character
+  > A new line character
+  > A vertical tab character
+  > A form feed character
+  
+# \S - new RegExp("\\S") or simply /\S/ - support all 
+  syntax with modifier > new RegExp("\\S", "g") or simply /\S/g
+  example > Do a global search for non-whitespace characters in a string:
+  var str = "Is this all there is?";
+  var patt1 = /\S/g;
+- The \S metacharacter is used to find a non-whitespace character.
+- A whitespace character can be:
+  > A space character
+  > A tab character
+  > A carriage return character
+  > A new line character
+  > A vertical tab character
+  > A form feed character
+
+# \b - new RegExp("\\bregexp") or simply /\bregexp/ - support all 
+  syntax with modifiers > new RegExp("\\bregexp", "g") or simply /\bregexp/g
+  example > Do a search for "LO" at the beginning of a word in a string:
+  var str = "HELLO, LOOK AT YOU";
+  var patt1 = /\bLO/;
+  example > Do a search for "LO" at the END of a word in a string:
+  var str = "HELLO, LOOK AT YOU";
+  var patt1 = /LO\b/;
+- The \b metacharacter is used to find a match at the beginning or end of a word.
+- Search for the pattern at the beginning of a word like this: \bLO
+- Search for the pattern at the end of a word like this: LO\b
+- If no match is found, it returns null.
+
+# \B - new RegExp("\\Bregexp") or simply /\Bregexp/ - support all 
+  syntax with modifiers > new RegExp("\\Bregexp", "g") or simply /\Bregexp/g
+  example > Find the first occurrence of "LO" where it is NOT at the beginning of a word:
+  var str = "HELLO, LOOK AT YOU!";
+  var patt1 = /\BLO/;
+  example > Find the first occurrence of "LO" where it is NOT at the END of a word:
+  var str = "HELLO, LOOK AT YOU";
+  var patt1 = /LO\B/;
+- The \B metacharacter is used to find a match, but where it is NOT at the beginning/end of a word.
+- Search for the pattern NOT at the beginning of a word like this: \BLO
+- Search for the pattern NOT at the end of a word like this: LO\B
+- If no match is found, it returns null.
+
+# \0 - new RegExp("\\0") or simply /\0/ - support all 
+  example > Search for a NUL character in a string:
+  var str = "Visit W3Schools.\0Learn Javascript.";
+  var patt1 = /\0/;
+- The \0 metacharacter is used to find NUL character.
+- \0 returns the position where the NUL character was found. If no match is found, it returns -1.
+
+# \n - new RegExp("\\n") or /\n/ - support all 
+  example > Search for a newline character in a string:
+  var str = "Visit W3Schools.\nLearn Javascript.";
+  var patt1 = /\n/;
+- The \n character is used to find a newline character.
+- \n returns the position where the newline character was found. If no match is found, it returns -1.
+
+# \f - new RegExp("\\f") or simply /\f/ - support all 
+  example > Search for a form feed character in a string:
+  var str = "Visit W3Schools.\fLearn Javascript.";
+  var patt1 = /\f/;
+- The \f metacharacter is used to find a form feed character.
+- \f returns the position where the form feed character was found. If no match is found, it returns -1.
+
+# \r - new RegExp("\\r") or simply /\r/ - support all 
+  example > Search for a carriage return character in a string:
+  var str = "Visit W3Schools.\rLearn Javascript.";
+  var patt1 = /\r/;
+- The \r metacharacter is used to find a carriage return character.
+- \r returns the position where the carriage return character was found. If no match is found, it returns -1.
+
+# \t - new RegExp("\\t") or simply /\t/ - support all 
+  example > Search for a tab character in a string:
+  var str = "Visit W3Schools.\tLearn Javascript.";
+  var patt1 = /\t/;
+- The \t metacharacter is used to find a tab character.
+- \t returns the position where the tab character was found. If no match is found, it returns -1.
+
+# \v - new RegExp("\\v") or simply /\v/ - support all 
+  example > Search for a vertical tab character in a string:
+  var str = "Visit W3Schools.\vLearn Javascript.";
+  var patt1 = /\v/;
+- The \v metacharacter is used to find a vertical tab character.
+- \v returns the position where the vertical tab character was found. If no match is found, it returns -1.
+
+# \xxx - new RegExp("\\xxx") or simply /\xxx/ - support all 
+  syntax with modifiers > new RegExp("\\xxx", "g") or simply /\xxx/g
+  example > Do a global search for octal number 127 (W) in a string:
+  var str = "Visit W3Schools. Hello World!";
+  var patt1 = /\127/g; 
+- The \xxx character is used to find the Latin character specified by an octal number xxx.
+- If no match is found, it returns null.
+
+# \xdd - new RegExp("\\xdd") or simply /\xdd/ - support all 
+  syntax with modifiers > new RegExp("\\xdd", "g") or /\xdd/g
+  example > Do a global search for the hexadecimal number 57 (W) in a string:
+  var str = "Visit W3Schools. Hello World!";
+  var patt1 = /\x57/g; 
+- The \xdd character is used to find the Latin character specified by a hexadecimal number dd.
+- If no match is found, it returns null.
+
+# \udddd - new RegExp("\\udddd") or simply /\udddd/ - support all 
+  syntax with modifiers > new RegExp("\\udddd", "g") or simply /\udddd/g
+  example > Do a global search for the hexadecimal number 0057 (W) in a string:
+  var str = "Visit W3Schools. Hello World!";
+  var patt1 = /\u0057/g; 
+- The \udddd character is used to find the Unicode character specified by a hexadecimal number dddd.
+- If no match is found, it returns null.
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 Quantifiers
 --------------------------------------------------------------------------------
+# + - new RegExp("n+") or simply /n+/ - support all 
+  syntax with modifiers > new RegExp("n+", "g") or /\n+/g
+  example > Do a global search for at least one "o":
+  var str = "Hellooo World! Hello W3Schools!";
+  var patt1 = /o+/g; 
+  example > Do a global search for at least one word character:
+  var str = "Hellooo World! Hello W3Schools!";
+  var patt1 = /\w+/g; 
+- The n+ quantifier matches any string that contains at least one n.
 
+# * - new RegExp("n*") or simply /n*/ - support all 
+  syntax with modifier > new RegExp("n*", "g") or simply /\n*/g
+  example > Do a global search for an "l", followed by zero or more "o" characters:
+var str = "Hellooo World! Hello W3Schools!";
+var patt1 = /lo*/g; 
+  example > Do a global search for a "1", followed by zero or more "0" characters:
+var str = "1, 100 or 1000?";
+var patt1 = /10*/g;
+- The n* quantifier matches any string that contains zero or more occurrences of n.
+
+# ? - new RegExp("n?") or simply /n?/ - support all 
+  syntax with modifiers > new RegExp("n?", "g") or simply /\n?/g
+  example > Do a global search for a "1", followed by zero or one "0" characters:
+  var str = "1, 100 or 1000?";
+  var patt1 = /10?/g;
+- The n? quantifier matches any string that contains zero or one occurrences of n.
+
+# {X} - new RegExp("n{X}") or simply /n{X}/
+  syntax with modifiers > new RegExp("n{X}", "g") or simply /\n{X}/g
+  example > Do a global search for a substring that contains a sequence of four digits:
+  var str = "100, 1000 or 10000?";
+  var patt1 = /\d{4}/g;
+- The n{X} quantifier matches any string that contains a sequence of X n's.
+- X must be a number.
+
+# {X, y} - new RegExp("n{X, Y}") or /n{X, Y}/
+  syntax with modifiers > new RegExp("n{X, Y}", "g") or /\n{X, Y}/g
+  example > Do a global search for a substring that contains a sequence of three to four digits:
+  var str = "100, 1000 or 10000?";
+  var patt1 = /\d{3,4}/g;
+- The n{X,Y} quantifier matches any string that contains a sequence of X to Y n's.
+- X and Y must be a number.
+
+# {X,} - new RegExp("n{X,}") or simply /n{X,}/
+  syntax with modifier > new RegExp("n{X,}", "g") or simply /\n{X,}/g
+  example > Do a global search for a substring that contains a sequence of at least three digits:
+  var str = "100, 1000 or 10000?";
+  var patt1 = /\d{3,}/g;
+- The n{X,} quantifier matches any string that contains a sequence of at least X n's.
+- X must be a number.
+
+# $ - new RegExp("n$") or simply /n$/
+  syntax with modifiers > new RegExp("n$", "g") or simply /\n$/g
+  example > Do a global search for "is" at the end of a string:
+  var str = "Is this his";
+  var patt1 = /is$/g; 
+  example > Do a global, multiline search for "is" at the end of each line in a string:
+  var str = "Is\nthis\nhis\n?";
+  var patt1 = /is$/gm; 
+- The n$ quantifier matches any string with n at the end of it.
+- Tip: Use the ^n quantifier to match any string with n at the BEGINNING of it.
+
+# ^ - new RegExp("^n") or /^n/
+  syntax with nodifiers > new RegExp("^n", "g") or simply /\^n/g
+  example > Do a global search for "Is" at the beginning of a string:
+  var str = "Is this his";
+  var patt1 = /^Is/g; 
+  example > Do a global, case-insensitive, multiline search for "is" at the beginning of each line in a string:
+  var str = "\nIs th\nis h\nis?";
+  var patt1 = /^is/gmi; 
+- The ^n quantifier matches any string with n at the beginning of it.
+- Tip: Use the n$ quantifier to match any string with n at the END of it.
+
+# ?= new RegExp("regexp(?=n)") or simply /regexp(?=n)/
+  syntax with modifiers > new RegExp("regexp(?=n)", "g") or simply /\regexp(?=n)/g
+  example > Do a global search for "is" followed by " all":
+  var str = "Is this all there is";
+  var patt1 = /is(?= all)/g;
+- The ?=n quantifier matches any string that is followed by a specific string n.
+- Tip: Use the ?!n quantifier to match any string that is NOT followed by a specific string n.
+
+# ?! - new RegExp("regexp(?!n)") or simply /regexp(?!n)/
+  syntax with modifiers > new RegExp("regexp(?!n)", "g") or simply /\regexp(?!n)/g
+  example > Do a global, case insensitive search for "is" not followed by " all":
+  var str = "Is this all there is";
+  var patt1 = /is(?! all)/gi; 
+- The ?!n quantifier matches any string that is not followed by a specific string n.
+- Tip: Use the ?=n quantifier to match any string that IS followed by a specific string n.
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 RegExp Object Properties
 --------------------------------------------------------------------------------
+# constructor - RegExpObject.constructor - ECMAScript1
+  return  > function RegExp() { [native code] }
+  example > The constructor property returns a regular expression's constructor function:
+  var patt = new RegExp("Hello World", "g");
+  var res = patt.constructor; 
+- In JavaScript, the constructor property returns the constructor function for an object.
+- The return value is a reference to the function, not the name of the function:
+- For JavaScript regular expressions the constructor property returns function RegExp() { [native code] }
+- For JavaScript numbers the constructor property returns function Number() { [native code] }
+- For JavaScript strings the constructor property returns function String() { [native code] }
 
+# property - RegExpObject.global - ECMAScript1
+  return  > (boolean) - returns true if the "g" modifier is set, false otherwise 
+  example > Check whether or not the "g" modifier is set:
+  var str = "Visit W3Schools!";
+  var patt1 = /W3S/g;
+  var res = patt1.global; 
+- The global property specifies whether or not the "g" modifier is set.
+- This property returns true if the "g" modifier is set, otherwise it returns false.
+
+# ignoreCase - RegExpObject.ignoreCase - ECMAScript1
+  return > (boolean) - returns (true) if the (i) modifier is set, (false) otherwise 
+  example > Check whether or not the "i" modifier is set:
+  var str = "Visit W3Schools!";
+  var patt1 = /W3S/i;
+  var res = patt1.ignoreCase; 
+- The ignoreCase property specifies whether or not the "i" modifier is set.
+- This property returns true if the "i" modifier is set, otherwise it returns false.
+
+# lastIndex - RegExpObject.lastIndex - ECMAScript1
+  return  > (number) - an integer that specifies the character position immediately after the last match found 
+           by exec() or test() methods 
+  example > o a global search for "ain" in a string, and output the index after a match is found:
+  var str = "The rain in Spain stays mainly in the plain";
+  var patt1 = /ain/g;
+  while (patt1.test(str) == true) {
+    document.write("'ain' found. Index now at: "+patt1.lastIndex);
+    document.write("< br >");
+  } 
+- The lastIndex property specifies the index at which to start the next match.
+- Note: This property only works if the "g" modifier is set.
+- This property returns an integer that specifies the character position immediately after the last match found 
+  by exec( ) or test( ) methods.
+- Note: exec( ) and test( ) reset lastIndex to 0 if they do not get a match.
+
+# multiline - RegExpObject.multiline - ECMAScript1
+  return  > (boolean) - returns (true) if the (m) modifier is set, (false) otherwise 
+  example > Check whether or not the "m" modifier is set:
+  var str = "Visit W3Schools!";
+  var patt1 = /W3S/gi; // "g" and "i" is set, "m" is not.
+  var res = patt1.multiline; 
+- The multiline property specifies whether or not the m modifier is set.
+- This property returns true if the "m" modifier is set, otherwise it returns false.
+
+# source - RegExpObject.source - ECMAScript1
+  return  > (string) - the text of the RegExp pattern 
+  example > Return the text of the RegExp pattern:
+  var str = "Visit W3Schools";
+  var patt1 = /W3S/g;
+  var res = "The text of the RegExp is: " + patt1.source; 
+- The source property returns the text of the RegExp pattern.
 </pre>
 
 <pre>
 --------------------------------------------------------------------------------
 RegExp Object Methods
 --------------------------------------------------------------------------------
+# compile() - RegExpObject.compile(regexp, modifier) 
+  support   > ([abc] expression) - all, but (opera) not support
+  parameter > (regexp) - a regular expression 
+  parameter > (modifier) - specifies the type of matching. (g) for a global match, (i) for a case-insensitive 
+              match and (gi) for a global, case-insensitive match 
+  example   > Do a global search for "man" in a string, and replace it with "person". Then change the regular 
+              expression and replace either "man" or "woman" with "person", with the compile() method:
+  var str = "Every man in the world! Every woman on earth!";
+  var patt = /man/g;
+  var str2 = str.replace(patt,"person");
+  document.write(str2 + "< br >");
+  patt = /(wo)?man/g;
+  patt.compile(patt);
+  str2 = str.replace(patt, "person");
+  document.write(str2); 
+- The compile() method was deprecated in JavaScript version 1.5.
+- The compile() method is used to compile a regular expression during execution of a script.
+- The compile() method can also be used to change and recompile a regular expression.
 
+# exec() - RegExpObject.exec(string) - ECMAScript1
+  parameter > (string) - required. the string to be searched 
+  return    > (array) - an array containing the matched text if it finds a match, otherwise it returns (null) 
+  example   > Search a string for the character "e":
+  var str = "The best things in life are free";
+  var patt = new RegExp("e");
+  var res = patt.exec(str); 
+  example   > Do a global search, and test for "Hello" and "W3Schools" in a string:
+  // The string:
+  var str = "Hello world!";
+  // Look for "Hello"
+  var patt = /Hello/g;
+  var result = patt.exec(str);
+  // Look for "W3Schools"
+  var patt2 = /W3Schools/g;
+  result2 = patt2.exec(str);
+- The exec() method tests for a match in a string.
+- This method returns the matched text if it finds a match, otherwise it returns null.
+
+# text() - RegExpObject.test(string) - ECMAScript1
+  parameter > (string) - required. the string to be searched 
+  return    > (boolean) - returns (true) if it finds a match, otherwise it returns (false) 
+  example   > Search a string for the character "e":
+  var str = "The best things in life are free";
+  var patt = new RegExp("e");
+  var res = patt.test(str); 
+  example > Do a global search, and test for "Hello" and "W3Schools" in a string:
+  // The string:
+  var str = "Hello world!";
+  // Look for "Hello"
+  var patt = /Hello/g;
+  var result = patt.test(str);
+  // Look for "W3Schools"
+  patt2 = /W3Schools/g;
+  result2 = patt2.test(str); 
+- The test() method tests for a match in a string.
+- This method returns true if it finds a match, otherwise it returns false.
+
+# toString - RegExpObject.toString() - ECMAScript1
+  parameter > none
+  return    > (string) - the string value of the regular expression 
+  example   > Return the string value of the regular expression:
+  var patt = new RegExp("Hello World", "g");
+  var res = patt.toString(); 
+- The toString() method returns the string value of the regular expression.
 </pre>
 
 
